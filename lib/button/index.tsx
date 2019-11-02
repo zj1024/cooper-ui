@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-function Button() {
-  return <div>button</div>
+function Button(props: { children: React.ReactNode }) {
+  return <div>{props.children}</div>
 }
 
 export default Button

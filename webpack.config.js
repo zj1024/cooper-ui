@@ -3,11 +3,32 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const NODE_ENV = 'development'
+
+const externals =
+  NODE_ENV === 'production'
+    ? {
+        react: {
+          commonjs: 'react',
+          commonjs2: 'react',
+          amd: 'react',
+          root: 'React',
+        },
+        'react-dom': {
+          commonjs: 'react-dom',
+          commonjs2: 'react-dom',
+          amd: 'react-dom',
+          root: 'ReactDOM',
+        },
+      }
+    : {}
+
 module.exports = {
-  mode: 'production',
+  mode: NODE_ENV,
   entry: './lib/index.tsx',
   output: {
     path: path.resolve(__dirname, './dist/lib'),
+    chunkFilename: '[name].bundle.js',
     library: 'cui',
     libraryTarget: 'umd',
   },
@@ -25,6 +46,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
+      NODE_ENV,
     }),
   ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
+  externals,
 }
