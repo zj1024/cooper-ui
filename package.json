@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "A React UI library",
   "main": "./lib/index.tsx",
-  "scripts": {},
+  "scripts": {
+    "build": "webpack"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zj1024/cooper-ui.git"
@@ -50,6 +52,7 @@
     "husky": "^3.0.9",
     "lint-staged": "^10.0.0-1",
     "prettier": "^1.18.2",
+    "typescript": "^3.6.4",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   }
