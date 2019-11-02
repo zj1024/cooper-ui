@@ -1,11 +1,12 @@
+/* eslint-disable */
+
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './lib/index.tsx',
   output: {
-    // eslint-disable-next-line no-undef
     path: path.resolve(__dirname, './dist/lib'),
     library: 'cui',
     libraryTarget: 'umd',
@@ -23,7 +24,6 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      // eslint-disable-next-line no-undef
       template: path.resolve(__dirname, './public/index.html'),
     }),
   ],
