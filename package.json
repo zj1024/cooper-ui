@@ -1,0 +1,56 @@
+{
+  "name": "cooper-ui",
+  "version": "0.0.1",
+  "description": "A React UI library",
+  "main": "./lib/index.tsx",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zj1024/cooper-ui.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e",
+      "pre-push": "npm test"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{js}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{ts,tsx,js,less,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "git add"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zj1024/cooper-ui/issues"
+  },
+  "homepage": "https://github.com/zj1024/cooper-ui#readme",
+  "devDependencies": {
+    "@commitlint/config-conventional": "^8.2.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "commitlint": "^8.2.0",
+    "eslint": "^6.6.0",
+    "eslint-plugin-react": "^7.16.0",
+    "husky": "^3.0.9",
+    "lint-staged": "^10.0.0-1",
+    "prettier": "^1.18.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
