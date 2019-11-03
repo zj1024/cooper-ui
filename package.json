@@ -4,8 +4,9 @@
   "description": "A React UI library",
   "main": "./lib/index.tsx",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack"
+    "start": "webpack-dev-server --config ./config/webpack.config.dev",
+    "build": "webpack --config ./config/webpack.config.prod",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -42,17 +43,26 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@babel/preset-typescript": "^7.6.0",
     "@commitlint/config-conventional": "^8.2.0",
+    "@types/jest": "^24.0.21",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.3",
+    "@types/react-test-renderer": "^16.9.1",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-jest": "^24.9.0",
     "commitlint": "^8.2.0",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.16.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.0.9",
+    "jest": "^24.9.0",
     "lint-staged": "^10.0.0-1",
     "prettier": "^1.18.2",
+    "react-test-renderer": "^16.11.0",
+    "ts-jest": "^24.1.0",
     "typescript": "^3.6.4",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
