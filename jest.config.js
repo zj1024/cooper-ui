@@ -2,5 +2,5 @@ module.exports = {
   preset: 'ts-jest',
   verbose: true,
   testEnvironment: 'node',
-  roots: ['<rootDir>/lib'],
+  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
 }
