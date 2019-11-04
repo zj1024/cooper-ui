@@ -1,5 +1,7 @@
 /* eslint-disable */
 
+const path = require('path')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const base = require('./webpack.config')
 const NODE_ENV = 'production'
 
@@ -24,4 +26,5 @@ module.exports = Object.assign({}, base, {
       root: 'ReactDOM',
     },
   },
+  plugins: [new CleanWebpackPlugin()],
 })
