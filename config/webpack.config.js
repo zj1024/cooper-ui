@@ -3,7 +3,7 @@
 const path = require('path')
 
 module.exports = {
-  entry: './libs/index.tsx',
+  entry: './docs/index.tsx',
   output: {
     path: path.resolve(__dirname, '../dist/lib'),
     chunkFilename: '[name].bundle.js',

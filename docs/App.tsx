@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import Icon from './icon'
-import Button from './button'
-import Input from './input'
+import Icon from '../libs/icon'
+import Button from '../libs/button'
+import Input from '../libs/input'
 
 export default () => {
   return (

@@ -7,4 +7,6 @@ module.exports = {
     '^.+\\.(css|scss)$': '<rootDir>/libs/config/CSSStub.js',
     '^.+\\.svg$': '<rootDir>/libs/config/SVGStub.js',
   },
+  collectCoverage: true,
+  collectCoverageFrom: ['./libs/**/*.{js,jsx,ts,tsx}'],
 }
