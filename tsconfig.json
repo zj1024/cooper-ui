@@ -16,6 +16,7 @@
     "target": "esnext",
     "lib": ["esnext", "dom"],
     "jsx": "react",
-    "baseUrl": "./libs"
+    "baseUrl": "./libs",
+    "esModuleInterop": true
   }
 }

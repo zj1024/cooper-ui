@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as classNames from 'classnames'
+import classNames from 'classnames'
 
 import './style.scss'
 
@@ -10,7 +10,6 @@ interface Props {
 }
 
 const Icon: React.FunctionComponent<Props> = ({ name, className, ...props }) => {
-  console.log('render')
   if (!name) {
     console.warn('Did you forget to declare "name" attribute')
     return null
