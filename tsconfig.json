@@ -16,6 +16,6 @@
     "target": "esnext",
     "lib": ["esnext", "dom"],
     "jsx": "react",
-    "baseUrl": "./lib"
+    "baseUrl": "./libs"
   }
 }
