@@ -11,7 +11,7 @@ interface Props {
 
 const Icon: React.FunctionComponent<Props> = ({ name, className, ...props }) => {
   if (!name) {
-    console.warn('Did you forget to declare "name" attribute')
+    console.warn('Did you forget to assign a value to the name attribute?')
     return null
   }
   return (
