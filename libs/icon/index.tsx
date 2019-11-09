@@ -19,7 +19,7 @@ const Icon: React.FunctionComponent<Props> = ({ name, className, ...props }) => 
       dangerouslySetInnerHTML={{
         __html: require(`../assets/icons/${name}.svg`).default,
       }}
-      className={classNames('c-svg', className)}
+      className={classNames('c-icon', className)}
       {...props}></span>
   )
 }
