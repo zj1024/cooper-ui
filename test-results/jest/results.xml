@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="6" failures="0" time="9.225">
+  <testsuite name="- Button component" errors="0" failures="0" skipped="0" timestamp="2019-11-09T10:47:41" time="3.831" tests="1">
+    <testcase classname="- Button component button" name="- Button component button" time="0.023">
+    </testcase>
+  </testsuite>
+  <testsuite name="- Icon component" errors="0" failures="0" skipped="0" timestamp="2019-11-09T10:47:41" time="3.936" tests="5">
+    <testcase classname="- Icon component icon props name should be correct" name="- Icon component icon props name should be correct" time="0.024">
+    </testcase>
+    <testcase classname="- Icon component icon set classNames &quot;test&quot; will be &quot;test&quot;" name="- Icon component icon set classNames &quot;test&quot; will be &quot;test&quot;" time="0.002">
+    </testcase>
+    <testcase classname="- Icon component icon set classNames &quot;undefined&quot; will be empty" name="- Icon component icon set classNames &quot;undefined&quot; will be empty" time="0.002">
+    </testcase>
+    <testcase classname="- Icon component icon event click" name="- Icon component icon event click" time="0.047">
+    </testcase>
+    <testcase classname="- Icon component there is no name property value will return null" name="- Icon component there is no name property value will return null" time="0.019">
+    </testcase>
+  </testsuite>
+</testsuites>
