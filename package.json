@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.config.dev",
     "build": "webpack --config ./config/webpack.config.prod",
-    "test": "jest"
+    "test": "jest",
+    "ci": "JEST_JUNIT_OUTPUT_DIR=./test-results/jest/ JEST_JUNIT_OUTPUT_NAME=results.xml jest --ci --reporters=jest-junit"
   },
   "repository": {
     "type": "git",

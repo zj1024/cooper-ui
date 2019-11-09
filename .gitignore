@@ -1,4 +1,16 @@
+# IDE
+.vscode
+.DS_Store
+Thumbs.db
+.idea
+
+# dev
 node_modules/
 dist/
+
+# ci
 coverage/
+test-results/
+
+# yarn
 yarn-error.log
