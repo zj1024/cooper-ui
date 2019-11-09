@@ -1117,14 +1117,7 @@
   resolved "https://registry.npm.taobao.org/@types/classnames/download/@types/classnames-2.2.9.tgz#d868b6febb02666330410fe7f58f3c4b8258be7b"
   integrity sha1-2Gi2/rsCZmMwQQ/n9Y88S4JYvns=
 
-"@types/enzyme-adapter-react-16@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.npm.taobao.org/@types/enzyme-adapter-react-16/download/@types/enzyme-adapter-react-16-1.0.5.tgz#1bf30a166f49be69eeda4b81e3f24113c8b4e9d5"
-  integrity sha1-G/MKFm9Jvmnu2kuB4/JBE8i06dU=
-  dependencies:
-    "@types/enzyme" "*"
-
-"@types/enzyme@*", "@types/enzyme@^3.10.3":
+"@types/enzyme@^3.10.3":
   version "3.10.3"
   resolved "https://registry.npm.taobao.org/@types/enzyme/download/@types/enzyme-3.10.3.tgz#02b6c5ac7d0472005944a652e79045e2f6c66804"
   integrity sha1-ArbFrH0EcgBZRKZS55BF4vbGaAQ=
