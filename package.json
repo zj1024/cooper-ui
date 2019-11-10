@@ -4,7 +4,7 @@
   "description": "A React UI library",
   "main": "./lib/index.tsx",
   "scripts": {
-    "start": "webpack-dev-server --config ./config/webpack.config.dev",
+    "start": "webpack-dev-server --progress --config ./config/webpack.config.dev",
     "build": "webpack --config ./config/webpack.config.prod",
     "test": "jest",
     "ci": "JEST_JUNIT_OUTPUT_DIR=./test-results/jest/ JEST_JUNIT_OUTPUT_NAME=results.xml jest --ci --reporters=jest-junit"
@@ -63,6 +63,7 @@
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.16.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.0.9",
     "jest": "^24.9.0",

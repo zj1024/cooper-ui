@@ -2,7 +2,6 @@
   "compilerOptions": {
     "strict": true,
     "declaration": true,
-    "experimentalDecorators": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
@@ -10,13 +9,9 @@
     "noUnusedParameters": true,
     "removeComments": true,
     "sourceMap": true,
-    "resolveJsonModule": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "target": "esnext",
-    "lib": ["esnext", "dom"],
-    "jsx": "react",
-    "baseUrl": "./libs",
-    "esModuleInterop": true
-  }
+    "target": "ES5",
+    "jsx": "react"
+  },
+  "include": ["libs/**/*"],
+  "exclude": ["node_modules", "**/*.test.ts"]
 }

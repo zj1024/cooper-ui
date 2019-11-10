@@ -2,8 +2,10 @@
 
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const base = require('./webpack.config')
 
+const PORT = 8080
 const NODE_ENV = 'development'
 
 module.exports = Object.assign({}, base, {
@@ -14,5 +16,15 @@ module.exports = Object.assign({}, base, {
       template: path.resolve(__dirname, '../docs/public/index.html'),
       NODE_ENV,
     }),
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: [`- Local: http://localhost:${PORT}`],
+        notes: ['Some additional notes to be displayed upon successful compilation'],
+      },
+    }),
   ],
+  devServer: {
+    quiet: true,
+    port: PORT,
+  },
 })
