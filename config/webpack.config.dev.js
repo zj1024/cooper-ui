@@ -8,9 +8,10 @@ const NODE_ENV = 'development'
 
 module.exports = Object.assign({}, base, {
   mode: NODE_ENV,
+  entry: './docs/index.tsx',
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../public/index.html'),
+      template: path.resolve(__dirname, '../docs/public/index.html'),
       NODE_ENV,
     }),
   ],

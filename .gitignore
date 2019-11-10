@@ -6,7 +6,6 @@ Thumbs.db
 
 # dev
 node_modules/
-dist/
 
 # ci
 coverage/
