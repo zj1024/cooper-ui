@@ -9,7 +9,7 @@ interface Props {
   [key: string]: any
 }
 
-const Icon: React.FunctionComponent<Props> = ({ name, className, ...props }) => {
+const Icon: React.FC<Props> = ({ name, className, ...props }) => {
   if (!name) {
     console.warn('Did you forget to assign a value to the name attribute?')
     return null

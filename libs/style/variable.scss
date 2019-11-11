@@ -1,0 +1,61 @@
+// 默认颜色
+$color-primary: #409eff;
+$color-black: #333 !default;
+$color-white: #ffffff !default;
+$color-grey: #7b808c !default;
+$color-lightgrey: #dcdfe6 !default;
+$color-green: #19be6b !default;
+$color-blue: #409eff !default;
+$color-yellow: #ff9900 !default;
+$color-red: #f35958 !default;
+
+// 文字
+$color-title: #17233d !default;
+$color-content: #515a6e !default;
+$color-disabled: #c5c8ce !default;
+
+//背景
+$bg-grey: #f2f2f2 !default;
+$bg-white: #ffffff !default;
+$bg-black: #393d49 !default;
+
+// 边框
+$color-border: #dcdfe6 !default;
+
+// 主题背景色
+$bg-colors: (
+  'white': $bg-white,
+  'black': $bg-black,
+  'grey': $bg-grey,
+  'green': $color-green,
+  'blue': $color-blue,
+  'yellow': $color-yellow,
+  'red': $color-red,
+) !default;
+
+// 文本颜色
+$text-colors: (
+  'white': $color-white,
+  'black': $color-black,
+  'grey': $color-grey,
+  'green': $color-green,
+  'blue': $color-blue,
+  'yellow': $color-yellow,
+  'red': $color-red,
+  'title': $color-title,
+  'content': $color-content,
+  'disabled': $color-disabled,
+) !default;
+
+// 边框颜色
+$border-colors: (
+  'white': $color-white,
+  'black': $color-black,
+  'grey': $color-border,
+  'green': $color-green,
+  'blue': $color-blue,
+  'yellow': $color-yellow,
+  'red': $color-red,
+) !default;
+
+$color-types: ('default', 'primary', 'success', 'warning', 'danger', 'loading') !default;

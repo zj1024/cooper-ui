@@ -1,0 +1,137 @@
+@import '../style/variable';
+
+// button
+$--button-base-padding-v: 8;
+$--button-base-padding-h: 20;
+$--button-disabled-base: #bbb !default;
+// 默认颜色
+$--button-default-color: $color-content;
+$--button-default-bg: $bg-white;
+$--button-default-border: $color-lightgrey;
+
+// primary
+$--button-primary-color: $color-white;
+$--button-primary-bg: $color-primary;
+$--button-primary-border: $color-primary;
+
+// warning
+$--button-warning-color: $color-white;
+$--button-warning-bg: $color-yellow;
+$--button-warning-border: $color-yellow;
+
+// success
+$--button-success-color: $color-white;
+$--button-success-bg: $color-green;
+$--button-success-border: $color-green;
+
+// info
+$--button-info-color: $color-white;
+$--button-info-bg: $color-grey;
+$--button-info-border: $color-grey;
+
+// danger
+$--button-danger-color: $color-white;
+$--button-danger-bg: $color-red;
+$--button-danger-border: $color-red;
+
+.c-button {
+  padding: #{$--button-base-padding-v}px #{$--button-base-padding-h}px;
+  border: 1px solid;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+@mixin button-disabled($color, $background-color, $border-color) {
+  background: mix(mix($background-color, $color-white, 40%), $--button-disabled-base, 95%);
+  border: mix($border-color, #bbb, 10%);
+}
+
+@mixin button-color($color, $background-color, $border-color) {
+  color: $color;
+  background: $background-color;
+  border-color: $border-color;
+  &:hover,
+  &:focus,
+  &:visited {
+    background: darken($background-color, 10%);
+    border-color: darken($border-color, 10%);
+  }
+  &:active {
+    background: darken($background-color, 20%);
+    border-color: darken($border-color, 20%);
+  }
+  &.is-plain {
+    color: $background-color;
+    background: $color-white;
+    border-color: $border-color;
+    &:hover,
+    &:focus {
+      background: darken($background-color, 30%);
+      border-color: darken($border-color, 10%);
+    }
+    &:active {
+      background: darken($background-color, 40%);
+      border-color: darken($border-color, 20%);
+    }
+  }
+  &.is-round {
+    border-radius: 50px;
+  }
+  &.is-circle {
+    padding: 12px;
+    border-radius: 50%;
+  }
+  &:disabled {
+    @include button-disabled($color, $background-color, $border-color);
+    cursor: not-allowed;
+    &:hover,
+    &:focus,
+    &:visited {
+      @include button-disabled($color, $background-color, $border-color);
+    }
+    &:active {
+      @include button-disabled($color, $background-color, $border-color);
+    }
+  }
+}
+
+@each $type in $color-types {
+  .c-button-#{$type} {
+    @if $type == default {
+      @include button-color(
+        $--button-default-color,
+        $--button-default-bg,
+        $--button-default-border
+      );
+    }
+    @if $type == warning {
+      @include button-color(
+        $--button-warning-color,
+        $--button-warning-bg,
+        $--button-warning-border
+      );
+    }
+    @if $type == primary {
+      @include button-color(
+        $--button-primary-color,
+        $--button-primary-bg,
+        $--button-primary-border
+      );
+    }
+    @if $type == success {
+      @include button-color(
+        $--button-success-color,
+        $--button-success-bg,
+        $--button-success-border
+      );
+    }
+    @if $type == info {
+      @include button-color($--button-info-color, $--button-info-bg, $--button-info-border);
+    }
+    @if $type == danger {
+      @include button-color($--button-danger-color, $--button-danger-bg, $--button-danger-border);
+    }
+  }
+}
