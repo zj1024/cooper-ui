@@ -41,11 +41,21 @@ $--button-danger-border: $color-red;
   outline: none;
   cursor: pointer;
   transition: all 0.2s;
+  &.is-round {
+    border-radius: 50px;
+  }
+  &.is-circle {
+    padding: 12px;
+    border-radius: 50%;
+  }
 }
 
 @mixin button-disabled($color, $background-color, $border-color) {
   background: mix(mix($background-color, $color-white, 40%), $--button-disabled-base, 95%);
-  border: mix($border-color, #bbb, 10%);
+  border: mix($border-color, $--button-disabled-base, 10%);
+  @if $background-color == $--button-default-bg {
+    background: mix($background-color, $--button-disabled-base, 30%);
+  }
 }
 
 @mixin button-color($color, $background-color, $border-color) {
@@ -55,12 +65,12 @@ $--button-danger-border: $color-red;
   &:hover,
   &:focus,
   &:visited {
-    background: darken($background-color, 10%);
-    border-color: darken($border-color, 10%);
+    background: darken($background-color, 5%);
+    border-color: darken($border-color, 5%);
   }
   &:active {
-    background: darken($background-color, 20%);
-    border-color: darken($border-color, 20%);
+    background: darken($background-color, 15%);
+    border-color: darken($border-color, 15%);
   }
   &.is-plain {
     color: $background-color;
@@ -75,13 +85,6 @@ $--button-danger-border: $color-red;
       background: darken($background-color, 40%);
       border-color: darken($border-color, 20%);
     }
-  }
-  &.is-round {
-    border-radius: 50px;
-  }
-  &.is-circle {
-    padding: 12px;
-    border-radius: 50%;
   }
   &:disabled {
     @include button-disabled($color, $background-color, $border-color);
