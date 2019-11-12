@@ -5,5 +5,5 @@ interface Props {
   className?: string
   [key: string]: any
 }
-declare const Icon: React.FunctionComponent<Props>
+declare const Icon: React.FC<Props>
 export default Icon

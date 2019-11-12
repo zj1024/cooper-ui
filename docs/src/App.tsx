@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Icon, Button, Input } from '../../libs'
+import { Icon, Button, Input, Dialog } from '../../libs'
 
 export default () => {
   return (
@@ -39,6 +39,7 @@ export default () => {
         </div>
       </div>
       <Input>this is input</Input>
+      <Dialog>test</Dialog>
     </>
   )
 }

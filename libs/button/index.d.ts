@@ -1,3 +1,15 @@
 import * as React from 'react'
-declare function Button(props: { children?: React.ReactNode }): JSX.Element
+import './style.scss'
+interface Props {
+  type?: string
+  children?: React.ReactNode
+  className?: string
+  plain?: boolean
+  round?: boolean
+  circle?: boolean
+  loading?: boolean
+  disabled?: boolean
+  [key: string]: any
+}
+declare const Button: React.FC<Props>
 export default Button
