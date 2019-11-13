@@ -39,7 +39,7 @@ export default () => {
         </div>
       </div>
       <Input>this is input</Input>
-      <Dialog>test</Dialog>
+      <Dialog>Dialog</Dialog>
     </>
   )
 }

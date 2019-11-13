@@ -1,7 +1,8 @@
 import * as React from 'react'
 
 interface Props {
-  children?: any
+  children?: React.ReactElement | string
+  [key: string]: any
 }
 
 const Dialog: React.FC<Props> = props => {
