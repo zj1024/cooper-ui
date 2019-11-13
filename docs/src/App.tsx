@@ -1,7 +1,9 @@
 import * as React from 'react'
+import { useState } from 'react'
 import { Icon, Button, Input, Dialog } from '../../libs'
 
 export default () => {
+  const [visible, setVisible] = useState(false)
   return (
     <>
       <div>
@@ -39,7 +41,13 @@ export default () => {
         </div>
       </div>
       <Input>this is input</Input>
-      <Dialog>Dialog</Dialog>
+      <div>
+        <h1>- Dialog</h1>
+        <Button onClick={() => setVisible(!visible)}>Toggle Dialog</Button>
+        <Dialog visible={visible} header={'test'}>
+          Dialog
+        </Dialog>
+      </div>
     </>
   )
 }
