@@ -7,6 +7,12 @@ export default () => {
   const handleDialogCancel = () => {
     setVisible(false)
   }
+
+  const [dialog2Visible, setDialog2Visible] = useState(false)
+  const handleDialog2Cancel = () => {
+    setDialog2Visible(false)
+  }
+
   return (
     <>
       <div>
@@ -53,10 +59,22 @@ export default () => {
       })}
       <div>
         <h1>- Dialog</h1>
-        <Button onClick={() => setVisible(!visible)}>Toggle Dialog</Button>
-        <Dialog visible={visible} header={'test'} onCancel={handleDialogCancel}>
-          Dialog
-        </Dialog>
+        <div>
+          <Button onClick={() => setVisible(true)}>Toggle Dialog</Button>
+          <Dialog visible={visible} header={'test'} onCancel={handleDialogCancel}>
+            dialog1
+          </Dialog>
+        </div>
+        <div>
+          <Button onClick={() => setDialog2Visible(!dialog2Visible)}>Toggle Dialog2</Button>
+          <Dialog
+            visible={dialog2Visible}
+            header={'test'}
+            onCancel={handleDialog2Cancel}
+            footer={null}>
+            dialog2
+          </Dialog>
+        </div>
       </div>
     </>
   )
