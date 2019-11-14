@@ -4,6 +4,9 @@ import { Icon, Button, Input, Dialog } from '../../libs'
 
 export default () => {
   const [visible, setVisible] = useState(false)
+  const handleDialogCancel = () => {
+    setVisible(false)
+  }
   return (
     <>
       <div>
@@ -41,10 +44,17 @@ export default () => {
         </div>
       </div>
       <Input>this is input</Input>
+      {Array.from(new Array(20), () => 1).map((d, i) => {
+        return (
+          <h1 key={i}>
+            {d}---{i}
+          </h1>
+        )
+      })}
       <div>
         <h1>- Dialog</h1>
         <Button onClick={() => setVisible(!visible)}>Toggle Dialog</Button>
-        <Dialog visible={visible} header={'test'}>
+        <Dialog visible={visible} header={'test'} onCancel={handleDialogCancel}>
           Dialog
         </Dialog>
       </div>
