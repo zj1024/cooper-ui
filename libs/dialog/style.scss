@@ -1,12 +1,3 @@
-.c-dialog-mask {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-}
 .c-dialog {
   position: fixed;
   left: 50%;
@@ -17,7 +8,16 @@
   margin: 0 auto;
   background: #fff;
   transform: translate(-50%, -50%);
-  .c-dialog-close {
+  &-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+  &-close {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -27,21 +27,26 @@
       color: #188eee;
     }
   }
-  .c-dialog-header {
+  &-header {
     color: #333;
     padding: 20px;
     border-bottom: 1px solid #f2f2f2;
   }
-  .c-dialog-main {
+  &-main {
     color: #494949;
     padding: 20px;
   }
-  .c-dialog-footer {
-    padding: 20px;
+  &-footer {
+    padding: 10px 20px;
     border-top: 1px solid #f2f2f2;
     .c-dialog-footer-button-wrapper {
       display: flex;
       justify-content: flex-end;
+      .c-dialog-footer-button-cancel,
+      .c-dialog-footer-button-ok {
+        padding: 5px 15px;
+        font-size: 14px;
+      }
       .c-dialog-footer-button-cancel {
         margin-right: 10px;
       }

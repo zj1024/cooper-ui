@@ -29,7 +29,9 @@ const Dialog: React.FC<Props> = props => {
         <footer className={getClass('footer')}>
           <div className={getClass('footer-button-wrapper')}>
             <Button className={getClass('footer-button-cancel')}>取消</Button>
-            <Button type="primary">确认</Button>
+            <Button className={getClass('footer-button-ok')} type="primary">
+              确认
+            </Button>
           </div>
         </footer>
       ) : null}
