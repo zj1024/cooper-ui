@@ -1,8 +1,11 @@
 import * as React from 'react'
 import { useState } from 'react'
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import { Icon, Button, Input, Dialog } from '../../libs'
 
-export default () => {
+import 'assembly-css/lib/index.scss'
+
+const Index = () => {
   const [visible, setVisible] = useState(false)
   const handleDialogCancel = () => {
     setVisible(false)
@@ -54,13 +57,6 @@ export default () => {
         </div>
       </div>
       <Input>this is input</Input>
-      {Array.from(new Array(20), () => 1).map((d, i) => {
-        return (
-          <h1 key={i}>
-            {d}---{i}
-          </h1>
-        )
-      })}
       <div>
         <h1>- Dialog</h1>
         <div>
@@ -83,3 +79,56 @@ export default () => {
     </>
   )
 }
+
+const Guide = () => {
+  return <div>guide</div>
+}
+
+const MyButton = () => {
+  return <div>button</div>
+}
+const MyDialog = () => {
+  return <div>Dialog</div>
+}
+
+export default () => {
+  return (
+    <Router>
+      <header className="w-full p-20 b-b flex j-end a-center text-content">
+        <li className="m-r-10">
+          <Link to="/guide">Guide</Link>
+        </li>
+        <li>
+          <Link to="/">组件</Link>
+        </li>
+      </header>
+      <main className="flex flex-1">
+        <Route
+          path="/"
+          children={() => (
+            <>
+              <aside className="b-r flex-column">
+                <ul className="text-content">
+                  <li className="p-10">
+                    <Link to="/button">Button</Link>
+                  </li>
+                  <li className="p-10">
+                    <Link to="/dialog">Dialog</Link>
+                  </li>
+                </ul>
+              </aside>
+              <div className="flex-1">
+                1234
+                <Route exact path="/button" component={MyButton} />
+                <Route exact path="/dialog" component={MyDialog} />
+              </div>
+            </>
+          )}
+        />
+        <Route exact path="/guide" component={Guide} />
+      </main>
+    </Router>
+  )
+}
+
+console.log(Index)

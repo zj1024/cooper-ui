@@ -24,6 +24,7 @@ $color-border: #dcdfe6 !default;
 
 // 主题背景色
 $bg-colors: (
+  'primary': $color-primary,
   'white': $bg-white,
   'black': $bg-black,
   'grey': $bg-grey,
@@ -35,6 +36,7 @@ $bg-colors: (
 
 // 文本颜色
 $text-colors: (
+  'primary': $color-primary,
   'white': $color-white,
   'black': $color-black,
   'grey': $color-grey,
@@ -49,6 +51,7 @@ $text-colors: (
 
 // 边框颜色
 $border-colors: (
+  'primary': $color-primary,
   'white': $color-white,
   'black': $color-black,
   'grey': $color-border,
