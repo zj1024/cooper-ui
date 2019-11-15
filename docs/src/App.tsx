@@ -1,5 +1,8 @@
 import * as React from 'react'
-import { HashRouter as Router, Route, Link } from 'react-router-dom'
+// import { useState } from 'react'
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
+
+import GuidePage from './pages/guide'
 
 import IconPage from './pages/icon'
 import ButtonPage from './pages/button'
@@ -8,11 +11,8 @@ import InputPage from './pages/input'
 
 import 'assembly-css/lib/index.scss'
 
-const Guide = () => {
-  return <div>guide</div>
-}
-
 export default () => {
+  // const [componentActive, setComponentActive] = useState(0)
   return (
     <Router>
       <header className="w-full p-20 b-b flex j-end a-center text-content">
@@ -24,36 +24,37 @@ export default () => {
         </li>
       </header>
       <main className="flex flex-1">
-        <Route
-          path="/"
-          children={() => (
-            <>
-              <aside className="b-r flex-column">
-                <ul className="text-content">
-                  <li className="p-20">
-                    <Link to="/icon">Icon</Link>
-                  </li>
-                  <li className="p-20">
-                    <Link to="/button">Button</Link>
-                  </li>
-                  <li className="p-20">
-                    <Link to="/dialog">Dialog</Link>
-                  </li>
-                  <li className="p-20">
-                    <Link to="/input">Input</Link>
-                  </li>
-                </ul>
-              </aside>
-              <div className="flex-1 p-20">
-                <Route exact path="/icon" component={IconPage} />
-                <Route exact path="/button" component={ButtonPage} />
-                <Route exact path="/dialog" component={DialogPage} />
-                <Route exact path="/input" component={InputPage} />
-              </div>
-            </>
-          )}
-        />
-        <Route exact path="/guide" component={Guide} />
+        <Switch>
+          <Route exact path="/guide" component={GuidePage} />
+          <Route
+            children={() => (
+              <>
+                <aside className="b-r flex-column">
+                  <ul className="text-content">
+                    <li className="p-20">
+                      <Link to="/icon">Icon</Link>
+                    </li>
+                    <li className="p-20">
+                      <Link to="/button">Button</Link>
+                    </li>
+                    <li className="p-20">
+                      <Link to="/dialog">Dialog</Link>
+                    </li>
+                    <li className="p-20">
+                      <Link to="/input">Input</Link>
+                    </li>
+                  </ul>
+                </aside>
+                <div className="flex-1 p-20">
+                  <Route exact path="/icon" component={IconPage} />
+                  <Route exact path="/button" component={ButtonPage} />
+                  <Route exact path="/dialog" component={DialogPage} />
+                  <Route exact path="/input" component={InputPage} />
+                </div>
+              </>
+            )}
+          />
+        </Switch>
       </main>
     </Router>
   )
