@@ -77,7 +77,7 @@ const Dialog: React.FC<Props> = props => {
       {closable !== true ? null : (
         <Icon name="close" className={setClass('close')} onClick={onCancel} />
       )}
-      {header ? <header className={setClass('header')}>{header}</header> : null}
+      {header !== null ? <header className={setClass('header')}>{header || '提示'}</header> : null}
       <main className={setClass('main')}>{props.children}</main>
       {/* judge footer show or hidden or custom */}
       {footer ? (
