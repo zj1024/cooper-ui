@@ -48,6 +48,21 @@ $--button-danger-border: $color-red;
     padding: 12px;
     border-radius: 50%;
   }
+  &-loading {
+    margin-right: 5px;
+    > svg {
+      animation: loadingMove 1s linear infinite;
+    }
+  }
+}
+
+@keyframes loadingMove {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @mixin button-disabled($color, $background-color, $border-color) {

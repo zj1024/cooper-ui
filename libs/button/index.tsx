@@ -1,5 +1,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
+import Icon from '../icon'
+import { setPrefixClassName } from '../utils'
 import './style.scss'
 
 interface Props {
@@ -14,6 +16,8 @@ interface Props {
   [key: string]: any
 }
 
+const setClass = setPrefixClassName('c-button')
+
 const Button: React.FC<Props> = ({
   type = 'default',
   children = null,
@@ -24,7 +28,7 @@ const Button: React.FC<Props> = ({
   loading = false,
   disabled = false,
   ...props
-  // TODO: plain, loading
+  // TODO: plain
 }) => {
   const getClassName = (hasClassName: boolean | string, className: string) => {
     return hasClassName ? className : ''
@@ -32,14 +36,15 @@ const Button: React.FC<Props> = ({
   return (
     <button
       className={classnames(
-        'c-button',
-        `c-button-${type ? type : 'default'}`,
+        setClass(),
+        setClass(type ? type : 'default'),
         getClassName(round, 'is-round'),
         getClassName(circle, 'is-circle'),
         className,
       )}
       disabled={disabled}
       {...props}>
+      {loading ? <Icon name="loading" className={setClass('loading')} /> : null}
       {children}
     </button>
   )

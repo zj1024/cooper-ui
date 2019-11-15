@@ -13,6 +13,8 @@ export default () => {
     setDialog2Visible(false)
   }
 
+  const [buttonLoading, setButtonLoading] = useState(false)
+
   return (
     <>
       <div>
@@ -26,7 +28,9 @@ export default () => {
       <div>
         <h1>- Button</h1>
         <div>
-          <Button>Click me</Button>
+          <Button loading={buttonLoading} onClick={() => setButtonLoading(!buttonLoading)}>
+            Click me
+          </Button>
           <Button round className="button-test" style={{ fontSize: '20px' }} type="primary">
             Click me
           </Button>

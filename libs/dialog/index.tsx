@@ -19,7 +19,7 @@ interface Props {
   [key: string]: any
 }
 
-const getClass = setPrefixClassName('c-dialog')
+const setClass = setPrefixClassName('c-dialog')
 
 const Dialog: React.FC<Props> = props => {
   const {
@@ -73,22 +73,22 @@ const Dialog: React.FC<Props> = props => {
   })
 
   return visible ? (
-    <div className={getClass()} style={{ width, animation }}>
+    <div className={setClass()} style={{ width, animation }}>
       {closable !== true ? null : (
-        <Icon name="close" className={getClass('close')} onClick={onCancel} />
+        <Icon name="close" className={setClass('close')} onClick={onCancel} />
       )}
-      {header ? <header className={getClass('header')}>{header}</header> : null}
-      <main className={getClass('main')}>{props.children}</main>
+      {header ? <header className={setClass('header')}>{header}</header> : null}
+      <main className={setClass('main')}>{props.children}</main>
       {/* judge footer show or hidden or custom */}
       {footer ? (
-        <footer className={getClass('footer')}>{footer}</footer>
+        <footer className={setClass('footer')}>{footer}</footer>
       ) : footer !== null ? (
-        <footer className={getClass('footer')}>
-          <div className={getClass('footer-button-wrapper')}>
-            <Button className={getClass('footer-button-cancel')} onClick={onCancel}>
+        <footer className={setClass('footer')}>
+          <div className={setClass('footer-button-wrapper')}>
+            <Button className={setClass('footer-button-cancel')} onClick={onCancel}>
               取消
             </Button>
-            <Button className={getClass('footer-button-ok')} type="primary">
+            <Button className={setClass('footer-button-ok')} type="primary">
               确认
             </Button>
           </div>
@@ -97,7 +97,7 @@ const Dialog: React.FC<Props> = props => {
       {/* create portal to close modal */}
       {mask === true &&
         ReactDOM.createPortal(
-          <div onClick={maskOnClick} className={getClass('mask')} style={{ animation }}></div>,
+          <div onClick={maskOnClick} className={setClass('mask')} style={{ animation }}></div>,
           document.body,
         )}
     </div>
