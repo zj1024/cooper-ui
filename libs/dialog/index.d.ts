@@ -1,17 +1,6 @@
-import * as React from 'react'
-import './style.scss'
-interface Props {
-  children?: React.ReactNode | string
-  visible: boolean
-  width?: string | number
-  header?: React.ReactNode | string
-  footer?: React.ReactNode | string
-  onCancel: () => void
-  closable?: boolean
-  mask?: boolean
-  maskClosable?: boolean
-  animat?: boolean
-  [key: string]: any
-}
-declare const Dialog: React.FC<Props>
+import Dialog from './dialog'
+declare const alert: (props?: any) => any
+declare const confirm: (props?: any) => any
+declare const modal: (props?: any) => any
+export { alert, confirm, modal }
 export default Dialog
