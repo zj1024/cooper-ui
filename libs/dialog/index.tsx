@@ -8,15 +8,22 @@ interface DialogFuncProps {
   title?: React.ReactElement
   message: React.ReactElement
   okText: string
+  cancelText?: string
   width?: string
-  beforeClose?: (params?: any) => any
+  onOk?: (params?: any) => any
+  onCancel?: (params?: any) => any
 }
 
-// 内部自定义的选项
-interface RenderProps extends DialogFuncProps {
+// const FactoryDialog = (props: DialogFuncProps) => {
+
+// }
+
+interface PrivateProps extends DialogFuncProps {
   visible: boolean
-  closable: boolean
-  maskClosable: boolean
+  closable?: boolean
+  mask?: boolean
+  maskClosable?: boolean
+  animat?: boolean
 }
 
 Dialog.alert = (props: DialogFuncProps) => {
@@ -27,13 +34,13 @@ Dialog.alert = (props: DialogFuncProps) => {
     message: props.message,
     okText: props.okText,
     width: props.width,
-    beforeClose: props.beforeClose,
+    beforeClose: props.onOk,
   }
 
-  const render = (renderProps: RenderProps) => {
-    const { message, okText, beforeClose, ...renderLeftProps } = renderProps
-    const handleClose = () => {
-      beforeClose && beforeClose()
+  const render = (renderProps: PrivateProps) => {
+    const { message, okText, onOk, ...renderLeftProps } = renderProps
+    const handleOk = () => {
+      onOk && onOk()
       destory()
     }
     ReactDOM.render(
@@ -42,7 +49,7 @@ Dialog.alert = (props: DialogFuncProps) => {
         onCancel={() => {}}
         footer={
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Button onClick={handleClose} type="primary">
+            <Button onClick={handleOk} type="primary">
               {okText ? okText : '确认'}
             </Button>
           </div>
@@ -70,11 +77,111 @@ Dialog.alert = (props: DialogFuncProps) => {
 }
 
 Dialog.confirm = (props: DialogFuncProps) => {
-  console.log(props)
+  const renderProps = {
+    visible: true,
+    closable: false,
+    maskClosable: false,
+    message: props.message,
+    okText: props.okText,
+    cancelText: props.cancelText,
+    width: props.width,
+    onOk: props.onOk,
+    onCancel: props.onCancel,
+  }
+
+  const render = (renderProps: PrivateProps) => {
+    const { message, okText, cancelText, onOk, onCancel, ...renderLeftProps } = renderProps
+    const handleOk = () => {
+      onOk && onOk()
+      destory()
+    }
+    const handleCancel = () => {
+      onCancel && onCancel()
+      destory()
+    }
+    ReactDOM.render(
+      <Dialog
+        {...renderLeftProps}
+        onCancel={() => {}}
+        footer={
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <Button style={{ marginRight: '10px' }} onClick={handleCancel}>
+              {cancelText ? cancelText : '取消'}
+            </Button>
+            <Button onClick={handleOk} type="primary">
+              {okText ? okText : '确认'}
+            </Button>
+          </div>
+        }>
+        {message}
+      </Dialog>,
+      div,
+    )
+  }
+
+  const destory = () => {
+    const isUnmount = ReactDOM.unmountComponentAtNode(div)
+    if (isUnmount && div.parentNode) {
+      div.parentNode!.removeChild(div)
+    }
+  }
+
+  const div = document.createElement('div')
+  document.body.appendChild(div)
+
+  render(renderProps)
+  return {
+    close: destory,
+  }
 }
 
 Dialog.modal = (props: DialogFuncProps) => {
-  console.log(props)
+  const renderProps = {
+    visible: true,
+    closable: true,
+    mask: true,
+    maskClosable: true,
+    animat: true,
+    message: props.message,
+    okText: props.okText,
+    cancelText: props.cancelText,
+    width: props.width,
+    onOk: props.onOk,
+    onCancel: props.onCancel,
+  }
+
+  const render = (renderProps: PrivateProps) => {
+    const { message, okText, cancelText, onOk, onCancel, ...renderLeftProps } = renderProps
+    // const handleOk = () => {
+    //   onOk && onOk()
+    //   destory()
+    // }
+    // const handleCancel = () => {
+    //   onCancel && onCancel()
+    //   destory()
+    // }
+    ReactDOM.render(
+      <Dialog {...renderLeftProps} onCancel={destory}>
+        {message}
+      </Dialog>,
+      div,
+    )
+  }
+
+  const destory = () => {
+    const isUnmount = ReactDOM.unmountComponentAtNode(div)
+    if (isUnmount && div.parentNode) {
+      div.parentNode!.removeChild(div)
+    }
+  }
+
+  const div = document.createElement('div')
+  document.body.appendChild(div)
+
+  render(renderProps)
+  return {
+    close: destory,
+  }
 }
 
 const alert = Dialog.alert

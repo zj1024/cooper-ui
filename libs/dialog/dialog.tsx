@@ -11,7 +11,8 @@ export interface Props {
   width?: string | number
   header?: React.ReactNode | string
   footer?: React.ReactNode | string
-  onCancel: () => void
+  onCancel: (params?: any) => any
+  onOk?: (params?: any) => void
   closable?: boolean
   mask?: boolean
   maskClosable?: boolean
@@ -34,6 +35,7 @@ const Dialog: DialogFC = props => {
     header,
     footer,
     onCancel = () => {},
+    onOk,
     closable = true,
     mask = true,
     maskClosable = true,
@@ -46,6 +48,14 @@ const Dialog: DialogFC = props => {
     if (maskClosable === true) {
       onCancel()
     }
+  }
+
+  // The user clicks ok to cancel the callback
+  const _handleCancel = () => {
+    onCancel && onCancel()
+  }
+  const _handleOk = () => {
+    onOk ? onOk(onCancel) : onCancel()
   }
 
   /**
@@ -91,10 +101,10 @@ const Dialog: DialogFC = props => {
       ) : footer !== null ? (
         <footer className={setClass('footer')}>
           <div className={setClass('footer-button-wrapper')}>
-            <Button className={setClass('footer-button-cancel')} onClick={onCancel}>
+            <Button className={setClass('footer-button-cancel')} onClick={_handleCancel}>
               取消
             </Button>
-            <Button className={setClass('footer-button-ok')} type="primary">
+            <Button className={setClass('footer-button-ok')} type="primary" onClick={_handleOk}>
               确认
             </Button>
           </div>
