@@ -59,10 +59,6 @@ const Dialog: DialogFC = props => {
 
   // The user clicks ok to cancel the callback
   const _handleCancel = () => {
-    // 组件实例被销毁
-    if (animat === true) {
-      animation = 'cooperDialogHidden 0.3s ease'
-    }
     onCancel && onCancel()
   }
   const _handleOk = () => {
