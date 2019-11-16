@@ -5,7 +5,7 @@ import { setPrefixClassName } from '../utils'
 import './style.scss'
 
 interface Props {
-  type?: string
+  type?: string // 'default', 'primary', 'success', 'warning', 'danger', 'loading'
   children?: React.ReactNode
   className?: string
   plain?: boolean
