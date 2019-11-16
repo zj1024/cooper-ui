@@ -11,6 +11,8 @@ export interface Props {
   width?: string | number
   header?: React.ReactNode | string
   footer?: React.ReactNode | string
+  okText?: string
+  cancelText?: string
   onCancel: (params?: any) => any
   onOk?: (params?: any) => void
   closable?: boolean
@@ -20,6 +22,7 @@ export interface Props {
   [key: string]: any
 }
 
+// dialog function api
 interface DialogFC extends React.FC<Props> {
   modal?: (props?: any) => any
   alert?: (props?: any) => any
@@ -41,6 +44,8 @@ const Dialog: DialogFC = props => {
     maskClosable = true,
     lockScroll = true,
     animat = true,
+    okText = '确认',
+    cancelText = '取消',
   } = props
 
   // maskClosable
@@ -102,10 +107,10 @@ const Dialog: DialogFC = props => {
         <footer className={setClass('footer')}>
           <div className={setClass('footer-button-wrapper')}>
             <Button className={setClass('footer-button-cancel')} onClick={_handleCancel}>
-              取消
+              {cancelText}
             </Button>
             <Button className={setClass('footer-button-ok')} type="primary" onClick={_handleOk}>
-              确认
+              {okText}
             </Button>
           </div>
         </footer>

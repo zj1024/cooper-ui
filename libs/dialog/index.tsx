@@ -135,6 +135,9 @@ Dialog.confirm = (props: DialogFuncProps) => {
   }
 }
 
+// onCancel: (params?: any) => any
+// onOk?: (params?: any) => void
+
 Dialog.modal = (props: DialogFuncProps) => {
   const renderProps = {
     visible: true,
@@ -142,6 +145,7 @@ Dialog.modal = (props: DialogFuncProps) => {
     mask: true,
     maskClosable: true,
     animat: true,
+    title: props.title,
     message: props.message,
     okText: props.okText,
     cancelText: props.cancelText,
@@ -151,17 +155,14 @@ Dialog.modal = (props: DialogFuncProps) => {
   }
 
   const render = (renderProps: PrivateProps) => {
-    const { message, okText, cancelText, onOk, onCancel, ...renderLeftProps } = renderProps
-    // const handleOk = () => {
-    //   onOk && onOk()
-    //   destory()
-    // }
-    // const handleCancel = () => {
-    //   onCancel && onCancel()
-    //   destory()
-    // }
+    const { title, message, okText, cancelText, onOk, onCancel, ...renderLeftProps } = renderProps
     ReactDOM.render(
-      <Dialog {...renderLeftProps} onCancel={destory}>
+      <Dialog
+        {...renderLeftProps}
+        onCancel={destory}
+        okText={okText}
+        cancelText={cancelText}
+        header={title}>
         {message}
       </Dialog>,
       div,

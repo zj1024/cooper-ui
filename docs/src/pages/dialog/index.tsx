@@ -27,8 +27,10 @@ export default () => {
 
   const handleModal = () => {
     modal({
-      title: 'test',
+      title: 'this is test',
       message: 'test',
+      okText: '是的',
+      cancelText: '不是的',
     })
   }
 
