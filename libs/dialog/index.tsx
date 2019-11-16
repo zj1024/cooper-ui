@@ -69,7 +69,7 @@ const FactoryDialog = (props: DialogFuncProps) => {
   }
 }
 
-Dialog.alert = (props: DialogFuncProps) => {
+Dialog.Alert = (props: DialogFuncProps) => {
   const config = {
     visible: true,
     closable: false,
@@ -79,7 +79,7 @@ Dialog.alert = (props: DialogFuncProps) => {
   return FactoryDialog(Object.assign(props, config))
 }
 
-Dialog.confirm = (props: DialogFuncProps) => {
+Dialog.Confirm = (props: DialogFuncProps) => {
   const config = {
     visible: true,
     closable: false,
@@ -88,15 +88,15 @@ Dialog.confirm = (props: DialogFuncProps) => {
   return FactoryDialog(Object.assign(config, props))
 }
 
-Dialog.modal = (props: DialogFuncProps) => {
+Dialog.Modal = (props: DialogFuncProps) => {
   const config = {}
   return FactoryDialog(Object.assign(props, config))
 }
 
-const alert = Dialog.alert
-const confirm = Dialog.confirm
-const modal = Dialog.modal
+const Alert = Dialog.Alert
+const Confirm = Dialog.Confirm
+const Modal = Dialog.Modal
 
-export { alert, confirm, modal }
+export { Alert, Confirm, Modal }
 
 export default Dialog

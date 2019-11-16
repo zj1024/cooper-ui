@@ -1,13 +1,12 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { Dialog, Button } from '../../../../libs'
-// import { alert, confirm, modal } from '../../../../libs/dialog'
-const { alert, confirm, modal } = Dialog
+const { Alert, Confirm, Modal } = Dialog
 
 export default () => {
   const [visible, setVisible] = useState(false)
   const handleAlert = () => {
-    alert({
+    Alert({
       message: 'test',
       width: '300px',
       onOk: (done: any) => {
@@ -18,7 +17,7 @@ export default () => {
   }
 
   const handleConfirm = () => {
-    confirm({
+    Confirm({
       message: '确认删除吗？',
       width: '400px',
       onOk: (done: any) => {
@@ -32,7 +31,7 @@ export default () => {
   }
 
   const handleModal = () => {
-    modal({
+    Modal({
       title: 'this is test',
       message: 'test',
       okText: '是的',

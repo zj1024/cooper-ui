@@ -1,12 +1,15 @@
 import * as React from 'react'
 import { useEffect } from 'react'
 import * as ReactDOM from 'react-dom'
+import classnames from 'classnames'
 import { Icon, Button } from '../'
 import { setPrefixClassName } from '../utils'
+
 import './style.scss'
 
 export interface Props {
   children?: React.ReactNode | string
+  className?: string
   visible: boolean
   width?: string | number
   header?: React.ReactNode | string
@@ -25,15 +28,16 @@ export interface Props {
 
 // dialog function api
 interface DialogFC extends React.FC<Props> {
-  modal: (props?: any) => any
-  alert: (props?: any) => any
-  confirm: (props?: any) => any
+  Modal: (props?: any) => any
+  Alert: (props?: any) => any
+  Confirm: (props?: any) => any
 }
 
 const setClass = setPrefixClassName('c-dialog')
 
 const Dialog: DialogFC = props => {
   const {
+    className = '',
     visible = false,
     width,
     header,
@@ -96,7 +100,7 @@ const Dialog: DialogFC = props => {
   })
 
   return visible ? (
-    <div className={setClass()} style={{ width, animation }}>
+    <div className={classnames(setClass(), className)} style={{ width, animation }}>
       {closable !== true ? null : (
         <Icon name="close" className={setClass('close')} onClick={onCancel} />
       )}
@@ -135,8 +139,8 @@ const Dialog: DialogFC = props => {
  * @function api
  * Declare that the direct reference to the function is invalid
  */
-Dialog.alert = () => {}
-Dialog.confirm = () => {}
-Dialog.modal = () => {}
+Dialog.Alert = () => {}
+Dialog.Confirm = () => {}
+Dialog.Modal = () => {}
 
 export default Dialog
