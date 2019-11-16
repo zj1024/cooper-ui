@@ -48,6 +48,11 @@ $--button-danger-border: $color-red;
     padding: 12px;
     border-radius: 50%;
   }
+  &-loading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   &-loading {
     margin-right: 5px;
     > svg {

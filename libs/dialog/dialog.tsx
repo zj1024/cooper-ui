@@ -38,6 +38,7 @@ const setClass = setPrefixClassName('c-dialog')
 const Dialog: DialogFC = props => {
   const {
     className = '',
+    style = {},
     visible = false,
     width,
     header,
@@ -100,7 +101,7 @@ const Dialog: DialogFC = props => {
   })
 
   return visible ? (
-    <div className={classnames(setClass(), className)} style={{ width, animation }}>
+    <div className={classnames(setClass(), className)} style={{ width, animation, ...style }}>
       {closable !== true ? null : (
         <Icon name="close" className={setClass('close')} onClick={onCancel} />
       )}

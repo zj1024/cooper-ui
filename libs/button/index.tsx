@@ -44,8 +44,15 @@ const Button: React.FC<Props> = ({
       )}
       disabled={disabled}
       {...props}>
-      {loading ? <Icon name="loading" className={setClass('loading')} /> : null}
-      {children}
+      {/* 连续两次赋值children是为了loading状态下不给button设置flex */}
+      {loading ? (
+        <div className={setClass('loading-wrapper')}>
+          <Icon name="loading" className={setClass('loading')} />
+          {children}
+        </div>
+      ) : (
+        <>{children}</>
+      )}
     </button>
   )
 }

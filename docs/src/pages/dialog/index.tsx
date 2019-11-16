@@ -53,7 +53,11 @@ export default () => {
       <h1>- Dialog</h1>
       <div>
         <Button onClick={() => setVisible(true)}>开启Dialog</Button>
-        <Dialog visible={visible} onCancel={() => setVisible(false)} onOk={handleOk}>
+        <Dialog
+          style={{ width: '100%' }}
+          visible={visible}
+          onCancel={() => setVisible(false)}
+          onOk={handleOk}>
           this is body
         </Dialog>
       </div>

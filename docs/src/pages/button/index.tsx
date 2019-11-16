@@ -8,7 +8,10 @@ export default () => {
     <>
       <h1>- Button</h1>
       <div>
-        <Button loading={buttonLoading} onClick={() => setButtonLoading(!buttonLoading)}>
+        <Button
+          style={{ width: '100%' }}
+          loading={buttonLoading}
+          onClick={() => setButtonLoading(!buttonLoading)}>
           Click me
         </Button>
         <Button round className="button-test" style={{ fontSize: '20px' }} type="primary">
