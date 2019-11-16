@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { Dialog, Button } from '../../../../libs'
-import { alert, confirm, modal } from '../../../../libs/dialog'
+// import { alert, confirm, modal } from '../../../../libs/dialog'
+const { alert, confirm, modal } = Dialog
 
 export default () => {
   const [visible, setVisible] = useState(false)

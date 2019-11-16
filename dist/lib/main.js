@@ -60,7 +60,7 @@
         return Object.prototype.hasOwnProperty.call(e, t)
       }),
       (o.p = ''),
-      o((o.s = 5))
+      o((o.s = 4))
     )
   })([
     function(t, o) {
@@ -79,10 +79,10 @@
                 if (!n) return o
                 if (t && 'function' == typeof btoa) {
                   var r =
-                      ((c = n),
-                      (i = btoa(unescape(encodeURIComponent(JSON.stringify(c))))),
+                      ((i = n),
+                      (c = btoa(unescape(encodeURIComponent(JSON.stringify(i))))),
                       (s = 'sourceMappingURL=data:application/json;charset=utf-8;base64,'.concat(
-                        i,
+                        c,
                       )),
                       '/*# '.concat(s, ' */')),
                     a = n.sources.map(function(e) {
@@ -93,7 +93,7 @@
                     .concat([r])
                     .join('\n')
                 }
-                var c, i, s
+                var i, c, s
                 return [o].join('\n')
               })(t, e)
               return t[2] ? '@media '.concat(t[2], '{').concat(o, '}') : o
@@ -105,11 +105,11 @@
               var a = this[r][0]
               null != a && (n[a] = !0)
             }
-            for (var c = 0; c < e.length; c++) {
-              var i = e[c]
-              ;(null != i[0] && n[i[0]]) ||
-                (o && !i[2] ? (i[2] = o) : o && (i[2] = '('.concat(i[2], ') and (').concat(o, ')')),
-                t.push(i))
+            for (var i = 0; i < e.length; i++) {
+              var c = e[i]
+              ;(null != c[0] && n[c[0]]) ||
+                (o && !c[2] ? (c[2] = o) : o && (c[2] = '('.concat(c[2], ') and (').concat(o, ')')),
+                t.push(c))
             }
           }),
           t
@@ -125,7 +125,7 @@
             void 0 === n && (n = Boolean(window && document && document.all && !window.atob)), n
           )
         },
-        c = (function() {
+        i = (function() {
           var e = {}
           return function(t) {
             if (void 0 === e[t]) {
@@ -141,12 +141,12 @@
             return e[t]
           }
         })()
-      function i(e, t) {
+      function c(e, t) {
         for (var o = [], n = {}, r = 0; r < e.length; r++) {
           var a = e[r],
-            c = t.base ? a[0] + t.base : a[0],
-            i = { css: a[1], media: a[2], sourceMap: a[3] }
-          n[c] ? n[c].parts.push(i) : o.push((n[c] = { id: c, parts: [i] }))
+            i = t.base ? a[0] + t.base : a[0],
+            c = { css: a[1], media: a[2], sourceMap: a[3] }
+          n[i] ? n[i].parts.push(c) : o.push((n[i] = { id: i, parts: [c] }))
         }
         return o
       }
@@ -154,13 +154,13 @@
         for (var o = 0; o < e.length; o++) {
           var n = e[o],
             a = r[n.id],
-            c = 0
+            i = 0
           if (a) {
-            for (a.refs++; c < a.parts.length; c++) a.parts[c](n.parts[c])
-            for (; c < n.parts.length; c++) a.parts.push(v(n.parts[c], t))
+            for (a.refs++; i < a.parts.length; i++) a.parts[i](n.parts[i])
+            for (; i < n.parts.length; i++) a.parts.push(v(n.parts[i], t))
           } else {
-            for (var i = []; c < n.parts.length; c++) i.push(v(n.parts[c], t))
-            r[n.id] = { id: n.id, refs: 1, parts: i }
+            for (var c = []; i < n.parts.length; i++) c.push(v(n.parts[i], t))
+            r[n.id] = { id: n.id, refs: 1, parts: c }
           }
         }
       }
@@ -178,7 +178,7 @@
         )
           e.insert(t)
         else {
-          var r = c(e.insert || 'head')
+          var r = i(e.insert || 'head')
           if (!r)
             throw new Error(
               "Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.",
@@ -198,8 +198,8 @@
         if (e.styleSheet) e.styleSheet.cssText = u(t, r)
         else {
           var a = document.createTextNode(r),
-            c = e.childNodes
-          c[t] && e.removeChild(c[t]), c.length ? e.insertBefore(a, c[t]) : e.appendChild(a)
+            i = e.childNodes
+          i[t] && e.removeChild(i[t]), i.length ? e.insertBefore(a, i[t]) : e.appendChild(a)
         }
       }
       function b(e, t, o) {
@@ -251,16 +251,16 @@
       e.exports = function(e, t) {
         ;((t = t || {}).attributes = 'object' == typeof t.attributes ? t.attributes : {}),
           t.singleton || 'boolean' == typeof t.singleton || (t.singleton = a())
-        var o = i(e, t)
+        var o = c(e, t)
         return (
           s(o, t),
           function(e) {
             for (var n = [], a = 0; a < o.length; a++) {
-              var c = o[a],
-                l = r[c.id]
+              var i = o[a],
+                l = r[i.id]
               l && (l.refs--, n.push(l))
             }
-            e && s(i(e, t), t)
+            e && s(c(e, t), t)
             for (var d = 0; d < n.length; d++) {
               var u = n[d]
               if (0 === u.refs) {
@@ -303,11 +303,11 @@
           }
       Object.defineProperty(t, '__esModule', { value: !0 })
       var a = o(0),
-        c = o(6)
+        i = o(5)
       o(13)
       t.default = function(e) {
         var t = e.name,
-          i = e.className,
+          c = e.className,
           s = r(e, ['name', 'className'])
         return t
           ? a.createElement(
@@ -315,12 +315,76 @@
               n(
                 {
                   dangerouslySetInnerHTML: { __html: o(15)('./' + t + '.svg').default },
-                  className: c.default('c-icon', i),
+                  className: i.default('c-icon', c),
                 },
                 s,
               ),
             )
           : (console.warn('Did you forget to assign a value to the name attribute?'), null)
+      }
+    },
+    function(e, t, o) {
+      'use strict'
+      o.r(t)
+      o(11)
+      var n = o(3),
+        r = o.n(n)
+      o.d(t, 'Icon', function() {
+        return r.a
+      })
+      var a = o(6),
+        i = o.n(a)
+      o.d(t, 'Input', function() {
+        return i.a
+      })
+      var c = o(7),
+        s = o.n(c)
+      o.d(t, 'Button', function() {
+        return s.a
+      })
+      var l = o(9),
+        d = o.n(l)
+      o.d(t, 'Dialog', function() {
+        return d.a
+      })
+    },
+    function(e, t, o) {
+      var n
+      /*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/ !(function() {
+        'use strict'
+        var o = {}.hasOwnProperty
+        function r() {
+          for (var e = [], t = 0; t < arguments.length; t++) {
+            var n = arguments[t]
+            if (n) {
+              var a = typeof n
+              if ('string' === a || 'number' === a) e.push(n)
+              else if (Array.isArray(n) && n.length) {
+                var i = r.apply(null, n)
+                i && e.push(i)
+              } else if ('object' === a) for (var c in n) o.call(n, c) && n[c] && e.push(c)
+            }
+          }
+          return e.join(' ')
+        }
+        e.exports
+          ? ((r.default = r), (e.exports = r))
+          : void 0 ===
+              (n = function() {
+                return r
+              }.apply(t, [])) || (e.exports = n)
+      })()
+    },
+    function(e, t, o) {
+      'use strict'
+      Object.defineProperty(t, '__esModule', { value: !0 })
+      var n = o(0)
+      t.default = function(e) {
+        return n.createElement('div', null, e.children)
       }
     },
     function(e, t, o) {
@@ -354,8 +418,8 @@
           }
       Object.defineProperty(t, '__esModule', { value: !0 })
       var a = o(0),
-        c = o(6),
-        i = o(3),
+        i = o(5),
+        c = o(3),
         s = o(8)
       o(25)
       var l = s.setPrefixClassName('c-button')
@@ -370,8 +434,8 @@
           p = void 0 !== b && b,
           g = e.circle,
           v = void 0 !== g && g,
-          m = e.loading,
-          h = void 0 !== m && m,
+          h = e.loading,
+          m = void 0 !== h && h,
           y = e.disabled,
           w = void 0 !== y && y,
           x = r(e, [
@@ -391,78 +455,14 @@
           'button',
           n(
             {
-              className: c.default(l(), l(o || 'default'), k(p, 'is-round'), k(v, 'is-circle'), f),
+              className: i.default(l(), l(o || 'default'), k(p, 'is-round'), k(v, 'is-circle'), f),
               disabled: w,
             },
             x,
           ),
-          h ? a.createElement(i.default, { name: 'loading', className: l('loading') }) : null,
+          m ? a.createElement(c.default, { name: 'loading', className: l('loading') }) : null,
           d,
         )
-      }
-    },
-    function(e, t, o) {
-      'use strict'
-      o.r(t)
-      o(11)
-      var n = o(3),
-        r = o.n(n)
-      o.d(t, 'Icon', function() {
-        return r.a
-      })
-      var a = o(7),
-        c = o.n(a)
-      o.d(t, 'Input', function() {
-        return c.a
-      })
-      var i = o(4),
-        s = o.n(i)
-      o.d(t, 'Button', function() {
-        return s.a
-      })
-      var l = o(9),
-        d = o.n(l)
-      o.d(t, 'Dialog', function() {
-        return d.a
-      })
-    },
-    function(e, t, o) {
-      var n
-      /*!
-  Copyright (c) 2017 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/ !(function() {
-        'use strict'
-        var o = {}.hasOwnProperty
-        function r() {
-          for (var e = [], t = 0; t < arguments.length; t++) {
-            var n = arguments[t]
-            if (n) {
-              var a = typeof n
-              if ('string' === a || 'number' === a) e.push(n)
-              else if (Array.isArray(n) && n.length) {
-                var c = r.apply(null, n)
-                c && e.push(c)
-              } else if ('object' === a) for (var i in n) o.call(n, i) && n[i] && e.push(i)
-            }
-          }
-          return e.join(' ')
-        }
-        e.exports
-          ? ((r.default = r), (e.exports = r))
-          : void 0 ===
-              (n = function() {
-                return r
-              }.apply(t, [])) || (e.exports = n)
-      })()
-    },
-    function(e, t, o) {
-      'use strict'
-      Object.defineProperty(t, '__esModule', { value: !0 })
-      var n = o(0)
-      t.default = function(e) {
-        return n.createElement('div', null, e.children)
       }
     },
     function(e, t, o) {
@@ -504,128 +504,16 @@
           }
       Object.defineProperty(t, '__esModule', { value: !0 })
       var a = o(0),
-        c = o(10),
-        i = o(4),
-        s = o(27)
-      ;(s.default.alert = function(e) {
-        var t = {
-            visible: !0,
-            closable: !1,
-            maskClosable: !1,
-            message: e.message,
-            okText: e.okText,
-            width: e.width,
-            beforeClose: e.onOk,
-          },
-          o = function() {
-            c.unmountComponentAtNode(l) && l.parentNode && l.parentNode.removeChild(l)
-          },
-          l = document.createElement('div')
-        return (
-          document.body.appendChild(l),
-          (function(e) {
-            var t = e.message,
-              d = e.okText,
-              u = e.onOk,
-              f = r(e, ['message', 'okText', 'onOk'])
-            c.render(
-              a.createElement(
-                s.default,
-                n({}, f, {
-                  onCancel: function() {},
-                  footer: a.createElement(
-                    'div',
-                    { style: { display: 'flex', justifyContent: 'flex-end' } },
-                    a.createElement(
-                      i.default,
-                      {
-                        onClick: function() {
-                          u && u(), o()
-                        },
-                        type: 'primary',
-                      },
-                      d || '确认',
-                    ),
-                  ),
-                }),
-                t,
-              ),
-              l,
-            )
-          })(t),
-          { close: o }
-        )
-      }),
-        (s.default.confirm = function(e) {
-          var t = {
-              visible: !0,
-              closable: !1,
-              maskClosable: !1,
-              message: e.message,
-              okText: e.okText,
-              cancelText: e.cancelText,
-              width: e.width,
-              onOk: e.onOk,
-              onCancel: e.onCancel,
-            },
-            o = function() {
-              c.unmountComponentAtNode(l) && l.parentNode && l.parentNode.removeChild(l)
-            },
-            l = document.createElement('div')
-          return (
-            document.body.appendChild(l),
-            (function(e) {
-              var t = e.message,
-                d = e.okText,
-                u = e.cancelText,
-                f = e.onOk,
-                b = e.onCancel,
-                p = r(e, ['message', 'okText', 'cancelText', 'onOk', 'onCancel'])
-              c.render(
-                a.createElement(
-                  s.default,
-                  n({}, p, {
-                    onCancel: function() {},
-                    footer: a.createElement(
-                      'div',
-                      { style: { display: 'flex', justifyContent: 'flex-end' } },
-                      a.createElement(
-                        i.default,
-                        {
-                          style: { marginRight: '10px' },
-                          onClick: function() {
-                            b && b(), o()
-                          },
-                        },
-                        u || '取消',
-                      ),
-                      a.createElement(
-                        i.default,
-                        {
-                          onClick: function() {
-                            f && f(), o()
-                          },
-                          type: 'primary',
-                        },
-                        d || '确认',
-                      ),
-                    ),
-                  }),
-                  t,
-                ),
-                l,
-              )
-            })(t),
-            { close: o }
-          )
-        }),
-        (s.default.modal = function(e) {
+        i = o(10),
+        c = o(27),
+        s = function(e) {
           var t = {
               visible: !0,
               closable: !0,
               mask: !0,
               maskClosable: !0,
               animat: !0,
+              title: e.title,
               message: e.message,
               okText: e.okText,
               cancelText: e.cancelText,
@@ -633,31 +521,40 @@
               onOk: e.onOk,
               onCancel: e.onCancel,
             },
-            o = function() {
-              c.unmountComponentAtNode(i) && i.parentNode && i.parentNode.removeChild(i)
+            o = Object.assign(t, e),
+            s = function() {
+              e.onCancel ? e.onCancel(l) : l()
             },
-            i = document.createElement('div')
+            l = function() {
+              i.unmountComponentAtNode(d) && d.parentNode && d.parentNode.removeChild(d)
+            },
+            d = document.createElement('div')
           return (
-            document.body.appendChild(i),
+            document.body.appendChild(d),
             (function(e) {
-              var t = e.message,
-                l =
-                  (e.okText,
-                  e.cancelText,
-                  e.onOk,
-                  e.onCancel,
-                  r(e, ['message', 'okText', 'cancelText', 'onOk', 'onCancel']))
-              c.render(a.createElement(s.default, n({}, l, { onCancel: o }), t), i)
-            })(t),
-            { close: o }
+              var t = e.title,
+                o = e.message,
+                l = r(e, ['title', 'message'])
+              i.render(a.createElement(c.default, n({}, l, { onCancel: s, header: t }), o), d)
+            })(o),
+            { close: l }
           )
+        }
+      ;(c.default.alert = function(e) {
+        return s(Object.assign(e, { visible: !0, closable: !1, maskClosable: !1, cancelable: !1 }))
+      }),
+        (c.default.confirm = function(e) {
+          return s(Object.assign({ visible: !0, closable: !1, maskClosable: !1 }, e))
+        }),
+        (c.default.modal = function(e) {
+          return s(Object.assign(e, {}))
         })
-      var l = s.default.alert
+      var l = c.default.alert
       t.alert = l
-      var d = s.default.confirm
+      var d = c.default.confirm
       t.confirm = d
-      var u = s.default.modal
-      ;(t.modal = u), (t.default = s.default)
+      var u = c.default.modal
+      ;(t.modal = u), (t.default = c.default)
     },
     function(e, o) {
       e.exports = t
@@ -796,101 +693,113 @@
       var n = o(0),
         r = o(0),
         a = o(10),
-        c = o(5),
-        i = o(8)
+        i = o(4),
+        c = o(8)
       o(28)
-      var s = i.setPrefixClassName('c-dialog')
-      t.default = function(e) {
-        var t = e.visible,
-          o = void 0 !== t && t,
-          i = e.width,
-          l = e.header,
-          d = e.footer,
-          u = e.onCancel,
-          f = void 0 === u ? function() {} : u,
-          b = e.onOk,
-          p = e.closable,
-          g = void 0 === p || p,
-          v = e.mask,
-          m = void 0 === v || v,
-          h = e.maskClosable,
-          y = void 0 === h || h,
-          w = e.lockScroll,
-          x = void 0 === w || w,
-          k = e.animat,
-          O = ''
-        !0 === (void 0 === k || k) && (O = 'cooperDialogShow 0.3s ease')
-        var C = ''
-        return (
-          r.useEffect(function() {
-            if (o && !0 === x) {
-              var e = window.getComputedStyle(document.body, null).overflow
-              'hidden' !== e && ((C = e), (document.body.style.overflow = 'hidden'))
-            }
-            return function() {
-              var e = window.getComputedStyle(document.body, null).overflow
-              o && 'hidden' === e && (document.body.style.overflow = C)
-            }
-          }),
-          o
-            ? n.createElement(
-                'div',
-                { className: s(), style: { width: i, animation: O } },
-                !0 !== g
-                  ? null
-                  : n.createElement(c.Icon, { name: 'close', className: s('close'), onClick: f }),
-                null !== l
-                  ? n.createElement('header', { className: s('header') }, l || '提示')
-                  : null,
-                n.createElement('main', { className: s('main') }, e.children),
-                d
-                  ? n.createElement('footer', { className: s('footer') }, d)
-                  : null !== d
-                  ? n.createElement(
-                      'footer',
-                      { className: s('footer') },
-                      n.createElement(
-                        'div',
-                        { className: s('footer-button-wrapper') },
+      var s = c.setPrefixClassName('c-dialog'),
+        l = function(e) {
+          var t = e.visible,
+            o = void 0 !== t && t,
+            c = e.width,
+            l = e.header,
+            d = e.footer,
+            u = e.onCancel,
+            f = void 0 === u ? function() {} : u,
+            b = e.onOk,
+            p = e.closable,
+            g = void 0 === p || p,
+            v = e.mask,
+            h = void 0 === v || v,
+            m = e.maskClosable,
+            y = void 0 === m || m,
+            w = e.lockScroll,
+            x = void 0 === w || w,
+            k = e.animat,
+            O = void 0 === k || k,
+            j = e.okText,
+            C = void 0 === j ? '确认' : j,
+            M = e.cancelText,
+            _ = void 0 === M ? '取消' : M,
+            S = e.cancelable,
+            z = void 0 === S || S,
+            N = ''
+          !0 === O && (N = 'cooperDialogShow 0.3s ease')
+          var P = ''
+          return (
+            r.useEffect(function() {
+              if (o && !0 === x) {
+                var e = window.getComputedStyle(document.body, null).overflow
+                'hidden' !== e && ((P = e), (document.body.style.overflow = 'hidden'))
+              }
+              return function() {
+                var e = window.getComputedStyle(document.body, null).overflow
+                o && 'hidden' === e && (document.body.style.overflow = P)
+              }
+            }),
+            o
+              ? n.createElement(
+                  'div',
+                  { className: s(), style: { width: c, animation: N } },
+                  !0 !== g
+                    ? null
+                    : n.createElement(i.Icon, { name: 'close', className: s('close'), onClick: f }),
+                  null !== l
+                    ? n.createElement('header', { className: s('header') }, l || '提示')
+                    : null,
+                  n.createElement('main', { className: s('main') }, e.children),
+                  d
+                    ? n.createElement('footer', { className: s('footer') }, d)
+                    : null !== d
+                    ? n.createElement(
+                        'footer',
+                        { className: s('footer') },
                         n.createElement(
-                          c.Button,
-                          {
-                            className: s('footer-button-cancel'),
-                            onClick: function() {
-                              f && f()
+                          'div',
+                          { className: s('footer-button-wrapper') },
+                          !0 === z &&
+                            n.createElement(
+                              i.Button,
+                              {
+                                className: s('footer-button-cancel'),
+                                onClick: function() {
+                                  f && f()
+                                },
+                              },
+                              _,
+                            ),
+                          n.createElement(
+                            i.Button,
+                            {
+                              className: s('footer-button-ok'),
+                              type: 'primary',
+                              onClick: function() {
+                                b ? b(f) : f()
+                              },
                             },
-                          },
-                          '取消',
+                            C,
+                          ),
                         ),
-                        n.createElement(
-                          c.Button,
-                          {
-                            className: s('footer-button-ok'),
-                            type: 'primary',
-                            onClick: function() {
-                              b ? b(f) : f()
-                            },
-                          },
-                          '确认',
-                        ),
-                      ),
-                    )
-                  : null,
-                !0 === m &&
-                  a.createPortal(
-                    n.createElement('div', {
-                      onClick: function() {
-                        !0 === y && f()
-                      },
-                      className: s('mask'),
-                      style: { animation: O },
-                    }),
-                    document.body,
-                  ),
-              )
-            : null
-        )
-      }
+                      )
+                    : null,
+                  !0 === h &&
+                    a.createPortal(
+                      n.createElement('div', {
+                        onClick: function() {
+                          !0 === y && f()
+                        },
+                        className: s('mask'),
+                        style: { animation: N },
+                      }),
+                      document.body,
+                    ),
+                )
+              : null
+          )
+        }
+      ;(l.alert = function() {}),
+        (l.confirm = function() {}),
+        (l.modal = function() {}),
+        (t.default = l)
     },
     function(e, t, o) {
       var n = o(29)
@@ -902,7 +811,7 @@
     function(e, t, o) {
       ;(e.exports = o(1)(!1)).push([
         e.i,
-        '.c-dialog{position:fixed;left:50%;top:50%;z-index:1001;width:800px;border-radius:5px;margin:0 auto;background:#fff;transform:translate(-50%, -50%)}.c-dialog-mask{position:fixed;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,0.3);z-index:1000}.c-dialog-close{position:absolute;right:10px;top:10px;color:#888;cursor:pointer}.c-dialog-close:hover{color:#409eff}.c-dialog-header{color:#333;padding:20px;border-bottom:1px solid #f2f2f2}.c-dialog-main{color:#494949;padding:20px}.c-dialog-footer{padding:10px 20px;border-top:1px solid #f2f2f2}.c-dialog-footer .c-dialog-footer-button-wrapper{display:flex;justify-content:flex-end}.c-dialog-footer .c-dialog-footer-button-wrapper .c-dialog-footer-button-cancel,.c-dialog-footer .c-dialog-footer-button-wrapper .c-dialog-footer-button-ok{padding:5px 15px;font-size:14px}.c-dialog-footer .c-dialog-footer-button-wrapper .c-dialog-footer-button-cancel{margin-right:10px}@keyframes cooperDialogShow{from{opacity:0}to{opacity:1}}\n',
+        '.c-dialog{position:fixed;left:50%;top:50%;z-index:1001;width:800px;border-radius:5px;margin:0 auto;background:#fff;transform:translate(-50%, -50%)}.c-dialog-mask{position:fixed;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,0.3);z-index:1000}.c-dialog-close{position:absolute;right:10px;top:10px;color:#888;cursor:pointer}.c-dialog-close:hover{color:#409eff}.c-dialog-header{color:#333;padding:20px;border-bottom:1px solid #f2f2f2}.c-dialog-main{color:#494949;padding:20px}.c-dialog-footer{padding:10px 20px;border-top:1px solid #f2f2f2}.c-dialog-footer .c-dialog-footer-button-wrapper{display:flex;justify-content:flex-end}.c-dialog-footer .c-dialog-footer-button-wrapper .c-dialog-footer-button-cancel,.c-dialog-footer .c-dialog-footer-button-wrapper .c-dialog-footer-button-ok{padding:5px 15px;font-size:14px}.c-dialog-footer .c-dialog-footer-button-wrapper .c-dialog-footer-button-cancel{margin-right:10px}@keyframes cooperDialogShow{from{opacity:0}to{opacity:1}}@keyframes cooperDialogHidden{from{opacity:1}to{opacity:0}}\n',
         '',
       ])
     },

@@ -25,9 +25,9 @@ export interface Props {
 
 // dialog function api
 interface DialogFC extends React.FC<Props> {
-  modal?: (props?: any) => any
-  alert?: (props?: any) => any
-  confirm?: (props?: any) => any
+  modal: (props?: any) => any
+  alert: (props?: any) => any
+  confirm: (props?: any) => any
 }
 
 const setClass = setPrefixClassName('c-dialog')
@@ -130,5 +130,13 @@ const Dialog: DialogFC = props => {
     </div>
   ) : null
 }
+
+/**
+ * @function api
+ * Declare that the direct reference to the function is invalid
+ */
+Dialog.alert = () => {}
+Dialog.confirm = () => {}
+Dialog.modal = () => {}
 
 export default Dialog
