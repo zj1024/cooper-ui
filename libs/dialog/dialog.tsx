@@ -19,6 +19,7 @@ export interface Props {
   mask?: boolean
   maskClosable?: boolean
   animat?: boolean
+  cancelable?: boolean
   [key: string]: any
 }
 
@@ -46,6 +47,7 @@ const Dialog: DialogFC = props => {
     animat = true,
     okText = '确认',
     cancelText = '取消',
+    cancelable = true,
   } = props
 
   // maskClosable
@@ -57,6 +59,10 @@ const Dialog: DialogFC = props => {
 
   // The user clicks ok to cancel the callback
   const _handleCancel = () => {
+    // 组件实例被销毁
+    if (animat === true) {
+      animation = 'cooperDialogHidden 0.3s ease'
+    }
     onCancel && onCancel()
   }
   const _handleOk = () => {
@@ -106,9 +112,13 @@ const Dialog: DialogFC = props => {
       ) : footer !== null ? (
         <footer className={setClass('footer')}>
           <div className={setClass('footer-button-wrapper')}>
-            <Button className={setClass('footer-button-cancel')} onClick={_handleCancel}>
-              {cancelText}
-            </Button>
+            {cancelable === true ? (
+              <Button className={setClass('footer-button-cancel')} onClick={_handleCancel}>
+                {cancelText}
+              </Button>
+            ) : (
+              false
+            )}
             <Button className={setClass('footer-button-ok')} type="primary" onClick={_handleOk}>
               {okText}
             </Button>

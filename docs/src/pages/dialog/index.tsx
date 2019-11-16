@@ -9,6 +9,10 @@ export default () => {
     alert({
       message: 'test',
       width: '300px',
+      onOk: (done: any) => {
+        console.log(1)
+        done()
+      },
     })
   }
 
@@ -16,11 +20,12 @@ export default () => {
     confirm({
       message: '确认删除吗？',
       width: '400px',
-      onOk: () => {
+      onOk: (done: any) => {
         console.log('ok')
+        done()
       },
-      onCancel: () => {
-        console.log('cancel')
+      onCancel: (done: any) => {
+        done()
       },
     })
   }
@@ -31,6 +36,10 @@ export default () => {
       message: 'test',
       okText: '是的',
       cancelText: '不是的',
+      onOk: (done: any) => {
+        console.log(1)
+        done()
+      },
     })
   }
 
