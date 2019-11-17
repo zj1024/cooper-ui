@@ -1,5 +1,5 @@
 @import '../style/variable';
-.c-dialog {
+.coo-dialog {
   position: fixed;
   left: 50%;
   top: 50%;
@@ -40,15 +40,15 @@
   &-footer {
     padding: 10px 20px;
     border-top: 1px solid #f2f2f2;
-    .c-dialog-footer-button-wrapper {
+    .coo-dialog-footer-button-wrapper {
       display: flex;
       justify-content: flex-end;
-      .c-dialog-footer-button-cancel,
-      .c-dialog-footer-button-ok {
+      .coo-dialog-footer-button-cancel,
+      .coo-dialog-footer-button-ok {
         padding: 5px 15px;
         font-size: 14px;
       }
-      .c-dialog-footer-button-cancel {
+      .coo-dialog-footer-button-cancel {
         margin-right: 10px;
       }
     }

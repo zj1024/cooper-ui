@@ -33,7 +33,7 @@ interface DialogFC extends React.FC<Props> {
   Confirm: (props?: any) => any
 }
 
-const setClass = setPrefixClassName('c-dialog')
+const setClass = setPrefixClassName('coo-dialog')
 
 const Dialog: DialogFC = props => {
   const {

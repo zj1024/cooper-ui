@@ -34,7 +34,7 @@ $--button-danger-color: $color-white;
 $--button-danger-bg: $color-red;
 $--button-danger-border: $color-red;
 
-.c-button {
+.coo-button {
   padding: #{$--button-base-padding-v}px #{$--button-base-padding-h}px;
   border: 1px solid;
   border-radius: 5px;
@@ -121,7 +121,7 @@ $--button-danger-border: $color-red;
 }
 
 @each $type in $color-types {
-  .c-button-#{$type} {
+  .coo-button-#{$type} {
     @if $type == default {
       @include button-color(
         $--button-default-color,

@@ -2,6 +2,7 @@ import * as React from 'react'
 import './style.scss'
 export interface Props {
   children?: React.ReactNode | string
+  className?: string
   visible: boolean
   width?: string | number
   header?: React.ReactNode | string
@@ -18,9 +19,9 @@ export interface Props {
   [key: string]: any
 }
 interface DialogFC extends React.FC<Props> {
-  modal: (props?: any) => any
-  alert: (props?: any) => any
-  confirm: (props?: any) => any
+  Modal: (props?: any) => any
+  Alert: (props?: any) => any
+  Confirm: (props?: any) => any
 }
 declare const Dialog: DialogFC
 export default Dialog

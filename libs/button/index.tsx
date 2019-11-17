@@ -16,7 +16,7 @@ interface Props {
   [key: string]: any
 }
 
-const setClass = setPrefixClassName('c-button')
+const setClass = setPrefixClassName('coo-button')
 
 const Button: React.FC<Props> = ({
   type = 'default',

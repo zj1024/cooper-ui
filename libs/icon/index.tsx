@@ -19,7 +19,7 @@ const Icon: React.FC<Props> = ({ name, className, ...props }) => {
       dangerouslySetInnerHTML={{
         __html: require(`../assets/icons/${name}.svg`).default,
       }}
-      className={classNames('c-icon', className)}
+      className={classNames('coo-icon', className)}
       {...props}></span>
   )
 }

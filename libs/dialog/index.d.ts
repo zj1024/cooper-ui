@@ -1,6 +1,6 @@
 import Dialog from './dialog'
-declare const alert: (props?: any) => any
-declare const confirm: (props?: any) => any
-declare const modal: (props?: any) => any
-export { alert, confirm, modal }
+declare const Alert: (props?: any) => any
+declare const Confirm: (props?: any) => any
+declare const Modal: (props?: any) => any
+export { Alert, Confirm, Modal }
 export default Dialog
