@@ -8,15 +8,40 @@ interface Props {
   className?: string
 }
 
-const setClass = setPrefixClassName('coo-example')
+interface LayoutFC extends React.FC<Props> {
+  Header: (props?: any) => any
+  Content: (props?: any) => any
+  Footer: (props?: any) => any
+  Aside: (props?: any) => any
+}
 
-const Example: React.FC<Props> = props => {
+const setClass = setPrefixClassName('coo-layout')
+
+const Layout: LayoutFC = props => {
   const { children, className, ...leftProps } = props
+  let hasAside = false
+  React.Children.forEach(children, (child: React.ReactNode) => {
+    const type = (child as React.ReactElement).type
+    if (type && type === Layout.Aside) {
+      hasAside = true
+    }
+  })
   return (
-    <div className={classnames(setClass(), className)} {...leftProps}>
+    <section
+      className={classnames(setClass(), className, hasAside ? setClass('has-aside') : '')}
+      {...leftProps}>
       {children}
-    </div>
+    </section>
   )
 }
 
-export default Example
+/**
+ * @function api
+ * Declare that the direct reference to the function is invalid
+ */
+Layout.Header = () => {}
+Layout.Content = () => {}
+Layout.Footer = () => {}
+Layout.Aside = () => {}
+
+export default Layout

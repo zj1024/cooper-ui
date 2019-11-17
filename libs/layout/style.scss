@@ -1,0 +1,12 @@
+.coo-layout {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  &-content {
+    flex-grow: 1;
+  }
+  &-has-aside {
+    flex-direction: row;
+  }
+}
