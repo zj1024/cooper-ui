@@ -19,13 +19,13 @@ const setClass = setPrefixClassName('coo-layout')
 
 const Layout: LayoutFC = props => {
   const { children, className, ...leftProps } = props
-  let hasAside = false
-  React.Children.forEach(children, (child: React.ReactNode) => {
+
+  // judge children has aside to add className
+  const hasAside = React.Children.map(children, (child: React.ReactNode) => {
     const type = (child as React.ReactElement).type
-    if (type && type === Layout.Aside) {
-      hasAside = true
-    }
-  })
+    return type
+  }).some(type => type === Layout.Aside)
+
   return (
     <section
       className={classnames(setClass(), className, hasAside ? setClass('has-aside') : '')}
