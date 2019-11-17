@@ -662,7 +662,7 @@
     function(e, o, t) {
       ;(e.exports = t(1)(!1)).push([
         e.i,
-        'html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit}input::-ms-clear,input::-ms-reveal{display:none}h1{font-size:2em}article,aside,footer,header,nav,section{display:block}figcaption,figure,main{display:block}figure{margin:1em 40px}li{list-style:none}li:focus{outline-width:0}a{background-color:transparent;-webkit-text-decoration-skip:objects;color:inherit}a:active{color:inherit}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bold}pre,code,kbd,samp{font-family:monospace, monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none;vertical-align:middle}svg:not(:root){overflow:hidden}button,html [type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto;resize:vertical}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-cancel-button,[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}[class^=\'fui\']{box-sizing:border-box}[class^=\'fui\']:before,[class^=\'fui\']:after{box-sizing:border-box}\n',
+        'html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit}input::-ms-clear,input::-ms-reveal{display:none}h1{font-size:2em}article,aside,footer,header,nav,section{display:block}figcaption,figure,main{display:block}figure{margin:1em 40px}li:focus{outline-width:0}a{background-color:transparent;-webkit-text-decoration-skip:objects;color:inherit}a:active{color:inherit}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bold}pre,code,kbd,samp{font-family:monospace, monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none;vertical-align:middle}svg:not(:root){overflow:hidden}button,html [type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto;resize:vertical}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-cancel-button,[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}[class^=\'fui\']{box-sizing:border-box}[class^=\'fui\']:before,[class^=\'fui\']:after{box-sizing:border-box}\n',
         '',
       ])
     },
@@ -964,17 +964,15 @@
           var o = e.children,
             t = e.className,
             c = r(e, ['children', 'className']),
-            u = !1
-          return (
-            a.Children.forEach(o, function(e) {
-              var o = e.type
-              o && o === l.Aside && (u = !0)
-            }),
-            a.createElement(
-              'section',
-              n({ className: i.default(s(), t, u ? s('has-aside') : '') }, c),
-              o,
-            )
+            u = a.Children.map(o, function(e) {
+              return e.type
+            }).some(function(e) {
+              return e === l.Aside
+            })
+          return a.createElement(
+            'section',
+            n({ className: i.default(s(), t, u ? s('has-aside') : '') }, c),
+            o,
           )
         }
       ;(l.Header = function() {}),

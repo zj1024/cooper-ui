@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { Layout } from '../../../../libs'
+import Markdown from '../../../components/markdown'
+import { basicLayout } from './example'
 
 const { Header, Content, Footer, Aside } = Layout
 
@@ -8,11 +10,14 @@ export default () => {
     <>
       <h1>- Layout</h1>
       <h2>Basic layout</h2>
-      <Layout className="h-200 m-b-50">
-        <Header className="bg-blue">this is header</Header>
-        <Content className="bg-green">this is content</Content>
-        <Footer className="bg-blue">this is footer</Footer>
-      </Layout>
+      <section className="m-b-50">
+        <Layout className="h-200">
+          <Header className="bg-blue">this is header</Header>
+          <Content className="bg-green">this is content</Content>
+          <Footer className="bg-blue">this is footer</Footer>
+        </Layout>
+        <Markdown source={basicLayout} />
+      </section>
       <h2>With Aside layout</h2>
       <Layout className="h-300 m-b-50">
         <Header className="bg-blue p-20">this is header</Header>
