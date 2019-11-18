@@ -78,6 +78,10 @@ figure {
   margin: 1em 40px;
 }
 
+li {
+  list-style-type: none;
+}
+
 li:focus {
   outline-width: 0;
 }

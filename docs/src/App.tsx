@@ -8,7 +8,9 @@ import LayoutPage from './pages/layout'
 import IconPage from './pages/icon'
 import ButtonPage from './pages/button'
 import DialogPage from './pages/dialog'
+import PopoverPage from './pages/popover'
 import InputPage from './pages/input'
+import TooltipPage from './pages/tooltip'
 
 import 'assembly-css/lib/index.scss'
 
@@ -49,6 +51,12 @@ export default () => {
                         <Link to="/dialog">Dialog</Link>
                       </li>
                       <li className="p-20">
+                        <Link to="/popover">Popover</Link>
+                      </li>
+                      <li className="p-20">
+                        <Link to="/tooltip">Tooltip</Link>
+                      </li>
+                      <li className="p-20">
                         <Link to="/input">Input</Link>
                       </li>
                     </ul>
@@ -58,6 +66,8 @@ export default () => {
                     <Route exact path="/icon" component={IconPage} />
                     <Route exact path="/button" component={ButtonPage} />
                     <Route exact path="/dialog" component={DialogPage} />
+                    <Route exact path="/popover" component={PopoverPage} />
+                    <Route exact path="/tooltip" component={TooltipPage} />
                     <Route exact path="/input" component={InputPage} />
                   </Content>
                 </Layout>
