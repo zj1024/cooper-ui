@@ -8,35 +8,35 @@ import './style.scss'
 interface Props {
   className?: string
   content: React.ReactElement | string
+  placement?: 'top' | 'bottom' | 'left' | 'right'
 }
 
 const setClass = setPrefixClassName('coo-tooltip')
 
 const Tooltip: React.FC<Props> = props => {
-  const { children, className, content, ...leftProps } = props
+  const { children, className, content, placement = 'top', ...leftProps } = props
 
   const [visible, setVisible] = useState(false)
 
   const handleToggleTooltip = (isShow: boolean) => {
     setVisible(isShow)
-    console.log(1)
   }
 
   return (
-    <div className={classnames(setClass(), className)} {...leftProps}>
-      <div
-        onMouseEnter={() => handleToggleTooltip(true)}
-        onMouseLeave={() => handleToggleTooltip(false)}>
-        {children}
-      </div>
-      {/* {ReactDOM.createPortal(<div>{content}</div>, document.body)} */}
+    <div
+      className={classnames(setClass(), className)}
+      {...leftProps}
+      onMouseEnter={() => handleToggleTooltip(true)}
+      onMouseLeave={() => handleToggleTooltip(false)}>
+      <div className={setClass('children')}>{children}</div>
       <div
         className={classnames(
           setClass('content'),
           visible ? setClass('content-show') : setClass('content-hidden'),
+          setClass(`content-${placement}`),
         )}>
-        <i className={setClass('content-icon')}></i>
-        {content}
+        <i className={classnames(setClass('content-icon'))}></i>
+        <span>{content}</span>
       </div>
     </div>
   )
