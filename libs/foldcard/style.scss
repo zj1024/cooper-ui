@@ -1,0 +1,47 @@
+@import '../style/variable';
+.coo-foldcard {
+  background: #fff;
+  box-shadow: 0 10px 10px 1px $color-lightgrey;
+  &-content {
+    padding: 15px;
+    color: $color-content;
+  }
+  &-footer {
+    padding: 10px 15px;
+    color: $color-content;
+    background: $bg-grey;
+    &-main {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 14px;
+      opacity: 0.5;
+      transition: opacity 0.3s;
+      user-select: none;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    &-spread {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    &-icon {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+  &-card {
+    height: 0;
+    background: $bg-grey;
+    overflow: hidden;
+    transition: all 0.3s;
+    &-show {
+      height: auto;
+    }
+    &-hidden {
+      height: 0;
+    }
+  }
+}

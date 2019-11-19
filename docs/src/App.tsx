@@ -11,6 +11,7 @@ import DialogPage from './pages/dialog'
 import PopoverPage from './pages/popover'
 import InputPage from './pages/input'
 import TooltipPage from './pages/tooltip'
+import FoldcardPage from './pages/foldcard'
 
 import 'assembly-css/lib/index.scss'
 
@@ -59,6 +60,9 @@ export default () => {
                       <li className="p-20">
                         <Link to="/input">Input</Link>
                       </li>
+                      <li className="p-20">
+                        <Link to="/foldcard">Foldcard</Link>
+                      </li>
                     </ul>
                   </Aside>
                   <Content className="p-20">
@@ -69,6 +73,7 @@ export default () => {
                     <Route exact path="/popover" component={PopoverPage} />
                     <Route exact path="/tooltip" component={TooltipPage} />
                     <Route exact path="/input" component={InputPage} />
+                    <Route exact path="/foldcard" component={FoldcardPage} />
                   </Content>
                 </Layout>
               )}

@@ -16,14 +16,35 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader',
+        include: [path.resolve(__dirname, '../libs'), path.resolve(__dirname, '../docs')],
+        use: [
+          {
+            loader: 'ts-loader',
+          },
+        ],
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        include: [
+          path.resolve(__dirname, '../libs'),
+          path.resolve(__dirname, '../docs'),
+          path.resolve(__dirname, '../node_modules/assembly-css/lib'),
+        ],
+        use: [
+          {
+            loader: 'thread-loader',
+            options: {
+              workerParallelJobs: 2,
+            },
+          },
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.svg$/,
+        include: path.resolve(__dirname, '../libs/assets/icons'),
         use: [
           'raw-loader',
           {

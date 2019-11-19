@@ -2,6 +2,7 @@
 
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+// 自定义控制台提示
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const base = require('./webpack.config')
 
@@ -27,4 +28,5 @@ module.exports = Object.assign({}, base, {
     quiet: true,
     port: PORT,
   },
+  devtool: 'cheap-module-eval-source-map',
 })
