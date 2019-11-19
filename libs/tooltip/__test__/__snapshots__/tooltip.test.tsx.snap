@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`- Tooltip component children as Button is exist 1`] = `
+<Button>
+  下
+</Button>
+`;
+
+exports[`- Tooltip component exist 1`] = `
+<div
+  className="coo-tooltip"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="coo-tooltip-children"
+  >
+    content
+  </div>
+  <div
+    className="coo-tooltip-content coo-tooltip-content-hidden coo-tooltip-content-top"
+  >
+    <i
+      className="coo-tooltip-content-icon"
+    />
+    <span>
+      666
+    </span>
+  </div>
+</div>
+`;

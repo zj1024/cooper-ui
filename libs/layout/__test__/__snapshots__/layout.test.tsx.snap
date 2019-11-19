@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`- Layout component Layout has child Aside will setClass 'coo-layout-has-aside' 1`] = `
+<section
+  className="coo-layout"
+>
+  <header
+    className="coo-layout-header"
+  >
+    header
+  </header>
+  <section
+    className="coo-layout coo-layout-has-aside"
+  >
+    <aside
+      className="coo-layout-aside"
+    >
+      aside
+    </aside>
+    <main
+      className="coo-layout-content"
+    >
+      content
+    </main>
+  </section>
+  <footer
+    className="coo-layout-footer"
+  >
+    footer
+  </footer>
+</section>
+`;
