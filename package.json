@@ -6,6 +6,7 @@
   "scripts": {
     "start": "yarn docs:env",
     "docs:env": "webpack-dev-server --progress --config ./config/webpack.config.dev",
+    "docs:build": "webpack --config ./config/webpack.config.docs",
     "build": "webpack --config ./config/webpack.config.prod",
     "test": "jest",
     "ci": "JEST_JUNIT_OUTPUT_DIR=./test-results/jest/ JEST_JUNIT_OUTPUT_NAME=results.xml jest --ci --reporters=jest-junit"
@@ -92,6 +93,8 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "global": "^4.4.0",
+    "now": "^16.5.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
   }
