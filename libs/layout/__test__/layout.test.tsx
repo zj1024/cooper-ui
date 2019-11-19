@@ -35,7 +35,7 @@ describe('- Layout component', () => {
         <Content>content</Content>
       </Layout>,
     )
-    let tree: any = component.toJSON()
-    expect(tree.props.className.includes('coo-layout-has-aside')).toBeTruthy()
+    let tree: any = component.toTree()
+    expect(tree.rendered.props.className.includes('coo-layout-has-aside')).toBeTruthy()
   })
 })
