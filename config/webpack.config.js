@@ -25,11 +25,6 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        include: [
-          path.resolve(__dirname, '../libs'),
-          path.resolve(__dirname, '../docs'),
-          path.resolve(__dirname, '../node_modules/assembly-css/lib'),
-        ],
         use: [
           {
             loader: 'thread-loader',

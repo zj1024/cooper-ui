@@ -81,10 +81,10 @@
                   var r =
                       ((i = n),
                       (c = btoa(unescape(encodeURIComponent(JSON.stringify(i))))),
-                      (l = 'sourceMappingURL=data:application/json;charset=utf-8;base64,'.concat(
+                      (s = 'sourceMappingURL=data:application/json;charset=utf-8;base64,'.concat(
                         c,
                       )),
-                      '/*# '.concat(l, ' */')),
+                      '/*# '.concat(s, ' */')),
                     a = n.sources.map(function(t) {
                       return '/*# sourceURL='.concat(n.sourceRoot).concat(t, ' */')
                     })
@@ -93,7 +93,7 @@
                     .concat([r])
                     .join('\n')
                 }
-                var i, c, l
+                var i, c, s
                 return [o].join('\n')
               })(e, t)
               return e[2] ? '@media '.concat(e[2], '{').concat(o, '}') : o
@@ -150,7 +150,7 @@
         }
         return o
       }
-      function l(t, e) {
+      function s(t, e) {
         for (var o = 0; o < t.length; o++) {
           var n = t[o],
             a = r[n.id],
@@ -164,7 +164,7 @@
           }
         }
       }
-      function s(t) {
+      function l(t) {
         var e = document.createElement('style')
         if (void 0 === t.attributes.nonce) {
           var n = o.nc
@@ -187,22 +187,22 @@
         }
         return e
       }
-      var u,
-        d =
-          ((u = []),
+      var d,
+        u =
+          ((d = []),
           function(t, e) {
-            return (u[t] = e), u.filter(Boolean).join('\n')
+            return (d[t] = e), d.filter(Boolean).join('\n')
           })
       function f(t, e, o, n) {
         var r = o ? '' : n.css
-        if (t.styleSheet) t.styleSheet.cssText = d(e, r)
+        if (t.styleSheet) t.styleSheet.cssText = u(e, r)
         else {
           var a = document.createTextNode(r),
             i = t.childNodes
           i[e] && t.removeChild(i[e]), i.length ? t.insertBefore(a, i[e]) : t.appendChild(a)
         }
       }
-      function b(t, e, o) {
+      function p(t, e, o) {
         var n = o.css,
           r = o.media,
           a = o.sourceMap
@@ -222,16 +222,16 @@
           t.appendChild(document.createTextNode(n))
         }
       }
-      var p = null,
+      var b = null,
         g = 0
       function v(t, e) {
         var o, n, r
         if (e.singleton) {
           var a = g++
-          ;(o = p || (p = s(e))), (n = f.bind(null, o, a, !1)), (r = f.bind(null, o, a, !0))
+          ;(o = b || (b = l(e))), (n = f.bind(null, o, a, !1)), (r = f.bind(null, o, a, !0))
         } else
-          (o = s(e)),
-            (n = b.bind(null, o, e)),
+          (o = l(e)),
+            (n = p.bind(null, o, e)),
             (r = function() {
               !(function(t) {
                 if (null === t.parentNode) return !1
@@ -253,19 +253,19 @@
           e.singleton || 'boolean' == typeof e.singleton || (e.singleton = a())
         var o = c(t, e)
         return (
-          l(o, e),
+          s(o, e),
           function(t) {
             for (var n = [], a = 0; a < o.length; a++) {
               var i = o[a],
-                s = r[i.id]
-              s && (s.refs--, n.push(s))
+                l = r[i.id]
+              l && (l.refs--, n.push(l))
             }
-            t && l(c(t, e), e)
-            for (var u = 0; u < n.length; u++) {
-              var d = n[u]
-              if (0 === d.refs) {
-                for (var f = 0; f < d.parts.length; f++) d.parts[f]()
-                delete r[d.id]
+            t && s(c(t, e), e)
+            for (var d = 0; d < n.length; d++) {
+              var u = n[d]
+              if (0 === u.refs) {
+                for (var f = 0; f < u.parts.length; f++) u.parts[f]()
+                delete r[u.id]
               }
             }
           }
@@ -306,9 +306,9 @@
     function(t, e, o) {
       'use strict'
       Object.defineProperty(e, '__esModule', { value: !0 })
-      var n = o(28)
+      var n = o(33)
       e.isString = n.isString
-      var r = o(29)
+      var r = o(34)
       e.setPrefixClassName = r.default
     },
     function(t, e, o) {
@@ -343,20 +343,20 @@
       Object.defineProperty(e, '__esModule', { value: !0 })
       var a = o(0),
         i = o(3)
-      o(17)
+      o(18)
       e.default = function(t) {
         var e = t.name,
           c = t.className,
-          l = r(t, ['name', 'className'])
+          s = r(t, ['name', 'className'])
         return e
           ? a.createElement(
               'span',
               n(
                 {
-                  dangerouslySetInnerHTML: { __html: o(19)('./' + e + '.svg').default },
+                  dangerouslySetInnerHTML: { __html: o(20)('./' + e + '.svg').default },
                   className: i.default('coo-icon', c),
                 },
-                l,
+                s,
               ),
             )
           : (console.warn('Did you forget to assign a value to the name attribute?'), null)
@@ -365,7 +365,7 @@
     function(t, e, o) {
       'use strict'
       o.r(e)
-      o(15)
+      o(16)
       var n = o(5),
         r = o.n(n)
       o.d(e, 'Icon', function() {
@@ -377,29 +377,34 @@
         return i.a
       })
       var c = o(8),
-        l = o.n(c)
+        s = o.n(c)
       o.d(e, 'Button', function() {
-        return l.a
+        return s.a
       })
-      var s = o(9),
-        u = o.n(s)
+      var l = o(9),
+        d = o.n(l)
       o.d(e, 'Dialog', function() {
-        return u.a
+        return d.a
       })
-      var d = o(11),
-        f = o.n(d)
+      var u = o(11),
+        f = o.n(u)
       o.d(e, 'Layout', function() {
         return f.a
       })
-      var b = o(13),
-        p = o.n(b)
+      var p = o(13),
+        b = o.n(p)
       o.d(e, 'Popover', function() {
-        return p.a
+        return b.a
       })
       var g = o(14),
         v = o.n(g)
       o.d(e, 'Tooltip', function() {
         return v.a
+      })
+      var h = o(15),
+        m = o.n(h)
+      o.d(e, 'Foldcard', function() {
+        return m.a
       })
     },
     function(t, e, o) {
@@ -443,18 +448,18 @@
       var a = o(0),
         i = o(3),
         c = o(5),
-        l = o(4)
-      o(30)
-      var s = l.setPrefixClassName('coo-button')
+        s = o(4)
+      o(35)
+      var l = s.setPrefixClassName('coo-button')
       e.default = function(t) {
         var e = t.type,
           o = void 0 === e ? 'default' : e,
-          l = t.children,
-          u = void 0 === l ? null : l,
-          d = t.className,
-          f = void 0 === d ? '' : d,
-          b = (t.plain, t.round),
-          p = void 0 !== b && b,
+          s = t.children,
+          d = void 0 === s ? null : s,
+          u = t.className,
+          f = void 0 === u ? '' : u,
+          p = (t.plain, t.round),
+          b = void 0 !== p && p,
           g = t.circle,
           v = void 0 !== g && g,
           h = t.loading,
@@ -478,7 +483,7 @@
           'button',
           n(
             {
-              className: i.default(s(), s(o || 'default'), O(p, 'is-round'), O(v, 'is-circle'), f),
+              className: i.default(l(), l(o || 'default'), O(b, 'is-round'), O(v, 'is-circle'), f),
               disabled: w,
             },
             x,
@@ -486,11 +491,11 @@
           m
             ? a.createElement(
                 'div',
-                { className: s('loading-wrapper') },
-                a.createElement(c.default, { name: 'loading', className: s('loading') }),
-                u,
+                { className: l('loading-wrapper') },
+                a.createElement(c.default, { name: 'loading', className: l('loading') }),
+                d,
               )
-            : a.createElement(a.Fragment, null, u),
+            : a.createElement(a.Fragment, null, d),
         )
       }
     },
@@ -526,8 +531,8 @@
       Object.defineProperty(e, '__esModule', { value: !0 })
       var a = o(0),
         i = o(10),
-        c = o(32),
-        l = function(t) {
+        c = o(37),
+        s = function(t) {
           var e = {
               visible: !0,
               closable: !0,
@@ -543,39 +548,39 @@
               onCancel: t.onCancel,
             },
             o = Object.assign(e, t),
-            l = function() {
-              t.onCancel ? t.onCancel(s) : s()
-            },
             s = function() {
-              i.unmountComponentAtNode(u) && u.parentNode && u.parentNode.removeChild(u)
+              t.onCancel ? t.onCancel(l) : l()
             },
-            u = document.createElement('div')
+            l = function() {
+              i.unmountComponentAtNode(d) && d.parentNode && d.parentNode.removeChild(d)
+            },
+            d = document.createElement('div')
           return (
-            document.body.appendChild(u),
+            document.body.appendChild(d),
             (function(t) {
               var e = t.title,
                 o = t.message,
-                s = r(t, ['title', 'message'])
-              i.render(a.createElement(c.default, n({}, s, { onCancel: l, header: e }), o), u)
+                l = r(t, ['title', 'message'])
+              i.render(a.createElement(c.default, n({}, l, { onCancel: s, header: e }), o), d)
             })(o),
-            { close: s }
+            { close: l }
           )
         }
       ;(c.default.Alert = function(t) {
-        return l(Object.assign(t, { visible: !0, closable: !1, maskClosable: !1, cancelable: !1 }))
+        return s(Object.assign(t, { visible: !0, closable: !1, maskClosable: !1, cancelable: !1 }))
       }),
         (c.default.Confirm = function(t) {
-          return l(Object.assign({ visible: !0, closable: !1, maskClosable: !1 }, t))
+          return s(Object.assign({ visible: !0, closable: !1, maskClosable: !1 }, t))
         }),
         (c.default.Modal = function(t) {
-          return l(Object.assign(t, {}))
+          return s(Object.assign(t, {}))
         })
-      var s = c.default.Alert
-      e.Alert = s
-      var u = c.default.Confirm
-      e.Confirm = u
-      var d = c.default.Modal
-      ;(e.Modal = d), (e.default = c.default)
+      var l = c.default.Alert
+      e.Alert = l
+      var d = c.default.Confirm
+      e.Confirm = d
+      var u = c.default.Modal
+      ;(e.Modal = u), (e.default = c.default)
     },
     function(t, o) {
       t.exports = e
@@ -613,50 +618,50 @@
       var a = o(0),
         i = o(3),
         c = o(4),
-        l = o(35)
+        s = o(40)
       o(12)
-      var s = c.setPrefixClassName('coo-layout')
-      ;(l.default.Header = function(t) {
+      var l = c.setPrefixClassName('coo-layout')
+      ;(s.default.Header = function(t) {
         var e = t.children,
           o = t.className,
           c = r(t, ['children', 'className'])
-        return a.createElement('header', n({ className: i.default(s('header'), o) }, c), e)
+        return a.createElement('header', n({ className: i.default(l('header'), o) }, c), e)
       }),
-        (l.default.Content = function(t) {
+        (s.default.Content = function(t) {
           t.children
           var e = t.className,
             o = r(t, ['children', 'className'])
           return a.createElement(
             'main',
-            n({ className: i.default(s('content'), e) }, o),
+            n({ className: i.default(l('content'), e) }, o),
             t.children,
           )
         }),
-        (l.default.Footer = function(t) {
+        (s.default.Footer = function(t) {
           t.children
           var e = t.className,
             o = r(t, ['children', 'className'])
           return a.createElement(
             'footer',
-            n({ className: i.default(s('footer'), e) }, o),
+            n({ className: i.default(l('footer'), e) }, o),
             t.children,
           )
         }),
-        (l.default.Aside = function(t) {
+        (s.default.Aside = function(t) {
           t.children
           var e = t.className,
             o = r(t, ['children', 'className'])
-          return a.createElement('aside', n({ className: i.default(s('aside'), e) }, o), t.children)
+          return a.createElement('aside', n({ className: i.default(l('aside'), e) }, o), t.children)
         })
-      var u = l.default.Header
-      e.Header = u
-      var d = l.default.Content
-      e.Content = d
-      var f = l.default.Footer
-      ;(e.Footer = f), (e.default = l.default)
+      var d = s.default.Header
+      e.Header = d
+      var u = s.default.Content
+      e.Content = u
+      var f = s.default.Footer
+      ;(e.Footer = f), (e.default = s.default)
     },
     function(t, e, o) {
-      var n = o(36)
+      var n = o(41)
       'string' == typeof n && (n = [[t.i, n, '']])
       var r = { insert: 'head', singleton: !1 }
       o(2)(n, r)
@@ -695,13 +700,13 @@
       var a = o(0),
         i = o(3),
         c = o(4)
-      o(37)
-      var l = c.setPrefixClassName('coo-popover')
+      o(42)
+      var s = c.setPrefixClassName('coo-popover')
       e.default = function(t) {
         var e = t.children,
           o = t.className,
           c = r(t, ['children', 'className'])
-        return a.createElement('div', n({ className: i.default(l(), o) }, c), e)
+        return a.createElement('div', n({ className: i.default(s(), o) }, c), e)
       }
     },
     function(t, e, o) {
@@ -737,25 +742,25 @@
       var a = o(0),
         i = o(0),
         c = o(3),
-        l = o(4)
-      o(39)
-      var s = l.setPrefixClassName('coo-tooltip')
+        s = o(4)
+      o(44)
+      var l = s.setPrefixClassName('coo-tooltip')
       e.default = function(t) {
         var e = t.children,
           o = t.className,
-          l = t.content,
-          u = t.placement,
-          d = void 0 === u ? 'top' : u,
+          s = t.content,
+          d = t.placement,
+          u = void 0 === d ? 'top' : d,
           f = r(t, ['children', 'className', 'content', 'placement']),
-          b = i.useState(!1),
-          p = b[0],
-          g = b[1],
+          p = i.useState(!1),
+          b = p[0],
+          g = p[1],
           v = function(t) {
             g(t)
           }
         return a.createElement(
           'div',
-          n({ className: c.default(s(), o) }, f, {
+          n({ className: c.default(l(), o) }, f, {
             onMouseEnter: function() {
               return v(!0)
             },
@@ -763,24 +768,109 @@
               return v(!1)
             },
           }),
-          a.createElement('div', { className: s('children') }, e),
+          a.createElement('div', { className: l('children') }, e),
           a.createElement(
             'div',
             {
               className: c.default(
-                s('content'),
-                s(p ? 'content-show' : 'content-hidden'),
-                s('content-' + d),
+                l('content'),
+                l(b ? 'content-show' : 'content-hidden'),
+                l('content-' + u),
               ),
             },
-            a.createElement('i', { className: c.default(s('content-icon')) }),
-            a.createElement('span', null, l),
+            a.createElement('i', { className: c.default(l('content-icon')) }),
+            a.createElement('span', null, s),
           ),
         )
       }
     },
     function(t, e, o) {
-      var n = o(16)
+      'use strict'
+      var n =
+          (this && this.__assign) ||
+          function() {
+            return (n =
+              Object.assign ||
+              function(t) {
+                for (var e, o = 1, n = arguments.length; o < n; o++)
+                  for (var r in (e = arguments[o]))
+                    Object.prototype.hasOwnProperty.call(e, r) && (t[r] = e[r])
+                return t
+              }).apply(this, arguments)
+          },
+        r =
+          (this && this.__rest) ||
+          function(t, e) {
+            var o = {}
+            for (var n in t)
+              Object.prototype.hasOwnProperty.call(t, n) && e.indexOf(n) < 0 && (o[n] = t[n])
+            if (null != t && 'function' == typeof Object.getOwnPropertySymbols) {
+              var r = 0
+              for (n = Object.getOwnPropertySymbols(t); r < n.length; r++)
+                e.indexOf(n[r]) < 0 &&
+                  Object.prototype.propertyIsEnumerable.call(t, n[r]) &&
+                  (o[n[r]] = t[n[r]])
+            }
+            return o
+          }
+      Object.defineProperty(e, '__esModule', { value: !0 })
+      var a = o(0),
+        i = o(0),
+        c = o(3),
+        s = o(4),
+        l = o(5)
+      o(46)
+      var d = s.setPrefixClassName('coo-foldcard')
+      e.default = function(t) {
+        var e = i.useState(!1),
+          o = e[0],
+          s = e[1],
+          u = t.children,
+          f = t.className,
+          p = t.fold,
+          b = t.foldName,
+          g = r(t, ['children', 'className', 'fold', 'foldName'])
+        return a.createElement(
+          'section',
+          n({ className: c.default(d(), f) }, g),
+          a.createElement('div', { className: d('content') }, u),
+          a.createElement(
+            'footer',
+            { className: d('footer') },
+            a.createElement(
+              'div',
+              { className: d('footer-main') },
+              a.createElement(
+                'p',
+                {
+                  className: d('footer-spread'),
+                  onClick: function() {
+                    return s(!o)
+                  },
+                },
+                a.createElement(l.default, {
+                  name: o ? 'arrow-up' : 'arrow-down',
+                  className: d('footer-icon'),
+                }),
+                a.createElement('span', null, b || '展开'),
+              ),
+            ),
+          ),
+          a.createElement(
+            'div',
+            {
+              onClick: function() {
+                return console.log(1)
+              },
+              className: c.default(d('card'), d(o ? 'card-show' : 'card-hidden')),
+            },
+            p,
+          ),
+        )
+      }
+    },
+    function(t, e, o) {
+      var n = o(17)
       'string' == typeof n && (n = [[t.i, n, '']])
       var r = { insert: 'head', singleton: !1 }
       o(2)(n, r)
@@ -794,7 +884,7 @@
       ])
     },
     function(t, e, o) {
-      var n = o(18)
+      var n = o(19)
       'string' == typeof n && (n = [[t.i, n, '']])
       var r = { insert: 'head', singleton: !1 }
       o(2)(n, r)
@@ -809,14 +899,18 @@
     },
     function(t, e, o) {
       var n = {
-        './close.svg': 20,
-        './correct.svg': 21,
-        './down.svg': 22,
-        './eyes.svg': 23,
-        './hint.svg': 24,
-        './loading.svg': 25,
-        './message.svg': 26,
-        './share.svg': 27,
+        './arrow-down.svg': 21,
+        './arrow-left.svg': 22,
+        './arrow-right.svg': 23,
+        './arrow-up.svg': 24,
+        './close.svg': 25,
+        './correct.svg': 26,
+        './down.svg': 27,
+        './eyes.svg': 28,
+        './hint.svg': 29,
+        './loading.svg': 30,
+        './message.svg': 31,
+        './share.svg': 32,
       }
       function r(t) {
         var e = a(t)
@@ -834,7 +928,31 @@
       }),
         (r.resolve = a),
         (t.exports = r),
-        (r.id = 19)
+        (r.id = 20)
+    },
+    function(t, e, o) {
+      'use strict'
+      o.r(e),
+        (e.default =
+          '<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="200" height="200"><path d="M517.868 618.78L195.45 296.51 133 359.02l384.897 384.72 384.544-384.72-62.48-62.481z"/></svg>')
+    },
+    function(t, e, o) {
+      'use strict'
+      o.r(e),
+        (e.default =
+          '<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="200" height="200"><path d="M690.515 189.73l-62.45-62.45-384.75 384.926 384.72 384.544 62.48-62.51-322.24-322.063z"/></svg>')
+    },
+    function(t, e, o) {
+      'use strict'
+      o.r(e),
+        (e.default =
+          '<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="200" height="200"><path d="M624.47 512.177L302.2 189.73l62.54-62.45 384.72 384.926-384.75 384.515-62.45-62.51z"/></svg>')
+    },
+    function(t, e, o) {
+      'use strict'
+      o.r(e),
+        (e.default =
+          '<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="200" height="200"><path d="M517.868 400.166L195.45 722.436 133 659.926l384.897-384.72 384.544 384.72-62.48 62.451z"/></svg>')
     },
     function(t, e, o) {
       'use strict'
@@ -899,7 +1017,7 @@
         })
     },
     function(t, e, o) {
-      var n = o(31)
+      var n = o(36)
       'string' == typeof n && (n = [[t.i, n, '']])
       var r = { insert: 'head', singleton: !1 }
       o(2)(n, r)
@@ -931,18 +1049,18 @@
         a = o(0),
         i = o(10),
         c = o(3),
-        l = o(6),
-        s = o(4)
-      o(33)
-      var u = s.setPrefixClassName('coo-dialog'),
-        d = function(t) {
+        s = o(6),
+        l = o(4)
+      o(38)
+      var d = l.setPrefixClassName('coo-dialog'),
+        u = function(t) {
           var e = t.className,
             o = void 0 === e ? '' : e,
-            s = t.style,
-            d = void 0 === s ? {} : s,
+            l = t.style,
+            u = void 0 === l ? {} : l,
             f = t.visible,
-            b = void 0 !== f && f,
-            p = t.width,
+            p = void 0 !== f && f,
+            b = t.width,
             g = t.header,
             v = t.footer,
             h = t.onCancel,
@@ -953,56 +1071,56 @@
             O = t.mask,
             k = void 0 === O || O,
             j = t.maskClosable,
-            _ = void 0 === j || j,
-            N = t.lockScroll,
-            P = void 0 === N || N,
+            N = void 0 === j || j,
+            _ = t.lockScroll,
+            P = void 0 === _ || _,
             C = t.animat,
             M = void 0 === C || C,
             E = t.okText,
             S = void 0 === E ? '确认' : E,
             z = t.cancelText,
             T = void 0 === z ? '取消' : z,
-            I = t.cancelable,
-            L = void 0 === I || I,
-            B = ''
-          !0 === M && (B = 'cooperDialogShow 0.3s ease')
+            B = t.cancelable,
+            L = void 0 === B || B,
+            I = ''
+          !0 === M && (I = 'cooperDialogShow 0.3s ease')
           var A = ''
           return (
             a.useEffect(function() {
-              if (b && !0 === P) {
+              if (p && !0 === P) {
                 var t = window.getComputedStyle(document.body, null).overflow
                 'hidden' !== t && ((A = t), (document.body.style.overflow = 'hidden'))
               }
               return function() {
                 var t = window.getComputedStyle(document.body, null).overflow
-                b && 'hidden' === t && (document.body.style.overflow = A)
+                p && 'hidden' === t && (document.body.style.overflow = A)
               }
             }),
-            b
+            p
               ? r.createElement(
                   'div',
-                  { className: c.default(u(), o), style: n({ width: p, animation: B }, d) },
+                  { className: c.default(d(), o), style: n({ width: b, animation: I }, u) },
                   !0 !== x
                     ? null
-                    : r.createElement(l.Icon, { name: 'close', className: u('close'), onClick: m }),
+                    : r.createElement(s.Icon, { name: 'close', className: d('close'), onClick: m }),
                   null !== g
-                    ? r.createElement('header', { className: u('header') }, g || '提示')
+                    ? r.createElement('header', { className: d('header') }, g || '提示')
                     : null,
-                  r.createElement('main', { className: u('main') }, t.children),
+                  r.createElement('main', { className: d('main') }, t.children),
                   v
-                    ? r.createElement('footer', { className: u('footer') }, v)
+                    ? r.createElement('footer', { className: d('footer') }, v)
                     : null !== v
                     ? r.createElement(
                         'footer',
-                        { className: u('footer') },
+                        { className: d('footer') },
                         r.createElement(
                           'div',
-                          { className: u('footer-button-wrapper') },
+                          { className: d('footer-button-wrapper') },
                           !0 === L &&
                             r.createElement(
-                              l.Button,
+                              s.Button,
                               {
-                                className: u('footer-button-cancel'),
+                                className: d('footer-button-cancel'),
                                 onClick: function() {
                                   m && m()
                                 },
@@ -1010,9 +1128,9 @@
                               T,
                             ),
                           r.createElement(
-                            l.Button,
+                            s.Button,
                             {
-                              className: u('footer-button-ok'),
+                              className: d('footer-button-ok'),
                               type: 'primary',
                               onClick: function() {
                                 y ? y(m) : m()
@@ -1027,10 +1145,10 @@
                     i.createPortal(
                       r.createElement('div', {
                         onClick: function() {
-                          !0 === _ && m()
+                          !0 === N && m()
                         },
-                        className: u('mask'),
-                        style: { animation: B },
+                        className: d('mask'),
+                        style: { animation: I },
                       }),
                       document.body,
                     ),
@@ -1038,13 +1156,13 @@
               : null
           )
         }
-      ;(d.Alert = function() {}),
-        (d.Confirm = function() {}),
-        (d.Modal = function() {}),
-        (e.default = d)
+      ;(u.Alert = function() {}),
+        (u.Confirm = function() {}),
+        (u.Modal = function() {}),
+        (e.default = u)
     },
     function(t, e, o) {
-      var n = o(34)
+      var n = o(39)
       'string' == typeof n && (n = [[t.i, n, '']])
       var r = { insert: 'head', singleton: !1 }
       o(2)(n, r)
@@ -1091,27 +1209,27 @@
         i = o(3),
         c = o(4)
       o(12)
-      var l = c.setPrefixClassName('coo-layout'),
-        s = function(t) {
+      var s = c.setPrefixClassName('coo-layout'),
+        l = function(t) {
           var e = t.children,
             o = t.className,
             c = r(t, ['children', 'className']),
-            u = a.Children.map(e, function(t) {
+            d = a.Children.map(e, function(t) {
               return t.type
             }).some(function(t) {
-              return t === s.Aside
+              return t === l.Aside
             })
           return a.createElement(
             'section',
-            n({ className: i.default(l(), o, u ? l('has-aside') : '') }, c),
+            n({ className: i.default(s(), o, d ? s('has-aside') : '') }, c),
             e,
           )
         }
-      ;(s.Header = function() {}),
-        (s.Content = function() {}),
-        (s.Footer = function() {}),
-        (s.Aside = function() {}),
-        (e.default = s)
+      ;(l.Header = function() {}),
+        (l.Content = function() {}),
+        (l.Footer = function() {}),
+        (l.Aside = function() {}),
+        (e.default = l)
     },
     function(t, e, o) {
       ;(t.exports = o(1)(!1)).push([
@@ -1121,7 +1239,7 @@
       ])
     },
     function(t, e, o) {
-      var n = o(38)
+      var n = o(43)
       'string' == typeof n && (n = [[t.i, n, '']])
       var r = { insert: 'head', singleton: !1 }
       o(2)(n, r)
@@ -1131,7 +1249,7 @@
       ;(t.exports = o(1)(!1)).push([t.i, '', ''])
     },
     function(t, e, o) {
-      var n = o(40)
+      var n = o(45)
       'string' == typeof n && (n = [[t.i, n, '']])
       var r = { insert: 'head', singleton: !1 }
       o(2)(n, r)
@@ -1141,6 +1259,20 @@
       ;(t.exports = o(1)(!1)).push([
         t.i,
         '.coo-tooltip{position:relative;display:inline-block;vertical-align:top}.coo-tooltip-children{position:relative;z-index:2}.coo-tooltip-content{position:absolute;height:24px;color:#fff;font-size:0.8em;white-space:nowrap;line-height:24px;padding-left:20px;padding-right:20px;border-radius:4px;background:rgba(0,0,0,0.75);visibility:visible;transition:opacity 0.2s}.coo-tooltip-content-icon{position:absolute;z-index:1;left:50%;bottom:0;border:6px solid transparent;border-color:transparent;border-top-color:rgba(0,0,0,0.75);margin-bottom:-12px;transform:translateX(-50%)}.coo-tooltip-content-show{opacity:1;transform:scale(1);visibility:visible}.coo-tooltip-content-hidden{opacity:0;transform:scale(0);visibility:hidden}.coo-tooltip .coo-tooltip-content-top{left:50%;top:-32px;transform:translateX(-50%)}.coo-tooltip .coo-tooltip-content-bottom{left:50%;bottom:-32px;transform:translateX(-50%)}.coo-tooltip .coo-tooltip-content-bottom .coo-tooltip-content-icon{transform:translateX(-50%) rotateX(180deg);transform-origin:top;top:0}.coo-tooltip .coo-tooltip-content-left{left:0;top:50%;transform:translateX(calc(-100% - 12px)) translateY(-50%)}.coo-tooltip .coo-tooltip-content-left .coo-tooltip-content-icon{left:unset;bottom:unset;right:0;top:50%;transform:translateY(-50%) rotate(270deg);margin-right:-12px}.coo-tooltip .coo-tooltip-content-right{right:0;top:50%;transform:translateX(calc(100% + 12px)) translateY(-50%)}.coo-tooltip .coo-tooltip-content-right .coo-tooltip-content-icon{bottom:unset;left:0;top:50%;transform:translateY(-50%) rotate(90deg);margin-left:-12px}\n',
+        '',
+      ])
+    },
+    function(t, e, o) {
+      var n = o(47)
+      'string' == typeof n && (n = [[t.i, n, '']])
+      var r = { insert: 'head', singleton: !1 }
+      o(2)(n, r)
+      n.locals && (t.exports = n.locals)
+    },
+    function(t, e, o) {
+      ;(t.exports = o(1)(!1)).push([
+        t.i,
+        '.coo-foldcard{background:#fff;box-shadow:0 10px 10px 1px #dcdfe6}.coo-foldcard-content{padding:15px}.coo-foldcard-footer{padding:10px 15px;color:#515a6e;background:#f2f2f2}.coo-foldcard-footer-main{display:flex;align-items:center;justify-content:flex-end;font-size:14px;opacity:0.5;transition:opacity 0.3s;user-select:none}.coo-foldcard-footer-main:hover{opacity:1}.coo-foldcard-footer-spread{display:flex;align-items:center;cursor:pointer}.coo-foldcard-footer-icon{margin-left:5px;margin-right:5px}.coo-foldcard-card{height:0;background:#f2f2f2;overflow:hidden}.coo-foldcard-card-show{height:auto}.coo-foldcard-card-hidden{height:0}\n',
         '',
       ])
     },

@@ -65,7 +65,7 @@ export default () => {
                       </li>
                     </ul>
                   </Aside>
-                  <Content className="p-20">
+                  <Content>
                     <Route exact path="/layout" component={LayoutPage} />
                     <Route exact path="/icon" component={IconPage} />
                     <Route exact path="/button" component={ButtonPage} />
