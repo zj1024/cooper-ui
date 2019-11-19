@@ -29,7 +29,6 @@ const Foldcard: React.FC<Props> = props => {
         </div>
       </footer>
       <div
-        onClick={() => console.log(1)}
         className={classnames(
           setClass('card'),
           visible ? setClass('card-show') : setClass('card-hidden'),

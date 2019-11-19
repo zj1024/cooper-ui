@@ -858,12 +858,7 @@
           ),
           a.createElement(
             'div',
-            {
-              onClick: function() {
-                return console.log(1)
-              },
-              className: c.default(d('card'), d(o ? 'card-show' : 'card-hidden')),
-            },
+            { className: c.default(d('card'), d(o ? 'card-show' : 'card-hidden')) },
             p,
           ),
         )
