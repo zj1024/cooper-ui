@@ -8,7 +8,7 @@ import './style.scss'
 
 interface Props {
   className?: string
-  fold: React.ReactElement
+  fold: React.ReactNode
   // foldcardClose?: (done: any) => void
   // footer?: React.ReactElement
 }

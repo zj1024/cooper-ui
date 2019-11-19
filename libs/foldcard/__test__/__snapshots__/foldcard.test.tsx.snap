@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`- Tooltip component exist 1`] = `
+<section
+  className="coo-foldcard"
+>
+  <div
+    className="coo-foldcard-content"
+  >
+    content
+  </div>
+  <footer
+    className="coo-foldcard-footer"
+  >
+    <div
+      className="coo-foldcard-footer-main"
+    >
+      <p
+        className="coo-foldcard-footer-spread"
+        onClick={[Function]}
+      >
+        <span
+          className="coo-icon coo-foldcard-footer-icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+        />
+        <span>
+          展开
+        </span>
+      </p>
+    </div>
+  </footer>
+  <div
+    className="coo-foldcard-card coo-foldcard-card-hidden"
+  >
+    test
+  </div>
+</section>
+`;
