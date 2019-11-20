@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Layout, Foldcard } from '../../../../libs'
-import Codebox from '../../../components/codebox'
+import Codebox from '../../components/codebox'
 import {
   basicLayout,
   withAsideLayout,
