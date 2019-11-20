@@ -1,6 +1,9 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { Dialog, Button } from '../../../../libs'
+import { Dialog, Button, Foldcard } from '../../../../libs'
+import Codebox from '../../components/codebox'
+import { basic, fnAlert, fnConfirm, fnModal } from './example'
+
 const { Alert, Confirm, Modal } = Dialog
 
 export default () => {
@@ -49,36 +52,45 @@ export default () => {
   }
 
   return (
-    <>
+    <section className="h-full bg-grey">
       <h1>- Dialog</h1>
-      <div>
-        <Button onClick={() => setVisible(true)}>开启Dialog</Button>
-        <Dialog
-          style={{ width: '100%' }}
-          visible={visible}
-          onCancel={() => setVisible(false)}
-          onOk={handleOk}>
-          this is body
-        </Dialog>
+      <div className="flex j-between">
+        <div className="w-p-48">
+          <h2>基础Dialog</h2>
+          <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
+            <Button onClick={() => setVisible(true)}>打开dialog</Button>
+            <Dialog visible={visible} onCancel={() => setVisible(false)} onOk={handleOk}>
+              this is body
+            </Dialog>
+          </Foldcard>
+        </div>
+        <div className="w-p-48">
+          <h2>函数触发：alert</h2>
+          <Foldcard fold={<Codebox source={fnAlert} />} foldName="展开代码">
+            <Button type="primary" onClick={handleAlert}>
+              alert
+            </Button>
+          </Foldcard>
+        </div>
       </div>
-      <div>
-        <h2>alert</h2>
-        <Button type="success" onClick={handleAlert}>
-          alert
-        </Button>
+      <div className="flex j-between m-t-20">
+        <div className="w-p-48">
+          <h2>confirm</h2>
+          <Foldcard fold={<Codebox source={fnConfirm} />} foldName="展开代码">
+            <Button type="primary" onClick={handleConfirm}>
+              confirm
+            </Button>
+          </Foldcard>
+        </div>
+        <div className="w-p-48">
+          <h2>modal</h2>
+          <Foldcard fold={<Codebox source={fnModal} />} foldName="展开代码">
+            <Button type="primary" onClick={handleModal}>
+              modal
+            </Button>
+          </Foldcard>
+        </div>
       </div>
-      <div>
-        <h2>confirm</h2>
-        <Button type="success" onClick={handleConfirm}>
-          confirm
-        </Button>
-      </div>
-      <div>
-        <h2>modal</h2>
-        <Button type="success" onClick={handleModal}>
-          modal
-        </Button>
-      </div>
-    </>
+    </section>
   )
 }
