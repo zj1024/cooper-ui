@@ -13,10 +13,6 @@ import InputPage from './pages/input'
 import TooltipPage from './pages/tooltip'
 import FoldcardPage from './pages/foldcard'
 
-// import logo from './assets/images/logo.png'
-
-// const logo = require('./assets/images/logo.png')
-
 import 'assembly-css/lib/index.scss'
 
 const { Aside, Header, Content } = Layout
@@ -25,11 +21,9 @@ export default () => {
   return (
     <Router>
       <Layout className="h-full">
-        <Header className="w-full flex p-20 b-b j-between text-content">
-          <div className="">
-            <img src="/assets/images/logo.png" alt="cooper-ui" />
-          </div>
-          <div>
+        <Header className="w-full flex p-h-20 p-v-10 b-b j-between text-content">
+          <img className="w-50" src={require('./assets/images/logo.png')} alt="cooper-ui" />
+          <div className="flex a-center">
             <li className="m-r-10">
               <Link to="/guide">Guide</Link>
             </li>
