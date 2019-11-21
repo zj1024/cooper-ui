@@ -18,17 +18,19 @@ import 'assembly-css/lib/index.scss'
 const { Aside, Header, Content } = Layout
 
 export default () => {
-  // const [componentActive, setComponentActive] = useState(0)
   return (
     <Router>
       <Layout className="h-full">
-        <Header className="w-full flex p-20 b-b j-end text-content">
-          <li className="m-r-10">
-            <Link to="/guide">Guide</Link>
-          </li>
-          <li>
-            <Link to="/">组件</Link>
-          </li>
+        <Header className="w-full flex p-20 b-b j-between text-content">
+          <div className="">{/* <img src={Logo} alt="cooper-ui" /> */}</div>
+          <div>
+            <li className="m-r-10">
+              <Link to="/guide">Guide</Link>
+            </li>
+            <li>
+              <Link to="/">组件</Link>
+            </li>
+          </div>
         </Header>
 
         <Content className="flex flex-1">

@@ -11,6 +11,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    alias: {
+      src: path.resolve(__dirname, '../docs/src'),
+    },
   },
   module: {
     rules: [
@@ -47,6 +50,14 @@ module.exports = {
             options: {
               plugins: [{ removeViewBox: false }],
             },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
           },
         ],
       },
