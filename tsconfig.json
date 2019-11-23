@@ -13,6 +13,6 @@
     "target": "ES5",
     "jsx": "react"
   },
-  "include": ["libs/**/*"],
+  "include": ["libs/**/*", "docs/**/*"],
   "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx"]
 }

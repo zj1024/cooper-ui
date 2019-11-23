@@ -11,6 +11,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    alias: {
+      src: path.resolve(__dirname, '../docs/src'),
+    },
   },
   module: {
     rules: [
@@ -49,6 +52,10 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.(jpe?g|png|gif)$/i,
+        loader: 'file-loader',
       },
     ],
   },
