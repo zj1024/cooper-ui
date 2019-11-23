@@ -32,12 +32,23 @@
     }
   }
   &-card {
-    height: 0;
     background: $bg-grey;
-    transition: height 0.3s ease-out;
     overflow: hidden;
-    &-hidden {
-      height: 0;
-    }
   }
+}
+
+.fade-down {
+  height: 0;
+  transition: height 0.1s linear;
+}
+
+.fade-down-entering,
+.fade-down-entered {
+  opacity: 1;
+}
+
+
+.fade-down-exiting,
+.fade-down-exited {
+  height: 0;
 }

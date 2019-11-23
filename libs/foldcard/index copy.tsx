@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 import Icon from '../icon'
-// import Transition from '../transition'
+import Transition from '../transition'
 
 import './style.scss'
 
@@ -24,8 +24,7 @@ const Foldcard: React.FC<Props> = props => {
   useEffect(() => {
     if (Object.prototype.toString.call(foldRef.current) === '[object HTMLDivElement]') {
       const height = window.getComputedStyle(foldRef.current as any)['height']
-      // setFoldHeight({ entered: { height } })
-      setFoldHeight({ height })
+      setFoldHeight({ entered: { height } })
     }
   }, [])
 
@@ -42,11 +41,11 @@ const Foldcard: React.FC<Props> = props => {
           </p>
         </div>
       </footer>
-      <div
-        style={visible ? foldHeight : {}}
-        className={classnames(setClass('card'), !visible && setClass('card-hidden'))}>
-        <div ref={foldRef}>{fold}</div>
-      </div>
+      <Transition visible={visible} duration={100} name="fade-down" style={foldHeight}>
+        <div ref={foldRef} className={classnames(setClass('card'))}>
+          {fold}
+        </div>
+      </Transition>
     </section>
   )
 }

@@ -58,6 +58,7 @@
     "@types/react-router-dom": "^5.1.2",
     "@types/react-syntax-highlighter": "^11.0.2",
     "@types/react-test-renderer": "^16.9.1",
+    "@types/react-transition-group": "^4.2.3",
     "assembly-css": "^1.1.1",
     "babel-jest": "^24.9.0",
     "clean-webpack-plugin": "^3.0.0",
@@ -99,6 +100,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "react": "^16.11.0",
-    "react-dom": "^16.11.0"
+    "react-dom": "^16.11.0",
+    "react-transition-group": "^4.3.0"
   }
 }

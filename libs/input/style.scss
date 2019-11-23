@@ -1,0 +1,45 @@
+@import '../style/variable';
+.coo-input {
+  position: relative;
+  display: inline-block;
+  &-field {
+    color: darken($color-grey, 30%);
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    background: $bg-grey;
+    transition: background 0.3s;
+    &:hover {
+      background: darken($bg-grey, 2%);
+    }
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+  &-field.coo-input-field-allow-clear {
+    padding-right: 32px;
+  }
+  .coo-input-allow-clear {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 2px;
+    font-size: 12px;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    background: lighten($color-content, 20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      background: lighten($color-content, 10%);
+    }
+    &:focus,
+    &:active {
+      background: lighten($color-content, 20%);
+    }
+  }
+}
