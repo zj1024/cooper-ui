@@ -35,8 +35,11 @@ exports[`- Tooltip component exist 1`] = `
   </footer>
   <div
     className="coo-foldcard-card coo-foldcard-card-hidden"
+    style={Object {}}
   >
-    test
+    <div>
+      test
+    </div>
   </div>
 </section>
 `;
