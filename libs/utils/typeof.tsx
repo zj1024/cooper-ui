@@ -5,3 +5,7 @@ export const isString = (value: any) => {
 export const isNull = (value: any) => {
   return Object.prototype.toString.call(value) === '[object Null]'
 }
+
+export const isUndefined = (value: any) => {
+  return Object.prototype.toString.call(value) === '[object Undefined]'
+}

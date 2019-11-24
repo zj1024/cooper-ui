@@ -1,4 +1,4 @@
-import { isString, isNull, setPrefixClassName, stringEqual } from '../index'
+import { isString, isNull, isUndefined, setPrefixClassName, stringEqual } from '../index'
 
 describe('- Utils typeof', () => {
   it(`isString set 'test' will return true`, () => {
@@ -9,6 +9,9 @@ describe('- Utils typeof', () => {
   })
   it(`isNull set null will return true`, () => {
     expect(isNull(null)).toEqual(true)
+  })
+  it(`isNull set null will return true`, () => {
+    expect(isUndefined(undefined)).toEqual(true)
   })
 })
 
@@ -30,6 +33,10 @@ describe('- Utils stringEqual', () => {
   })
   it(`set (null: null, string: 'null') will return true`, () => {
     const isEqual = stringEqual(null, 'null')
+    expect(isEqual).toEqual(true)
+  })
+  it(`set (undefined: undefined, string: 'undefined') will return true`, () => {
+    const isEqual = stringEqual(undefined, 'undefined')
     expect(isEqual).toEqual(true)
   })
 })
