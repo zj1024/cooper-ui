@@ -11,13 +11,22 @@ interface Props {
   value: any
   placeholder?: string
   allowClear?: boolean
+  autoFocus?: boolean
   onChange: (value: string) => void
 }
 
 const setClass = setPrefixClassName('coo-input')
 
 const Input: React.FC<Props> = props => {
-  const { className, value, onChange, placeholder, allowClear, ...leftProps } = props
+  const {
+    className,
+    value,
+    onChange,
+    placeholder,
+    allowClear = false,
+    autoFocus = false,
+    ...leftProps
+  } = props
 
   const [_value, _setValue] = useState(value)
 
@@ -39,11 +48,16 @@ const Input: React.FC<Props> = props => {
   return (
     <div className={classnames(setClass())} {...leftProps}>
       <input
-        className={classnames(setClass('field'), className, setClass('field-allow-clear'))}
+        className={classnames(
+          setClass('field'),
+          className,
+          allowClear && setClass('field-allow-clear'),
+        )}
         type="text"
         value={_value}
         onChange={_onChange}
         placeholder={placeholder}
+        autoFocus={autoFocus}
       />
       {allowClear && _value ? (
         <Button onClick={_handleClear} className={classnames(setClass('allow-clear'))}>
