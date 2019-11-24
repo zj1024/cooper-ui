@@ -1,17 +1,10 @@
 import * as React from 'react'
+import { Suspense } from 'react'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { ComponentRoutes } from './routes'
 import { Layout } from '../../libs'
 
 import GuidePage from './pages/guide'
-
-import LayoutPage from './pages/layout'
-import IconPage from './pages/icon'
-import ButtonPage from './pages/button'
-import DialogPage from './pages/dialog'
-import PopoverPage from './pages/popover'
-import InputPage from './pages/input'
-import TooltipPage from './pages/tooltip'
-import FoldcardPage from './pages/foldcard'
 
 import 'assembly-css/lib/index.scss'
 
@@ -34,53 +27,31 @@ export default () => {
         </Header>
 
         <Content className="flex flex-1">
-          <Switch>
-            <Route exact path="/guide" component={GuidePage} />
-            <Route
-              children={() => (
-                <Layout>
-                  <Aside className="b-r">
-                    <ul className="text-content">
-                      <li className="p-20">
-                        <Link to="/layout">Layout</Link>
+          <Route exact path="/guide" component={GuidePage} />
+          <Route
+            children={() => (
+              <Layout>
+                <Aside className="b-r">
+                  <ul className="text-content">
+                    {ComponentRoutes.map(d => (
+                      <li className="p-20" key={d.path}>
+                        <Link to={d.path}>{d.title}</Link>
                       </li>
-                      <li className="p-20">
-                        <Link to="/icon">Icon</Link>
-                      </li>
-                      <li className="p-20">
-                        <Link to="/button">Button</Link>
-                      </li>
-                      <li className="p-20">
-                        <Link to="/dialog">Dialog</Link>
-                      </li>
-                      <li className="p-20">
-                        <Link to="/popover">Popover</Link>
-                      </li>
-                      <li className="p-20">
-                        <Link to="/tooltip">Tooltip</Link>
-                      </li>
-                      <li className="p-20">
-                        <Link to="/input">Input</Link>
-                      </li>
-                      <li className="p-20">
-                        <Link to="/foldcard">Foldcard</Link>
-                      </li>
-                    </ul>
-                  </Aside>
-                  <Content>
-                    <Route exact path="/layout" component={LayoutPage} />
-                    <Route exact path="/icon" component={IconPage} />
-                    <Route exact path="/button" component={ButtonPage} />
-                    <Route exact path="/dialog" component={DialogPage} />
-                    <Route exact path="/popover" component={PopoverPage} />
-                    <Route exact path="/tooltip" component={TooltipPage} />
-                    <Route exact path="/input" component={InputPage} />
-                    <Route exact path="/foldcard" component={FoldcardPage} />
-                  </Content>
-                </Layout>
-              )}
-            />
-          </Switch>
+                    ))}
+                  </ul>
+                </Aside>
+                <Content>
+                  <Suspense fallback={<div>加载中...</div>}>
+                    <Switch>
+                      {ComponentRoutes.map(d => (
+                        <Route key={d.path} exact path={d.path} component={d.component} />
+                      ))}
+                    </Switch>
+                  </Suspense>
+                </Content>
+              </Layout>
+            )}
+          />
         </Content>
       </Layout>
     </Router>

@@ -1,3 +1,12 @@
 import * as React from 'react'
-declare const _default: (props: { children: React.ReactNode }) => JSX.Element
-export default _default
+import './style.scss'
+interface Props {
+  className?: string
+  value: any
+  placeholder?: string
+  allowClear?: boolean
+  autoFocus?: boolean
+  onChange: (value: string) => void
+}
+declare const Input: React.FC<Props>
+export default Input
