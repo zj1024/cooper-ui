@@ -1,4 +1,5 @@
-import { isString } from './typeof'
+import { isString, isNull } from './typeof'
 import setPrefixClassName from './getclass'
+import stringEqual from './stringEqual'
 
-export { isString, setPrefixClassName }
+export { isString, isNull, setPrefixClassName, stringEqual }

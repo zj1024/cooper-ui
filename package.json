@@ -36,13 +36,13 @@
   },
   "lint-staged": {
     "*.{js}": [
-      "eslint --fix"
+      "npx eslint --fix"
     ],
     "*.{ts,tsx,js,less,json,md}": [
-      "prettier --write"
+      "npx prettier --write"
     ],
     "*.{ts,tsx}": [
-      "tslint --fix"
+      "npx tslint --fix"
     ]
   },
   "devDependencies": {
