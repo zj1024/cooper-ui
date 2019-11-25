@@ -19,13 +19,24 @@ export interface Props {
   onChange: (e: React.BaseSyntheticEvent) => void
   name?: string
   defaultValue?: any
+  radioStyle?: any
+  mode?: 'vertical' | 'horizontal'
   [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-radio')
 
 const Radio: React.FC<Props> = props => {
-  const { className, options, name, onChange, defaultValue, ...leftProps } = props
+  const {
+    className,
+    options,
+    name,
+    onChange,
+    defaultValue,
+    radioStyle = {},
+    mode = 'horizontal',
+    ...leftProps
+  } = props
   const [_options, _setOptions] = useState([...options])
 
   // 如果用户传入数组的checked为true超过两个发出警告
@@ -65,17 +76,23 @@ const Radio: React.FC<Props> = props => {
   }, [])
 
   const _onChange = (e: React.BaseSyntheticEvent, radio: any) => {
-    const index = _options.findIndex(d => d === radio)
+    // const index = _options.findIndex(d => d === radio)
     _setOptions(
-      _options.map((d: any, i: number) => {
-        d.checked = i === index
+      _options.map((d: any) => {
+        d.checked = d === radio
         return d
       }),
     )
     onChange(e)
   }
   return (
-    <div className={classnames(setClass(), className)} {...leftProps}>
+    <div
+      className={classnames(
+        setClass(),
+        mode === 'vertical' ? setClass('vertical') : setClass('horizontal'),
+        className,
+      )}
+      {...leftProps}>
       {_options.map((radio: any, index: number) => {
         const trulyChecked = radio.disabled === false && radio.checked
         return (
@@ -87,7 +104,8 @@ const Radio: React.FC<Props> = props => {
                 stringEqual(index, options.length - 1) && setClass('label-last'),
                 radio.disabled && setClass('label-disabled'),
               )}
-              key={index}>
+              key={index}
+              style={radioStyle}>
               <span className={setClass('inner')} />
               <input
                 className={classnames(setClass('input'))}

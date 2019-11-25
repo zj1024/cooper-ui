@@ -27,6 +27,10 @@ module.exports = Object.assign({}, base, {
   devServer: {
     quiet: true,
     port: PORT,
+    compress: true,
+    hot: true,
+    open: false,
+    overlay: true,
   },
   devtool: 'cheap-module-eval-source-map',
 })
