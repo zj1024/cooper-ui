@@ -6,7 +6,7 @@ export default () => {
     <>
       <h1>- Popover</h1>
       <div>
-        <Popover />
+        <Popover>test</Popover>
       </div>
     </>
   )
