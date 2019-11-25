@@ -4,14 +4,11 @@ import classnames from 'classnames'
 import Transition from '../transition'
 import { setPrefixClassName } from '../utils'
 
-// TODO: Transition
-console.log(Transition)
-
 import './style.scss'
 
 interface Props {
   className?: string
-  content: React.ReactElement | string
+  content: React.ReactNode
   placement?: 'top' | 'bottom' | 'left' | 'right'
 }
 
@@ -33,15 +30,12 @@ const Tooltip: React.FC<Props> = props => {
       onMouseEnter={() => handleToggleTooltip(true)}
       onMouseLeave={() => handleToggleTooltip(false)}>
       <div className={setClass('children')}>{children}</div>
-      <div
-        className={classnames(
-          setClass('content'),
-          visible ? setClass('content-show') : setClass('content-hidden'),
-          setClass(`content-${placement}`),
-        )}>
-        <i className={classnames(setClass('content-icon'))}></i>
-        <span>{content}</span>
-      </div>
+      <Transition visible={visible}>
+        <div className={classnames(setClass('content'), setClass(`content-${placement}`))}>
+          <i className={classnames(setClass('content-icon'))}></i>
+          <span>{content}</span>
+        </div>
+      </Transition>
     </div>
   )
 }

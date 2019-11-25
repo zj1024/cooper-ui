@@ -8,6 +8,7 @@
   }
   &-content {
     position: absolute;
+    z-index: 3;
     height: 24px;
     color: #fff;
     font-size: 0.8em;
@@ -44,13 +45,13 @@
   // placement 样式重写
   .coo-tooltip-content-top {
     left: 50%;
-    top: -32px;
-    transform: translateX(-50%);
+    top: -10px;
+    transform: translate(-50%, -100%);
   }
   .coo-tooltip-content-bottom {
     left: 50%;
-    bottom: -32px;
-    transform: translateX(-50%);
+    bottom: -10px;
+    transform: translate(-50%, 100%);
     .coo-tooltip-content-icon {
       transform: translateX(-50%) rotateX(180deg);
       transform-origin: top;

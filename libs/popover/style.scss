@@ -1,0 +1,83 @@
+.coo-popover {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  &-children {
+    position: relative;
+    z-index: 2;
+  }
+  &-content {
+    position: absolute;
+    z-index: 3;
+    font-size: 0.8em;
+    white-space: nowrap;
+    padding: 10px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 0 10px 1px #e4e4e4;
+    visibility: visible;
+    transition: opacity 0.2s;
+  }
+  &-content-icon {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    bottom: 0;
+    border: 6px solid transparent;
+    border-color: transparent;
+    border-top-color: #fff;
+    margin-bottom: -12px;
+    transform: translateX(-50%);
+  }
+  &-content-show {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+  &-content-hidden {
+    opacity: 0;
+    transform: scale(0);
+    visibility: hidden;
+  }
+  // placement 样式重写
+  .coo-popover-content-top {
+    left: 50%;
+    top: -10px;
+    transform: translate(-50%, -100%);
+  }
+  .coo-popover-content-bottom {
+    left: 50%;
+    bottom: -10px;
+    transform: translate(-50%, 100%);
+    .coo-popover-content-icon {
+      transform: translateX(-50%) rotateX(180deg);
+      transform-origin: top;
+      top: 0;
+    }
+  }
+  .coo-popover-content-left {
+    left: -5px;
+    top: 50%;
+    transform: translateX(calc(-100% - 12px)) translateY(-50%);
+    .coo-popover-content-icon {
+      left: unset;
+      bottom: unset;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%) rotate(270deg);
+      margin-right: -12px;
+    }
+  }
+  .coo-popover-content-right {
+    right: -5px;
+    top: 50%;
+    transform: translateX(calc(100% + 12px)) translateY(-50%);
+    .coo-popover-content-icon {
+      bottom: unset;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      margin-left: -12px;
+    }
+  }
+}
