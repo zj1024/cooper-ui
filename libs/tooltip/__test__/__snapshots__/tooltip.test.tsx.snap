@@ -17,15 +17,5 @@ exports[`- Tooltip component exist 1`] = `
   >
     content
   </div>
-  <div
-    className="coo-tooltip-content coo-tooltip-content-hidden coo-tooltip-content-top"
-  >
-    <i
-      className="coo-tooltip-content-icon"
-    />
-    <span>
-      666
-    </span>
-  </div>
 </div>
 `;
