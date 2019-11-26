@@ -65,4 +65,9 @@ export default [
     title: 'Progress',
     component: lazy(() => import('../pages/progress')),
   },
+  {
+    path: '/message',
+    title: 'Message',
+    component: lazy(() => import('../pages/message')),
+  },
 ]

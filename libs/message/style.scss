@@ -1,0 +1,74 @@
+@import '../style/variable';
+.coo-dialog {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 1001;
+  width: 800px;
+  border-radius: 5px;
+  margin: 0 auto;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  &-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+  &-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #888;
+    cursor: pointer;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+  &-header {
+    color: #333;
+    padding: 20px;
+    border-bottom: 1px solid #f2f2f2;
+  }
+  &-main {
+    color: #494949;
+    padding: 20px;
+  }
+  &-footer {
+    padding: 10px 20px;
+    border-top: 1px solid #f2f2f2;
+    .coo-dialog-footer-button-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      .coo-dialog-footer-button-cancel,
+      .coo-dialog-footer-button-ok {
+        padding: 5px 15px;
+        font-size: 14px;
+      }
+      .coo-dialog-footer-button-cancel {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@keyframes cooperDialogShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cooperDialogHidden {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

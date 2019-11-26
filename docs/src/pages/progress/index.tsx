@@ -6,12 +6,16 @@ import { basic, percent } from './example'
 
 export default () => {
   const [basicValue, setBasicValue] = useState(0)
+  let timer: any
 
   useEffect(() => {
     if (basicValue < 80) {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setBasicValue(basicValue + 5)
       }, 300)
+    }
+    return () => {
+      clearTimeout(timer)
     }
   }, [basicValue])
 
