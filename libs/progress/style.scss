@@ -1,0 +1,100 @@
+@import '../style/variable';
+.coo-progress-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 20px;
+  .coo-progress {
+    width: 100%;
+    height: 4px;
+    background: #eee;
+    border-radius: 20px;
+    flex-grow: 1;
+    overflow: hidden;
+    &-bar {
+      width: 50%;
+      height: 100%;
+      background: $color-primary;
+      border-radius: 20px;
+      transform: translateX(-50%);
+      animation: cooBarMove 1s cubic-bezier(0.3, 0.6, 0.8, 0.3) infinite;
+    }
+    &-percent-bar {
+      position: relative;
+      height: 100%;
+      background: $color-primary;
+      border-radius: 20px;
+      transition: all 0.3s;
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 100%;
+        background: #fff;
+        animation: cooBarActive 1s linear infinite;
+      }
+    }
+    &-success,
+    &-error {
+      animation: none;
+      &:after {
+        content: '';
+        animation: none;
+      }
+    }
+    &-success {
+      background: $color-green!important;
+    }
+    &-error {
+      background: $color-red!important;
+    }
+    .coo-progress-bar.coo-progress-success,
+    .coo-progress-bar.coo-progress-error {
+      width: 100%;
+      transform: translateX(0);
+    }
+  }
+  .coo-progress-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    &-success {
+      color: $color-green;
+      visibility: visible;
+    }
+    &-error {
+      color: $color-red;
+      visibility: visible;
+    }
+  }
+}
+
+@keyframes cooBarMove {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(220%);
+  }
+}
+
+@keyframes cooBarActive {
+  0% {
+    width: 0;
+    opacity: 0.1;
+  }
+  20% {
+    width: 50%;
+    opacity: 0.5;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}

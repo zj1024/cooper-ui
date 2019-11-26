@@ -60,4 +60,9 @@ export default [
     component: lazy(() => import('../pages/checkbox')),
     exact: true,
   },
+  {
+    path: '/progress',
+    title: 'Progress',
+    component: lazy(() => import('../pages/progress')),
+  },
 ]
