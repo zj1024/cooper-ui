@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`- Progress component exist 1`] = `
+<div
+  className="coo-progress-wrapper"
+>
+  <div
+    className="coo-progress"
+  >
+    <div
+      className="coo-progress-bar"
+      style={
+        Object {
+          "background": undefined,
+        }
+      }
+    />
+  </div>
+</div>
+`;
