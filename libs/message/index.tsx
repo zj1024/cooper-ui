@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { isString } from '../utils'
 import Message from './message'
+// import Transition from '../transition'
 
 // 用户传入的选项
 interface MessageFuncProps {
@@ -19,10 +20,7 @@ const FactoryMessage = (props: MessageFuncProps) => {
 
   const render = (renderProps: PrivateProps) => {
     const { message, duration = 3000, ...renderLeftProps } = renderProps
-    ReactDOM.render(
-      <Message duration={duration} message={message} {...renderLeftProps}></Message>,
-      div,
-    )
+    ReactDOM.render(<Message message={message} {...renderLeftProps}></Message>, div)
     setTimeout(() => {
       destory()
     }, duration)
@@ -36,6 +34,7 @@ const FactoryMessage = (props: MessageFuncProps) => {
   }
 
   const div = document.createElement('div')
+  div.className = 'coo-message-wrapper'
   document.body.appendChild(div)
 
   render(renderProps)
