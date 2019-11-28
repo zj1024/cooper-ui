@@ -1,15 +1,14 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import classnames from 'classnames'
-import Icon from '../icon'
-import { setPrefixClassName } from '../utils'
+
 import { isString } from '../utils'
+import MessageComponent from './message'
 
 import './style.scss'
 
 interface Props {
   message: React.ReactNode
-  type?: 'success' | 'info' | 'error' | 'warning'
   showClose?: boolean
   placement?: 'top' | 'bottom'
 }
@@ -23,25 +22,21 @@ interface MessageFC {
   [key: string]: any
 }
 
-const setClass = setPrefixClassName('coo-message')
 const wrapperClassName = 'coo-message-wrapper'
 const enterClassName = 'coo-message-enter-animat'
 const exitClassName = 'coo-message-exit-animat'
 
 const Message: MessageFC = (props: Props) => {
-  const { message, type = 'info', showClose = false, placement = 'top', ...leftProps } = props
+  const _onShowClose = () => {
+    destory()
+  }
 
   // 创建每个message的wrapper
   const div = document.createElement('div')
   div.setAttribute('class', classnames(wrapperClassName, enterClassName))
   document.body.appendChild(div)
 
-  const component = (
-    <div className={classnames(setClass(), setClass(type))} {...leftProps}>
-      <Icon name={type} className={setClass('icon')} />
-      <div className={setClass('content')}>{message}</div>
-    </div>
-  )
+  const component = <MessageComponent _onShowClose={_onShowClose} {...props}></MessageComponent>
 
   ReactDOM.render(component, div)
 
