@@ -1,68 +1,90 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import classnames from 'classnames'
+import Icon from '../icon'
+import { setPrefixClassName } from '../utils'
 import { isString } from '../utils'
-import Message from './message'
-// import Transition from '../transition'
 
-// 用户传入的选项
-interface MessageFuncProps {
+import './style.scss'
+
+interface Props {
   message: React.ReactNode
   type?: 'success' | 'info' | 'error' | 'warning'
   showClose?: boolean
   placement?: 'top' | 'bottom'
-  duration?: number
 }
 
-interface PrivateProps extends MessageFuncProps {}
+// message function api
+interface MessageFC {
+  $success: (props?: any) => any
+  $info: (props?: any) => any
+  $error: (props?: any) => any
+  $warning: (props?: any) => any
+  [key: string]: any
+}
 
-const FactoryMessage = (props: MessageFuncProps) => {
-  const renderProps = { ...props }
+const setClass = setPrefixClassName('coo-message')
+const continerClassName = 'coo-message-container'
+const wrapeprClassName = 'coo-message-wrapper'
 
-  const render = (renderProps: PrivateProps) => {
-    const { message, duration = 3000, ...renderLeftProps } = renderProps
-    ReactDOM.render(<Message message={message} {...renderLeftProps}></Message>, div)
-    setTimeout(() => {
-      destory()
-    }, duration)
+const Message: MessageFC = (props: Props) => {
+  const { message, type = 'info', showClose = false, placement = 'top', ...leftProps } = props
+
+  // 创建每个message的wrapper
+  const div = document.createElement('div')
+  div.className = wrapeprClassName
+
+  // 最外层的容器
+  let wrapper = document.querySelector(`.${continerClassName}`)
+  if (wrapper === null) {
+    // dom上没有message
+    wrapper = document.createElement('div')
+    wrapper.className = continerClassName
+    document.body.appendChild(wrapper)
   }
+  wrapper.appendChild(div)
+
+  const component = (
+    <div className={classnames(setClass(), setClass(type))} {...leftProps}>
+      <Icon name={type} className={setClass('icon')} />
+      <div className={setClass('content')}>{message}</div>
+    </div>
+  )
+
+  ReactDOM.render(component, div)
 
   const destory = () => {
     const isUnmount = ReactDOM.unmountComponentAtNode(div)
     if (isUnmount && div.parentNode) {
-      div.parentNode!.removeChild(div)
+      if (wrapper!.childNodes.length === 1) {
+        // 最后一个message
+        document.body.removeChild(div.parentNode)
+      } else {
+        div.parentNode.removeChild(div)
+      }
     }
   }
-
-  const div = document.createElement('div')
-  div.className = 'coo-message-wrapper'
-  document.body.appendChild(div)
-
-  render(renderProps)
 
   return {
     close: destory,
   }
 }
 
-Message.$success = (props: MessageFuncProps) => {
-  const config = isString(props) ? { message: props } : { ...props }
-  return FactoryMessage(Object.assign({ type: 'success' }, config))
-}
+Message.$success = () => {}
+Message.$info = () => {}
+Message.$error = () => {}
+Message.$warning = () => {}
 
-Message.$info = (props: MessageFuncProps) => {
-  const config = isString(props) ? { message: props } : { ...props }
-  return FactoryMessage(Object.assign({ type: 'info' }, config))
-}
-
-Message.$error = (props: MessageFuncProps) => {
-  const config = isString(props) ? { message: props } : { ...props }
-  return FactoryMessage(Object.assign({ type: 'error' }, config))
-}
-
-Message.$warning = (props: MessageFuncProps) => {
-  const config = isString(props) ? { message: props } : { ...props }
-  return FactoryMessage(Object.assign({ type: 'warning' }, config))
-}
+/**
+ * @function api
+ * Declare that the direct reference to the function is invalid
+ */
+;['$success', '$info', '$error', '$warning'].forEach((type: any) => {
+  Message[type] = (props: Props) => {
+    const config = isString(props) ? { message: props } : { ...props }
+    return Message.call(null, Object.assign({ type: type.substr(1) }, config))
+  }
+})
 
 const $success = Message.$success
 const $info = Message.$info

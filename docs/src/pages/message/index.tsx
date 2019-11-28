@@ -1,19 +1,18 @@
 import * as React from 'react'
-// import { useState } from 'react'
-import { Button, Foldcard } from '../../../../libs'
-import Message from '../../../../libs/message/message'
+import { Button, Foldcard, Message } from '../../../../libs'
 import Codebox from '../../components/codebox'
 import { basic } from './example'
 
-// const {success, info, error, warning } = Message
-
 export default () => {
-  // const [basicValue, setBasicValue] = useState(false)
   const handleOpenBasic = (props: any) => {
-    Message.$success({
+    const tips = Message.$success({
       type: props.type,
       message: '请输入用户名',
     })
+    console.log(tips)
+    // setTimeout(() => {
+    //   tips.close()
+    // }, 2000)
   }
   return (
     <div className="bg-grey h-full">

@@ -1,12 +1,18 @@
 @import '../style/variable';
-.coo-message {
+.coo-message-container {
   position: fixed;
   left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+.coo-message-wrapper {
+  margin-top: 10px;
+}
+.coo-message {
   border-radius: 4px;
   padding: 5px 12px;
   margin-top: 10px;
   background: $bg-grey;
-  transform: translateX(-50%);
   display: flex;
   justify-content: space-between;
   align-items: center;

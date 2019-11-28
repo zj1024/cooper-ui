@@ -12,3 +12,18 @@
   opacity: 0;
   transition: opacity 0.3s;
 }
+
+.message-entrance-enter {
+  opacity: 0;
+}
+.message-entrance-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.message-entrance-exit {
+  opacity: 1;
+}
+.message-entrance-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
