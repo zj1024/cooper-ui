@@ -24,25 +24,17 @@ interface MessageFC {
 }
 
 const setClass = setPrefixClassName('coo-message')
-const continerClassName = 'coo-message-container'
-const wrapeprClassName = 'coo-message-wrapper'
+const wrapperClassName = 'coo-message-wrapper'
+const enterClassName = 'coo-message-enter-animat'
+const exitClassName = 'coo-message-exit-animat'
 
 const Message: MessageFC = (props: Props) => {
   const { message, type = 'info', showClose = false, placement = 'top', ...leftProps } = props
 
   // 创建每个message的wrapper
   const div = document.createElement('div')
-  div.className = wrapeprClassName
-
-  // 最外层的容器
-  let wrapper = document.querySelector(`.${continerClassName}`)
-  if (wrapper === null) {
-    // dom上没有message
-    wrapper = document.createElement('div')
-    wrapper.className = continerClassName
-    document.body.appendChild(wrapper)
-  }
-  wrapper.appendChild(div)
+  div.setAttribute('class', classnames(wrapperClassName, enterClassName))
+  document.body.appendChild(div)
 
   const component = (
     <div className={classnames(setClass(), setClass(type))} {...leftProps}>
@@ -54,15 +46,14 @@ const Message: MessageFC = (props: Props) => {
   ReactDOM.render(component, div)
 
   const destory = () => {
-    const isUnmount = ReactDOM.unmountComponentAtNode(div)
-    if (isUnmount && div.parentNode) {
-      if (wrapper!.childNodes.length === 1) {
-        // 最后一个message
-        document.body.removeChild(div.parentNode)
-      } else {
+    div.setAttribute('class', `${wrapperClassName} ${exitClassName}`)
+    // 过度动画
+    setTimeout(() => {
+      const isUnmount = ReactDOM.unmountComponentAtNode(div)
+      if (isUnmount && div.parentNode) {
         div.parentNode.removeChild(div)
       }
-    }
+    }, 280)
   }
 
   return {

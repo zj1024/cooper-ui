@@ -1,11 +1,9 @@
 @import '../style/variable';
-.coo-message-container {
+.coo-message-wrapper {
   position: fixed;
   left: 50%;
   top: 0;
   transform: translateX(-50%);
-}
-.coo-message-wrapper {
   margin-top: 10px;
 }
 .coo-message {
@@ -13,6 +11,7 @@
   padding: 5px 12px;
   margin-top: 10px;
   background: $bg-grey;
+  box-shadow: 0px 10px 20px 1px #ccc;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,5 +41,34 @@
     padding: 0 36px;
     flex-grow: 1;
     text-align: center;
+  }
+}
+
+.coo-message-enter-animat {
+  animation: message-enter-animat 0.3s ease;
+}
+
+.coo-message-exit-animat {
+  animation: message-exit-animat 0.3s ease;
+}
+
+@keyframes message-enter-animat {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes message-exit-animat {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -100%);
   }
 }

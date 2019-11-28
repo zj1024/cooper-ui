@@ -10,9 +10,9 @@ export default () => {
       message: '请输入用户名',
     })
     console.log(tips)
-    // setTimeout(() => {
-    //   tips.close()
-    // }, 2000)
+    setTimeout(() => {
+      tips.close()
+    }, 3000)
   }
   return (
     <div className="bg-grey h-full">
