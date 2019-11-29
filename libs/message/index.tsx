@@ -11,6 +11,7 @@ interface Props {
   message: React.ReactNode
   showClose?: boolean
   placement?: 'top' | 'bottom'
+  duration?: number
 }
 
 // message function api
@@ -22,11 +23,12 @@ interface MessageFC {
   [key: string]: any
 }
 
-const wrapperClassName = 'coo-message-wrapper'
-const enterClassName = 'coo-message-enter-animat'
-const exitClassName = 'coo-message-exit-animat'
-
 const Message: MessageFC = (props: Props) => {
+  const wrapperClassName =
+    props.placement === 'bottom' ? 'coo-message-wrapper-bottom' : 'coo-message-wrapper'
+  const enterClassName = 'coo-message-enter-animat'
+  const exitClassName = 'coo-message-exit-animat'
+
   const _onShowClose = () => {
     destory()
   }
@@ -35,6 +37,18 @@ const Message: MessageFC = (props: Props) => {
   const div = document.createElement('div')
   div.setAttribute('class', classnames(wrapperClassName, enterClassName))
   document.body.appendChild(div)
+
+  // TODO: placement === bottom
+  // if (props.placement === 'bottom') {
+  //   const firstMessage = document.querySelectorAll(`.${wrapperClassName}`)[0]
+  //   if (firstMessage) {
+  //     (firstMessage.parentNode as Element).insertBefore(div, firstMessage)
+  //   } else {
+  //     document.body.appendChild(div)
+  //   }
+  // } else {
+  //   document.body.appendChild(div)
+  // }
 
   const component = <MessageComponent _onShowClose={_onShowClose} {...props}></MessageComponent>
 

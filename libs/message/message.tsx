@@ -10,6 +10,7 @@ interface Props {
   type?: 'success' | 'info' | 'error' | 'warning'
   showClose?: boolean
   placement?: 'top' | 'bottom'
+  duration?: number
   _onShowClose: () => void
 }
 
@@ -20,11 +21,22 @@ const MessageComponent: React.FC<Props> = props => {
     type = 'info',
     showClose = false,
     placement = 'top',
+    duration = 3000,
     _onShowClose,
     ...leftProps
   } = props
+
+  // 用户没有指定showClose，默认duration之后关闭
+  if (duration !== 0) {
+    setTimeout(() => {
+      _onShowClose()
+    }, duration)
+  }
+
   return (
-    <div className={classnames(setClass(), setClass(type))} {...leftProps}>
+    <div
+      className={classnames(setClass(), setClass(type), placement === 'top' && setClass('bottom'))}
+      {...leftProps}>
       <Icon name={type} className={setClass('icon')} />
       <div className={setClass('content')}>{message}</div>
       {showClose && (

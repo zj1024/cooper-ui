@@ -1,17 +1,13 @@
 import * as React from 'react'
 import { Button, Foldcard, Message } from '../../../../libs'
 import Codebox from '../../components/codebox'
-import { basic } from './example'
+import { basic, showClose, openBottom, fnClose } from './example'
 
 export default () => {
-  console.log(Message)
   const handleOpenBasic = (props: any) => {
-    const tips = Message[props.type]({
+    Message[props.type]({
       message: '请输入用户名',
     })
-    setTimeout(() => {
-      tips.close()
-    }, 3000)
   }
 
   const handleOpenShowClose = (props: any) => {
@@ -25,7 +21,20 @@ export default () => {
     Message[props.type]({
       message: '请输入用户名',
       showClose: true,
+      placement: 'bottom',
+      duration: 0,
     })
+  }
+
+  const handleFnClose = (props: any) => {
+    const tips = Message[props.type]({
+      message: '请输入用户名',
+      placement: 'bottom',
+      duration: 0,
+    })
+    setTimeout(() => {
+      tips.close()
+    }, 1500)
   }
 
   return (
@@ -33,7 +42,7 @@ export default () => {
       <h1>- </h1>
       <div className="flex j-between">
         <div className="w-p-48">
-          <h2 className="text-content">上中下布局</h2>
+          <h2 className="text-content">基础用法</h2>
           <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
             <Button
               className="m-r-10"
@@ -60,8 +69,8 @@ export default () => {
         </div>
 
         <div className="w-p-48">
-          <h2 className="text-content">上中下布局</h2>
-          <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
+          <h2 className="text-content">显示关闭按钮</h2>
+          <Foldcard fold={<Codebox source={showClose} />} foldName="展开代码">
             <Button
               className="m-r-10"
               type="default"
@@ -91,8 +100,8 @@ export default () => {
 
       <div className="flex j-between">
         <div className="w-p-48">
-          <h2 className="text-content">上中下布局</h2>
-          <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
+          <h2 className="text-content">底部弹出不会关闭</h2>
+          <Foldcard fold={<Codebox source={openBottom} />} foldName="展开代码">
             <Button
               className="m-r-10"
               type="default"
@@ -112,6 +121,32 @@ export default () => {
               error
             </Button>
             <Button type="warning" onClick={() => handleOpenBottom({ type: '$warning' })}>
+              warning
+            </Button>
+          </Foldcard>
+        </div>
+        <div className="w-p-48">
+          <h2 className="text-content">函数关闭</h2>
+          <Foldcard fold={<Codebox source={fnClose} />} foldName="展开代码">
+            <Button
+              className="m-r-10"
+              type="default"
+              onClick={() => handleFnClose({ type: '$info' })}>
+              info
+            </Button>
+            <Button
+              className="m-r-10"
+              type="success"
+              onClick={() => handleFnClose({ type: '$success' })}>
+              success
+            </Button>
+            <Button
+              className="m-r-10"
+              type="danger"
+              onClick={() => handleFnClose({ type: '$error' })}>
+              error
+            </Button>
+            <Button type="warning" onClick={() => handleFnClose({ type: '$warning' })}>
               warning
             </Button>
           </Foldcard>
