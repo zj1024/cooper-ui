@@ -29,8 +29,9 @@ export default () => {
   const handleFnClose = (props: any) => {
     const tips = Message[props.type]({
       message: '请输入用户名',
-      placement: 'bottom',
+      placement: 'top',
       duration: 0,
+      showClose: true,
     })
     setTimeout(() => {
       tips.close()

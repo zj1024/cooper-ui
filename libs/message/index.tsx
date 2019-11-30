@@ -24,19 +24,28 @@ interface MessageFC {
 }
 
 const Message: MessageFC = (props: Props) => {
+  const { placement = 'top' } = props
+  const containerClassName =
+    placement === 'bottom' ? 'coo-message-container-bottom' : 'coo-message-container'
   const wrapperClassName =
-    props.placement === 'bottom' ? 'coo-message-wrapper-bottom' : 'coo-message-wrapper'
+    placement === 'bottom' ? 'coo-message-wrapper-bottom' : 'coo-message-wrapper'
   const enterClassName = 'coo-message-enter-animat'
   const exitClassName = 'coo-message-exit-animat'
-
-  const _onShowClose = () => {
-    destory()
-  }
 
   // 创建每个message的wrapper
   const div = document.createElement('div')
   div.setAttribute('class', classnames(wrapperClassName, enterClassName))
-  document.body.appendChild(div)
+  setTimeout(() => {
+    // div.classList.add(enterClassName)
+  }, 280)
+
+  let containerDOM = document.querySelector(`.${containerClassName}`)
+  if (!containerDOM) {
+    containerDOM = document.createElement('div')
+    containerDOM.setAttribute('class', containerClassName)
+    document.body.appendChild(containerDOM)
+  }
+  containerDOM.appendChild(div)
 
   // TODO: placement === bottom
   // if (props.placement === 'bottom') {
@@ -50,12 +59,18 @@ const Message: MessageFC = (props: Props) => {
   //   document.body.appendChild(div)
   // }
 
+  const _onShowClose = () => {
+    destory()
+  }
+
   const component = <MessageComponent _onShowClose={_onShowClose} {...props}></MessageComponent>
 
   ReactDOM.render(component, div)
 
   const destory = () => {
     div.setAttribute('class', `${wrapperClassName} ${exitClassName}`)
+    // const removeMessageHeight = parseInt(getComputedStyle(div)['height'] as string, 10)
+    // console.log(removeMessageHeight)
     // 过度动画
     setTimeout(() => {
       const isUnmount = ReactDOM.unmountComponentAtNode(div)
