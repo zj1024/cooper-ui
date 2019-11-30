@@ -1,0 +1,32 @@
+@import '../style/variable';
+.coo-loading-container {
+  position: relative;
+  display: inline-block;
+}
+.coo-loading-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.coo-loading-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+}
+.coo-loading-mask-dark {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+// 通过修改color值改变loading的颜色
+.coo-loading {
+  font-size: 55px;
+  color: $color-primary;
+  border-radius: 50%;
+  transform: rotate(360deg);
+  animation: loading-rotate 4s infinite linear;
+}

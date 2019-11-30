@@ -35,9 +35,6 @@ const Message: MessageFC = (props: Props) => {
   // 创建每个message的wrapper
   const div = document.createElement('div')
   div.setAttribute('class', classnames(wrapperClassName, enterClassName))
-  setTimeout(() => {
-    // div.classList.add(enterClassName)
-  }, 280)
 
   let containerDOM = document.querySelector(`.${containerClassName}`)
   if (!containerDOM) {
@@ -46,18 +43,6 @@ const Message: MessageFC = (props: Props) => {
     document.body.appendChild(containerDOM)
   }
   containerDOM.appendChild(div)
-
-  // TODO: placement === bottom
-  // if (props.placement === 'bottom') {
-  //   const firstMessage = document.querySelectorAll(`.${wrapperClassName}`)[0]
-  //   if (firstMessage) {
-  //     (firstMessage.parentNode as Element).insertBefore(div, firstMessage)
-  //   } else {
-  //     document.body.appendChild(div)
-  //   }
-  // } else {
-  //   document.body.appendChild(div)
-  // }
 
   const _onShowClose = () => {
     destory()
@@ -69,8 +54,6 @@ const Message: MessageFC = (props: Props) => {
 
   const destory = () => {
     div.setAttribute('class', `${wrapperClassName} ${exitClassName}`)
-    // const removeMessageHeight = parseInt(getComputedStyle(div)['height'] as string, 10)
-    // console.log(removeMessageHeight)
     // 过度动画
     setTimeout(() => {
       const isUnmount = ReactDOM.unmountComponentAtNode(div)
