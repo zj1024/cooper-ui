@@ -1,29 +1,40 @@
-.fade-enter {
+.coo-fade-enter {
   opacity: 0;
 }
-.fade-enter-active {
+.coo-fade-enter-active {
   opacity: 1;
   transition: opacity 0.3s;
 }
-.fade-exit {
+.coo-fade-exit {
   opacity: 1;
 }
-.fade-exit-active {
+.coo-fade-exit-active {
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-.message-entrance-enter {
+.coo-message-entrance-enter {
   opacity: 0;
 }
-.message-entrance-enter-active {
+.coo-message-entrance-enter-active {
   opacity: 1;
   transition: opacity 0.3s;
 }
-.message-entrance-exit {
+.coo-message-entrance-exit {
   opacity: 1;
 }
-.message-entrance-exit-active {
+.coo-message-entrance-exit-active {
   opacity: 0;
   transition: opacity 0.3s;
+}
+
+.fade-css-transition-enter {
+  opacity: 1;
+}
+.fade-css-transition-exit {
+  opacity: 0;
+}
+
+.coo-transiton {
+  display: none;
 }

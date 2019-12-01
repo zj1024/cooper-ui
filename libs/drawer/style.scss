@@ -1,0 +1,82 @@
+@mixin exit {
+  transform: translate3d(0, 0, 0);
+}
+
+@mixin left-init {
+  transform: translate3d(-100%, 0, 0);
+}
+
+@mixin right-init {
+  transform: translate3d(100%, 0, 0);
+}
+
+@mixin top-init {
+  transform: translate3d(0, -100%, 0);
+}
+
+@mixin bottom-init {
+  transform: translate3d(0, 100%, 0);
+}
+
+.coo-drawer-mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.coo-drawer-content {
+  position: fixed;
+  display: inline-block;
+  &-left {
+    left: 0;
+    top: 0;
+    height: 100%;
+    @include left-init;
+  }
+  &-left-enter {
+    @include exit;
+  }
+  &-left-exit {
+    @include left-init;
+  }
+  &-right {
+    right: 0;
+    top: 0;
+    height: 100%;
+    @include right-init;
+  }
+  &-right-enter {
+    @include exit;
+  }
+  &-right-exit {
+    @include right-init;
+  }
+  &-top {
+    left: 0;
+    top: 0;
+    width: 100%;
+    @include top-init;
+  }
+  &-top-enter {
+    @include exit;
+  }
+  &-top-exit {
+    @include top-init;
+  }
+  &-bottom {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    @include bottom-init;
+  }
+  &-bottom-enter {
+    @include exit;
+  }
+  &-bottom-exit {
+    @include bottom-init;
+  }
+}

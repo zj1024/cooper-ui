@@ -75,4 +75,9 @@ export default [
     title: 'Loading',
     component: lazy(() => import('../pages/loading')),
   },
+  {
+    path: '/drawer',
+    title: 'Drawer',
+    component: lazy(() => import('../pages/drawer')),
+  },
 ]

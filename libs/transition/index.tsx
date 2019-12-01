@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { CSSTransition } from 'react-transition-group'
+import { CSSTransition as RTGTransition } from 'react-transition-group'
+export { default as CSSTransition } from './css-transition'
 
 import './style.scss'
 
@@ -11,10 +12,10 @@ interface Props {
 }
 
 export default (props: Props) => {
-  const { visible, duration = 300, name = 'fade', children } = props
+  const { visible, duration = 300, name = 'coo-fade', children } = props
   return (
-    <CSSTransition in={visible} timeout={duration} classNames={name} unmountOnExit>
+    <RTGTransition in={visible} timeout={duration} classNames={name} unmountOnExit>
       {children}
-    </CSSTransition>
+    </RTGTransition>
   )
 }
