@@ -1,83 +1,83 @@
-import { lazy } from 'react'
+import loadable from '@loadable/component'
 export default [
   {
     path: '/',
     title: 'Icon',
-    component: lazy(() => import('../pages/icon')),
+    component: loadable(() => import('../pages/icon')),
     exact: true,
   },
   {
     path: '/layout',
     title: 'Layout',
-    component: lazy(() => import('../pages/layout')),
+    component: loadable(() => import('../pages/layout')),
     exact: true,
   },
   {
     path: '/button',
     title: 'Button',
-    component: lazy(() => import('../pages/button')),
+    component: loadable(() => import('../pages/button')),
     exact: true,
   },
   {
     path: '/dialog',
     title: 'Dialog',
-    component: lazy(() => import('../pages/dialog')),
+    component: loadable(() => import('../pages/dialog')),
     exact: true,
   },
   {
     path: '/popover',
     title: 'Popover',
-    component: lazy(() => import('../pages/popover')),
+    component: loadable(() => import('../pages/popover')),
     exact: true,
   },
   {
     path: '/tooltip',
     title: 'Tooltip',
-    component: lazy(() => import('../pages/tooltip')),
+    component: loadable(() => import('../pages/tooltip')),
     exact: true,
   },
   {
     path: '/input',
     title: 'Input',
-    component: lazy(() => import('../pages/input')),
+    component: loadable(() => import('../pages/input')),
     exact: true,
   },
   {
     path: '/foldcard',
     title: 'Foldcard',
-    component: lazy(() => import('../pages/foldcard')),
+    component: loadable(() => import('../pages/foldcard')),
     exact: true,
   },
   {
     path: '/radio',
     title: 'Radio',
-    component: lazy(() => import('../pages/radio')),
+    component: loadable(() => import('../pages/radio')),
     exact: true,
   },
   {
     path: '/checkbox',
     title: 'Checkbox',
-    component: lazy(() => import('../pages/checkbox')),
+    component: loadable(() => import('../pages/checkbox')),
     exact: true,
   },
   {
     path: '/progress',
     title: 'Progress',
-    component: lazy(() => import('../pages/progress')),
+    component: loadable(() => import('../pages/progress')),
   },
   {
     path: '/message',
     title: 'Message',
-    component: lazy(() => import('../pages/message')),
+    component: loadable(() => import('../pages/message')),
   },
   {
     path: '/loading',
     title: 'Loading',
-    component: lazy(() => import('../pages/loading')),
+    component: loadable(() => import('../pages/loading')),
   },
   {
     path: '/drawer',
     title: 'Drawer',
-    component: lazy(() => import('../pages/drawer')),
+    component: loadable(() => import('../pages/drawer')),
   },
 ]

@@ -1,4 +1,4 @@
 module.exports = {
   presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-  plugins: ['syntax-dynamic-import'],
+  plugins: ['@babel/plugin-syntax-dynamic-import'],
 }
