@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Suspense } from 'react'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { ComponentRoutes } from './routes'
 import { Layout } from '../../libs'
@@ -40,11 +41,13 @@ export default () => {
                   </ul>
                 </Aside>
                 <Content>
-                  <Switch>
-                    {ComponentRoutes.map(d => (
-                      <Route key={d.path} exact path={d.path} component={d.component} />
-                    ))}
-                  </Switch>
+                  <Suspense fallback={<div>加载中...</div>}>
+                    <Switch>
+                      {ComponentRoutes.map(d => (
+                        <Route key={d.path} exact path={d.path} component={d.component} />
+                      ))}
+                    </Switch>
+                  </Suspense>
                 </Content>
               </Layout>
             )}
