@@ -1,0 +1,47 @@
+@import '../style/variable';
+.coo-badges-wrapper {
+  position: relative;
+  display: inline-block;
+  .coo-badges {
+    position: absolute;
+    padding: 4px 8px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 15px;
+    &-dot {
+      padding: 4px;
+    }
+    &-default {
+      background: $color-primary;
+    }
+    &-success {
+      background: $color-green;
+    }
+    &-warning {
+      background: $color-yellow;
+    }
+    &-danger {
+      background: $color-red;
+    }
+    &-left-top {
+      left: 0;
+      top: 0;
+      transform: translate3d(-50%, -50%, 0);
+    }
+    &-left-bottom {
+      left: 0;
+      bottom: 0;
+      transform: translate3d(-50%, 50%, 0);
+    }
+    &-right-top {
+      right: 0;
+      top: 0;
+      transform: translate3d(50%, -50%, 0);
+    }
+    &-right-bottom {
+      right: 0;
+      bottom: 0;
+      transform: translate3d(50%, 50%, 0);
+    }
+  }
+}

@@ -80,4 +80,9 @@ export default [
     title: 'Drawer',
     component: loadable(() => import('../pages/drawer')),
   },
+  {
+    path: '/badges',
+    title: 'Badges',
+    component: loadable(() => import('../pages/badges')),
+  },
 ]
