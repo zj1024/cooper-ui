@@ -85,4 +85,9 @@ export default [
     title: 'Badges',
     component: lazy(() => import('../pages/badges')),
   },
+  {
+    path: '/skeleton',
+    title: 'Skeleton',
+    component: lazy(() => import('../pages/skeleton')),
+  },
 ]

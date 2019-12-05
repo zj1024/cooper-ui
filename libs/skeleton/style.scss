@@ -1,0 +1,62 @@
+.coo-skeleton {
+  &.coo-skeleton-has-avatar {
+    .coo-skeleton-title {
+      margin-left: 10px;
+    }
+  }
+  &-row {
+    width: 100%;
+    height: 16px;
+    background: #f2f3f5;
+    margin-top: 10px;
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      width: 60%;
+    }
+  }
+  &-row-one {
+    width: 100%;
+    height: 16px;
+    background: #f2f3f5;
+    margin-top: 10px;
+  }
+  &-avatar-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  &-avatar {
+    background: #f2f3f5;
+  }
+  &-title {
+    width: 40%;
+    height: 22px;
+    background: #f2f3f5;
+  }
+  &-animat {
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      animation: coo-skeleton-animat 1.5s infinite;
+    }
+  }
+}
+
+@keyframes coo-skeleton-animat {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}

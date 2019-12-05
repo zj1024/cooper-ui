@@ -18,7 +18,7 @@
       background: $color-primary;
       border-radius: 20px;
       transform: translateX(-50%);
-      animation: cooBarMove 1s cubic-bezier(0.3, 0.6, 0.8, 0.3) infinite;
+      animation: coo-bar-move 1s cubic-bezier(0.3, 0.6, 0.8, 0.3) infinite;
     }
     &-percent-bar {
       position: relative;
@@ -34,7 +34,7 @@
         width: 0;
         height: 100%;
         background: #fff;
-        animation: cooBarActive 1s linear infinite;
+        animation: coo-bar-active 1s linear infinite;
       }
     }
     &-success,
@@ -46,10 +46,10 @@
       }
     }
     &-success {
-      background: $color-green!important;
+      background: $color-green !important;
     }
     &-error {
-      background: $color-red!important;
+      background: $color-red !important;
     }
     .coo-progress-bar.coo-progress-success,
     .coo-progress-bar.coo-progress-error {
@@ -75,7 +75,7 @@
   }
 }
 
-@keyframes cooBarMove {
+@keyframes coo-bar-move {
   from {
     transform: translateX(-120%);
   }
@@ -84,7 +84,7 @@
   }
 }
 
-@keyframes cooBarActive {
+@keyframes coo-bar-active {
   0% {
     width: 0;
     opacity: 0.1;
