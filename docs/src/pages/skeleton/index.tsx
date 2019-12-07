@@ -31,6 +31,31 @@ export default () => {
           </Foldcard>
         </div>
       </div>
+
+      <div className="flex j-between m-t-50">
+        <div className="w-p-48">
+          <h2 className="text-content">上中下布局</h2>
+          <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
+            <Skeleton loading={true} avatar={true} title={false} row={3} animat={false}>
+              内容
+            </Skeleton>
+          </Foldcard>
+        </div>
+        <div className="w-p-48">
+          <h2 className="text-content">上中下布局</h2>
+          <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
+            <Skeleton
+              loading={true}
+              avatar={true}
+              avatarShape="square"
+              avatarSize="50px"
+              title={true}
+              row={1}>
+              内容
+            </Skeleton>
+          </Foldcard>
+        </div>
+      </div>
     </div>
   )
 }

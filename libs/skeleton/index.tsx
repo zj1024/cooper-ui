@@ -14,6 +14,7 @@ interface Props {
   avatarShape?: string
   avatarSize?: string
   title?: boolean
+  animat?: boolean
 }
 
 const setClass = setPrefixClassName('coo-skeleton')
@@ -28,8 +29,12 @@ const Skeleton: React.FC<Props> = props => {
     avatarShape = 'round',
     avatarSize = '32px',
     title = true,
+    animat = true,
     ...leftProps
   } = props
+
+  const animatClassName = animat ? setClass('animat') : null
+
   return (
     <>
       {loading ? (
@@ -37,7 +42,7 @@ const Skeleton: React.FC<Props> = props => {
           className={classnames(setClass(), className, avatar && setClass('has-avatar'))}
           {...leftProps}>
           {(avatar || title) && (
-            <div className={classnames(setClass('avatar-wrapper'), setClass('animat'))}>
+            <div className={classnames(setClass('avatar-wrapper'), animatClassName)}>
               {avatar && (
                 <div
                   className={setClass('avatar')}
@@ -51,14 +56,12 @@ const Skeleton: React.FC<Props> = props => {
             </div>
           )}
           {row === 1 ? (
-            <div className={classnames(setClass('row-one'), setClass('animat'))}></div>
+            <div className={classnames(setClass('row-one'), animatClassName)}></div>
           ) : (
             Array(row)
               .fill(1)
               .map((_d, i: number) => {
-                return (
-                  <div key={i} className={classnames(setClass('row'), setClass('animat'))}></div>
-                )
+                return <div key={i} className={classnames(setClass('row'), animatClassName)}></div>
               })
           )}
         </div>
