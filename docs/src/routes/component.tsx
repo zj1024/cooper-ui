@@ -90,4 +90,9 @@ export default [
     title: 'Skeleton',
     component: lazy(() => import('../pages/skeleton')),
   },
+  {
+    path: '/card',
+    title: 'Card',
+    component: lazy(() => import('../pages/card')),
+  },
 ]
