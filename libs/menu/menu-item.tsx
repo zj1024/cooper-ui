@@ -9,7 +9,7 @@ export type index = string | number | null
 interface Props {
   className?: string
   index: index
-  _onchange: (index: index) => any
+  _onchange: (index: index) => void
 }
 
 const setClass = setPrefixClassName('coo-menu')

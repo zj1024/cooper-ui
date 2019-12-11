@@ -10,6 +10,7 @@ interface Props {
   className?: string
   bgColor?: string
   activeIndex?: index
+  onSelect?: (params?: any) => any
 }
 
 interface MenuFC extends React.FC<Props> {
@@ -19,15 +20,12 @@ interface MenuFC extends React.FC<Props> {
 const setClass = setPrefixClassName('coo-menu')
 
 const Menu: MenuFC = props => {
-  const { children, className, bgColor, activeIndex, ...leftProps } = props
+  const { children, className, bgColor, activeIndex, onSelect = () => {}, ...leftProps } = props
 
   const [_activeIndex, setActiveIndex] = useState(activeIndex)
 
-  // const _onChangeActiveIndex = (index: number) => {
-  //   setActiveIndex(index)
-  // }
-
   const _onChangeItemActive = (index: index) => {
+    onSelect(index)
     setActiveIndex(index)
   }
 
