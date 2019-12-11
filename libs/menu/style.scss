@@ -1,0 +1,37 @@
+@import '../style/variable';
+.coo-menu {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $color-border;
+  &-item {
+    position: relative;
+    padding: 12px 25px;
+    cursor: pointer;
+    transition: color .3s;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 0;
+      height: 2px;
+      background: transparent;
+      transition: all .3s;
+    }
+    &:hover {
+      color: $color-primary;
+    }
+    &:hover:after {
+      width: 100%;
+      background: $color-primary;
+    }
+  }
+  &-item-active {
+    color: $color-primary;
+    &:after {
+      width: 100%;
+      background: $color-primary;
+    }
+  }
+}

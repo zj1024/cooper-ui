@@ -95,4 +95,9 @@ export default [
     title: 'Card',
     component: lazy(() => import('../pages/card')),
   },
+  {
+    path: '/menu',
+    title: 'Menu',
+    component: lazy(() => import('../pages/menu')),
+  },
 ]

@@ -49,7 +49,7 @@ export default () => {
           <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
             <section className="flex a-center j-between p-20 text-content">
               <Tooltip content="arrow-left">
-                <Icon component={'1'} className="fs-30 cursor-pointer" />
+                {/* <Icon component={'1'} className="fs-30 cursor-pointer" /> */}
               </Tooltip>
             </section>
           </Foldcard>
