@@ -12,7 +12,7 @@ export default () => {
         <div className="w-p-48">
           <h2 className="text-content">上中下布局</h2>
           <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
-            <Menu>
+            <Menu activeIndex="2">
               <MenuItem index="1">导航1</MenuItem>
               <MenuItem index="2">导航2</MenuItem>
               <MenuItem index="3">导航3</MenuItem>

@@ -4,18 +4,24 @@ import { setPrefixClassName } from '../utils'
 
 import './style.scss'
 
+export type index = string | number | null
+
 interface Props {
   className?: string
-  index: string
+  index: index
+  _onchange: (index: index) => any
 }
 
 const setClass = setPrefixClassName('coo-menu')
 
 const MenuItem: React.FC<Props> = props => {
-  const { children, className, ...leftProps } = props
+  const { children, className, _onchange, index, ...leftProps } = props
 
   return (
-    <div className={classnames(setClass('item'), className)} {...leftProps}>
+    <div
+      className={classnames(setClass('item'), className)}
+      onClick={() => _onchange(index)}
+      {...leftProps}>
       {children}
     </div>
   )

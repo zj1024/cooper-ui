@@ -1,7 +1,7 @@
 import * as React from 'react'
-// import { useState } from 'react'
+import { useState } from 'react'
 import classnames from 'classnames'
-import MenuItem from './menu-item'
+import MenuItem, { index } from './menu-item'
 import { setPrefixClassName } from '../utils'
 
 import './style.scss'
@@ -9,6 +9,7 @@ import './style.scss'
 interface Props {
   className?: string
   bgColor?: string
+  activeIndex?: index
 }
 
 interface MenuFC extends React.FC<Props> {
@@ -18,13 +19,17 @@ interface MenuFC extends React.FC<Props> {
 const setClass = setPrefixClassName('coo-menu')
 
 const Menu: MenuFC = props => {
-  const { children, className, bgColor, ...leftProps } = props
+  const { children, className, bgColor, activeIndex, ...leftProps } = props
 
-  // const [activeIndex, setActiveIndex] = useState(0)
+  const [_activeIndex, setActiveIndex] = useState(activeIndex)
 
   // const _onChangeActiveIndex = (index: number) => {
   //   setActiveIndex(index)
   // }
+
+  const _onChangeItemActive = (index: index) => {
+    setActiveIndex(index)
+  }
 
   return (
     <div
@@ -33,8 +38,13 @@ const Menu: MenuFC = props => {
       style={{ background: bgColor }}>
       {React.Children.map(children, (child: React.ReactNode) => {
         const MenuItemEle = child as React.ReactElement
+
         if (MenuItemEle.type && MenuItemEle.type === MenuItem) {
-          console.log(MenuItemEle.props.index)
+          return React.cloneElement(child as React.ReactElement, {
+            // 判断index
+            className: _activeIndex === MenuItemEle.props.index ? setClass('item-active') : '',
+            _onchange: _onChangeItemActive,
+          })
         }
         return child
       })}

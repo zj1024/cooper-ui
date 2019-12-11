@@ -4,16 +4,15 @@ import classNames from 'classnames'
 import './style.scss'
 
 interface Props {
-  name?: string
+  name: string
   className?: string
-  component?: string
   [key: string]: any
 }
 
 const Icon: React.FC<Props> = props => {
   const { name, className, component, ...leftProps } = props
 
-  if (!name && !component) {
+  if (!name) {
     console.warn('Did you forget to assign a value to the name attribute?')
     return null
   }
