@@ -100,4 +100,9 @@ export default [
     title: 'Menu',
     component: lazy(() => import('../pages/menu')),
   },
+  {
+    path: '/collapse',
+    title: 'Collapse',
+    component: lazy(() => import('../pages/collapse')),
+  },
 ]

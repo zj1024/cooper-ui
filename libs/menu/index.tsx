@@ -12,6 +12,7 @@ interface Props {
   className?: string
   align?: string
   activeIndex?: index
+  trigger?: string
   onSelect?: (params?: any) => any
 }
 
@@ -29,6 +30,7 @@ const Menu: MenuFC = props => {
     align = 'left',
     activeIndex,
     onSelect = () => {},
+    trigger = 'hover',
     ...leftProps
   } = props
 
@@ -49,8 +51,10 @@ const Menu: MenuFC = props => {
             hasActiveIndex = true
           }
         })
+
         return React.cloneElement(child, {
           children: _deepJudgeIndex(child.props.children),
+          _trigger: trigger,
           _isActive: hasActiveIndex,
         })
       }
