@@ -31,26 +31,34 @@
       background: $color-primary;
     }
   }
-  &-item-active {
-    color: $color-primary;
-    &:after {
-      width: 100%;
-      background: $color-primary;
-    }
-  }
 }
 
 .coo-menu {
   width: 100%;
   display: flex;
-  align-items: center;
   border-bottom: 1px solid $color-border;
   @include item;
+  &-center {
+    justify-content: center;
+  }
+  &-right {
+    justify-content: flex-end;
+  }
 }
 
 .coo-menu-submenu {
   position: relative;
   @include item;
+  &-item {
+    padding-right: 18px;
+    cursor: default;
+  }
+  // submenu取消下划线
+  .coo-menu-item {
+    &:after {
+      display: none;
+    }
+  }
   &-item-wrapper {
     position: absolute;
     left: 0;
@@ -64,5 +72,14 @@
   }
   &-icon-open {
     transform: rotate(-180deg);
+  }
+}
+
+.coo-menu-item-active,
+.coo-menu-submenu-item-active {
+  color: $color-primary;
+  &:after {
+    width: 100%;
+    background: $color-primary;
   }
 }

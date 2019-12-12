@@ -15,17 +15,22 @@ export default () => {
         <div className="w-p-48">
           <h2 className="text-content">上中下布局</h2>
           <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
-            <Menu activeIndex="2" onSelect={onSelect}>
-              <MenuItem index="1">导航1</MenuItem>
-              <MenuItem index="2">导航2</MenuItem>
-              <MenuItem index="3">导航3</MenuItem>
-              <MenuItem index="4">导航4</MenuItem>
-              <SubMenu index="5" title="导航">
-                <MenuItem index="6">
-                  <a href="https://baidu.com">百度</a>
-                </MenuItem>
-                <MenuItem index="7">submenu2</MenuItem>
-                <MenuItem index="8">submenu3</MenuItem>
+            <Menu activeIndex="101" onSelect={onSelect} align="left">
+              <MenuItem index="1">MenuItem1</MenuItem>
+              <SubMenu index="5" title="测试文本" trigger="click">
+                <MenuItem index="6">MenuItem6</MenuItem>
+                <MenuItem index="7">MenuItem7</MenuItem>
+                <MenuItem index="8">MenuItem8</MenuItem>
+              </SubMenu>
+              <SubMenu index="100" title="导航" trigger="hover">
+                <MenuItem index="101">MenuItem101</MenuItem>
+                <MenuItem index="102">MenuItem102</MenuItem>
+                <MenuItem index="103">MenuItem103</MenuItem>
+                {/* <SubMenu index="200" title="SubMenu100" trigger="hover">
+                  <MenuItem index="201">MenuItem101</MenuItem>
+                  <MenuItem index="202">MenuItem102</MenuItem>
+                  <MenuItem index="203">MenuItem103</MenuItem>
+                </SubMenu> */}
               </SubMenu>
             </Menu>
           </Foldcard>

@@ -9,36 +9,53 @@ import './style.scss'
 
 export type index = string | number | null
 
-interface Props {
+interface PrivateProps {
+  _onchange: (index: index) => void
+  _isActive?: boolean
+}
+
+interface Props extends PrivateProps {
   className?: string
   index: index
   title?: string
-  _onchange: (index: index) => void
+  trigger?: string
 }
 
 const setClass = setPrefixClassName('coo-menu-submenu')
 
 const SubMenu: React.FC<Props> = props => {
-  const { children, className, _onchange, title, index, ...leftProps } = props
+  const {
+    children,
+    className,
+    _onchange,
+    title,
+    index,
+    _isActive,
+    trigger = 'hover',
+    ...leftProps
+  } = props
 
-  const [isOpen, setIsOpen] = useState(true)
-
-  console.log(isOpen)
+  const [isOpen, setIsOpen] = useState(false)
   return (
-    <div className={classnames(setClass(''), className)} {...leftProps}>
-      <div
-        className={setClass('item')}
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}>
+    <div
+      {...{
+        onMouseEnter: trigger === 'hover' ? () => setIsOpen(true) : () => {},
+        onMouseLeave: trigger === 'hover' ? () => setIsOpen(false) : () => {},
+        onClick: trigger === 'click' ? () => setIsOpen(!isOpen) : () => {},
+      }}
+      className={classnames(setClass(''), className)}
+      {...leftProps}>
+      <div className={classnames(setClass('item'), _isActive && setClass('item-active'))}>
         <span>{title}</span>
         <Icon className={classnames(isOpen && setClass('icon-open'))} name="arrow-down" />
       </div>
       <CSSTransition duration={100} visible={isOpen}>
-        <div
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
-          className={classnames(setClass('item-wrapper'))}>
-          {children}
+        <div className={classnames(setClass('item-wrapper'))}>
+          {React.Children.map(children as React.ReactElement, (child: React.ReactElement) => {
+            return React.cloneElement(child, {
+              _closesubmenu: (params: boolean) => setIsOpen(params),
+            })
+          })}
         </div>
       </CSSTransition>
     </div>

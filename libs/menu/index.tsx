@@ -10,7 +10,7 @@ import './style.scss'
 
 interface Props {
   className?: string
-  bgColor?: string
+  align?: string
   activeIndex?: index
   onSelect?: (params?: any) => any
 }
@@ -23,7 +23,14 @@ interface MenuFC extends React.FC<Props> {
 const setClass = setPrefixClassName('coo-menu')
 
 const Menu: MenuFC = props => {
-  const { children, className, bgColor, activeIndex, onSelect = () => {}, ...leftProps } = props
+  const {
+    children,
+    className,
+    align = 'left',
+    activeIndex,
+    onSelect = () => {},
+    ...leftProps
+  } = props
 
   const [_activeIndex, setActiveIndex] = useState(activeIndex)
 
@@ -32,34 +39,44 @@ const Menu: MenuFC = props => {
     setActiveIndex(index)
   }
 
+  const _deepJudgeIndex = (element: React.ReactElement): any => {
+    return React.Children.map(element, (child: React.ReactElement) => {
+      if (child.type && child.type === SubMenu) {
+        let hasActiveIndex = false
+        // 判断当前的submenu子元素是否是active状态
+        React.Children.forEach(child.props.children, (child: React.ReactElement) => {
+          if (child.props.index === _activeIndex) {
+            hasActiveIndex = true
+          }
+        })
+        return React.cloneElement(child, {
+          children: _deepJudgeIndex(child.props.children),
+          _isActive: hasActiveIndex,
+        })
+      }
+
+      if (child.type && child.type === MenuItem) {
+        return React.cloneElement(child as React.ReactElement, {
+          // 判断index
+          className: _activeIndex === child.props.index ? setClass('item-active') : '',
+          _onchange: _onChangeItemActive,
+        })
+      }
+      return child
+    })
+  }
+
   return (
     <div
-      className={classnames(setClass(), className)}
-      {...leftProps}
-      style={{ background: bgColor }}>
-      {React.Children.map(children, (child: React.ReactNode) => {
-        const MenuItemEle = child as React.ReactElement
-
-        if (MenuItemEle.type && MenuItemEle.type === MenuItem) {
-          return React.cloneElement(child as React.ReactElement, {
-            // 判断index
-            className: _activeIndex === MenuItemEle.props.index ? setClass('item-active') : '',
-            _onchange: _onChangeItemActive,
-          })
-        }
-        return child
-      })}
-      {/* {[1, 2, 3, 4].map((d: any, index: number) => (
-        <div
-          className={classnames(setClass('item'), activeIndex === index && setClass('item-active'))}
-          key={d}
-          onClick={() => _onChangeActiveIndex(index)}>
-          <MenuItem>
-            <div>1</div>
-            <div>2</div>
-          </MenuItem>
-        </div>
-      ))} */}
+      className={classnames(
+        setClass(),
+        align === 'left' && setClass('left'),
+        align === 'center' && setClass('center'),
+        align === 'right' && setClass('right'),
+        className,
+      )}
+      {...leftProps}>
+      {children && _deepJudgeIndex(children as React.ReactElement)}
     </div>
   )
 }
