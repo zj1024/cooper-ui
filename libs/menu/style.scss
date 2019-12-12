@@ -1,14 +1,18 @@
 @import '../style/variable';
-.coo-menu {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid $color-border;
+
+@mixin item {
   &-item {
+    display: flex;
+    align-items: center;
     position: relative;
     padding: 12px 25px;
     cursor: pointer;
-    transition: color .3s;
+    transition: color 0.3s;
+    .coo-icon {
+      font-size: 14px;
+      margin-left: 5px;
+      transition: all 0.3s;
+    }
     &:after {
       content: '';
       position: absolute;
@@ -17,7 +21,7 @@
       width: 0;
       height: 2px;
       background: transparent;
-      transition: all .3s;
+      transition: all 0.3s;
     }
     &:hover {
       color: $color-primary;
@@ -33,5 +37,32 @@
       width: 100%;
       background: $color-primary;
     }
+  }
+}
+
+.coo-menu {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $color-border;
+  @include item;
+}
+
+.coo-menu-submenu {
+  position: relative;
+  @include item;
+  &-item-wrapper {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 3;
+    min-width: 100%;
+    display: block;
+    background: $color-white;
+    box-shadow: 0 5px 10px 1px $color-border;
+    border-radius: 3px;
+  }
+  &-icon-open {
+    transform: rotate(-180deg);
   }
 }

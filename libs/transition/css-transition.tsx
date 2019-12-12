@@ -11,6 +11,7 @@ interface Props {
   duration?: number
   children: React.ReactNode
   unmountOnExit?: boolean
+  [key: string]: any
 }
 
 const CSSTransition = (props: Props) => {
@@ -27,33 +28,6 @@ const CSSTransition = (props: Props) => {
   const getClassNames = (mode: string) => {
     return classnames('coo-transiton', className, `${name}-${mode}`)
   }
-  // TODO:
-  // if (unmountOnExit) {
-  //   const { current: div } = transitionRef
-  //   let parentNode: any
-  //   if (div) {
-  //     parentNode = (div as any).parentNode
-  //   }
-  //   if (parentNode && visible) {
-  //     console.log(parentNode.hasChildNodes(div))
-  //   }
-  //   if (visible === false && div) {
-  //     parentNode.removeChild(div)
-  //   }
-  //   return (
-  //     <div
-  //       ref={transitionRef}
-  //       className={classnames(
-  //         setClass(''),
-  //         name,
-  //         visible && `${name}-enter`,
-  //         !visible && `${name}-exit`,
-  //       )}
-  //       style={{ transition: `all ${duration}ms` }}>
-  //       {children}
-  //     </div>
-  //   )
-  // }
 
   if (!animat && visible) {
     Promise.resolve().then(() => {

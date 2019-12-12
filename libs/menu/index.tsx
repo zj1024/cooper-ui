@@ -1,8 +1,10 @@
 import * as React from 'react'
 import { useState } from 'react'
 import classnames from 'classnames'
-import MenuItem, { index } from './menu-item'
 import { setPrefixClassName } from '../utils'
+
+import MenuItem, { index } from './menu-item'
+import SubMenu from './submenu'
 
 import './style.scss'
 
@@ -14,7 +16,8 @@ interface Props {
 }
 
 interface MenuFC extends React.FC<Props> {
-  MenuItem: (params: any) => any
+  MenuItem: (params?: any) => any
+  SubMenu: (params?: any) => any
 }
 
 const setClass = setPrefixClassName('coo-menu')
@@ -62,5 +65,6 @@ const Menu: MenuFC = props => {
 }
 
 Menu.MenuItem = MenuItem
+Menu.SubMenu = SubMenu
 
 export default Menu
