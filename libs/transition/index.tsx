@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { CSSTransition as RTGTransition } from 'react-transition-group'
 export { default as CSSTransition } from './css-transition'
+export { default as CollapseTransition } from './collapse-transition'
 
 import './style.scss'
 

@@ -1,0 +1,22 @@
+@import '../style/variable';
+.coo-collapse-item {
+  margin-bottom: 5px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &-title {
+    background: darken($color-white, 5%);
+    border-radius: 3px;
+    padding: 10px;
+    color: $color-title;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      background: darken($color-white, 8%);
+    }
+    > p {
+      margin-left: 10px;
+    }
+  }
+}
