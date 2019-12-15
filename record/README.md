@@ -20,3 +20,11 @@ message: content: 1002
 drawer: children 1001 mask: 1001
 popover: children: 2 content: 3 icon: 1
 tooltip: children: 2 content: 3 icon: 1
+
+# blog
+
+## 2019.12.15 factor
+
+- badges 注释优化 变量排序 支持传入其他 props
+- card 注释优化 变量排序 支持传入其他 props
+- collapse 注释优化 变量排序

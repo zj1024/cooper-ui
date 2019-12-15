@@ -4,10 +4,16 @@ import { setPrefixClassName } from '../utils'
 
 import './style.scss'
 
+/**
+ * @header {React.ReactNode} user content
+ * @shadow {always | hover} card shadow timing of emergence
+ * @any {[key: string]: any} allows the user to set other props automatically
+ */
 interface Props {
   className?: string
   header?: React.ReactNode
   shadow?: string
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-card')

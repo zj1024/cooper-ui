@@ -1,14 +1,14 @@
 @import '../style/variable';
 
 @mixin content {
-  padding: 8px 15px;
   color: $color-content;
+  padding: 8px 15px;
 }
 
 .coo-card {
   display: inline-block;
-  border-radius: 4px;
   border: 1px solid lighten($color-border, 5%);
+  border-radius: 4px;
   &-header {
     @include content;
     border-bottom: 1px solid $color-border;
@@ -20,8 +20,8 @@
     box-shadow: 0 2px 10px 1px $color-border;
   }
   &-hover-shadow {
-    transition: box-shadow .3s;
     box-shadow: none;
+    transition: box-shadow .3s;
     &:hover {
       box-shadow: 0 2px 10px 1px $color-border;
     }

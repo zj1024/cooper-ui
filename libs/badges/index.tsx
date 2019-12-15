@@ -4,16 +4,23 @@ import { setPrefixClassName } from '../utils'
 
 import './style.scss'
 
-// 'default', 'success', 'warning', 'danger'
-// placement left-top left-bottom right-top right-bottom
+/**
+ * @type {default | success | warning | danger} badges color
+ * @placement {left-top | left-bottom | right-top | right-bottom} badges position
+ * @bgColor {string} user custom set badges background color
+ * @color {string} user custom set badges font color
+ * @dot {boolean} badges only has a dot not have text
+ * @any {[key: string]: any} allows the user to set other props automatically
+ */
 interface Props {
   className?: string
-  badgeContent?: number | string
   type?: string
+  placement?: string
+  badgeContent?: number | string
   bgColor?: string
   color?: string
-  placement?: string
   dot?: boolean
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-badges')

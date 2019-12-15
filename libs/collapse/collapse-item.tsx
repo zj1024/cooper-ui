@@ -7,41 +7,57 @@ import Icon from '../icon'
 
 import './style.scss'
 
-export type index = string | number | null
-
+/**
+ * private props, passed through the parent component and parent in control
+ * @name {string} unique sign
+ * @contentvisible {boolean} expanded
+ * @onClick {(name: string, visible: boolean) => void} pass the item new state to the parent
+ */
 interface PrivateProps {
-  contentvisible?: boolean
-  accordionfn?: (params?: any) => any
   name?: string
+  contentvisible?: boolean
+  onClick?: (name: string, visible: boolean) => void
 }
 
+/**
+ * @title {string} collpase item title
+ * @any {[key: string]: any} allows the user to set other props automatically
+ */
 interface Props extends PrivateProps {
   className?: string
   title: string
-  onClick?: (name: string, visible: boolean) => void
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-collapse-item')
 
 const CollapseItem: React.FC<Props> = props => {
-  const { contentvisible, children, name = '0', className, title, onClick = () => {} } = props
+  const { children, className, name = '0', contentvisible, title, onClick = () => {} } = props
+
+  // Initialize
+
   const visible = stringEqual(contentvisible, true)
+
+  // Expanded item style
+  const callbackContentStyle = { display: 'block', height: '0' }
+
+  // Initialize done
+
+  // Set init style by visible
   const [contentStyle, setContentStyle] = useState(visible ? ({ display: 'block' } as any) : {})
   const contentRef = useRef(null)
 
-  // 折叠起来的样式
-  const callbackContentStyle = { display: 'block', height: '0' }
-
+  // Gets the height of the element to animate with height
   React.useEffect(() => {
     Promise.resolve().then(() => {
       const contentHeight = getComputedStyle(contentRef.current as any)['height']
-      if (visible === true) {
+      if (visible) {
         setContentStyle({ display: 'block', height: contentHeight })
       }
     })
   }, [])
 
-  // 每次父级传来的visible都会动态添加动画
+  // Set animat by props contentvisible
   React.useEffect(() => {
     if (stringEqual(contentvisible, true) === false) {
       setContentStyle(callbackContentStyle)
@@ -51,29 +67,37 @@ const CollapseItem: React.FC<Props> = props => {
     }
   }, [contentvisible])
 
+  // if animat not done, then clean funciton
   let closeTimer: any
   let openTimer: any
-  const _onTitleClick = () => {
+  const onTitleClick = () => {
     openTimer && clearTimeout(openTimer)
     closeTimer && clearTimeout(closeTimer)
-    // 父组件callback
+
+    // parent onCick callback
     onClick(name, stringEqual(contentvisible, true))
 
     /**
-     * @params {string} contentvisible
-     * 根据父组件传过来的contentvisible判断动画
-     * contentvisible === false 为展开动画, 这里的false是上一次visible值
+     * @param {string} contentvisible
+     * judge animat state by props contentvisible
+     * contentvisible === false is expanded animat, there 'false' is last time state
      */
-    if (stringEqual(contentvisible, true) === false) {
+    if (!stringEqual(contentvisible, true)) {
       setContentStyle({ display: 'block' })
+
+      // setContentStyle is async function, use Promise for wait display = block and animat
       Promise.resolve().then(() => {
         const contentHeight = getComputedStyle(contentRef.current as any)['height']
+
+        // init animat state
         setContentStyle(callbackContentStyle)
         openTimer = setTimeout(() => {
+          // 20ms to ensure that the animation occurs
           setContentStyle({ display: 'block', height: contentHeight })
         }, 20)
       })
     } else {
+      // close animat
       setContentStyle(callbackContentStyle)
       closeTimer = setTimeout(() => {
         setContentStyle({ display: 'none' })
@@ -85,11 +109,11 @@ const CollapseItem: React.FC<Props> = props => {
     <div className={classnames(setClass(''), className)}>
       <div
         className={classnames(setClass('title'), visible && setClass('title-visible'))}
-        onClick={_onTitleClick}>
+        onClick={onTitleClick}>
         <Icon className={setClass('title-icon')} name="arrow-right"></Icon>
         <p>{title}</p>
       </div>
-      <div className={setClass('content')} ref={contentRef} style={contentStyle}>
+      <div ref={contentRef} className={setClass('content')} style={contentStyle}>
         {children}
       </div>
     </div>

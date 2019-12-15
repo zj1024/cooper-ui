@@ -7,10 +7,18 @@ import CollapseItem from './collapse-item'
 
 import './style.scss'
 
+/**
+ * @Item {React.ReactElement} Collapse content
+ */
 interface CollapseFC extends React.FC<Props> {
   Item: (params: any) => any
 }
 
+/**
+ * @accordion {boolean} collapse is accordion mode
+ * @value {number | number[]} collapse initialize the expanded item
+ * @any {[key: string]: any} allows the user to set other props automatically
+ */
 interface Props {
   children: React.ReactElement[]
   className?: string
@@ -24,21 +32,34 @@ const setClass = setPrefixClassName('coo-collapse')
 const Collapse: CollapseFC = props => {
   const { children, className, accordion, value, ...leftProps } = props
 
-  // 对accordion的值做判断设置初始打开的状态
+  // initialize
+
+  /**
+   * collapse initialize the expanded item
+   * @accordion {boolean} if true, value's type is number, else is number[]
+   */
   const activeIndex = accordion ? value || -1 : value || []
   let initActiveItem: { visible: boolean }[] = []
 
+  // if accordion mode
   if (isArray(activeIndex)) {
     for (let i = 0; i < children.length; i++) {
       initActiveItem.push({ visible: (activeIndex as number[]).indexOf(i) > -1 })
     }
   }
 
-  const [activeItem, setActiveItem] = useState(initActiveItem)
+  // initialize done
 
+  // set active by accordion value
+  const [activeItem, setActiveItem] = useState(initActiveItem)
   const [accordActiveItem, setAccordActiveItem] = useState({ name: activeIndex, visible: true })
 
-  const onContentClick = (name: string, visible: boolean) => {
+  /**
+   * onContentClick collapse item click function, control expanded item
+   * @param {string} name item name, unique sign
+   * @param {boolean} visible item expanded state
+   */
+  const onContentClick = (name: string, visible: boolean): void => {
     if (accordion) {
       setAccordActiveItem({ name: +name, visible: !visible })
     } else {
@@ -47,23 +68,24 @@ const Collapse: CollapseFC = props => {
     }
   }
 
-  const _getContentVisible = (index: number): boolean => {
-    if (accordion) {
-      return accordActiveItem.name === index && accordActiveItem.visible === true
-    } else {
-      return activeItem[index].visible
-    }
+  /**
+   * child's expanded state, when activeItem or accordActiveItem changed, it will rerender to get
+   * @param {number} index
+   */
+  const getContentVisible = (index: number): boolean => {
+    return accordion
+      ? accordActiveItem.name === index && accordActiveItem.visible === true
+      : activeItem[index].visible
   }
 
   return (
     <div className={classnames(setClass(), className)} {...leftProps}>
-      {/* 遍历子节点，用来控制展开状态 */}
+      {/* control expanded item state */}
       {React.Children.map(children as React.ReactElement, (child, index) => {
-        const contentVisible = _getContentVisible(index)
         return React.cloneElement(child, {
           name: index.toString(),
           key: index,
-          contentvisible: `${contentVisible}`,
+          contentvisible: getContentVisible(index),
           onClick: onContentClick,
         })
       })}

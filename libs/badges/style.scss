@@ -1,12 +1,13 @@
 @import '../style/variable';
+
 .coo-badges-wrapper {
   position: relative;
   display: inline-block;
   .coo-badges {
     position: absolute;
-    padding: 4px 8px;
     color: #fff;
     font-size: 12px;
+    padding: 4px 8px;
     border-radius: 15px;
     &-dot {
       padding: 4px;
