@@ -15,13 +15,12 @@ interface CollapseFC extends React.FC<Props> {
 }
 
 /**
- * @accordion {boolean} collapse is accordion mode
- * @value {number | number[]} collapse initialize the expanded item
- * @any {[key: string]: any} allows the user to set other props automatically
+ * @prop {boolean} accordion collapse is accordion mode
+ * @prop {number | number[]} value collapse initialize the expanded item
+ * @prop {[key: string]: any} any allows the user to set other props automatically
  */
 interface Props {
   children: React.ReactElement[]
-  className?: string
   accordion?: boolean
   value?: number | number[]
   [key: string]: any

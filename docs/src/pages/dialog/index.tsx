@@ -60,7 +60,9 @@ export default () => {
           <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
             <Button onClick={() => setVisible(true)}>打开dialog</Button>
             <Dialog visible={visible} onCancel={() => setVisible(false)} onOk={handleOk}>
-              this is body
+              <Button type="primary" onClick={handleAlert}>
+                alert
+              </Button>
             </Dialog>
           </Foldcard>
         </div>

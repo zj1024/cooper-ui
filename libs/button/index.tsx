@@ -2,19 +2,19 @@ import * as React from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
-import Icon from '../icon'
+import { Icon } from '../'
 
 import './style.scss'
 
 /**
- * @type {default | primary | success | warning | danger | info} button type
- * @plain {boolean} button plain style
- * @round {boolean} button style border-radius: 50px
- * @circle {boolean} button style border-radius: 50%
- * @loading {boolean} loading state will have a loading icon
- * @disabled {boolean} button disabled
- * @shadow {boolean} button have a shadow
- * @any {[key: string]: any} allows the user to set other props automatically
+ * @prop {default | primary | success | warning | danger | info} type button type
+ * @prop {boolean} plain button plain style
+ * @prop {boolean} round button style border-radius: 50px
+ * @prop {boolean} circle button style border-radius: 50%
+ * @prop {boolean} loading loading state will have a loading icon
+ * @prop {boolean} disabled button disabled
+ * @prop {boolean} shadow button have a shadow
+ * @prop {[key: string]: any} any allows the user to set other props automatically
  */
 interface Props {
   type?: string

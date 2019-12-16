@@ -4,11 +4,11 @@ import Dialog from './dialog'
 
 // 用户传入的选项
 interface DialogFuncProps {
-  title?: React.ReactElement
-  message: React.ReactElement
+  title?: React.ReactNode
+  width?: string
+  message: React.ReactNode
   okText: string
   cancelText?: string
-  width?: string
   onOk?: (params?: any) => any
   onCancel?: (params?: any) => any
 }

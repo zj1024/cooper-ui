@@ -2,27 +2,43 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import * as ReactDOM from 'react-dom'
 import classnames from 'classnames'
-import { Icon, Button } from '../'
 import { setPrefixClassName } from '../utils'
+
+import { Icon, Button } from '../'
 
 import './style.scss'
 
+/**
+ * @prop {boolean} visible prop passed in by user
+ * @prop {string} width custom dialog content width
+ * @prop {React.ReactNode} header dialog header
+ * @prop {React.ReactNode} footer dialog footer
+ * @prop {string} okText custom ok button text
+ * @prop {string} cancelText custom cancel button text
+ * @prop {boolean} closable dialog the close button in the upper right corner
+ * @prop {boolean} animat dialog open or close animat
+ * @prop {boolean} mask dialog mask
+ * @prop {boolean} maskClosable click mask close dialog
+ * @prop {boolean} lockScroll dialog open state hidden scrollbar
+ * @prop {(params?: any) => void} onOk click ok button callback
+ * @prop {(params?: any) => any} onCancel click cancel button callback
+ * @prop {[key: string]: any} any allows the user to set other props automatically
+ */
 export interface Props {
-  children?: React.ReactNode | string
-  className?: string
   visible: boolean
-  width?: string | number
-  header?: React.ReactNode | string
-  footer?: React.ReactNode | string
+  width?: string
+  header?: React.ReactNode
+  footer?: React.ReactNode
   okText?: string
   cancelText?: string
-  onCancel: (params?: any) => any
-  onOk?: (params?: any) => void
+  cancelable?: boolean
   closable?: boolean
+  animat?: boolean
   mask?: boolean
   maskClosable?: boolean
-  animat?: boolean
-  cancelable?: boolean
+  lockScroll?: boolean
+  onOk?: (params?: any) => void
+  onCancel: (params?: any) => any
   [key: string]: any
 }
 
@@ -36,39 +52,48 @@ interface DialogFC extends React.FC<Props> {
 const setClass = setPrefixClassName('coo-dialog')
 
 const Dialog: DialogFC = props => {
+  /**
+   * @prop {object} style custom style
+   */
   const {
     className = '',
+    children,
     style = {},
     visible = false,
     width,
     header,
     footer,
-    onCancel = () => {},
-    onOk,
-    closable = true,
-    mask = true,
-    maskClosable = true,
-    lockScroll = true,
-    animat = true,
     okText = '确认',
     cancelText = '取消',
     cancelable = true,
+    closable = true,
+    animat = true,
+    mask = true,
+    maskClosable = true,
+    lockScroll = true,
+    onOk = () => {},
+    onCancel = () => {},
+    ...leftProps
   } = props
 
   // maskClosable
   const maskOnClick = () => {
-    if (maskClosable === true) {
+    if (maskClosable) {
       onCancel()
     }
   }
 
-  // The user clicks ok to cancel the callback
-  const _handleCancel = () => {
+  // The user clicks ok or cancel the callback
+  const onDialogCancel = () => {
     onCancel && onCancel()
   }
-  const _handleOk = () => {
+  const onDialogOk = () => {
     onOk ? onOk(onCancel) : onCancel()
   }
+  // TODO:
+  // const close = () => {
+
+  // }
 
   /**
    * closeAnimat
@@ -98,15 +123,18 @@ const Dialog: DialogFC = props => {
         document.body.style.overflow = originBodyOverflow
       }
     }
-  })
+  }, [visible])
 
   return visible ? (
-    <div className={classnames(setClass(), className)} style={{ width, animation, ...style }}>
+    <div
+      className={classnames(setClass(), className)}
+      style={{ width, animation, ...style }}
+      {...leftProps}>
       {closable !== true ? null : (
         <Icon name="close" className={setClass('close')} onClick={onCancel} />
       )}
       {header !== null ? <header className={setClass('header')}>{header || '提示'}</header> : null}
-      <main className={setClass('main')}>{props.children}</main>
+      <main className={setClass('main')}>{children}</main>
       {/* judge footer show or hidden or custom */}
       {footer ? (
         <footer className={setClass('footer')}>{footer}</footer>
@@ -114,13 +142,13 @@ const Dialog: DialogFC = props => {
         <footer className={setClass('footer')}>
           <div className={setClass('footer-button-wrapper')}>
             {cancelable === true ? (
-              <Button className={setClass('footer-button-cancel')} onClick={_handleCancel}>
+              <Button className={setClass('footer-button-cancel')} onClick={onDialogCancel}>
                 {cancelText}
               </Button>
             ) : (
               false
             )}
-            <Button className={setClass('footer-button-ok')} type="primary" onClick={_handleOk}>
+            <Button className={setClass('footer-button-ok')} type="primary" onClick={onDialogOk}>
               {okText}
             </Button>
           </div>

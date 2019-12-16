@@ -29,3 +29,4 @@ tooltip: children: 2 content: 3 icon: 1
 - card 注释优化 变量排序 支持传入其他 props
 - collapse 注释优化 变量排序
 - button docs 注释优化 变量排序
+- dialog
