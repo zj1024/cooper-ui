@@ -2,7 +2,7 @@ import * as React from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
-import { Icon } from '../'
+import Icon from '../icon'
 
 import './style.scss'
 
