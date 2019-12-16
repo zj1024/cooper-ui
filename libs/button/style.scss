@@ -1,53 +1,50 @@
 @import '../style/variable';
 
-// button
+// button default variable
+$color-box-shadow: #bbb;
 $--button-base-padding-v: 8;
 $--button-base-padding-h: 20;
 $--button-disabled-base: #bbb !default;
-// 默认颜色
+
+/**
+ * Several different types set the initial color
+ * @type {default | primary | success | warning | danger | info}
+ */
 $--button-default-color: $color-content;
 $--button-default-bg: $bg-grey;
 $--button-default-border: $bg-grey;
 
-// primary
 $--button-primary-color: $color-white;
 $--button-primary-bg: $color-primary;
 $--button-primary-border: $color-primary;
 
-// warning
-$--button-warning-color: $color-white;
-$--button-warning-bg: $color-yellow;
-$--button-warning-border: $color-yellow;
-
-// success
 $--button-success-color: $color-white;
 $--button-success-bg: $color-green;
 $--button-success-border: $color-green;
 
-// info
-$--button-info-color: $color-white;
-$--button-info-bg: $color-grey;
-$--button-info-border: $color-grey;
+$--button-warning-color: $color-white;
+$--button-warning-bg: $color-yellow;
+$--button-warning-border: $color-yellow;
 
-// danger
 $--button-danger-color: $color-white;
 $--button-danger-bg: $color-red;
 $--button-danger-border: $color-red;
+
+$--button-info-color: $color-white;
+$--button-info-bg: $color-grey;
+$--button-info-border: $color-grey;
 
 .coo-button {
   padding: #{$--button-base-padding-v}px #{$--button-base-padding-h}px;
   border: 1px solid;
   border-radius: 5px;
   outline: none;
-  cursor: pointer;
   transition: all 0.2s;
-  &.has-shadow {
-    box-shadow: 0 5px 10px 0px $color-grey;
-  }
-  &.is-round {
+  cursor: pointer;
+  &-is-round {
     border-radius: 50px;
   }
-  &.is-circle {
+  &-is-circle {
     padding: 12px;
     border-radius: 50%;
   }
@@ -61,6 +58,9 @@ $--button-danger-border: $color-red;
     > svg {
       animation: loadingMove 1s linear infinite;
     }
+  }
+  &-has-shadow {
+    box-shadow: 0 5px 10px 0px $color-box-shadow;
   }
 }
 
@@ -95,16 +95,16 @@ $--button-danger-border: $color-red;
   &.has-shadow:hover,
   &.has-shadow:focus,
   &.has-shadow:visited {
-    box-shadow: 0 3px 10px 0px $color-grey;
+    box-shadow: 0 3px 10px 0px $color-box-shadow;
   }
   &:active {
     background: darken($background-color, 15%);
     border-color: darken($border-color, 15%);
   }
-  &.has-shadow:active {
-    box-shadow: 0 0 10px 0px $color-grey;
+  &.coo-button-has-shadow:active {
+    box-shadow: 0 0 10px 0px $color-box-shadow;
   }
-  &.is-plain {
+  &.coo-button-is-plain {
     color: $background-color;
     background: $color-white;
     border-color: $border-color;
@@ -172,7 +172,7 @@ $--button-danger-border: $color-red;
 }
 
 // for button props = {type: default, isPlain={true}}
-.coo-button-default.is-plain {
+.coo-button-default.coo-button-is-plain {
   color: $color-content;
   background: $bg-white;
   border-color: $color-border;
