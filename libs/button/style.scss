@@ -6,8 +6,8 @@ $--button-base-padding-h: 20;
 $--button-disabled-base: #bbb !default;
 // 默认颜色
 $--button-default-color: $color-content;
-$--button-default-bg: $bg-white;
-$--button-default-border: $color-lightgrey;
+$--button-default-bg: $bg-grey;
+$--button-default-border: $bg-grey;
 
 // primary
 $--button-primary-color: $color-white;
@@ -41,6 +41,9 @@ $--button-danger-border: $color-red;
   outline: none;
   cursor: pointer;
   transition: all 0.2s;
+  &.has-shadow {
+    box-shadow: 0 5px 10px 0px $color-grey;
+  }
   &.is-round {
     border-radius: 50px;
   }
@@ -71,6 +74,7 @@ $--button-danger-border: $color-red;
 }
 
 @mixin button-disabled($color, $background-color, $border-color) {
+  color: lighten($color, 30%);
   background: mix(mix($background-color, $color-white, 40%), $--button-disabled-base, 95%);
   border: mix($border-color, $--button-disabled-base, 10%);
   @if $background-color == $--button-default-bg {
@@ -88,9 +92,17 @@ $--button-danger-border: $color-red;
     background: darken($background-color, 5%);
     border-color: darken($border-color, 5%);
   }
+  &.has-shadow:hover,
+  &.has-shadow:focus,
+  &.has-shadow:visited {
+    box-shadow: 0 3px 10px 0px $color-grey;
+  }
   &:active {
     background: darken($background-color, 15%);
     border-color: darken($border-color, 15%);
+  }
+  &.has-shadow:active {
+    box-shadow: 0 0 10px 0px $color-grey;
   }
   &.is-plain {
     color: $background-color;
@@ -98,12 +110,12 @@ $--button-danger-border: $color-red;
     border-color: $border-color;
     &:hover,
     &:focus {
-      background: darken($background-color, 30%);
-      border-color: darken($border-color, 10%);
+      background: lighten($background-color, 30%);
+      border-color: lighten($border-color, 10%);
     }
     &:active {
-      background: darken($background-color, 40%);
-      border-color: darken($border-color, 20%);
+      background: rgba(lighten($background-color, 30%), 0.1);
+      border-color: rgba(lighten($border-color, 10%), 0.1);
     }
   }
   &:disabled {
@@ -156,5 +168,21 @@ $--button-danger-border: $color-red;
     @if $type == danger {
       @include button-color($--button-danger-color, $--button-danger-bg, $--button-danger-border);
     }
+  }
+}
+
+// for button props = {type: default, isPlain={true}}
+.coo-button-default.is-plain {
+  color: $color-content;
+  background: $bg-white;
+  border-color: $color-border;
+  &:hover,
+  &:focus {
+    background: darken($bg-white, 10%);
+    border-color: darken($color-border, 10%);
+  }
+  &:active {
+    background: darken($bg-white, 5%);
+    border-color: darken($color-border, 5%);
   }
 }

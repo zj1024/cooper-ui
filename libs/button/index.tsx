@@ -4,15 +4,22 @@ import Icon from '../icon'
 import { setPrefixClassName } from '../utils'
 import './style.scss'
 
+/**
+ * @type {default | primary | success | warning | danger | info} button type
+ * @plain {boolean}
+ * @round {string} user custom set badges background color
+ * @color {string} user custom set badges font color
+ * @dot {boolean} badges only has a dot not have text
+ * @any {[key: string]: any} allows the user to set other props automatically
+ */
 interface Props {
-  type?: string // 'default', 'primary', 'success', 'warning', 'danger', 'loading'
-  children?: React.ReactNode
-  className?: string
+  type?: string
   plain?: boolean
   round?: boolean
   circle?: boolean
   loading?: boolean
   disabled?: boolean
+  shadow?: boolean
   [key: string]: any
 }
 
@@ -27,8 +34,8 @@ const Button: React.FC<Props> = ({
   circle = false,
   loading = false,
   disabled = false,
+  shadow = false,
   ...props
-  // TODO: plain
 }) => {
   const getClassName = (hasClassName: boolean | string, className: string) => {
     return hasClassName ? className : ''
@@ -40,6 +47,8 @@ const Button: React.FC<Props> = ({
         setClass(type ? type : 'default'),
         getClassName(round, 'is-round'),
         getClassName(circle, 'is-circle'),
+        getClassName(plain, 'is-plain'),
+        getClassName(shadow, 'has-shadow'),
         className,
       )}
       disabled={disabled}
