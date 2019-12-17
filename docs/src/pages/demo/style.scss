@@ -1,0 +1,13 @@
+.demo-enter {
+  opacity: 1;
+}
+.demo-exit {
+  opacity: 0;
+}
+
+.enter-mode-enter {
+  transform: translateX(0);
+}
+.enter-mode-exit {
+  transform: translateX(-100%);
+}
