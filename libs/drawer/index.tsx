@@ -1,20 +1,32 @@
 import * as React from 'react'
-import { useState } from 'react'
-import { CSSTransition } from '../transition'
+import { useState, useEffect } from 'react'
+// import { CSSTransition } from '../transition'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
 import './style.scss'
 
+/**
+ * @prop {boolean} visible open drawer
+ * @prop {boolean} mask mask under the drawer
+ * @prop {boolean} maskClosable click mask close drawer
+ * @prop {boolean} destroyOnClose remove dom when close drawer TODO:
+ * @prop {string} direction drawer content direction when opened
+ * @prop {string} contentBackground drawer content background
+ * @prop {number} zIndex drawer zIndex for avoid cover other drawer
+ * @prop {(params?: any) => any} onMaskClose callback, click mask close the drawer
+ * @prop {[key: string]: any} any allows the user to set other props automatically
+ */
 interface Props {
-  children: React.ReactElement
   visible: boolean
   mask?: boolean
-  destroyOnClose?: Boolean
-  direction?: string
+  maskClosable?: boolean
+  destroyOnClose?: boolean
+  direction?: 'left' | 'right' | 'top' | 'bottom'
   contentBackground?: string
   zIndex?: number
-  onMaskClose?: (params?: any) => any
+  onCancel: (params?: any) => any
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-drawer')
@@ -24,57 +36,78 @@ const Drawer: React.FC<Props> = props => {
     children,
     visible,
     mask = true,
+    maskClosable = true,
+    destroyOnClose = false,
     direction = 'left',
     contentBackground = '#fff',
-    onMaskClose = () => {},
     zIndex = 1001,
+    onCancel = () => {},
     ...leftProps
   } = props
-  const [contentClassNames, setContentClassNames] = useState('')
-  const contentClassName = (mode: string) => {
-    return classnames(
-      setClass('content'),
-      setClass(`content-${direction}`),
-      setClass(`content-${direction}-${mode}`),
-    )
+
+  const initStyle = {
+    left: {
+      transform: 'translate3d(-100%, 0, 0)',
+    },
+    right: { transform: 'translate3d(100%, 0, 0)' },
+    top: { transform: 'translate3d(0, -100%, 0)' },
+    bottom: { transform: 'translate3d(0, 100%, 0)' },
   }
 
-  if (visible) {
+  const [drawerStyle, setDrawerStyle] = useState({
+    display: 'none',
+    ...initStyle[direction],
+  })
+  const [drawerMaskStyle, setDrawerMaskStyle] = useState({ display: 'none', opacity: 0 })
+
+  const openDrawer = () => {
+    setDrawerMaskStyle({ display: 'block', opacity: 0 })
+    setDrawerStyle({ display: 'inline-block', ...initStyle[direction] })
+
     setTimeout(() => {
-      setContentClassNames(contentClassName('enter'))
+      setDrawerMaskStyle({ display: 'block', opacity: 1 })
+      setDrawerStyle({ display: 'inline-block', transform: 'translate3d(0, 0, 0)' })
     }, 20)
-  } else {
-    Promise.resolve().then(() => {
-      setContentClassNames(contentClassName('exit'))
-    })
   }
 
-  const _onPrevent = (e: any) => {
+  const closeDrawer = () => {
+    setDrawerMaskStyle({ display: 'block', opacity: 0 })
+    setDrawerStyle({ display: 'inline-block', ...initStyle[direction] })
+
+    setTimeout(() => {
+      setDrawerStyle({ display: 'none', ...initStyle[direction] })
+      setDrawerMaskStyle({ display: 'none', opacity: 0 })
+    }, 300)
+  }
+
+  useEffect(() => {
+    visible ? openDrawer() : closeDrawer()
+  }, [visible])
+
+  const onPrevent = (e: { stopPropagation: () => void }) => {
     e.stopPropagation()
   }
 
-  const _onMaskClick = () => {
-    onMaskClose()
+  const onMaskClick = () => {
+    onCancel()
   }
 
   return (
-    <CSSTransition className={setClass('transition')} visible={visible}>
+    <div
+      onClick={onMaskClick}
+      className={classnames(mask && setClass('mask'))}
+      style={{ zIndex, ...drawerMaskStyle }}
+      {...leftProps}>
       <div
-        onClick={_onMaskClick}
-        className={classnames(mask && setClass('mask'))}
-        style={{ zIndex }}
-        {...leftProps}>
-        <div
-          onClick={_onPrevent}
-          className={contentClassNames}
-          style={{
-            transition: zIndex > 1001 ? 'all 0.3s 0.3s' : 'all 0.3s',
-            backgroundColor: contentBackground,
-          }}>
-          {children}
-        </div>
+        onClick={onPrevent}
+        className={classnames(setClass('content'), setClass(`content-${direction}`))}
+        style={{
+          backgroundColor: contentBackground,
+          ...drawerStyle,
+        }}>
+        {children}
       </div>
-    </CSSTransition>
+    </div>
   )
 }
 export default Drawer

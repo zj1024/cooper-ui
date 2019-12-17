@@ -28,25 +28,31 @@ export default () => {
             <Button className="m-l-10" onClick={() => setBottomVisible(true)}>
               底部弹出
             </Button>
-            <Drawer visible={leftVisible} direction="left">
+            <Drawer onCancel={() => setLeftVisible(false)} visible={leftVisible} direction="left">
               <>
                 <div>Hello Drawer Left</div>
                 <Button onClick={() => setLeftVisible(false)}>关闭</Button>
               </>
             </Drawer>
-            <Drawer visible={rightVisible} direction="right">
+            <Drawer
+              onCancel={() => setRightVisible(false)}
+              visible={rightVisible}
+              direction="right">
               <>
                 <div>Hello Drawer Right</div>
                 <Button onClick={() => setRightVisible(false)}>关闭</Button>
               </>
             </Drawer>
-            <Drawer visible={topVisible} direction="top">
+            <Drawer onCancel={() => setTopVisible(false)} visible={topVisible} direction="top">
               <>
                 <div>Hello Drawer Top</div>
                 <Button onClick={() => setTopVisible(false)}>关闭</Button>
               </>
             </Drawer>
-            <Drawer visible={bottomVisible} direction="bottom">
+            <Drawer
+              onCancel={() => setBottomVisible(false)}
+              visible={bottomVisible}
+              direction="bottom">
               <>
                 <div>Hello Drawer Bottom</div>
                 <Button onClick={() => setBottomVisible(false)}>关闭</Button>
@@ -59,7 +65,11 @@ export default () => {
           <h2 className="text-content">设置背景颜色</h2>
           <Foldcard fold={<Codebox source={bgDrawer} />} foldName="展开代码">
             <Button onClick={() => setLeftBgVisible(true)}>自定义背景</Button>
-            <Drawer visible={leftBgVisible} contentBackground="#000" zIndex={1002}>
+            <Drawer
+              onCancel={() => setLeftBgVisible(false)}
+              visible={leftBgVisible}
+              contentBackground="#000"
+              zIndex={1002}>
               <>
                 <div className="text-white">黑色背景</div>
                 <Button onClick={() => setLeftBgVisible(false)}>关闭</Button>
@@ -74,7 +84,11 @@ export default () => {
           <h2 className="text-content">无遮罩层</h2>
           <Foldcard fold={<Codebox source={noneMaskDrawer} />} foldName="展开代码">
             <Button onClick={() => setLeftMaskVisible(true)}>无遮罩层</Button>
-            <Drawer visible={leftMaskVisible} mask={false} contentBackground="#188eee">
+            <Drawer
+              onCancel={() => setLeftMaskVisible(false)}
+              visible={leftMaskVisible}
+              mask={false}
+              contentBackground="#188eee">
               <>
                 <div className="text-white">无遮罩层</div>
                 <Button onClick={() => setLeftMaskVisible(false)}>关闭</Button>
@@ -86,9 +100,7 @@ export default () => {
           <h2 className="text-content">遮罩层点击可关闭</h2>
           <Foldcard fold={<Codebox source={maskCloseDrawer} />} foldName="展开代码">
             <Button onClick={() => setLeftMaskCloseVisible(true)}>遮罩层点击可关闭</Button>
-            <Drawer
-              visible={leftMaskCloseVisible}
-              onMaskClose={() => setLeftMaskCloseVisible(false)}>
+            <Drawer onCancel={() => setLeftMaskCloseVisible(false)} visible={leftMaskCloseVisible}>
               <>
                 <div>遮罩层点击可关闭</div>
                 <Button onClick={() => setLeftBgVisible(true)}>自定义背景</Button>

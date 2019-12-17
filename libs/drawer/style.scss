@@ -26,11 +26,13 @@
   bottom: 0;
   z-index: 1000;
   background: rgba(0, 0, 0, 0.3);
+  transition: all .3s;
 }
 
 .coo-drawer-content {
   position: fixed;
   display: inline-block;
+  transition: all 0.3s;
   &-left {
     left: 0;
     top: 0;

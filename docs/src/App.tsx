@@ -10,7 +10,8 @@ import 'assembly-css/lib/index.scss'
 
 const { Aside, Header, Content } = Layout
 
-export default () => {
+export default (props: any) => {
+  console.log(props)
   return (
     <Router>
       <Layout className="h-full">
@@ -29,28 +30,32 @@ export default () => {
         <Content className="flex flex-1">
           <Route exact path="/guide" component={GuidePage} />
           <Route
-            children={() => (
-              <Layout>
-                <Aside className="b-r">
-                  <ul className="text-content">
-                    {ComponentRoutes.map(d => (
-                      <li className="p-20" key={d.path}>
-                        <Link to={d.path}>{d.title}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                </Aside>
-                <Content>
-                  <Suspense fallback={<div>加载中...</div>}>
-                    <Switch>
+            children={({ location }) => {
+              return (
+                <Layout>
+                  <Aside className="b-r">
+                    <ul className="text-content">
                       {ComponentRoutes.map(d => (
-                        <Route key={d.path} exact path={d.path} component={d.component} />
+                        <li
+                          className={`p-20 ${location.pathname === d.path && 'text-yellow'}`}
+                          key={d.path}>
+                          <Link to={d.path}>{d.title}</Link>
+                        </li>
                       ))}
-                    </Switch>
-                  </Suspense>
-                </Content>
-              </Layout>
-            )}
+                    </ul>
+                  </Aside>
+                  <Content>
+                    <Suspense fallback={<div>加载中...</div>}>
+                      <Switch>
+                        {ComponentRoutes.map(d => (
+                          <Route key={d.path} exact path={d.path} component={d.component} />
+                        ))}
+                      </Switch>
+                    </Suspense>
+                  </Content>
+                </Layout>
+              )
+            }}
           />
         </Content>
       </Layout>
