@@ -59,7 +59,11 @@ export default () => {
           <h2>基础Dialog</h2>
           <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
             <Button onClick={() => setVisible(true)}>打开dialog</Button>
-            <Dialog visible={visible} onCancel={() => setVisible(false)} onOk={handleOk}>
+            <Dialog
+              visible={visible}
+              onCancel={() => setVisible(false)}
+              onOk={handleOk}
+              animat={false}>
               <Button type="primary" onClick={handleAlert}>
                 alert
               </Button>
