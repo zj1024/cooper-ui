@@ -2,11 +2,20 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import Dialog from './dialog'
 
-// 用户传入的选项
+/**
+ * @prop {React.ReactNode} title like dialog props header
+ * @prop {React.ReactNode} message like dialog props children
+ * @prop {string} width like dialog props width
+ * @prop {string} okText like dialog props okText
+ * @prop {string} cancelText like dialog props cancelText
+ * @prop {(params?: any) => any} onOk like dialog props onOk
+ * @prop {(params?: any) => any} onCancel like dialog props onCancel
+ *
+ */
 interface DialogFuncProps {
   title?: React.ReactNode
-  width?: string
   message: React.ReactNode
+  width?: string
   okText: string
   cancelText?: string
   onOk?: (params?: any) => any
@@ -39,14 +48,14 @@ const FactoryDialog = (props: DialogFuncProps) => {
   }
   const renderProps = Object.assign(baseConfig, props)
 
-  const _handleCancel = () => {
+  const handleCancel = () => {
     props.onCancel ? props.onCancel(destory) : destory()
   }
 
   const render = (renderProps: PrivateProps) => {
     const { title, message, ...renderLeftProps } = renderProps
     ReactDOM.render(
-      <Dialog {...renderLeftProps} onCancel={_handleCancel} header={title}>
+      <Dialog {...renderLeftProps} onCancel={handleCancel} header={title}>
         {message}
       </Dialog>,
       div,
@@ -76,7 +85,7 @@ Dialog.Alert = (props: DialogFuncProps) => {
     maskClosable: false,
     cancelable: false,
   }
-  return FactoryDialog(Object.assign(props, config))
+  return FactoryDialog({ ...config, ...props })
 }
 
 Dialog.Confirm = (props: DialogFuncProps) => {
@@ -85,12 +94,12 @@ Dialog.Confirm = (props: DialogFuncProps) => {
     closable: false,
     maskClosable: false,
   }
-  return FactoryDialog(Object.assign(config, props))
+  return FactoryDialog({ ...config, ...props })
 }
 
 Dialog.Modal = (props: DialogFuncProps) => {
   const config = {}
-  return FactoryDialog(Object.assign(props, config))
+  return FactoryDialog({ ...config, ...props })
 }
 
 const Alert = Dialog.Alert
