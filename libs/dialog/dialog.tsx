@@ -78,6 +78,9 @@ const Dialog: DialogFC = props => {
     ...leftProps
   } = props
 
+  // animat config
+  const duration = animat ? 3000 : 0
+
   // click mask close dialog
   const maskOnClick = () => maskClosable && onCancel()
 
@@ -107,12 +110,18 @@ const Dialog: DialogFC = props => {
       }
     }
   }, [visible])
-
-  return (
-    <Transition in={visible} timeout={300}>
+  return ReactDOM.createPortal(
+    <Transition
+      in={visible}
+      timeout={{ exit: duration, enter: 0 }}
+      appear={true}
+      mountOnEnter={false}
+      unmountOnExit={false}>
       {state => {
         return (
-          <div className={classnames(setClass('fade'), setClass(`fade-${state}`))}>
+          <div
+            className={classnames(setClass('fade'), setClass(`fade-${state}`))}
+            style={{ transition: `all ${duration}ms` }}>
             <div
               className={classnames(setClass(), className)}
               style={{ width, ...style }}
@@ -146,25 +155,17 @@ const Dialog: DialogFC = props => {
                   </div>
                 </footer>
               ) : null}
-              {/* create portal to close modal */}
-              {mask === true &&
-                ReactDOM.createPortal(
-                  <Transition in={visible} timeout={300}>
-                    {state => {
-                      return (
-                        <div className={classnames(setClass('fade'), setClass(`fade-${state}`))}>
-                          <div onClick={maskOnClick} className={setClass('mask')}></div>
-                        </div>
-                      )
-                    }}
-                  </Transition>,
-                  document.body,
-                )}
             </div>
+            {mask === true && (
+              <div
+                onClick={maskOnClick}
+                className={classnames(setClass('mask'), setClass(`mask-fade-${state}`))}></div>
+            )}
           </div>
         )
       }}
-    </Transition>
+    </Transition>,
+    document.body,
   )
 }
 

@@ -62,9 +62,9 @@
 // animat
 .coo-dialog {
   &-fade {
-    transition: all 0.3s;
+    z-index: 1001;
     &-entering {
-      opacity: 1;
+      opacity: 0;
     }
     &-entered {
       opacity: 1;
@@ -74,6 +74,7 @@
     }
     &-exited {
       opacity: 0;
+      display: none;
     }
   }
 }

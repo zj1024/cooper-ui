@@ -63,7 +63,7 @@ export default () => {
               visible={visible}
               onCancel={() => setVisible(false)}
               onOk={handleOk}
-              animat={false}>
+              animat={true}>
               <Button type="primary" onClick={handleAlert}>
                 alert
               </Button>
