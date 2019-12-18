@@ -58,3 +58,22 @@
     }
   }
 }
+
+// animat
+.coo-dialog {
+  &-fade {
+    transition: all 0.3s;
+    &-entering {
+      opacity: 1;
+    }
+    &-entered {
+      opacity: 1;
+    }
+    &-exiting {
+      opacity: 0;
+    }
+    &-exited {
+      opacity: 0;
+    }
+  }
+}

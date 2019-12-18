@@ -1,12 +1,11 @@
 import * as React from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import * as ReactDOM from 'react-dom'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
 import Icon from '../icon'
 import Button from '../button'
-import { Transition } from 'react-transition-group'
 
 import './style.scss'
 
@@ -78,13 +77,70 @@ const Dialog: DialogFC = props => {
     ...leftProps
   } = props
 
+  // create style only include 'display' and 'opacity' to animat
+  const createStyle = (display: string = 'none', opacity: number = 0) => {
+    return {
+      display,
+      opacity,
+    }
+  }
+
+  // animat style include 'display' and 'opacity'
+  const [animation, setAnimation] = useState(createStyle('none', 0))
+
   // click mask close dialog
-  const maskOnClick = () => maskClosable && onCancel()
+  const maskOnClick = async () => {
+    if (maskClosable) {
+      await closeAnimat()
+      onCancel()
+    }
+  }
+
+  // private funtion to open disalog with animat or not
+  const openAnimat = () => {
+    if (animat) {
+      setAnimation(createStyle('block', 0))
+      setTimeout(() => {
+        setAnimation(createStyle('block', 1))
+      }, 20)
+    } else {
+      setAnimation(createStyle('block', 1))
+    }
+  }
+
+  // private funtion to close disalog with animat or not
+  const closeAnimat = () => {
+    return new Promise(resolve => {
+      if (animat) {
+        setAnimation(createStyle('block', 0))
+        setTimeout(() => {
+          setAnimation(createStyle('none', 0))
+          resolve()
+        }, 300)
+      } else {
+        setAnimation(createStyle('none', 0))
+        resolve()
+      }
+    })
+  }
 
   // The user clicks ok or cancel the callback
-  const onDialogCancel = () => onCancel()
+  const onDialogCancel = async () => {
+    await closeAnimat()
+    onCancel()
+  }
 
-  const onDialogOk = () => (onOk ? onOk(onCancel) : onCancel())
+  const onDialogOk = async () => {
+    if (onOk) {
+      onOk(async () => {
+        await closeAnimat()
+        onCancel()
+      })
+    } else {
+      await closeAnimat()
+      onCancel()
+    }
+  }
 
   /**
    * lockScroll
@@ -93,6 +149,9 @@ const Dialog: DialogFC = props => {
    */
   let originBodyOverflow: string = ''
   useEffect(() => {
+    if (visible) {
+      openAnimat()
+    }
     if (visible && lockScroll === true) {
       const bodyOverflow = window.getComputedStyle(document.body, null)['overflow']
       if (bodyOverflow !== 'hidden') {
@@ -108,64 +167,43 @@ const Dialog: DialogFC = props => {
     }
   }, [visible])
 
-  return (
-    <Transition in={visible} timeout={300}>
-      {state => {
-        return (
-          <div className={classnames(setClass('fade'), setClass(`fade-${state}`))}>
-            <div
-              className={classnames(setClass(), className)}
-              style={{ width, ...style }}
-              {...leftProps}>
-              {closable !== true ? null : (
-                <Icon name="close" className={setClass('close')} onClick={onCancel} />
-              )}
-              {header !== null ? (
-                <header className={setClass('header')}>{header || '提示'}</header>
-              ) : null}
-              <main className={setClass('main')}>{children}</main>
-              {/* judge footer show or hidden or custom */}
-              {footer ? (
-                <footer className={setClass('footer')}>{footer}</footer>
-              ) : footer !== null ? (
-                <footer className={setClass('footer')}>
-                  <div className={setClass('footer-button-wrapper')}>
-                    {cancelable === true ? (
-                      <Button className={setClass('footer-button-cancel')} onClick={onDialogCancel}>
-                        {cancelText}
-                      </Button>
-                    ) : (
-                      false
-                    )}
-                    <Button
-                      className={setClass('footer-button-ok')}
-                      type="primary"
-                      onClick={onDialogOk}>
-                      {okText}
-                    </Button>
-                  </div>
-                </footer>
-              ) : null}
-              {/* create portal to close modal */}
-              {mask === true &&
-                ReactDOM.createPortal(
-                  <Transition in={visible} timeout={300}>
-                    {state => {
-                      return (
-                        <div className={classnames(setClass('fade'), setClass(`fade-${state}`))}>
-                          <div onClick={maskOnClick} className={setClass('mask')}></div>
-                        </div>
-                      )
-                    }}
-                  </Transition>,
-                  document.body,
-                )}
-            </div>
+  return visible ? (
+    <div
+      className={classnames(setClass(), className)}
+      style={{ width, ...animation, ...style }}
+      {...leftProps}>
+      {closable !== true ? null : (
+        <Icon name="close" className={setClass('close')} onClick={onCancel} />
+      )}
+      {header !== null ? <header className={setClass('header')}>{header || '提示'}</header> : null}
+      <main className={setClass('main')}>{children}</main>
+      {/* judge footer show or hidden or custom */}
+      {footer ? (
+        <footer className={setClass('footer')}>{footer}</footer>
+      ) : footer !== null ? (
+        <footer className={setClass('footer')}>
+          <div className={setClass('footer-button-wrapper')}>
+            {cancelable === true ? (
+              <Button className={setClass('footer-button-cancel')} onClick={onDialogCancel}>
+                {cancelText}
+              </Button>
+            ) : (
+              false
+            )}
+            <Button className={setClass('footer-button-ok')} type="primary" onClick={onDialogOk}>
+              {okText}
+            </Button>
           </div>
-        )
-      }}
-    </Transition>
-  )
+        </footer>
+      ) : null}
+      {/* create portal to close modal */}
+      {mask === true &&
+        ReactDOM.createPortal(
+          <div onClick={maskOnClick} className={setClass('mask')} style={{ ...animation }}></div>,
+          document.body,
+        )}
+    </div>
+  ) : null
 }
 
 /**

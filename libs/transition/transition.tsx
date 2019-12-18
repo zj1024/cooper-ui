@@ -13,7 +13,7 @@ interface Props {
   visible: boolean
   name?: string
   duration?: number
-  unmountOnExit?: boolean // TODO:
+  unmountOnExit?: boolean
   transitionStyles?: TransitionStyles
   [key: string]: any
 }
@@ -26,32 +26,50 @@ const Transition = (props: Props) => {
     name = 'fade-css-transition',
     duration = 300,
     unmountOnExit = false,
-    transitionStyles, // TODO:
+    transitionStyles,
     ...leftProps
   } = props
 
-  const [visibleStyle, setVisibleStyle] = useState({ display: 'none' })
-  const [animatClassName, setAnimatClassName] = useState('')
-
+  // 样式
+  const initStyle: any = {}
+  const exitedStyle = { display: 'none' }
+  const enteredStyle = { display: 'block' }
   // 动画
   const animat = duration > 0
+  const transition = animat ? `all ${duration}ms` : ''
 
+  const [visibleStyle, setVisibleStyle] = useState(initStyle)
+  const [animatClassName, setAnimatClassName] = useState('')
+  const [isMount, setIsMount] = useState(visible)
   //  all animat class
   const getClassNames = (mode: string) => {
     return classnames('coo-transiton', className, `${name}-${mode}`)
   }
 
   const openAnimat = () => {
-    setVisibleStyle({ display: 'block' })
+    if (!isMount) {
+      setIsMount(true)
+    }
     setTimeout(() => {
-      setAnimatClassName(getClassNames('enter'))
+      // 为了防止setIsMount异步带来的延迟之行导致下面代码延迟执行
+      setVisibleStyle(enteredStyle)
+      setTimeout(() => {
+        setVisibleStyle({ ...enteredStyle, ...transitionStyles?.entered })
+        setAnimatClassName(getClassNames('enter'))
+      }, 20)
     }, 20)
   }
 
   const closeAnimat = () => {
+    setVisibleStyle({ ...enteredStyle, ...transitionStyles?.exited })
     setAnimatClassName(getClassNames('exit'))
     setTimeout(() => {
-      setVisibleStyle({ display: 'none' })
+      setVisibleStyle(exitedStyle)
+      if (isMount) {
+        setTimeout(() => {
+          setIsMount(false)
+        })
+      }
     }, duration)
   }
 
@@ -59,14 +77,23 @@ const Transition = (props: Props) => {
     visible ? openAnimat() : closeAnimat()
   }, [visible])
 
-  return (
-    <div
-      className={animatClassName}
-      style={{ ...visibleStyle, transition: animat ? `all ${duration}ms` : '' }}
-      {...leftProps}>
-      {children}
-    </div>
-  )
+  const UnMountOnExitDOM = () => {
+    return isMount ? (
+      <div className={animatClassName} style={{ ...visibleStyle, transition }} {...leftProps}>
+        {children}
+      </div>
+    ) : null
+  }
+
+  const MountOnExitDOM = () => {
+    return (
+      <div className={animatClassName} style={{ ...visibleStyle, transition }} {...leftProps}>
+        {children}
+      </div>
+    )
+  }
+
+  return unmountOnExit ? UnMountOnExitDOM() : MountOnExitDOM()
 }
 
 export default Transition
