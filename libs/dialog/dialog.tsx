@@ -22,6 +22,7 @@ import './style.scss'
  * @prop {boolean} mask dialog mask
  * @prop {boolean} maskClosable click mask close dialog
  * @prop {boolean} lockScroll dialog hidden scrollbar when open state
+ * @prop {boolean} destroyOnClose dialog will remove on dom when destroy
  * @prop {(params?: any) => void} onOk click ok button callback
  * @prop {(params?: any) => any} onCancel click cancel button callback
  * @prop {[key: string]: any} any allows the user to set other props automatically
@@ -39,6 +40,7 @@ export interface Props {
   mask?: boolean
   maskClosable?: boolean
   lockScroll?: boolean
+  destroyOnClose?: boolean
   onOk?: (params?: any) => void
   onCancel: (params?: any) => any
   [key: string]: any
@@ -52,6 +54,8 @@ interface DialogFC extends React.FC<Props> {
 }
 
 const setClass = setPrefixClassName('coo-dialog')
+
+export const animatDuration = 300
 
 const Dialog: DialogFC = props => {
   /**
@@ -73,13 +77,21 @@ const Dialog: DialogFC = props => {
     mask = true,
     maskClosable = true,
     lockScroll = true,
+    destroyOnClose = false,
     onOk = () => {},
     onCancel = () => {},
     ...leftProps
   } = props
 
   // animat config
-  const duration = animat ? 3000 : 0
+  const duration = animat ? animatDuration : 0
+
+  //
+  const initZIndex = 1001
+  const allDialog = document.querySelectorAll(`.${setClass()}`)
+  const lastDialog = allDialog[allDialog.length - 1]
+  const lastDialogZIndex = lastDialog && +(getComputedStyle(lastDialog) as any)['z-index']
+  const curDialogZIndex = lastDialogZIndex ? lastDialogZIndex + 1 : initZIndex
 
   // click mask close dialog
   const maskOnClick = () => maskClosable && onCancel()
@@ -87,7 +99,9 @@ const Dialog: DialogFC = props => {
   // The user clicks ok or cancel the callback
   const onDialogCancel = () => onCancel()
 
-  const onDialogOk = () => (onOk ? onOk(onCancel) : onCancel())
+  const onDialogOk = () => {
+    onOk ? onOk(onCancel) : onCancel()
+  }
 
   /**
    * lockScroll
@@ -113,10 +127,10 @@ const Dialog: DialogFC = props => {
   return ReactDOM.createPortal(
     <Transition
       in={visible}
-      timeout={{ exit: duration, enter: 0 }}
+      timeout={{ exit: duration, enter: 0, appear: 0 }}
       appear={true}
-      mountOnEnter={false}
-      unmountOnExit={false}>
+      mountOnEnter={destroyOnClose}
+      unmountOnExit={destroyOnClose}>
       {state => {
         return (
           <div
@@ -124,7 +138,7 @@ const Dialog: DialogFC = props => {
             style={{ transition: `all ${duration}ms` }}>
             <div
               className={classnames(setClass(), className)}
-              style={{ width, ...style }}
+              style={{ width, zIndex: curDialogZIndex, ...style }}
               {...leftProps}>
               {closable !== true ? null : (
                 <Icon name="close" className={setClass('close')} onClick={onCancel} />

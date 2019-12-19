@@ -10,8 +10,7 @@ import 'assembly-css/lib/index.scss'
 
 const { Aside, Header, Content } = Layout
 
-export default (props: any) => {
-  console.log(props)
+export default () => {
   return (
     <Router>
       <Layout className="h-full">

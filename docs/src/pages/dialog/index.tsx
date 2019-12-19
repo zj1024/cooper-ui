@@ -13,7 +13,7 @@ export default () => {
       message: 'test',
       width: '300px',
       onOk: (done: any) => {
-        console.log(1)
+        console.log('docs done:', done)
         done()
       },
     })

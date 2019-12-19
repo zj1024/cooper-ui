@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import Dialog from './dialog'
+import Dialog, { animatDuration } from './dialog'
 
 /**
  * @prop {React.ReactNode} title like dialog props header
@@ -10,11 +10,10 @@ import Dialog from './dialog'
  * @prop {string} cancelText like dialog props cancelText
  * @prop {(params?: any) => any} onOk like dialog props onOk
  * @prop {(params?: any) => any} onCancel like dialog props onCancel
- *
  */
 interface DialogFuncProps {
-  title?: React.ReactNode
-  message: React.ReactNode
+  title?: React.ReactElement
+  message: React.ReactElement
   width?: string
   okText: string
   cancelText?: string
@@ -48,14 +47,14 @@ const FactoryDialog = (props: DialogFuncProps) => {
   }
   const renderProps = Object.assign(baseConfig, props)
 
-  const handleCancel = () => {
+  const _handleCancel = () => {
     props.onCancel ? props.onCancel(destory) : destory()
   }
 
   const render = (renderProps: PrivateProps) => {
     const { title, message, ...renderLeftProps } = renderProps
     ReactDOM.render(
-      <Dialog {...renderLeftProps} onCancel={handleCancel} header={title}>
+      <Dialog {...renderLeftProps} onCancel={_handleCancel} header={title}>
         {message}
       </Dialog>,
       div,
@@ -63,10 +62,13 @@ const FactoryDialog = (props: DialogFuncProps) => {
   }
 
   const destory = () => {
-    const isUnmount = ReactDOM.unmountComponentAtNode(div)
-    if (isUnmount && div.parentNode) {
-      div.parentNode!.removeChild(div)
-    }
+    render({ ...renderProps, ...{ visible: false } })
+    setTimeout(() => {
+      const isUnmount = ReactDOM.unmountComponentAtNode(div)
+      if (isUnmount && div.parentNode) {
+        div.parentNode!.removeChild(div)
+      }
+    }, animatDuration)
   }
 
   const div = document.createElement('div')
@@ -85,7 +87,7 @@ Dialog.Alert = (props: DialogFuncProps) => {
     maskClosable: false,
     cancelable: false,
   }
-  return FactoryDialog({ ...config, ...props })
+  return FactoryDialog(Object.assign(props, config))
 }
 
 Dialog.Confirm = (props: DialogFuncProps) => {
@@ -94,12 +96,12 @@ Dialog.Confirm = (props: DialogFuncProps) => {
     closable: false,
     maskClosable: false,
   }
-  return FactoryDialog({ ...config, ...props })
+  return FactoryDialog(Object.assign(config, props))
 }
 
 Dialog.Modal = (props: DialogFuncProps) => {
   const config = {}
-  return FactoryDialog({ ...config, ...props })
+  return FactoryDialog(Object.assign(props, config))
 }
 
 const Alert = Dialog.Alert
