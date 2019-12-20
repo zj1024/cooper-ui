@@ -22,17 +22,17 @@ export default () => {
       <div className="m-100">
         <div className="m-100">
           <Popover placement="top" content={content}>
-            test
+            <Button type="primary">确认</Button>
           </Popover>
         </div>
         <div className="m-100">
           <Popover placement="bottom" content={content}>
-            test
+            文字
           </Popover>
         </div>
         <div className="m-100">
           <Popover placement="left" content={content}>
-            test
+            <h1>大标题</h1>
           </Popover>
         </div>
         <div className="m-100">
