@@ -1,0 +1,56 @@
+@import '../style/variable';
+
+.coo-divider {
+  width: 100%;
+  white-space: nowrap;
+  display: table;
+  margin: 15px 0;
+  &:before,
+  &:after {
+    content: '';
+    position: relative;
+    top: 50%;
+    width: 50%;
+    height: 1px;
+    border-bottom: 1px solid $color-border;
+    transform: translateY(-50%);
+    display: table-cell;
+  }
+
+  &-left:before {
+    width: 10%;
+  }
+  &-left:after {
+    width: 90%;
+  }
+
+  &-right:before {
+    width: 90%;
+  }
+  &-right:after {
+    width: 10%;
+  }
+
+  &-dashed:before,
+  &-dashed:after {
+    border-bottom: 1px dashed $color-border;
+  }
+
+  &-content {
+    vertical-align: top;
+    color: $color-disabled;
+    font-size: 12px;
+    padding: 0 10px;
+    display: inline-block;
+  }
+  &-vertical {
+    position: relative;
+    top: -0.06em;
+    width: 1px;
+    height: 0.9em;
+    margin: 0 10px;
+    background: $color-border;
+    vertical-align: middle;
+    display: inline-block;
+  }
+}

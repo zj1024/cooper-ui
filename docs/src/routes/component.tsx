@@ -110,4 +110,9 @@ export default [
     title: 'Demo',
     component: lazy(() => import('../pages/demo')),
   },
+  {
+    path: '/divider',
+    title: 'Divider',
+    component: lazy(() => import('../pages/divider')),
+  },
 ]

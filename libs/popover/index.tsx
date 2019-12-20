@@ -6,30 +6,17 @@ import { setPrefixClassName } from '../utils'
 
 import './style.scss'
 
-enum Trigger {
-  hover = 'hover',
-  click = 'click',
-  contextMenu = 'contextMenu',
-}
-
 interface Props {
   className?: string
   placement?: 'top' | 'bottom' | 'left' | 'right'
   content: React.ReactNode
-  trigger?: Trigger
+  trigger?: 'hover' | 'click' | 'contextMenu'
 }
 
 const setClass = setPrefixClassName('coo-popover')
 
 const Popover: React.FC<Props> = props => {
-  const {
-    children,
-    className,
-    placement = 'top',
-    content,
-    trigger = Trigger.hover,
-    ...leftProps
-  } = props
+  const { children, className, placement = 'top', content, trigger = 'hover', ...leftProps } = props
 
   const [visible, setVisible] = useState(false)
 
@@ -39,7 +26,7 @@ const Popover: React.FC<Props> = props => {
     }, 150)
   }
 
-  if (trigger === Trigger.click || trigger === Trigger.contextMenu) {
+  if (trigger === 'click' || trigger === 'contextMenu') {
     useEffect(() => {
       const close = () => handleToggleTooltip(false)
       window.addEventListener('click', close, false)
@@ -65,14 +52,14 @@ const Popover: React.FC<Props> = props => {
   // 在hover事件中，不需要主动触发关闭，clickContentShouldClose对hover事件不作处理
   const onTrigger = {
     // hover trigger
-    onMouseEnter: trigger === Trigger.hover ? () => handleToggleTooltip(true) : undefined,
-    onMouseLeave: trigger === Trigger.hover ? () => handleToggleTooltip(false) : undefined,
-    onClick: trigger === Trigger.click ? onPopoverClick : undefined,
-    onContextMenu: trigger === Trigger.contextMenu ? onPopoverContextMenu : undefined,
+    onMouseEnter: trigger === 'hover' ? () => handleToggleTooltip(true) : undefined,
+    onMouseLeave: trigger === 'hover' ? () => handleToggleTooltip(false) : undefined,
+    onClick: trigger === 'click' ? onPopoverClick : undefined,
+    onContextMenu: trigger === 'contextMenu' ? onPopoverContextMenu : undefined,
   }
 
   const contentOnTrigger = {
-    onClick: Trigger.contextMenu
+    onClick: 'contextMenu'
       ? (e: { stopPropagation: () => void }) => stopClose(false, e)
       : undefined,
   }
