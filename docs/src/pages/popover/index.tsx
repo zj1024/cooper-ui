@@ -6,10 +6,17 @@ const content = (
     <h1 className="text-title">标题</h1>
     <p className="text-content">文本</p>
     <div>
-      <Button style={{ padding: '2px 5px' }} className="fs-12 m-r-5">
+      <Button
+        style={{ padding: '2px 5px' }}
+        className="fs-12 m-r-5"
+        onClick={() => console.log('content 执行')}>
         取消
       </Button>
-      <Button type="primary" style={{ padding: '2px 5px' }} className="fs-12">
+      <Button
+        type="primary"
+        style={{ padding: '2px 5px' }}
+        className="fs-12"
+        onClick={() => console.log('content 执行')}>
         确认
       </Button>
     </div>
