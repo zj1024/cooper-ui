@@ -1,12 +1,11 @@
 import * as React from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import * as ReactDOM from 'react-dom'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
 import Icon from '../icon'
 import Button from '../button'
-import { Transition } from 'react-transition-group'
 
 import './style.scss'
 
@@ -22,7 +21,6 @@ import './style.scss'
  * @prop {boolean} mask dialog mask
  * @prop {boolean} maskClosable click mask close dialog
  * @prop {boolean} lockScroll dialog hidden scrollbar when open state
- * @prop {boolean} destroyOnClose dialog will remove on dom when destroy
  * @prop {(params?: any) => void} onOk click ok button callback
  * @prop {(params?: any) => any} onCancel click cancel button callback
  * @prop {[key: string]: any} any allows the user to set other props automatically
@@ -40,7 +38,6 @@ export interface Props {
   mask?: boolean
   maskClosable?: boolean
   lockScroll?: boolean
-  destroyOnClose?: boolean
   onOk?: (params?: any) => void
   onCancel: (params?: any) => any
   [key: string]: any
@@ -54,8 +51,6 @@ interface DialogFC extends React.FC<Props> {
 }
 
 const setClass = setPrefixClassName('coo-dialog')
-
-export const animatDuration = 300
 
 const Dialog: DialogFC = props => {
   /**
@@ -77,30 +72,74 @@ const Dialog: DialogFC = props => {
     mask = true,
     maskClosable = true,
     lockScroll = true,
-    destroyOnClose = false,
     onOk = () => {},
     onCancel = () => {},
     ...leftProps
   } = props
 
-  // animat config
-  const duration = animat ? animatDuration : 0
+  // create style only include 'display' and 'opacity' to animat
+  const createStyle = (display: string = 'none', opacity: number = 0) => {
+    return {
+      display,
+      opacity,
+    }
+  }
 
-  //
-  const initZIndex = 1001
-  const allDialog = document.querySelectorAll(`.${setClass()}`)
-  const lastDialog = allDialog[allDialog.length - 1]
-  const lastDialogZIndex = lastDialog && +(getComputedStyle(lastDialog) as any)['z-index']
-  const curDialogZIndex = lastDialogZIndex ? lastDialogZIndex + 1 : initZIndex
+  // animat style include 'display' and 'opacity'
+  const [animation, setAnimation] = useState(createStyle('none', 0))
 
   // click mask close dialog
-  const maskOnClick = () => maskClosable && onCancel()
+  const maskOnClick = async () => {
+    if (maskClosable) {
+      await closeAnimat()
+      onCancel()
+    }
+  }
+
+  // private funtion to open disalog with animat or not
+  const openAnimat = () => {
+    if (animat) {
+      setAnimation(createStyle('block', 0))
+      setTimeout(() => {
+        setAnimation(createStyle('block', 1))
+      }, 20)
+    } else {
+      setAnimation(createStyle('block', 1))
+    }
+  }
+
+  // private funtion to close disalog with animat or not
+  const closeAnimat = () => {
+    return new Promise(resolve => {
+      if (animat) {
+        setAnimation(createStyle('block', 0))
+        setTimeout(() => {
+          setAnimation(createStyle('none', 0))
+          resolve()
+        }, 300)
+      } else {
+        setAnimation(createStyle('none', 0))
+        resolve()
+      }
+    })
+  }
 
   // The user clicks ok or cancel the callback
-  const onDialogCancel = () => onCancel()
+  const onDialogCancel = async () => {
+    await closeAnimat()
+    onCancel()
+  }
 
-  const onDialogOk = () => {
-    onOk ? onOk(onCancel) : onCancel()
+  const onDialogOk = async () => {
+    if (onOk) {
+      onOk(async () => {
+        await closeAnimat()
+        onCancel()
+      })
+    } else {
+      await closeAnimat()
+      onCancel()
+    }
   }
 
   /**
@@ -110,6 +149,9 @@ const Dialog: DialogFC = props => {
    */
   let originBodyOverflow: string = ''
   useEffect(() => {
+    if (visible) {
+      openAnimat()
+    }
     if (visible && lockScroll === true) {
       const bodyOverflow = window.getComputedStyle(document.body, null)['overflow']
       if (bodyOverflow !== 'hidden') {
@@ -124,63 +166,44 @@ const Dialog: DialogFC = props => {
       }
     }
   }, [visible])
-  return ReactDOM.createPortal(
-    <Transition
-      in={visible}
-      timeout={{ exit: duration, enter: 0, appear: 0 }}
-      appear={true}
-      mountOnEnter={destroyOnClose}
-      unmountOnExit={destroyOnClose}>
-      {state => {
-        return (
-          <div
-            className={classnames(setClass('fade'), setClass(`fade-${state}`))}
-            style={{ transition: `all ${duration}ms` }}>
-            <div
-              className={classnames(setClass(), className)}
-              style={{ width, zIndex: curDialogZIndex, ...style }}
-              {...leftProps}>
-              {closable !== true ? null : (
-                <Icon name="close" className={setClass('close')} onClick={onCancel} />
-              )}
-              {header !== null ? (
-                <header className={setClass('header')}>{header || '提示'}</header>
-              ) : null}
-              <main className={setClass('main')}>{children}</main>
-              {/* judge footer show or hidden or custom */}
-              {footer ? (
-                <footer className={setClass('footer')}>{footer}</footer>
-              ) : footer !== null ? (
-                <footer className={setClass('footer')}>
-                  <div className={setClass('footer-button-wrapper')}>
-                    {cancelable === true ? (
-                      <Button className={setClass('footer-button-cancel')} onClick={onDialogCancel}>
-                        {cancelText}
-                      </Button>
-                    ) : (
-                      false
-                    )}
-                    <Button
-                      className={setClass('footer-button-ok')}
-                      type="primary"
-                      onClick={onDialogOk}>
-                      {okText}
-                    </Button>
-                  </div>
-                </footer>
-              ) : null}
-            </div>
-            {mask === true && (
-              <div
-                onClick={maskOnClick}
-                className={classnames(setClass('mask'), setClass(`mask-fade-${state}`))}></div>
+
+  return visible ? (
+    <div
+      className={classnames(setClass(), className)}
+      style={{ width, ...animation, ...style }}
+      {...leftProps}>
+      {closable !== true ? null : (
+        <Icon name="close" className={setClass('close')} onClick={onCancel} />
+      )}
+      {header !== null ? <header className={setClass('header')}>{header || '提示'}</header> : null}
+      <main className={setClass('main')}>{children}</main>
+      {/* judge footer show or hidden or custom */}
+      {footer ? (
+        <footer className={setClass('footer')}>{footer}</footer>
+      ) : footer !== null ? (
+        <footer className={setClass('footer')}>
+          <div className={setClass('footer-button-wrapper')}>
+            {cancelable === true ? (
+              <Button className={setClass('footer-button-cancel')} onClick={onDialogCancel}>
+                {cancelText}
+              </Button>
+            ) : (
+              false
             )}
+            <Button className={setClass('footer-button-ok')} type="primary" onClick={onDialogOk}>
+              {okText}
+            </Button>
           </div>
-        )
-      }}
-    </Transition>,
-    document.body,
-  )
+        </footer>
+      ) : null}
+      {/* create portal to close modal */}
+      {mask === true &&
+        ReactDOM.createPortal(
+          <div onClick={maskOnClick} className={setClass('mask')} style={{ ...animation }}></div>,
+          document.body,
+        )}
+    </div>
+  ) : null
 }
 
 /**
