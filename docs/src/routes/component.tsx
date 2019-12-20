@@ -106,11 +106,6 @@ export default [
     component: lazy(() => import('../pages/collapse')),
   },
   {
-    path: '/demo',
-    title: 'Demo',
-    component: lazy(() => import('../pages/demo')),
-  },
-  {
     path: '/divider',
     title: 'Divider',
     component: lazy(() => import('../pages/divider')),
@@ -119,5 +114,15 @@ export default [
     path: '/text-link',
     title: 'TextLink',
     component: lazy(() => import('../pages/text-link')),
+  },
+  {
+    path: '/pagination',
+    title: 'Pagination',
+    component: lazy(() => import('../pages/pagination')),
+  },
+  {
+    path: '/demo',
+    title: 'Demo',
+    component: lazy(() => import('../pages/demo')),
   },
 ]
