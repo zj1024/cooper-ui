@@ -115,4 +115,9 @@ export default [
     title: 'Divider',
     component: lazy(() => import('../pages/divider')),
   },
+  {
+    path: '/text-link',
+    title: 'TextLink',
+    component: lazy(() => import('../pages/text-link')),
+  },
 ]

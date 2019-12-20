@@ -1,0 +1,41 @@
+@import '../style/variable';
+
+$--text-link-disabled-base: #bbb !default;
+
+.coo-text-link {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  &-underline:hover:after {
+    visibility: visible;
+  }
+  &-underline:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px solid;
+    visibility: hidden;
+  }
+}
+
+@each $type, $color in $text-link-types {
+  .coo-text-link-#{$type} {
+    color: $color;
+    &:hover {
+      color: lighten($color, 10%);
+    }
+    &-disabled {
+      cursor: not-allowed;
+      color: mix(mix($color, $color-white, 40%), $--text-link-disabled-base, 95%);
+      &:hover {
+        color: mix(mix($color, $color-white, 40%), $--text-link-disabled-base, 95%);
+      }
+      &:hover:after {
+        border: none;
+      }
+    }
+  }
+}

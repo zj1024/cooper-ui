@@ -62,3 +62,12 @@ $border-colors: (
 ) !default;
 
 $color-types: ('default', 'primary', 'success', 'warning', 'danger', 'loading', 'info') !default;
+
+$text-link-types: (
+  'default': $color-content,
+  'primary': $color-primary,
+  'success': $color-green,
+  'warning': $color-yellow,
+  'danger': $color-red,
+  'info': $color-grey,
+) !default;
