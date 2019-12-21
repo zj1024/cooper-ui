@@ -19,6 +19,7 @@ interface Props {
   pagerCount?: number
   pageCount?: number
   disabled?: boolean
+  hideOnSinglePage?: boolean
   onChange?: (current: number) => void
 }
 
@@ -32,9 +33,14 @@ const Pagination: React.FC<Props> = props => {
     pagerCount = 5,
     pageCount = 0,
     disabled = false,
+    hideOnSinglePage = false,
     onChange = () => {},
     ...leftProps
   } = props
+
+  if (hideOnSinglePage && pageCount === 1) {
+    return null
+  }
 
   // 页码中位数指针
   const pivotIndex = Math.floor(pagerCount / 2)
@@ -53,10 +59,14 @@ const Pagination: React.FC<Props> = props => {
   const [nextEllipsisIcon, setNextEllipsisIcon] = useState('ellipsis')
 
   const onMouseEnter = (type: string) => {
-    type === 'prev' ? setPrevEllipsisIcon('double-left') : setNextEllipsisIcon('double-right')
+    if (!disabled) {
+      type === 'prev' ? setPrevEllipsisIcon('double-left') : setNextEllipsisIcon('double-right')
+    }
   }
   const onMouseLeave = (type: string) => {
-    type === 'prev' ? setPrevEllipsisIcon('ellipsis') : setNextEllipsisIcon('ellipsis')
+    if (!disabled) {
+      type === 'prev' ? setPrevEllipsisIcon('ellipsis') : setNextEllipsisIcon('ellipsis')
+    }
   }
 
   const onItemClick = (current: number) => {
@@ -83,7 +93,7 @@ const Pagination: React.FC<Props> = props => {
   const onMenuClick = (type: string) => {
     if (!disabled) {
       if (type === 'prev') {
-        setPagers(getNewPagers(current - 1))
+        pageCount > pagerCount && setPagers(getNewPagers(current - 1))
         Promise.resolve().then(() => {
           current > 1 && setCurrent(current - 1)
         })
@@ -147,7 +157,7 @@ const Pagination: React.FC<Props> = props => {
         title="上一页">
         <Icon name="arrow-left" />
       </li>
-      {current >= pagerCount && (
+      {current > pagerCount && (
         <>
           <li
             className={classnames(setClass('item'), disabled && setClass('disabled'))}
@@ -181,7 +191,7 @@ const Pagination: React.FC<Props> = props => {
           </li>
         )
       })}
-      {current < pageCount - pivotIndex && (
+      {pageCount > pagerCount && current < pageCount - pivotIndex && (
         <>
           <li
             className={classnames(setClass('item'), disabled && setClass('disabled'))}

@@ -15,16 +15,16 @@ export default () => {
           <h2 className="text-content">上中下布局</h2>
           <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
             <div>
-              <Pagination pageCount={3} onChange={handleChange}></Pagination>
+              <Pagination pageCount={1} onChange={handleChange}></Pagination>
             </div>
             <div>
               <Pagination defaultCurrent={3} pageCount={50} onChange={handleChange}></Pagination>
             </div>
             <div>
-              <Pagination size="small" pageCount={50} onChange={handleChange}></Pagination>
+              <Pagination size="small" pageCount={6} onChange={handleChange}></Pagination>
             </div>
             <div>
-              <Pagination size="large" pageCount={50} onChange={handleChange}></Pagination>
+              <Pagination size="large" pageCount={50000} onChange={handleChange}></Pagination>
             </div>
             <div>
               <Pagination pageCount={50} disabled={true} onChange={handleChange}></Pagination>
