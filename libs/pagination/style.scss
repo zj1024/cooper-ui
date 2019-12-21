@@ -17,6 +17,7 @@ $--coo-pagination-disabled-base: #bbb;
   flex-grow: 0;
   flex-shrink: 0;
   flex-wrap: wrap;
+  user-select: none;
   &-item,
   &-prev,
   &-next {
@@ -25,7 +26,6 @@ $--coo-pagination-disabled-base: #bbb;
     border-radius: 3px;
     background: $bg-grey;
     display: inline-block;
-    user-select: none;
     cursor: pointer;
     &:hover {
       color: $color-primary;
@@ -45,6 +45,9 @@ $--coo-pagination-disabled-base: #bbb;
     .coo-pagination-next {
       @include item(30);
     }
+    .coo-pagination-quick-jumper {
+      font-size: 15px;
+    }
   }
   &-small {
     font-size: 13px;
@@ -53,6 +56,9 @@ $--coo-pagination-disabled-base: #bbb;
     .coo-pagination-next {
       @include item(25);
     }
+    .coo-pagination-quick-jumper {
+      font-size: 13px;
+    }
   }
   &-large {
     font-size: 17px;
@@ -60,6 +66,30 @@ $--coo-pagination-disabled-base: #bbb;
     .coo-pagination-prev,
     .coo-pagination-next {
       @include item(45);
+    }
+    .coo-pagination-quick-jumper {
+      font-size: 17px;
+    }
+  }
+  &-quick-jumper {
+    color: $color-content;
+    margin-left: 10px;
+    &-input {
+      width: 50px;
+      padding: 5px 10px;
+      margin: 0 5px;
+      color: $color-content;
+      border: none;
+      border-radius: 3px;
+      background: $bg-grey;
+      transition: background 0.3s;
+      &:hover {
+        background: darken($bg-grey, 2%);
+      }
+      &:active,
+      &:focus {
+        outline: $color-primary auto 3px;
+      }
     }
   }
   &-disabled {

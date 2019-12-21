@@ -24,10 +24,19 @@ export default () => {
               <Pagination size="small" pageCount={6} onChange={handleChange}></Pagination>
             </div>
             <div>
-              <Pagination size="large" pageCount={50000} onChange={handleChange}></Pagination>
+              <Pagination
+                size="large"
+                defaultCurrent={2999}
+                pageCount={50000}
+                showQuickJumper={true}
+                onChange={handleChange}></Pagination>
             </div>
             <div>
-              <Pagination pageCount={50} disabled={true} onChange={handleChange}></Pagination>
+              <Pagination
+                pageCount={50}
+                disabled={true}
+                onChange={handleChange}
+                showQuickJumper={true}></Pagination>
             </div>
           </Foldcard>
         </div>

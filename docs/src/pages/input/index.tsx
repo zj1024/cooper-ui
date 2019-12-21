@@ -62,6 +62,17 @@ export default () => {
               placeholder="自动获取焦点"></Input>
           </Foldcard>
         </div>
+        <div className="w-p-48">
+          <h2 className="text-content">disabled</h2>
+          <Foldcard fold={<Codebox source={autoFocus}></Codebox>} foldName="展开代码">
+            <Input
+              onChange={autoFocusInputOnChange}
+              value={autoFocusInput}
+              autoFocus={true}
+              disabled={true}
+              placeholder="自动获取焦点"></Input>
+          </Foldcard>
+        </div>
       </div>
     </>
   )

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 import classnames from 'classnames'
-import { setPrefixClassName } from '../utils'
+import { setPrefixClassName, isNumber } from '../utils'
 
 import Icon from '../icon'
 
@@ -20,6 +20,7 @@ interface Props {
   pageCount?: number
   disabled?: boolean
   hideOnSinglePage?: boolean
+  showQuickJumper?: boolean
   onChange?: (current: number) => void
 }
 
@@ -34,6 +35,7 @@ const Pagination: React.FC<Props> = props => {
     pageCount = 0,
     disabled = false,
     hideOnSinglePage = false,
+    showQuickJumper = false,
     onChange = () => {},
     ...leftProps
   } = props
@@ -125,6 +127,29 @@ const Pagination: React.FC<Props> = props => {
     }
     return newPagers
   }
+
+  const [quickJumperValue, setQuickJumperValue] = useState('')
+
+  const onQuickJumperChange = (e: { target: { value: React.SetStateAction<string> } }) => {
+    setQuickJumperValue(e.target.value)
+  }
+
+  const onQuickJumperKeyDown = (e: any) => {
+    if (e.keyCode === 13) {
+      const value = parseInt(e.target.value, 10)
+      if (isNumber(value)) {
+        onItemClick(value)
+      }
+      setQuickJumperValue('')
+    }
+  }
+
+  // defaultCurrent 大于 页码坑位，重新计算页码值
+  useEffect(() => {
+    if (defaultCurrent > pagerCount) {
+      setPagers(getNewPagers(current))
+    }
+  }, [])
 
   // 监听current触发回调
   useEffect(() => {
@@ -218,6 +243,18 @@ const Pagination: React.FC<Props> = props => {
         title="下一页">
         <Icon name="arrow-right" />
       </li>
+      {showQuickJumper && (
+        <li className={classnames(setClass('quick-jumper'), disabled && setClass('disabled'))}>
+          <span>跳至</span>
+          <input
+            className={setClass('quick-jumper-input')}
+            value={quickJumperValue}
+            onChange={onQuickJumperChange}
+            onKeyDown={onQuickJumperKeyDown}
+          />
+          <span>页</span>
+        </li>
+      )}
     </ul>
   )
 }

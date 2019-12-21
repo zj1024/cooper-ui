@@ -15,7 +15,7 @@ export const isBoolean = (value: any) => {
 }
 
 export const isNumber = (value: any) => {
-  return Object.prototype.toString.call(value) === '[object Number]'
+  return Object.prototype.toString.call(value) === '[object Number]' && !Object.is(value, NaN)
 }
 
 export const isArray = (value: any) => {

@@ -1,4 +1,7 @@
 @import '../style/variable';
+
+$--coo-input-disabled-base: #bbb;
+
 .coo-input {
   position: relative;
   display: inline-block;
@@ -20,7 +23,7 @@
   &-field.coo-input-field-allow-clear {
     padding-right: 32px;
   }
-  .coo-input-allow-clear {
+  &-allow-clear.coo-button {
     position: absolute;
     right: 10px;
     top: 50%;
@@ -29,17 +32,24 @@
     font-size: 12px;
     border: none;
     border-radius: 50%;
-    color: #fff;
-    background: lighten($color-content, 20%);
+    color: $color-white;
+    background: lighten($color-content, 40%);
     display: flex;
     justify-content: center;
     align-items: center;
     &:hover {
-      background: lighten($color-content, 10%);
+      background: lighten($color-content, 5%);
     }
     &:focus,
     &:active {
-      background: lighten($color-content, 20%);
+      background: lighten($color-content, 5%);
+    }
+  }
+  &-field-disabled {
+    cursor: not-allowed;
+    background: mix(mix($color-grey, $color-white, 25%), $--coo-input-disabled-base, 95%);
+    &:hover {
+      background: mix(mix($color-grey, $color-white, 25%), $--coo-input-disabled-base, 95%);
     }
   }
 }
