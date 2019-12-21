@@ -7,6 +7,11 @@ import Icon from '../icon'
 
 import './style.scss'
 
+// pagerCount 页码按钮的数量
+// size 组件大小
+// defaultCurrent 默认active
+// pageCount 总页数
+// onChange 点击触发回调
 interface Props {
   className?: string
   size?: 'normal' | 'small' | 'large'
@@ -18,14 +23,9 @@ interface Props {
 }
 
 const setClass = setPrefixClassName('coo-pagination')
-// pagerCount 页码按钮的数量
-// size 组件大小
-// defaultCurrent 默认active
-// pageCount 总页数
-// onChange 点击触发回调
+
 const Pagination: React.FC<Props> = props => {
   const {
-    children,
     className,
     size = 'normal',
     defaultCurrent = 1,
@@ -45,9 +45,32 @@ const Pagination: React.FC<Props> = props => {
 
   const [current, setCurrent] = useState(defaultCurrent)
 
+  // 快速翻页按钮
+  const [prevEllipsisIcon, setPrevEllipsisIcon] = useState('ellipsis')
+  const [nextEllipsisIcon, setNextEllipsisIcon] = useState('ellipsis')
+
+  const onMouseEnter = (type: string) => {
+    type === 'prev' ? setPrevEllipsisIcon('double-left') : setNextEllipsisIcon('double-right')
+  }
+  const onMouseLeave = (type: string) => {
+    type === 'prev' ? setPrevEllipsisIcon('ellipsis') : setNextEllipsisIcon('ellipsis')
+  }
+
   const onItemClick = (current: number) => {
     if (!disabled) {
       pageCount > pagerCount && setPagers(getNewPagers(current))
+      if (current > pageCount) {
+        Promise.resolve().then(() => {
+          setCurrent(pageCount)
+        })
+        return
+      }
+      if (current < 1) {
+        Promise.resolve().then(() => {
+          setCurrent(1)
+        })
+        return
+      }
       Promise.resolve().then(() => {
         setCurrent(current)
       })
@@ -114,6 +137,21 @@ const Pagination: React.FC<Props> = props => {
         title="上一页">
         <Icon name="arrow-left" />
       </li>
+      <li
+        className={classnames(setClass('item'), disabled && setClass('disabled'))}
+        onClick={() => onItemClick(1)}
+        title="1">
+        {1}
+      </li>
+      <li
+        className={classnames(setClass('item'), disabled && setClass('disabled'))}
+        onMouseEnter={() => onMouseEnter('prev')}
+        onMouseLeave={() => onMouseLeave('prev')}
+        onClick={() => onItemClick(current - pagerCount)}
+        title={`向前${pagerCount}页`}>
+        <Icon name={prevEllipsisIcon} />
+      </li>
+
       {pagers.map((d: number) => {
         return (
           <li
@@ -129,6 +167,20 @@ const Pagination: React.FC<Props> = props => {
           </li>
         )
       })}
+      <li
+        className={classnames(setClass('item'), disabled && setClass('disabled'))}
+        onMouseEnter={() => onMouseEnter('next')}
+        onMouseLeave={() => onMouseLeave('next')}
+        onClick={() => onItemClick(current + pagerCount)}
+        title={`向后${pagerCount}页`}>
+        <Icon name={nextEllipsisIcon} />
+      </li>
+      <li
+        className={classnames(setClass('item'), disabled && setClass('disabled'))}
+        onClick={() => onItemClick(pageCount)}
+        title={`${pageCount}`}>
+        {pageCount}
+      </li>
       <li
         className={classnames(
           setClass('next'),
