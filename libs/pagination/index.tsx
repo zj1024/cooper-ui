@@ -36,6 +36,9 @@ const Pagination: React.FC<Props> = props => {
     ...leftProps
   } = props
 
+  // 页码中位数指针
+  const pivotIndex = Math.floor(pagerCount / 2)
+
   // 页码按钮的数量，当总页数超过该值时会折叠
   const initPagers = Array.from(
     Array(pageCount <= pagerCount ? pageCount : pagerCount),
@@ -96,7 +99,6 @@ const Pagination: React.FC<Props> = props => {
 
   // 换页核心方法
   const getNewPagers = (current: number) => {
-    let pivotIndex = Math.floor(pagerCount / 2)
     let pointerPager = current
 
     if (pointerPager < pivotIndex + 1) {
@@ -107,14 +109,22 @@ const Pagination: React.FC<Props> = props => {
       pointerPager = pageCount - pivotIndex
     }
 
-    let templatePagers = []
+    let newPagers = []
     for (let i = 0; i < pagerCount; i++) {
-      templatePagers.push(pointerPager - pivotIndex + i)
+      newPagers.push(pointerPager - pivotIndex + i)
     }
-    return templatePagers
+    return newPagers
   }
 
+  // 监听current触发回调
   useEffect(() => {
+    // 解决快速翻页页码点击状态临界值图标回到省略状态
+    if (current >= pageCount - pivotIndex) {
+      setNextEllipsisIcon('ellipsis')
+    }
+    if (current <= pagerCount) {
+      setPrevEllipsisIcon('ellipsis')
+    }
     onChange(current)
   }, [current])
 
@@ -137,20 +147,24 @@ const Pagination: React.FC<Props> = props => {
         title="上一页">
         <Icon name="arrow-left" />
       </li>
-      <li
-        className={classnames(setClass('item'), disabled && setClass('disabled'))}
-        onClick={() => onItemClick(1)}
-        title="1">
-        {1}
-      </li>
-      <li
-        className={classnames(setClass('item'), disabled && setClass('disabled'))}
-        onMouseEnter={() => onMouseEnter('prev')}
-        onMouseLeave={() => onMouseLeave('prev')}
-        onClick={() => onItemClick(current - pagerCount)}
-        title={`向前${pagerCount}页`}>
-        <Icon name={prevEllipsisIcon} />
-      </li>
+      {current >= pagerCount && (
+        <>
+          <li
+            className={classnames(setClass('item'), disabled && setClass('disabled'))}
+            onClick={() => onItemClick(1)}
+            title="1">
+            {1}
+          </li>
+          <li
+            className={classnames(setClass('item'), disabled && setClass('disabled'))}
+            onMouseEnter={() => onMouseEnter('prev')}
+            onMouseLeave={() => onMouseLeave('prev')}
+            onClick={() => onItemClick(current - pagerCount)}
+            title={`向前${pagerCount}页`}>
+            <Icon name={prevEllipsisIcon} />
+          </li>
+        </>
+      )}
 
       {pagers.map((d: number) => {
         return (
@@ -167,20 +181,24 @@ const Pagination: React.FC<Props> = props => {
           </li>
         )
       })}
-      <li
-        className={classnames(setClass('item'), disabled && setClass('disabled'))}
-        onMouseEnter={() => onMouseEnter('next')}
-        onMouseLeave={() => onMouseLeave('next')}
-        onClick={() => onItemClick(current + pagerCount)}
-        title={`向后${pagerCount}页`}>
-        <Icon name={nextEllipsisIcon} />
-      </li>
-      <li
-        className={classnames(setClass('item'), disabled && setClass('disabled'))}
-        onClick={() => onItemClick(pageCount)}
-        title={`${pageCount}`}>
-        {pageCount}
-      </li>
+      {current < pageCount - pivotIndex && (
+        <>
+          <li
+            className={classnames(setClass('item'), disabled && setClass('disabled'))}
+            onMouseEnter={() => onMouseEnter('next')}
+            onMouseLeave={() => onMouseLeave('next')}
+            onClick={() => onItemClick(current + pagerCount)}
+            title={`向后${pagerCount}页`}>
+            <Icon name={nextEllipsisIcon} />
+          </li>
+          <li
+            className={classnames(setClass('item'), disabled && setClass('disabled'))}
+            onClick={() => onItemClick(pageCount)}
+            title={`${pageCount}`}>
+            {pageCount}
+          </li>
+        </>
+      )}
       <li
         className={classnames(
           setClass('next'),
