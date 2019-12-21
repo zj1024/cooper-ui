@@ -37,13 +37,17 @@ const Pagination: React.FC<Props> = props => {
   } = props
 
   // 页码按钮的数量，当总页数超过该值时会折叠
-  const [pagers, setPagers] = useState(Array.from(Array(pagerCount), (d, i) => (d ? d : i + 1)))
+  const initPagers = Array.from(
+    Array(pageCount <= pagerCount ? pageCount : pagerCount),
+    (pager, index) => (pager ? pager : index + 1),
+  )
+  const [pagers, setPagers] = useState(initPagers)
 
   const [current, setCurrent] = useState(defaultCurrent)
 
   const onItemClick = (current: number) => {
     if (!disabled) {
-      setPagers(getNewPagers(current))
+      pageCount > pagerCount && setPagers(getNewPagers(current))
       Promise.resolve().then(() => {
         setCurrent(current)
       })
@@ -59,7 +63,7 @@ const Pagination: React.FC<Props> = props => {
         })
       }
       if (type === 'next') {
-        setPagers(getNewPagers(current + 1))
+        pageCount > pagerCount && setPagers(getNewPagers(current + 1))
         Promise.resolve().then(() => {
           current < pageCount && setCurrent(current + 1)
         })
