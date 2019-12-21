@@ -1,0 +1,72 @@
+@import '../style/variable';
+
+$--coo-pagination-disabled-base: #bbb;
+
+@mixin item($size) {
+  width: #{$size}px;
+  height: #{$size}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coo-pagination {
+  display: flex;
+  align-items: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  &-item,
+  &-prev,
+  &-next {
+    margin: 5px;
+    color: $color-content;
+    border-radius: 3px;
+    background: $bg-grey;
+    display: inline-block;
+    user-select: none;
+    cursor: pointer;
+    &:hover {
+      color: $color-primary;
+    }
+    &-active {
+      color: $color-white;
+      background: $color-primary;
+      &:hover {
+        color: $color-white;
+      }
+    }
+  }
+  &-normal {
+    font-size: 16px;
+    .coo-pagination-item,
+    .coo-pagination-prev,
+    .coo-pagination-next {
+      @include item(30);
+    }
+  }
+  &-small {
+    font-size: 14px;
+    .coo-pagination-item,
+    .coo-pagination-prev,
+    .coo-pagination-next {
+      @include item(25);
+    }
+  }
+  &-large {
+    font-size: 18px;
+    .coo-pagination-item,
+    .coo-pagination-prev,
+    .coo-pagination-next {
+      @include item(45);
+    }
+  }
+  &-disabled {
+    color: mix(mix($color-grey, $color-white, 40%), $--coo-pagination-disabled-base, 95%);
+    background: mix(mix($bg-grey, $color-white, 40%), $--coo-pagination-disabled-base, 95%);
+    cursor: not-allowed;
+    &:hover {
+      color: mix(mix($color-grey, $color-white, 40%), $--coo-pagination-disabled-base, 95%);
+    }
+  }
+}
