@@ -18,14 +18,14 @@ export default () => {
               <Pagination
                 defaultCurrent={1}
                 defaultPageSize={5}
-                total={12}
+                pageCount={50}
                 onChange={handleChange}></Pagination>
             </div>
             <div>
               <Pagination
-                defaultCurrent={1}
+                defaultCurrent={3}
                 defaultPageSize={5}
-                total={12}
+                pageCount={50}
                 onChange={handleChange}></Pagination>
             </div>
             <div>
@@ -33,7 +33,7 @@ export default () => {
                 size="small"
                 defaultCurrent={1}
                 defaultPageSize={5}
-                total={12}
+                pageCount={50}
                 onChange={handleChange}></Pagination>
             </div>
             <div>
@@ -41,14 +41,14 @@ export default () => {
                 size="large"
                 defaultCurrent={1}
                 defaultPageSize={5}
-                total={12}
+                pageCount={50}
                 onChange={handleChange}></Pagination>
             </div>
             <div>
               <Pagination
                 defaultCurrent={1}
                 defaultPageSize={5}
-                total={12}
+                pageCount={50}
                 disabled={true}
                 onChange={handleChange}></Pagination>
             </div>
