@@ -121,6 +121,11 @@ export default [
     component: lazy(() => import('../pages/pagination')),
   },
   {
+    path: '/tabs',
+    title: 'Tabs',
+    component: lazy(() => import('../pages/tabs')),
+  },
+  {
     path: '/demo',
     title: 'Demo',
     component: lazy(() => import('../pages/demo')),
