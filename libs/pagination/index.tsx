@@ -11,7 +11,6 @@ interface Props {
   className?: string
   size?: 'normal' | 'small' | 'large'
   defaultCurrent?: number
-  defaultPageSize?: number
   pagerCount?: number
   pageCount?: number
   disabled?: boolean
@@ -19,15 +18,18 @@ interface Props {
 }
 
 const setClass = setPrefixClassName('coo-pagination')
-
+// pagerCount 页码按钮的数量
+// size 组件大小
+// defaultCurrent 默认active
+// pageCount 总页数
+// onChange 点击触发回调
 const Pagination: React.FC<Props> = props => {
   const {
     children,
     className,
     size = 'normal',
-    defaultCurrent = 3,
-    defaultPageSize = 5,
-    pagerCount = 7,
+    defaultCurrent = 1,
+    pagerCount = 5,
     pageCount = 0,
     disabled = false,
     onChange = () => {},
@@ -40,16 +42,27 @@ const Pagination: React.FC<Props> = props => {
   const [current, setCurrent] = useState(defaultCurrent)
 
   const onItemClick = (current: number) => {
-    !disabled && setCurrent(current)
+    if (!disabled) {
+      setPagers(getNewPagers(current))
+      Promise.resolve().then(() => {
+        setCurrent(current)
+      })
+    }
   }
 
   const onMenuClick = (type: string) => {
     if (!disabled) {
       if (type === 'prev') {
-        current > 1 && setCurrent(current - 1)
+        setPagers(getNewPagers(current - 1))
+        Promise.resolve().then(() => {
+          current > 1 && setCurrent(current - 1)
+        })
       }
       if (type === 'next') {
-        current < pageCount && setCurrent(current + 1)
+        setPagers(getNewPagers(current + 1))
+        Promise.resolve().then(() => {
+          current < pageCount && setCurrent(current + 1)
+        })
       }
     }
   }
@@ -75,7 +88,6 @@ const Pagination: React.FC<Props> = props => {
   }
 
   useEffect(() => {
-    setPagers(getNewPagers(current))
     onChange(current)
   }, [current])
 
@@ -94,7 +106,8 @@ const Pagination: React.FC<Props> = props => {
           setClass('prev'),
           (current === 1 || disabled) && setClass('disabled'),
         )}
-        onClick={() => onMenuClick('prev')}>
+        onClick={() => onMenuClick('prev')}
+        title="上一页">
         <Icon name="arrow-left" />
       </li>
       {pagers.map((d: number) => {
@@ -106,7 +119,8 @@ const Pagination: React.FC<Props> = props => {
               d === current && setClass('item-active'),
               disabled && setClass('disabled'),
             )}
-            onClick={() => onItemClick(d)}>
+            onClick={() => onItemClick(d)}
+            title={`${d}`}>
             {d}
           </li>
         )
@@ -116,7 +130,8 @@ const Pagination: React.FC<Props> = props => {
           setClass('next'),
           (current === pageCount || disabled) && setClass('disabled'),
         )}
-        onClick={() => onMenuClick('next')}>
+        onClick={() => onMenuClick('next')}
+        title="下一页">
         <Icon name="arrow-right" />
       </li>
     </ul>
