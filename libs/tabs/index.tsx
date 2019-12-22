@@ -24,14 +24,32 @@ const Tabs: TabsFC = props => {
 
   const [tabsWidthList, setTabsWidthList] = useState()
 
-  const [active, setActive] = useState(
-    defaultActiveKey || (children as React.ReactElement[])[0].key || '',
-  )
+  const [tabBarTranslateX, setTabBarTranslateX] = useState(0)
+
+  const [active, setActive] = useState({
+    key: defaultActiveKey || (children as React.ReactElement[])[0].key || '',
+    tab: '',
+  })
+
+  const tabsValue = React.Children.map(children, tab => {
+    const currentTab = tab as React.ReactElement
+    return { key: currentTab.key, tab: currentTab.props.tab }
+  })
+
+  const getCurrentTabActiveIndex = () => {
+    return tabsValue.findIndex(d => d.key === active.key)
+  }
 
   const tabsRef = useRef(null)
-
-  const onTabClick = (key: any) => {
-    setActive(key)
+  const onTabClick = (key: any, tab: string) => {
+    const currentActiveIndex = tabsValue.findIndex(d => d.key === key)
+    const translateX = tabsWidthList
+      .slice(0, currentActiveIndex)
+      .reduce((sum: number, current: string) => {
+        return sum + parseInt(current, 10) + 16
+      }, 0)
+    setTabBarTranslateX(translateX)
+    setActive({ key, tab })
   }
 
   useEffect(() => {
@@ -45,8 +63,6 @@ const Tabs: TabsFC = props => {
       setTabsWidthList(widthList)
     }
   }, [tabsRef])
-
-  console.log(tabsWidthList)
 
   return (
     <div className={classnames(setClass(), className)} {...leftProps}>
@@ -62,16 +78,21 @@ const Tabs: TabsFC = props => {
                 key={key}
                 className={classnames(
                   setClass('tab-item'),
-                  active === key && setClass('tab-item-active'),
+                  active.key === key && setClass('tab-item-active'),
                 )}
-                onClick={() => onTabClick(key)}>
+                onClick={() => onTabClick(key, tab)}>
                 {tab}
               </li>
             )
           }
           return null
         })}
-        <div className={setClass('tab-bar')}></div>
+        <div
+          className={setClass('tab-bar')}
+          style={{
+            width: tabsWidthList && tabsWidthList[getCurrentTabActiveIndex()],
+            transform: `translateX(${tabBarTranslateX}px)`,
+          }}></div>
       </ul>
       <div className={setClass('pane')}>
         {React.Children.map(children, tab => {
@@ -79,7 +100,7 @@ const Tabs: TabsFC = props => {
           if (currentChild.type === TabPane) {
             const key = currentChild.key || ''
             if (destoryOnChange) {
-              if (key === active) {
+              if (active.key === key) {
                 return <div className={setClass('pane-content')}>{tab}</div>
               } else {
                 return null
@@ -88,7 +109,7 @@ const Tabs: TabsFC = props => {
               return (
                 <div
                   className={setClass('pane-content')}
-                  style={{ display: key === active ? 'block' : 'none' }}>
+                  style={{ display: active.key === key ? 'block' : 'none' }}>
                   {tab}
                 </div>
               )

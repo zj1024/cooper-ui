@@ -26,9 +26,10 @@
     &-bar {
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: -1px;
       height: 2px;
-      background: #f05;
+      background: $color-primary;
+      transition: transform 0.3s;
     }
   }
 }
