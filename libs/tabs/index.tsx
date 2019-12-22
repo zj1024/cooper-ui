@@ -22,25 +22,33 @@ const setClass = setPrefixClassName('coo-tabs')
 const Tabs: TabsFC = props => {
   const { children, className, defaultActiveKey, destoryOnChange = false, ...leftProps } = props
 
-  const [tabsWidthList, setTabsWidthList] = useState()
-
-  const [tabBarTranslateX, setTabBarTranslateX] = useState(0)
-
-  const [active, setActive] = useState({
-    key: defaultActiveKey || (children as React.ReactElement[])[0].key || '',
-    tab: '',
-  })
-
+  // 初始化所有的tab，{key, tab}
   const tabsValue = React.Children.map(children, tab => {
     const currentTab = tab as React.ReactElement
     return { key: currentTab.key, tab: currentTab.props.tab }
   })
 
+  // 所有的tab标题宽度
+  const [tabsWidthList, setTabsWidthList] = useState()
+
+  // tab-bar移动的位置
+  const [tabBarTranslateX, setTabBarTranslateX] = useState(0)
+
+  // 当前tab
+  const [active, setActive] = useState({
+    key: defaultActiveKey || (children as React.ReactElement[])[0].key || '',
+    tab: '',
+  })
+
+  // tab包裹层的ref
+  const tabsRef = useRef(null)
+
+  // 获取当前tab的下标
   const getCurrentTabActiveIndex = () => {
     return tabsValue.findIndex(d => d.key === active.key)
   }
 
-  const tabsRef = useRef(null)
+  // 点击设置tabActive和tab-tab index
   const onTabClick = (key: any, tab: string) => {
     const currentActiveIndex = tabsValue.findIndex(d => d.key === key)
     const translateX = tabsWidthList
@@ -53,6 +61,7 @@ const Tabs: TabsFC = props => {
   }
 
   useEffect(() => {
+    // 获取所有tabs的宽度，用来设置tab-bar的transform
     const tabsElement = tabsRef.current as any
     if (tabsElement !== null && tabsElement.children.length > 0) {
       const widthList = Array.prototype.map
@@ -99,6 +108,7 @@ const Tabs: TabsFC = props => {
           const currentChild = tab as React.ReactElement
           if (currentChild.type === TabPane) {
             const key = currentChild.key || ''
+            // 销毁dom
             if (destoryOnChange) {
               if (active.key === key) {
                 return <div className={setClass('pane-content')}>{tab}</div>
@@ -106,6 +116,7 @@ const Tabs: TabsFC = props => {
                 return null
               }
             } else {
+              // 不会销毁dom
               return (
                 <div
                   className={setClass('pane-content')}
