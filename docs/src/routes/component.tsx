@@ -126,6 +126,11 @@ export default [
     component: lazy(() => import('../pages/tabs')),
   },
   {
+    path: '/back-top',
+    title: 'BackTop',
+    component: lazy(() => import('../pages/back-top')),
+  },
+  {
     path: '/demo',
     title: 'Demo',
     component: lazy(() => import('../pages/demo')),

@@ -1,6 +1,7 @@
 import { isString, isNull, isUndefined, isBoolean, isNumber, isArray } from './typeof'
 import setPrefixClassName from './getclass'
 import stringEqual from './stringEqual'
+import throttle from './throttle'
 
 export {
   isString,
@@ -11,4 +12,5 @@ export {
   isArray,
   setPrefixClassName,
   stringEqual,
+  throttle,
 }
