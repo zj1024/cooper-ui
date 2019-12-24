@@ -131,6 +131,11 @@ export default [
     component: lazy(() => import('../pages/back-top')),
   },
   {
+    path: '/image',
+    title: 'Image',
+    component: lazy(() => import('../pages/image')),
+  },
+  {
     path: '/demo',
     title: 'Demo',
     component: lazy(() => import('../pages/demo')),
