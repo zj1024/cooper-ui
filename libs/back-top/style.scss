@@ -12,7 +12,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s;
   transform: scale(0);
   opacity: 0;
   cursor: pointer;
@@ -22,5 +21,8 @@
   &-visible {
     transform: scale(1);
     opacity: 1;
+  }
+  &-animat {
+    transition: all 0.3s;
   }
 }

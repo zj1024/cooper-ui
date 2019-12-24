@@ -36,12 +36,12 @@ export default [
     component: lazy(() => import('../pages/tooltip')),
     exact: true,
   },
-  {
-    path: '/input',
-    title: 'Input',
-    component: lazy(() => import('../pages/input')),
-    exact: true,
-  },
+  // {
+  //   path: '/input',
+  //   title: 'Input',
+  //   component: lazy(() => import('../pages/input')),
+  //   exact: true,
+  // },
   {
     path: '/foldcard',
     title: 'Foldcard',

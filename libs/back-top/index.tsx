@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import * as ReactDOM from 'react-dom'
 import classnames from 'classnames'
 import { setPrefixClassName, throttle } from '../utils'
-console.log(throttle)
 import Icon from '../icon'
 
 import './style.scss'
@@ -12,12 +11,20 @@ interface Props {
   className?: string
   behavior?: 'smooth' | 'auto'
   visibilityHeight?: number
+  animat?: boolean
 }
 
 const setClass = setPrefixClassName('coo-back-top')
 
 const BackTop: React.FC<Props> = props => {
-  const { className, children, behavior = 'smooth', visibilityHeight = 400, ...leftProps } = props
+  const {
+    className,
+    children,
+    behavior = 'smooth',
+    visibilityHeight = 400,
+    animat = true,
+    ...leftProps
+  } = props
 
   const [visible, setVisible] = useState(false)
 
@@ -45,7 +52,12 @@ const BackTop: React.FC<Props> = props => {
     <>
       {ReactDOM.createPortal(
         <div
-          className={classnames(setClass(), visible && setClass('visible'), className)}
+          className={classnames(
+            setClass(),
+            visible && setClass('visible'),
+            animat && setClass('animat'),
+            className,
+          )}
           onClick={onBackTopClick}
           {...leftProps}>
           {children ? children : <Icon name="back-top"></Icon>}
