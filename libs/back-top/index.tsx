@@ -9,6 +9,7 @@ import './style.scss'
 
 interface Props {
   className?: string
+  style?: any
   behavior?: 'smooth' | 'auto'
   visibilityHeight?: number
   animat?: boolean

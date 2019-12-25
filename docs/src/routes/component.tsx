@@ -136,6 +136,11 @@ export default [
     component: lazy(() => import('../pages/image')),
   },
   {
+    path: '/switch',
+    title: 'Switch',
+    component: lazy(() => import('../pages/switch')),
+  },
+  {
     path: '/demo',
     title: 'Demo',
     component: lazy(() => import('../pages/demo')),
