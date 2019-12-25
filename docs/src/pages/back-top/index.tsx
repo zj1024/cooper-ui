@@ -19,7 +19,7 @@ export default () => {
           <h2 className="text-content">关闭动画</h2>
           <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
             <p className="text-content">效果在右下角，滚动页面展示隐藏</p>
-            <BackTop animat={false} />
+            <BackTop style={{ bottom: '100px' }} animat={false} />
           </Foldcard>
         </div>
       </div>
