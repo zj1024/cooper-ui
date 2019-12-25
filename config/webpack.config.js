@@ -1,6 +1,10 @@
 /* eslint-disable */
 
 const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   output: {
@@ -15,28 +19,39 @@ module.exports = {
       src: path.resolve(__dirname, '../docs/src'),
     },
   },
+  optimization: {
+    minimizer: [new OptimizeCssAssetsPlugin({}), new UglifyJsPlugin()],
+    splitChunks: {
+      chunks: 'all',
+      minSize: 30000,
+      maxSize: 0,
+      minChunks: 1,
+      cacheGroups: {
+        main: {
+          test: 'main',
+          name: 'main',
+          enforce: true,
+        },
+      },
+    },
+  },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         include: [path.resolve(__dirname, '../libs'), path.resolve(__dirname, '../docs')],
-        use: [
-          {
-            loader: 'ts-loader',
-          },
-        ],
+        use: ['babel-loader', 'ts-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
+          MiniCssExtractPlugin.loader,
           {
-            loader: 'thread-loader',
+            loader: 'css-loader',
             options: {
-              workerParallelJobs: 2,
+              sourceMap: true,
             },
           },
-          'style-loader',
-          'css-loader',
           'sass-loader',
         ],
       },
@@ -59,4 +74,10 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+    new CleanWebpackPlugin(),
+  ],
 }

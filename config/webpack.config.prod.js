@@ -1,17 +1,11 @@
 /* eslint-disable */
-
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const merge = require('webpack-merge')
 const base = require('./webpack.config')
 const NODE_ENV = 'production'
 
-module.exports = Object.assign({}, base, {
+module.exports = merge(base, {
   mode: NODE_ENV,
   entry: './libs/index.js',
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
   externals: {
     react: {
       commonjs: 'react',
@@ -26,5 +20,4 @@ module.exports = Object.assign({}, base, {
       root: 'ReactDOM',
     },
   },
-  plugins: [new CleanWebpackPlugin()],
 })
