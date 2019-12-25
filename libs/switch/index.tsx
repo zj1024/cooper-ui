@@ -7,19 +7,24 @@ import './style.scss'
 
 interface Props {
   className?: string
+  onChange: (value: boolean) => any
 }
 
 const setClass = setPrefixClassName('coo-switch')
 
 const Switch: React.FC<Props> = props => {
-  const { children, className, ...leftProps } = props
+  const { className, onChange = () => {}, ...leftProps } = props
   const [status, setStatus] = useState(false)
 
-  console.log(status, setStatus)
+  const onSwitchChange = () => {
+    setStatus(!status)
+    onChange(true)
+  }
   return (
-    <div className={classnames(setClass(), className)} {...leftProps}>
-      {children}test
-    </div>
+    <div
+      className={classnames(setClass(), status && setClass('active'), className)}
+      onClick={onSwitchChange}
+      {...leftProps}></div>
   )
 }
 
