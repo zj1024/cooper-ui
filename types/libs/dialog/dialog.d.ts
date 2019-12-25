@@ -1,21 +1,20 @@
 import * as React from 'react'
 import './style.scss'
 export interface Props {
-  children?: React.ReactNode | string
-  className?: string
   visible: boolean
-  width?: string | number
-  header?: React.ReactNode | string
-  footer?: React.ReactNode | string
+  width?: string
+  header?: React.ReactNode
+  footer?: React.ReactNode
   okText?: string
   cancelText?: string
-  onCancel: (params?: any) => any
-  onOk?: (params?: any) => void
+  cancelable?: boolean
   closable?: boolean
+  animat?: boolean
   mask?: boolean
   maskClosable?: boolean
-  animat?: boolean
-  cancelable?: boolean
+  lockScroll?: boolean
+  onOk?: (params?: any) => void
+  onCancel: (params?: any) => any
   [key: string]: any
 }
 interface DialogFC extends React.FC<Props> {
