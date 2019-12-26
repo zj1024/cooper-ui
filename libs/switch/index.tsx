@@ -7,24 +7,47 @@ import './style.scss'
 
 interface Props {
   className?: string
+  style?: any
+  defaultChecked?: boolean
+  checkedChildren?: string | React.ReactNode
+  unCheckedChildren?: string | React.ReactNode
+  size?: string
   onChange: (value: boolean) => any
 }
 
 const setClass = setPrefixClassName('coo-switch')
 
 const Switch: React.FC<Props> = props => {
-  const { className, onChange = () => {}, ...leftProps } = props
-  const [status, setStatus] = useState(false)
+  const {
+    className,
+    defaultChecked = false,
+    checkedChildren,
+    unCheckedChildren,
+    size = 'default',
+    onChange = () => {},
+    ...leftProps
+  } = props
+  const [status, setStatus] = useState(defaultChecked)
 
   const onSwitchChange = () => {
     setStatus(!status)
-    onChange(true)
+    onChange(!status)
   }
+
   return (
     <div
-      className={classnames(setClass(), status && setClass('active'), className)}
+      className={classnames(
+        setClass(),
+        size === 'small' && setClass('small'),
+        status && setClass('active'),
+        status && setClass('checked'),
+        className,
+      )}
       onClick={onSwitchChange}
-      {...leftProps}></div>
+      {...leftProps}>
+      {status ? checkedChildren : unCheckedChildren}
+      <div className={setClass('button')}></div>
+    </div>
   )
 }
 

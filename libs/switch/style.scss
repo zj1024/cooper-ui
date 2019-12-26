@@ -1,14 +1,20 @@
 @import '../style/variable';
 .coo-switch {
   position: relative;
-  display: inline-block;
   width: 44px;
   height: 22px;
-  background: $color-primary;
+  background: #e8e8e8;
   border-radius: 11px;
+  padding: 0 7px;
+  font-size: 12px;
+  color: #fff;
+  line-height: 22px;
+  text-align: right;
+  vertical-align: top;
+  display: inline-block;
+  transition: all 0.3s;
   cursor: pointer;
-  &:after {
-    content: '';
+  &-button {
     position: absolute;
     left: 0;
     top: 50%;
@@ -16,19 +22,40 @@
     height: 18px;
     background: $color-white;
     border-radius: 9px;
-    transform: translate(3px, -50%);
+    box-shadow: 0 0 3px 0 #fff;
+    transform: translate3d(15%, -50%, 0);
     transition: all 0.3s;
   }
-  &:active:after {
+  &-checked {
+    text-align: left;
+  }
+  &:active &-button {
     width: 24px;
   }
   &-active {
-    &:after {
-      transform: translate(23px, -50%);
+    background: $color-primary;
+    .coo-switch-button {
+      left: 100%;
+      transform: translate3d(-115%, -50%, 0);
     }
-    &:active:after {
-      margin-right: auto;
-      transform-origin: right;
+  }
+  > *:not(.coo-switch-button) {
+    width: 12px;
+    height: 12px;
+    margin-top: 5px;
+    > svg {
+      vertical-align: top;
     }
+  }
+}
+
+.coo-switch.coo-switch-small {
+  width: 28px;
+  height: 16px;
+  padding: 0 2px;
+  line-height: 16px;
+  .coo-switch-button {
+    width: 12px;
+    height: 12px;
   }
 }
