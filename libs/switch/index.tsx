@@ -1,18 +1,23 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
+
+import Icon from '../icon'
 
 import './style.scss'
 
 interface Props {
   className?: string
   style?: any
+  checked?: boolean
   defaultChecked?: boolean
   checkedChildren?: string | React.ReactNode
   unCheckedChildren?: string | React.ReactNode
   size?: string
-  onChange: (value: boolean) => any
+  loading?: boolean
+  disabled?: boolean
+  onChange: (params?: any) => any
 }
 
 const setClass = setPrefixClassName('coo-switch')
@@ -20,19 +25,30 @@ const setClass = setPrefixClassName('coo-switch')
 const Switch: React.FC<Props> = props => {
   const {
     className,
+    checked,
     defaultChecked = false,
     checkedChildren,
     unCheckedChildren,
     size = 'default',
+    loading = false,
+    disabled = false,
     onChange = () => {},
     ...leftProps
   } = props
-  const [status, setStatus] = useState(defaultChecked)
+
+  const [status, setStatus] = useState(defaultChecked ? defaultChecked : checked)
 
   const onSwitchChange = () => {
-    setStatus(!status)
-    onChange(!status)
+    if (!disabled && checked === undefined) {
+      setStatus(!status)
+      onChange(!status)
+    }
   }
+
+  useEffect(() => {
+    setStatus(checked)
+    onChange(checked)
+  }, [checked])
 
   return (
     <div
@@ -40,13 +56,16 @@ const Switch: React.FC<Props> = props => {
         setClass(),
         size === 'small' && setClass('small'),
         status && setClass('active'),
-        status && setClass('checked'),
+        disabled && setClass('disabled'),
+        loading && setClass('loading'),
         className,
       )}
       onClick={onSwitchChange}
       {...leftProps}>
       {status ? checkedChildren : unCheckedChildren}
-      <div className={setClass('button')}></div>
+      <div className={setClass('button')}>
+        {loading && <Icon className={setClass('button-loading')} name="loading-spot" />}
+      </div>
     </div>
   )
 }

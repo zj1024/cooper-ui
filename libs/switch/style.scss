@@ -25,14 +25,17 @@
     box-shadow: 0 0 3px 0 #fff;
     transform: translate3d(15%, -50%, 0);
     transition: all 0.3s;
+    &-loading {
+      color: $color-primary;
+      font-size: 18px;
+      opacity: 0.4;
+    }
   }
-  &-checked {
-    text-align: left;
-  }
-  &:active &-button {
+  &:active:not(.coo-switch-disabled) &-button {
     width: 24px;
   }
   &-active {
+    text-align: left;
     background: $color-primary;
     .coo-switch-button {
       left: 100%;
@@ -47,6 +50,14 @@
       vertical-align: top;
     }
   }
+  &.coo-switch-loading {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  &.coo-switch-disabled {
+    background: $bg-grey;
+    cursor: not-allowed;
+  }
 }
 
 .coo-switch.coo-switch-small {
@@ -54,8 +65,14 @@
   height: 16px;
   padding: 0 2px;
   line-height: 16px;
+  &:active:not(.coo-switch-disabled) .coo-switch-button {
+    width: 14px;
+  }
   .coo-switch-button {
     width: 12px;
     height: 12px;
+    &-loading {
+      font-size: 12px;
+    }
   }
 }

@@ -1,12 +1,29 @@
 import * as React from 'react'
-import { Switch, Icon, Foldcard } from '../../../../libs'
+import { useState } from 'react'
+import { Switch, Icon, Button, Foldcard } from '../../../../libs'
 import Codebox from '../../components/codebox'
 import { basic } from './example'
 
 export default () => {
+  const [statusWithLoading, setStatusWithLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
+
   const onChange = (value: boolean) => {
     console.log(value)
   }
+
+  const onChangeWithLoading = (value: boolean) => {
+    console.log(value)
+  }
+
+  const onChangeCheck = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setStatusWithLoading(!statusWithLoading)
+      setLoading(false)
+    }, 3000)
+  }
+
   return (
     <div className="bg-grey h-full">
       <h1>- </h1>
@@ -35,6 +52,14 @@ export default () => {
                 onChange={onChange}
                 checkedChildren={'开'}
                 unCheckedChildren={'关'}></Switch>
+            </div>
+
+            <div className="d-inline-block m-r-10">
+              <Button onClick={onChangeCheck}>切换</Button>
+              <Switch
+                checked={statusWithLoading}
+                onChange={onChangeWithLoading}
+                loading={loading}></Switch>
             </div>
           </Foldcard>
         </div>
