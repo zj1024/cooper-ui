@@ -15,12 +15,23 @@ interface Props {
   className?: string
   defaultActiveKey?: string
   destoryOnChange?: boolean
+  animat?: boolean
 }
 
 const setClass = setPrefixClassName('coo-tabs')
 
 const Tabs: TabsFC = props => {
-  const { children, className, defaultActiveKey, destoryOnChange = false, ...leftProps } = props
+  const {
+    children,
+    className,
+    defaultActiveKey,
+    destoryOnChange = false,
+    animat = true,
+    ...leftProps
+  } = props
+
+  // TODO:
+  // console.log(animat)
 
   // 初始化所有的tab，{key, tab}
   const tabsValue = React.Children.map(children, tab => {
@@ -70,6 +81,12 @@ const Tabs: TabsFC = props => {
         )
         .filter((d: any) => d !== null)
       setTabsWidthList(widthList)
+
+      const currentActiveIndex = tabsValue.findIndex(d => d.key === defaultActiveKey)
+      const translateX = widthList.slice(0, currentActiveIndex).reduce((sum: any, current: any) => {
+        return sum + parseInt(current, 10) + 16
+      }, 0)
+      setTabBarTranslateX(translateX as number)
     }
   }, [tabsRef])
 

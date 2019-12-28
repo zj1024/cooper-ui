@@ -20,19 +20,8 @@ module.exports = {
     },
   },
   optimization: {
-    minimizer: [new OptimizeCssAssetsPlugin({}), new UglifyJsPlugin()],
     splitChunks: {
       chunks: 'all',
-      minSize: 30000,
-      maxSize: 0,
-      minChunks: 1,
-      cacheGroups: {
-        main: {
-          test: 'main',
-          name: 'main',
-          enforce: true,
-        },
-      },
     },
   },
   module: {

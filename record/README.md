@@ -37,3 +37,4 @@ tooltip: children: 2 content: 3 icon: 1
 - image
 - switch
 - slider
+- switch

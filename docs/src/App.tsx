@@ -7,6 +7,7 @@ import { Layout } from '../../libs'
 import GuidePage from './pages/guide'
 
 import 'assembly-css/lib/index.scss'
+import './style.scss'
 
 const { Aside, Header, Content } = Layout
 
@@ -32,11 +33,11 @@ export default () => {
             children={({ location }) => {
               return (
                 <Layout>
-                  <Aside className="b-r">
+                  <Aside className="navbar b-r">
                     <ul className="text-content">
                       {ComponentRoutes.map(d => (
                         <li
-                          className={`p-20 ${location.pathname === d.path && 'text-yellow'}`}
+                          className={`p-20 ${location.pathname === d.path ? 'text-yellow' : ''}`}
                           key={d.path}>
                           <Link to={d.path}>{d.title}</Link>
                         </li>
@@ -44,7 +45,7 @@ export default () => {
                     </ul>
                   </Aside>
                   <Content>
-                    <Suspense fallback={<div>加载中...</div>}>
+                    <Suspense fallback={<div>加载中......</div>}>
                       <Switch>
                         {ComponentRoutes.map(d => (
                           <Route key={d.path} exact path={d.path} component={d.component} />

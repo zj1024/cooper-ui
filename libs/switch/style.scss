@@ -1,0 +1,78 @@
+@import '../style/variable';
+.coo-switch {
+  position: relative;
+  width: 44px;
+  height: 22px;
+  background: #e8e8e8;
+  border-radius: 11px;
+  padding: 0 7px;
+  font-size: 12px;
+  color: #fff;
+  line-height: 22px;
+  text-align: right;
+  vertical-align: top;
+  display: inline-block;
+  transition: all 0.3s;
+  cursor: pointer;
+  &-button {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    background: $color-white;
+    border-radius: 9px;
+    box-shadow: 0 0 3px 0 #fff;
+    transform: translate3d(15%, -50%, 0);
+    transition: all 0.3s;
+    &-loading {
+      color: $color-primary;
+      font-size: 18px;
+      opacity: 0.4;
+    }
+  }
+  &:active:not(.coo-switch-disabled) &-button {
+    width: 24px;
+  }
+  &-active {
+    text-align: left;
+    background: $color-primary;
+    .coo-switch-button {
+      left: 100%;
+      transform: translate3d(-115%, -50%, 0);
+    }
+  }
+  > *:not(.coo-switch-button) {
+    width: 12px;
+    height: 12px;
+    margin-top: 5px;
+    > svg {
+      vertical-align: top;
+    }
+  }
+  &.coo-switch-loading {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  &.coo-switch-disabled {
+    background: $bg-grey;
+    cursor: not-allowed;
+  }
+}
+
+.coo-switch.coo-switch-small {
+  width: 28px;
+  height: 16px;
+  padding: 0 2px;
+  line-height: 16px;
+  &:active:not(.coo-switch-disabled) .coo-switch-button {
+    width: 14px;
+  }
+  .coo-switch-button {
+    width: 12px;
+    height: 12px;
+    &-loading {
+      font-size: 12px;
+    }
+  }
+}

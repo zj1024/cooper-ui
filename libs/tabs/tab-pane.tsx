@@ -12,6 +12,7 @@ const setClass = setPrefixClassName('coo-tab-pane')
 
 const TabPane: React.FC<Props> = props => {
   const { children, className, ...leftProps } = props
+  console.log('this is pane')
   return (
     <div className={classnames(setClass(), className)} {...leftProps}>
       {children}
