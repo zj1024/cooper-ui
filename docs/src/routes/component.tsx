@@ -3,146 +3,198 @@ export default [
   {
     path: '/',
     title: 'Icon',
-    component: lazy(() => import('../pages/icon')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/icon'),
+    ),
     exact: true,
   },
   {
     path: '/layout',
     title: 'Layout',
-    component: lazy(() => import('../pages/layout')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/layout'),
+    ),
     exact: true,
   },
   {
     path: '/button',
     title: 'Button',
-    component: lazy(() => import('../pages/button')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/button'),
+    ),
     exact: true,
   },
   {
     path: '/dialog',
     title: 'Dialog',
-    component: lazy(() => import('../pages/dialog')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/dialog'),
+    ),
     exact: true,
   },
   {
     path: '/popover',
     title: 'Popover',
-    component: lazy(() => import('../pages/popover')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/popover'),
+    ),
     exact: true,
   },
   {
     path: '/tooltip',
     title: 'Tooltip',
-    component: lazy(() => import('../pages/tooltip')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/tooltip'),
+    ),
     exact: true,
   },
   // {
   //   path: '/input',
   //   title: 'Input',
-  //   component: lazy(() => import('../pages/input')),
+  //   component: lazy(() => import(/* webpackChunkName: "route-chunk" *//* webpackMode: "lazy" */'../pages/input')),
   //   exact: true,
   // },
   {
     path: '/foldcard',
     title: 'Foldcard',
-    component: lazy(() => import('../pages/foldcard')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/foldcard'),
+    ),
     exact: true,
   },
   {
     path: '/radio',
     title: 'Radio',
-    component: lazy(() => import('../pages/radio')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/radio'),
+    ),
     exact: true,
   },
   {
     path: '/checkbox',
     title: 'Checkbox',
-    component: lazy(() => import('../pages/checkbox')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/checkbox'),
+    ),
     exact: true,
   },
   {
     path: '/progress',
     title: 'Progress',
-    component: lazy(() => import('../pages/progress')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/progress'),
+    ),
   },
   {
     path: '/message',
     title: 'Message',
-    component: lazy(() => import('../pages/message')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/message'),
+    ),
   },
   {
     path: '/loading',
     title: 'Loading',
-    component: lazy(() => import('../pages/loading')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/loading'),
+    ),
   },
   {
     path: '/drawer',
     title: 'Drawer',
-    component: lazy(() => import('../pages/drawer')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/drawer'),
+    ),
   },
   {
     path: '/badges',
     title: 'Badges',
-    component: lazy(() => import('../pages/badges')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/badges'),
+    ),
   },
   {
     path: '/skeleton',
     title: 'Skeleton',
-    component: lazy(() => import('../pages/skeleton')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/skeleton'),
+    ),
   },
   {
     path: '/card',
     title: 'Card',
-    component: lazy(() => import('../pages/card')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/card'),
+    ),
   },
   {
     path: '/menu',
     title: 'Menu',
-    component: lazy(() => import('../pages/menu')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/menu'),
+    ),
   },
   {
     path: '/collapse',
     title: 'Collapse',
-    component: lazy(() => import('../pages/collapse')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/collapse'),
+    ),
   },
   {
     path: '/divider',
     title: 'Divider',
-    component: lazy(() => import('../pages/divider')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/divider'),
+    ),
   },
   {
     path: '/text-link',
     title: 'TextLink',
-    component: lazy(() => import('../pages/text-link')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/text-link'),
+    ),
   },
   {
     path: '/pagination',
     title: 'Pagination',
-    component: lazy(() => import('../pages/pagination')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/pagination'),
+    ),
   },
   {
     path: '/tabs',
     title: 'Tabs',
-    component: lazy(() => import('../pages/tabs')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/tabs'),
+    ),
   },
   {
     path: '/back-top',
     title: 'BackTop',
-    component: lazy(() => import('../pages/back-top')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/back-top'),
+    ),
   },
   {
     path: '/image',
     title: 'Image',
-    component: lazy(() => import('../pages/image')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/image'),
+    ),
   },
   {
     path: '/switch',
     title: 'Switch',
-    component: lazy(() => import('../pages/switch')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/switch'),
+    ),
   },
   {
     path: '/demo',
     title: 'Demo',
-    component: lazy(() => import('../pages/demo')),
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/demo'),
+    ),
   },
 ]

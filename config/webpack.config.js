@@ -15,6 +15,11 @@ module.exports = {
       src: path.resolve(__dirname, '../docs/src'),
     },
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   module: {
     rules: [
       {

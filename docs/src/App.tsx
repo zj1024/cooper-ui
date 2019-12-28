@@ -45,7 +45,7 @@ export default () => {
                     </ul>
                   </Aside>
                   <Content>
-                    <Suspense fallback={<div>加载中...</div>}>
+                    <Suspense fallback={<div>加载中......</div>}>
                       <Switch>
                         {ComponentRoutes.map(d => (
                           <Route key={d.path} exact path={d.path} component={d.component} />
