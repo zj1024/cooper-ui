@@ -3,6 +3,7 @@ import { useState } from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 import Icon from '../icon'
+import Collapse from '../collapse'
 import { CSSTransition } from '../transition'
 
 import './style.scss'
@@ -13,6 +14,7 @@ interface PrivateProps {
   _onchange: (index: index) => void
   _isActive?: boolean
   _trigger?: string
+  mode?: string
 }
 
 interface Props extends PrivateProps {
@@ -32,23 +34,32 @@ const SubMenu: React.FC<Props> = props => {
     index,
     _trigger = 'hover',
     _isActive,
+    mode,
     ...leftProps
   } = props
 
   const [isOpen, setIsOpen] = useState(false)
 
-  // useEffect(() => {
-  //   document.body.addEventListener('click', (e) => {
-  //     console.log((e.target as Element))
-  //   })
-  // })
+  const onChange = (openStatus: boolean) => {
+    setIsOpen(openStatus)
+  }
+
+  if (mode === 'vertical') {
+    return (
+      <Collapse className={setClass()} accordion={false}>
+        <Collapse.Item title="Collapse first" iconPlacement="right">
+          {children}
+        </Collapse.Item>
+      </Collapse>
+    )
+  }
 
   return (
     <div
       {...{
-        onMouseEnter: _trigger === 'hover' ? () => setIsOpen(true) : () => {},
-        onMouseLeave: _trigger === 'hover' ? () => setIsOpen(false) : () => {},
-        onClick: _trigger === 'click' ? () => setIsOpen(!isOpen) : () => {},
+        onMouseEnter: _trigger === 'hover' ? () => onChange(true) : () => {},
+        onMouseLeave: _trigger === 'hover' ? () => onChange(false) : () => {},
+        onClick: _trigger === 'click' ? () => onChange(!isOpen) : () => {},
       }}
       className={classnames(setClass(''), className)}
       {...leftProps}>

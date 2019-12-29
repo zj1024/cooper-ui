@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName, stringEqual } from '../utils'
 
@@ -26,13 +26,22 @@ interface PrivateProps {
 interface Props extends PrivateProps {
   className?: string
   title: string
+  iconPlacement?: string
   [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-collapse-item')
 
 const CollapseItem: React.FC<Props> = props => {
-  const { children, className, name = '0', contentvisible, title, onClick = () => {} } = props
+  const {
+    children,
+    className,
+    name = '0',
+    contentvisible,
+    title,
+    iconPlacement = 'left',
+    onClick = () => {},
+  } = props
 
   // Initialize
 
@@ -48,7 +57,7 @@ const CollapseItem: React.FC<Props> = props => {
   const contentRef = useRef(null)
 
   // Gets the height of the element to animate with height
-  React.useEffect(() => {
+  useEffect(() => {
     Promise.resolve().then(() => {
       const contentHeight = getComputedStyle(contentRef.current as any)['height']
       if (visible) {
@@ -108,10 +117,19 @@ const CollapseItem: React.FC<Props> = props => {
   return (
     <div className={classnames(setClass(''), className)}>
       <div
-        className={classnames(setClass('title'), visible && setClass('title-visible'))}
+        className={classnames(
+          setClass('title'),
+          visible && setClass('title-visible'),
+          iconPlacement === 'right' && setClass('title-icon-right'),
+        )}
         onClick={onTitleClick}>
-        <Icon className={setClass('title-icon')} name="arrow-right"></Icon>
+        {iconPlacement === 'left' && (
+          <Icon className={setClass('title-icon')} name="arrow-right"></Icon>
+        )}
         <p>{title}</p>
+        {iconPlacement === 'right' && (
+          <Icon className={setClass('title-icon')} name="arrow-right"></Icon>
+        )}
       </div>
       <div ref={contentRef} className={setClass('content')} style={contentStyle}>
         {children}

@@ -10,6 +10,8 @@ import './style.scss'
 
 interface Props {
   className?: string
+  style?: any
+  mode?: string
   align?: string
   activeIndex?: index
   trigger?: string
@@ -27,6 +29,7 @@ const Menu: MenuFC = props => {
   const {
     children,
     className,
+    mode = 'horizontal',
     align = 'left',
     activeIndex,
     onSelect = () => {},
@@ -56,6 +59,7 @@ const Menu: MenuFC = props => {
           children: _deepJudgeIndex(child.props.children),
           _trigger: trigger,
           _isActive: hasActiveIndex,
+          mode,
         })
       }
 
@@ -77,6 +81,7 @@ const Menu: MenuFC = props => {
         align === 'left' && setClass('left'),
         align === 'center' && setClass('center'),
         align === 'right' && setClass('right'),
+        mode === 'vertical' && setClass('vertical'),
         className,
       )}
       {...leftProps}>
