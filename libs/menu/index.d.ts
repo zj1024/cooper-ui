@@ -3,6 +3,8 @@ import { index } from './menu-item'
 import './style.scss'
 interface Props {
   className?: string
+  style?: any
+  mode?: string
   align?: string
   activeIndex?: index
   trigger?: string

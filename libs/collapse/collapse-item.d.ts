@@ -8,6 +8,7 @@ interface PrivateProps {
 interface Props extends PrivateProps {
   className?: string
   title: string
+  iconPlacement?: string
   [key: string]: any
 }
 declare const CollapseItem: React.FC<Props>

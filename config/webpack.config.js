@@ -14,6 +14,9 @@ module.exports = {
     alias: {
       src: path.resolve(__dirname, '../docs/src'),
     },
+    alias: {
+      libs: path.resolve(__dirname, '../libs'),
+    },
   },
   module: {
     rules: [

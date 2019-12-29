@@ -4,7 +4,7 @@ interface CollapseFC extends React.FC<Props> {
   Item: (params: any) => any
 }
 interface Props {
-  children: React.ReactElement[]
+  children: React.ReactNode
   accordion?: boolean
   value?: number | number[]
   [key: string]: any

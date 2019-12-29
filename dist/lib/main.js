@@ -60,7 +60,7 @@
         return Object.prototype.hasOwnProperty.call(e, t)
       }),
       (o.p = ''),
-      o((o.s = 9))
+      o((o.s = 40))
     )
   })([
     function(t, o) {
@@ -84,7 +84,7 @@
               else if (Array.isArray(n) && n.length) {
                 var i = r.apply(null, n)
                 i && e.push(i)
-              } else if ('object' === a) for (var c in n) o.call(n, c) && n[c] && e.push(c)
+              } else if ('object' === a) for (var s in n) o.call(n, s) && n[s] && e.push(s)
             }
           }
           return e.join(' ')
@@ -100,18 +100,18 @@
     function(e, t, o) {
       'use strict'
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var n = o(14)
+      const n = o(13)
       ;(t.isString = n.isString),
         (t.isNull = n.isNull),
         (t.isUndefined = n.isUndefined),
         (t.isBoolean = n.isBoolean),
         (t.isNumber = n.isNumber),
         (t.isArray = n.isArray)
-      var r = o(71)
+      const r = o(70)
       t.setPrefixClassName = r.default
-      var a = o(72)
+      const a = o(71)
       t.stringEqual = a.default
-      var i = o(73)
+      const i = o(72)
       t.throttle = i.default
     },
     function(e, t, o) {
@@ -139,13 +139,13 @@
           }
         })(),
         i = {}
-      function c(e, t, o) {
+      function s(e, t, o) {
         for (var n = 0; n < t.length; n++) {
           var r = { css: t[n][1], media: t[n][2], sourceMap: t[n][3] }
-          i[e][n] ? i[e][n](r) : i[e].push(h(r, o))
+          i[e][n] ? i[e][n](r) : i[e].push(m(r, o))
         }
       }
-      function s(e) {
+      function c(e) {
         var t = document.createElement('style'),
           n = e.attributes || {}
         if (void 0 === n.nonce) {
@@ -170,21 +170,21 @@
         return t
       }
       var l,
-        u =
+        d =
           ((l = []),
           function(e, t) {
             return (l[e] = t), l.filter(Boolean).join('\n')
           })
-      function d(e, t, o, n) {
+      function u(e, t, o, n) {
         var r = o ? '' : n.css
-        if (e.styleSheet) e.styleSheet.cssText = u(t, r)
+        if (e.styleSheet) e.styleSheet.cssText = d(t, r)
         else {
           var a = document.createTextNode(r),
             i = e.childNodes
           i[t] && e.removeChild(i[t]), i.length ? e.insertBefore(a, i[t]) : e.appendChild(a)
         }
       }
-      function f(e, t, o) {
+      function p(e, t, o) {
         var n = o.css,
           r = o.media,
           a = o.sourceMap
@@ -204,16 +204,16 @@
           e.appendChild(document.createTextNode(n))
         }
       }
-      var p = null,
+      var f = null,
         b = 0
-      function h(e, t) {
+      function m(e, t) {
         var o, n, r
         if (t.singleton) {
           var a = b++
-          ;(o = p || (p = s(t))), (n = d.bind(null, o, a, !1)), (r = d.bind(null, o, a, !0))
+          ;(o = f || (f = c(t))), (n = u.bind(null, o, a, !1)), (r = u.bind(null, o, a, !0))
         } else
-          (o = s(t)),
-            (n = f.bind(null, o, t)),
+          (o = c(t)),
+            (n = p.bind(null, o, t)),
             (r = function() {
               !(function(e) {
                 if (null === e.parentNode) return !1
@@ -236,10 +236,10 @@
           (e = o.base ? e + o.base : e),
           (t = t || []),
           i[e] || (i[e] = []),
-          c(e, t, o),
+          s(e, t, o),
           function(t) {
             if (((t = t || []), '[object Array]' === Object.prototype.toString.call(t))) {
-              i[e] || (i[e] = []), c(e, t, o)
+              i[e] || (i[e] = []), s(e, t, o)
               for (var n = t.length; n < i[e].length; n++) i[e][n]()
               ;(i[e].length = t.length), 0 === i[e].length && delete i[e]
             }
@@ -261,11 +261,11 @@
                 if (t && 'function' == typeof btoa) {
                   var r =
                       ((i = n),
-                      (c = btoa(unescape(encodeURIComponent(JSON.stringify(i))))),
-                      (s = 'sourceMappingURL=data:application/json;charset=utf-8;base64,'.concat(
-                        c,
+                      (s = btoa(unescape(encodeURIComponent(JSON.stringify(i))))),
+                      (c = 'sourceMappingURL=data:application/json;charset=utf-8;base64,'.concat(
+                        s,
                       )),
-                      '/*# '.concat(s, ' */')),
+                      '/*# '.concat(c, ' */')),
                     a = n.sources.map(function(e) {
                       return '/*# sourceURL='.concat(n.sourceRoot).concat(e, ' */')
                     })
@@ -274,7 +274,7 @@
                     .concat([r])
                     .join('\n')
                 }
-                var i, c, s
+                var i, s, c
                 return [o].join('\n')
               })(t, e)
               return t[2] ? '@media '.concat(t[2], ' {').concat(o, '}') : o
@@ -294,49 +294,36 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1)
-      o(45)
-      t.default = function(e) {
-        var t = e.name,
-          c = e.className,
-          s = (e.component, r(e, ['name', 'className', 'component']))
+      const r = o(0),
+        a = o(1)
+      o(44)
+      t.default = e => {
+        const { name: t, className: i, component: s } = e,
+          c = n(e, ['name', 'className', 'component'])
         return t
-          ? a.createElement(
+          ? r.createElement(
               'span',
-              n(
+              Object.assign(
                 {
-                  dangerouslySetInnerHTML: { __html: o(47)('./' + t + '.svg').default },
-                  className: i.default('coo-icon', c),
+                  dangerouslySetInnerHTML: { __html: o(46)(`./${t}.svg`).default },
+                  className: a.default('coo-icon', i),
                 },
-                s,
+                c,
               ),
             )
           : (console.warn('Did you forget to assign a value to the name attribute?'), null)
@@ -348,224 +335,62 @@
     function(e, t, o) {
       'use strict'
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var n = o(0),
-        r = o(131),
-        a = o(87)
+      const n = o(0),
+        r = o(128)
+      var a = o(82)
       t.CSSTransition = a.default
-      var i = o(89)
+      var i = o(84)
       ;(t.CollapseTransition = i.default),
-        o(11),
-        (t.default = function(e) {
-          var t = e.visible,
-            o = e.duration,
-            a = void 0 === o ? 300 : o,
-            i = e.name,
-            c = void 0 === i ? 'coo-fade' : i,
-            s = e.children
+        o(10),
+        (t.default = e => {
+          const { visible: t, duration: o = 300, name: a = 'coo-fade', children: i } = e
           return n.createElement(
             r.CSSTransition,
-            { in: t, timeout: a, classNames: c, unmountOnExit: !0 },
-            s,
+            { in: t, timeout: o, classNames: a, unmountOnExit: !0 },
+            i,
           )
         })
     },
     function(e, t, o) {
-      e.exports = o(85)()
-    },
-    function(e, t, o) {
-      'use strict'
-      o.r(t)
-      o(43)
-      var n = o(5),
-        r = o.n(n)
-      o.d(t, 'Icon', function() {
-        return r.a
-      })
-      var a = o(13),
-        i = o.n(a)
-      o.d(t, 'Input', function() {
-        return i.a
-      })
-      var c = o(10),
-        s = o.n(c)
-      o.d(t, 'Button', function() {
-        return s.a
-      })
-      var l = o(15),
-        u = o.n(l)
-      o.d(t, 'Dialog', function() {
-        return u.a
-      })
-      var d = o(16),
-        f = o.n(d)
-      o.d(t, 'Layout', function() {
-        return f.a
-      })
-      var p = o(18),
-        b = o.n(p)
-      o.d(t, 'Popover', function() {
-        return b.a
-      })
-      var h = o(19),
-        m = o.n(h)
-      o.d(t, 'Tooltip', function() {
-        return m.a
-      })
-      var v = o(20),
-        g = o.n(v)
-      o.d(t, 'Foldcard', function() {
-        return g.a
-      })
-      var y = o(21),
-        x = o.n(y)
-      o.d(t, 'Radio', function() {
-        return x.a
-      })
-      var w = o(22),
-        O = o.n(w)
-      o.d(t, 'Checkbox', function() {
-        return O.a
-      })
-      var k = o(7),
-        E = o.n(k)
-      o.d(t, 'Transition', function() {
-        return E.a
-      })
-      var j = o(23),
-        _ = o.n(j)
-      o.d(t, 'Progress', function() {
-        return _.a
-      })
-      var N = o(24),
-        P = o.n(N)
-      o.d(t, 'Message', function() {
-        return P.a
-      })
-      var C = o(26),
-        S = o.n(C)
-      o.d(t, 'Loading', function() {
-        return S.a
-      })
-      var M = o(27),
-        z = o.n(M)
-      o.d(t, 'Drawer', function() {
-        return z.a
-      })
-      var T = o(28),
-        L = o.n(T)
-      o.d(t, 'Badges', function() {
-        return L.a
-      })
-      var I = o(29),
-        A = o.n(I)
-      o.d(t, 'Skeleton', function() {
-        return A.a
-      })
-      var B = o(30),
-        R = o.n(B)
-      o.d(t, 'Card', function() {
-        return R.a
-      })
-      var D = o(31),
-        q = o.n(D)
-      o.d(t, 'Menu', function() {
-        return q.a
-      })
-      var F = o(32),
-        V = o.n(F)
-      o.d(t, 'Collapse', function() {
-        return V.a
-      })
-      var H = o(34),
-        U = o.n(H)
-      o.d(t, 'Divider', function() {
-        return U.a
-      })
-      var $ = o(35),
-        X = o.n($)
-      o.d(t, 'TextLink', function() {
-        return X.a
-      })
-      var Y = o(36),
-        W = o.n(Y)
-      o.d(t, 'Pagination', function() {
-        return W.a
-      })
-      var G = o(37),
-        J = o.n(G)
-      o.d(t, 'Tabs', function() {
-        return J.a
-      })
-      var K = o(39),
-        Q = o.n(K)
-      o.d(t, 'BackTop', function() {
-        return Q.a
-      })
-      var Z = o(40),
-        ee = o.n(Z)
-      o.d(t, 'Image', function() {
-        return ee.a
-      })
-      var te = o(41),
-        oe = o.n(te)
-      o.d(t, 'Switch', function() {
-        return oe.a
-      })
+      e.exports = o(80)()
     },
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(2),
+      const r = o(0),
+        a = o(1),
+        i = o(2),
         s = o(5)
-      o(76)
-      var l = c.setPrefixClassName('coo-button')
-      t.default = function(e) {
-        var t = e.children,
-          o = e.className,
-          c = e.type,
-          u = void 0 === c ? 'default' : c,
-          d = e.plain,
-          f = void 0 !== d && d,
-          p = e.round,
-          b = void 0 !== p && p,
-          h = e.circle,
-          m = void 0 !== h && h,
-          v = e.loading,
-          g = void 0 !== v && v,
-          y = e.disabled,
-          x = void 0 !== y && y,
-          w = e.shadow,
-          O = void 0 !== w && w,
-          k = r(e, [
+      o(73)
+      const c = i.setPrefixClassName('coo-button')
+      t.default = e => {
+        var {
+            children: t,
+            className: o,
+            type: i = 'default',
+            plain: l = !1,
+            round: d = !1,
+            circle: u = !1,
+            loading: p = !1,
+            disabled: f = !1,
+            shadow: b = !1,
+          } = e,
+          m = n(e, [
             'children',
             'className',
             'type',
@@ -576,37 +401,37 @@
             'disabled',
             'shadow',
           ])
-        return a.createElement(
+        return r.createElement(
           'button',
-          n(
+          Object.assign(
             {
-              className: i.default(
-                l(),
-                l(u || 'default'),
-                b && l('is-round'),
-                m && l('is-circle'),
-                f && l('is-plain'),
-                O && l('has-shadow'),
+              className: a.default(
+                c(),
+                c(i || 'default'),
+                d && c('is-round'),
+                u && c('is-circle'),
+                l && c('is-plain'),
+                b && c('has-shadow'),
                 o,
               ),
-              disabled: x,
+              disabled: f,
             },
-            k,
+            m,
           ),
-          g
-            ? a.createElement(
+          p
+            ? r.createElement(
                 'div',
-                { className: l('loading-wrapper') },
-                a.createElement(s.default, { name: 'loading', className: l('loading') }),
+                { className: c('loading-wrapper') },
+                r.createElement(s.default, { name: 'loading', className: c('loading') }),
                 t,
               )
-            : a.createElement(a.Fragment, null, t),
+            : r.createElement(r.Fragment, null, t),
         )
       }
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(88)
+        r = o(83)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -614,7 +439,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(113)
+        r = o(110)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -623,177 +448,91 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1),
+      const r = o(0),
+        a = o(0),
+        i = o(1),
         s = o(2),
-        l = o(9)
-      o(74)
-      var u = s.setPrefixClassName('coo-input')
-      t.default = function(e) {
-        var t,
-          o,
-          s = e.className,
-          d = (e.value, e.placeholder),
-          f = e.allowClear,
-          p = void 0 !== f && f,
-          b = e.autoFocus,
-          h = void 0 !== b && b,
-          m = e.disabled,
-          v = void 0 !== m && m,
-          g = e.onChange,
-          y = void 0 === g ? function() {} : g,
-          x =
-            (e.onPressEnter,
-            r(e, [
-              'className',
-              'value',
-              'placeholder',
-              'allowClear',
-              'autoFocus',
-              'disabled',
-              'onChange',
-              'onPressEnter',
-            ])),
-          w = i.useState({}),
-          O = w[0],
-          k = w[1],
-          E = i.useRef(null)
-        return a.createElement(
-          'div',
-          { className: c.default(u()) },
-          a.createElement(
-            'input',
-            n(
-              {
-                ref: E,
-                className: c.default(
-                  u('field'),
-                  s,
-                  p && u('field-allow-clear'),
-                  v && u('field-disabled'),
-                ),
-                type: 'text',
-                value:
-                  null === (o = null === (t = O) || void 0 === t ? void 0 : t.target) ||
-                  void 0 === o
-                    ? void 0
-                    : o.value,
-                onChange: function(e) {
-                  try {
-                    y(e), k(e)
-                  } catch (e) {
-                    console.error(
-                      'value set error, please check your onChange method, errorMessage:' + e,
-                    )
-                  }
-                },
-                placeholder: d,
-                autoFocus: h,
-                disabled: v,
-              },
-              x,
+        c = o(112)
+      o(31)
+      const l = s.setPrefixClassName('coo-collapse'),
+        d = e => {
+          const { children: t, className: o, accordion: c, value: d } = e,
+            u = n(e, ['children', 'className', 'accordion', 'value']),
+            p = c ? d || -1 : d || []
+          let f = []
+          if (s.isArray(p)) {
+            let e = s.isArray(t) ? t : [t]
+            for (let t = 0; t < e.length; t++) f.push({ visible: p.indexOf(t) > -1 })
+          }
+          const [b, m] = a.useState(f),
+            [h, g] = a.useState({ name: p, visible: !0 }),
+            v = (e, t) => {
+              if (c) g({ name: +e, visible: !t })
+              else {
+                const o = b.map((o, n) => (+e === n ? { visible: !t } : o))
+                m(o)
+              }
+            },
+            y = e => (c ? h.name === e && !0 === h.visible : (b[e] && b[e].visible) || !1)
+          return r.createElement(
+            'div',
+            Object.assign({ className: i.default(l(), o) }, u),
+            r.Children.map(t, (e, t) =>
+              r.cloneElement(e, { name: t.toString(), key: t, contentvisible: y(t), onClick: v }),
             ),
-          ),
-          p && O.target.value
-            ? a.createElement(
-                l.Button,
-                {
-                  onClick: function() {
-                    k({}), y({})
-                  },
-                  className: c.default(u('allow-clear')),
-                },
-                a.createElement(l.Icon, { name: 'close' }),
-              )
-            : null,
-        )
-      }
+          )
+        }
+      ;(d.Item = c.default), (t.default = d)
     },
     function(e, t, o) {
       'use strict'
       Object.defineProperty(t, '__esModule', { value: !0 }),
-        (t.isString = function(e) {
-          return '[object String]' === Object.prototype.toString.call(e)
-        }),
-        (t.isNull = function(e) {
-          return '[object Null]' === Object.prototype.toString.call(e)
-        }),
-        (t.isUndefined = function(e) {
-          return '[object Undefined]' === Object.prototype.toString.call(e)
-        }),
-        (t.isBoolean = function(e) {
-          return '[object Boolean]' === Object.prototype.toString.call(e)
-        }),
-        (t.isNumber = function(e) {
-          return '[object Number]' === Object.prototype.toString.call(e) && !Object.is(e, NaN)
-        }),
-        (t.isArray = function(e) {
-          return '[object Array]' === Object.prototype.toString.call(e)
-        })
+        (t.isString = e => '[object String]' === Object.prototype.toString.call(e)),
+        (t.isNull = e => '[object Null]' === Object.prototype.toString.call(e)),
+        (t.isUndefined = e => '[object Undefined]' === Object.prototype.toString.call(e)),
+        (t.isBoolean = e => '[object Boolean]' === Object.prototype.toString.call(e)),
+        (t.isNumber = e =>
+          '[object Number]' === Object.prototype.toString.call(e) && !Object.is(e, NaN)),
+        (t.isArray = e => '[object Array]' === Object.prototype.toString.call(e))
     },
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(6),
-        c = o(78),
-        s = function(e) {
-          var t = {
+      const r = o(0),
+        a = o(6),
+        i = o(75),
+        s = e => {
+          const t = {
               visible: !0,
               closable: !0,
               mask: !0,
@@ -807,119 +546,120 @@
               onOk: e.onOk,
               onCancel: e.onCancel,
             },
-            o = n(n({}, t), e),
-            s = function() {
-              e.onCancel ? e.onCancel(l) : l()
+            o = Object.assign(Object.assign({}, t), e),
+            s = () => {
+              e.onCancel ? e.onCancel(c) : c()
             },
-            l = function() {
-              i.unmountComponentAtNode(u) && u.parentNode && u.parentNode.removeChild(u)
+            c = () => {
+              a.unmountComponentAtNode(l) && l.parentNode && l.parentNode.removeChild(l)
             },
-            u = document.createElement('div')
+            l = document.createElement('div')
           return (
-            document.body.appendChild(u),
-            (function(e) {
-              var t = e.title,
-                o = e.message,
-                l = r(e, ['title', 'message'])
-              i.render(a.createElement(c.default, n({}, l, { onCancel: s, header: t }), o), u)
+            document.body.appendChild(l),
+            (e => {
+              const { title: t, message: o } = e,
+                c = n(e, ['title', 'message'])
+              a.render(
+                r.createElement(i.default, Object.assign({}, c, { onCancel: s, header: t }), o),
+                l,
+              )
             })(o),
-            { close: l }
+            { close: c }
           )
         }
-      ;(c.default.Alert = function(e) {
-        return s(n(n({}, e), { visible: !0, closable: !1, maskClosable: !1, cancelable: !1 }))
+      ;(i.default.Alert = e => {
+        return s(
+          Object.assign(Object.assign({}, e), {
+            visible: !0,
+            closable: !1,
+            maskClosable: !1,
+            cancelable: !1,
+          }),
+        )
       }),
-        (c.default.Confirm = function(e) {
+        (i.default.Confirm = e => {
           return s(Object.assign({ visible: !0, closable: !1, maskClosable: !1 }, e))
         }),
-        (c.default.Modal = function(e) {
-          return s(n(n({}, e), {}))
+        (i.default.Modal = e => {
+          return s(Object.assign(Object.assign({}, e), {}))
         })
-      var l = c.default.Alert
-      t.Alert = l
-      var u = c.default.Confirm
-      t.Confirm = u
-      var d = c.default.Modal
-      ;(t.Modal = d), (t.default = c.default)
+      const c = i.default.Alert
+      t.Alert = c
+      const l = i.default.Confirm
+      t.Confirm = l
+      const d = i.default.Modal
+      ;(t.Modal = d), (t.default = i.default)
     },
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(2),
-        s = o(81)
-      o(17)
-      var l = c.setPrefixClassName('coo-layout')
-      ;(s.default.Header = function(e) {
-        var t = e.children,
-          o = e.className,
-          c = r(e, ['children', 'className'])
-        return a.createElement('header', n({ className: i.default(l('header'), o) }, c), t)
+      const r = o(0),
+        a = o(1),
+        i = o(2),
+        s = o(78)
+      o(16)
+      const c = i.setPrefixClassName('coo-layout')
+      ;(s.default.Header = e => {
+        const { children: t, className: o } = e,
+          i = n(e, ['children', 'className'])
+        return r.createElement(
+          'header',
+          Object.assign({ className: a.default(c('header'), o) }, i),
+          t,
+        )
       }),
-        (s.default.Content = function(e) {
-          e.children
-          var t = e.className,
-            o = r(e, ['children', 'className'])
-          return a.createElement(
+        (s.default.Content = e => {
+          const { children: t, className: o } = e,
+            i = n(e, ['children', 'className'])
+          return r.createElement(
             'main',
-            n({ className: i.default(l('content'), t) }, o),
+            Object.assign({ className: a.default(c('content'), o) }, i),
             e.children,
           )
         }),
-        (s.default.Footer = function(e) {
-          e.children
-          var t = e.className,
-            o = r(e, ['children', 'className'])
-          return a.createElement(
+        (s.default.Footer = e => {
+          const { children: t, className: o } = e,
+            i = n(e, ['children', 'className'])
+          return r.createElement(
             'footer',
-            n({ className: i.default(l('footer'), t) }, o),
+            Object.assign({ className: a.default(c('footer'), o) }, i),
             e.children,
           )
         }),
-        (s.default.Aside = function(e) {
-          e.children
-          var t = e.className,
-            o = r(e, ['children', 'className'])
-          return a.createElement('aside', n({ className: i.default(l('aside'), t) }, o), e.children)
+        (s.default.Aside = e => {
+          const { children: t, className: o } = e,
+            i = n(e, ['children', 'className'])
+          return r.createElement(
+            'aside',
+            Object.assign({ className: a.default(c('aside'), o) }, i),
+            e.children,
+          )
         })
-      var u = s.default.Header
-      t.Header = u
-      var d = s.default.Content
+      const l = s.default.Header
+      t.Header = l
+      const d = s.default.Content
       t.Content = d
-      var f = s.default.Footer
-      ;(t.Footer = f), (t.default = s.default)
+      const u = s.default.Footer
+      ;(t.Footer = u), (t.default = s.default)
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(82)
+        r = o(79)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -928,189 +668,82 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1),
-        s = o(9),
-        l = o(2)
-      o(83)
-      var u = l.setPrefixClassName('coo-popover')
-      t.default = function(e) {
-        var t = e.children,
-          o = e.className,
-          l = e.placement,
-          d = void 0 === l ? 'top' : l,
-          f = e.content,
-          p = e.trigger,
-          b = void 0 === p ? 'hover' : p,
-          h = r(e, ['children', 'className', 'placement', 'content', 'trigger']),
-          m = i.useState(!1),
-          v = m[0],
-          g = m[1],
-          y = function(e) {
-            setTimeout(function() {
-              g(e)
+      const r = o(0),
+        a = o(0),
+        i = o(1),
+        s = o(7),
+        c = o(2)
+      o(85)
+      const l = c.setPrefixClassName('coo-popover')
+      t.default = e => {
+        const {
+            children: t,
+            className: o,
+            placement: c = 'top',
+            content: d,
+            trigger: u = 'hover',
+          } = e,
+          p = n(e, ['children', 'className', 'placement', 'content', 'trigger']),
+          [f, b] = a.useState(!1),
+          m = e => {
+            setTimeout(() => {
+              b(e)
             }, 150)
           }
-        ;('click' !== b && 'contextMenu' !== b) ||
-          i.useEffect(function() {
-            var e = function() {
-              return y(!1)
-            }
+        ;('click' !== u && 'contextMenu' !== u) ||
+          a.useEffect(() => {
+            const e = () => m(!1)
             return (
-              window.addEventListener('click', e, !1),
-              function() {
-                return window.removeEventListener('click', e)
-              }
+              window.addEventListener('click', e, !1), () => window.removeEventListener('click', e)
             )
           }, [])
-        var x = function(e, t) {
+        const h = (e, t) => {
             e || (t && t.stopPropagation())
           },
-          w = {
-            onMouseEnter:
-              'hover' === b
-                ? function() {
-                    return y(!0)
-                  }
-                : void 0,
-            onMouseLeave:
-              'hover' === b
-                ? function() {
-                    return y(!1)
-                  }
-                : void 0,
+          g = {
+            onMouseEnter: 'hover' === u ? () => m(!0) : void 0,
+            onMouseLeave: 'hover' === u ? () => m(!1) : void 0,
             onClick:
-              'click' === b
-                ? function(e) {
-                    x(!1, e), y(!0)
+              'click' === u
+                ? e => {
+                    h(!1, e), m(!0)
                   }
                 : void 0,
             onContextMenu:
-              'contextMenu' === b
-                ? function(e) {
-                    e && e.preventDefault(), y(!0)
+              'contextMenu' === u
+                ? e => {
+                    e && e.preventDefault(), m(!0)
                   }
                 : void 0,
           },
-          O = {
-            onClick: function(e) {
-              return x(!1, e)
-            },
-          }
-        return a.createElement(
+          v = { onClick: e => h(!1, e) }
+        return r.createElement(
           'div',
-          n({ className: c.default(u(), o) }, w, h),
-          a.createElement('div', { className: u('children') }, t),
-          a.createElement(
-            s.Transition,
-            { visible: v },
-            a.createElement(
-              'div',
-              n({ className: c.default(u('content'), u('content-' + d)) }, O),
-              a.createElement('i', { className: c.default(u('content-icon')) }),
-              f,
-            ),
-          ),
-        )
-      }
-    },
-    function(e, t, o) {
-      'use strict'
-      var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
-          }
-      Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1),
-        s = o(7),
-        l = o(2)
-      o(90)
-      var u = l.setPrefixClassName('coo-tooltip')
-      t.default = function(e) {
-        var t = e.children,
-          o = e.className,
-          l = e.content,
-          d = e.placement,
-          f = void 0 === d ? 'top' : d,
-          p = r(e, ['children', 'className', 'content', 'placement']),
-          b = i.useState(!1),
-          h = b[0],
-          m = b[1],
-          v = function(e) {
-            m(e)
-          }
-        return a.createElement(
-          'div',
-          n({ className: c.default(u(), o) }, p, {
-            onMouseEnter: function() {
-              return v(!0)
-            },
-            onMouseLeave: function() {
-              return v(!1)
-            },
-          }),
-          a.createElement('div', { className: u('children') }, t),
-          a.createElement(
+          Object.assign({ className: i.default(l(), o) }, g, p),
+          r.createElement('div', { className: l('children') }, t),
+          r.createElement(
             s.default,
-            { visible: h },
-            a.createElement(
+            { visible: f },
+            r.createElement(
               'div',
-              { className: c.default(u('content'), u('content-' + f)) },
-              a.createElement('i', { className: c.default(u('content-icon')) }),
-              a.createElement('span', null, l),
+              Object.assign({ className: i.default(l('content'), l(`content-${c}`)) }, v),
+              r.createElement('i', { className: i.default(l('content-icon')) }),
+              d,
             ),
           ),
         )
@@ -1119,89 +752,117 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1),
+      const r = o(0),
+        a = o(0),
+        i = o(1),
+        s = o(7),
+        c = o(2)
+      o(87)
+      const l = c.setPrefixClassName('coo-tooltip')
+      t.default = e => {
+        const { children: t, className: o, content: c, placement: d = 'top' } = e,
+          u = n(e, ['children', 'className', 'content', 'placement']),
+          [p, f] = a.useState(!1),
+          b = e => {
+            f(e)
+          }
+        return r.createElement(
+          'div',
+          Object.assign({ className: i.default(l(), o) }, u, {
+            onMouseEnter: () => b(!0),
+            onMouseLeave: () => b(!1),
+          }),
+          r.createElement('div', { className: l('children') }, t),
+          r.createElement(
+            s.default,
+            { visible: p },
+            r.createElement(
+              'div',
+              { className: i.default(l('content'), l(`content-${d}`)) },
+              r.createElement('i', { className: i.default(l('content-icon')) }),
+              r.createElement('span', null, c),
+            ),
+          ),
+        )
+      }
+    },
+    function(e, t, o) {
+      'use strict'
+      var n =
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
+          }
+          return o
+        }
+      Object.defineProperty(t, '__esModule', { value: !0 })
+      const r = o(0),
+        a = o(0),
+        i = o(1),
         s = o(2),
-        l = o(5)
-      o(92)
-      var u = s.setPrefixClassName('coo-foldcard')
-      t.default = function(e) {
-        var t = i.useRef(null),
-          o = i.useState(!1),
-          s = o[0],
-          d = o[1],
-          f = i.useState({}),
-          p = f[0],
-          b = f[1]
-        i.useEffect(function() {
+        c = o(5)
+      o(89)
+      const l = s.setPrefixClassName('coo-foldcard')
+      t.default = e => {
+        const t = a.useRef(null),
+          [o, s] = a.useState(!1),
+          [d, u] = a.useState({})
+        a.useEffect(() => {
           if ('[object HTMLDivElement]' === Object.prototype.toString.call(t.current)) {
-            var e = window.getComputedStyle(t.current).height
-            b({ height: e })
+            const e = window.getComputedStyle(t.current).height
+            u({ height: e })
           }
         }, [])
-        var h = e.children,
-          m = e.className,
-          v = e.fold,
-          g = e.foldName,
-          y = r(e, ['children', 'className', 'fold', 'foldName'])
-        return a.createElement(
+        const { children: p, className: f, fold: b, foldName: m } = e,
+          h = n(e, ['children', 'className', 'fold', 'foldName'])
+        return r.createElement(
           'section',
-          n({ className: c.default(u(), m) }, y),
-          a.createElement('div', { className: u('content') }, h),
-          a.createElement(
+          Object.assign({ className: i.default(l(), f) }, h),
+          r.createElement('div', { className: l('content') }, p),
+          r.createElement(
             'footer',
-            { className: u('footer') },
-            a.createElement(
+            { className: l('footer') },
+            r.createElement(
               'div',
-              { className: u('footer-main') },
-              a.createElement(
+              { className: l('footer-main') },
+              r.createElement(
                 'p',
-                {
-                  className: u('footer-spread'),
-                  onClick: function() {
-                    return d(!s)
-                  },
-                },
-                a.createElement(l.default, {
-                  name: s ? 'arrow-up' : 'arrow-down',
-                  className: u('footer-icon'),
+                { className: l('footer-spread'), onClick: () => s(!o) },
+                r.createElement(c.default, {
+                  name: o ? 'arrow-up' : 'arrow-down',
+                  className: l('footer-icon'),
                 }),
-                a.createElement('span', null, g || '展开'),
+                r.createElement('span', null, m || '展开'),
               ),
             ),
           ),
-          a.createElement(
+          r.createElement(
             'div',
-            { style: s ? p : {}, className: c.default(u('card'), !s && u('card-hidden')) },
-            a.createElement('div', { ref: t }, v),
+            { style: o ? d : {}, className: i.default(l('card'), !o && l('card-hidden')) },
+            r.createElement('div', { ref: t }, b),
           ),
         )
       }
@@ -1209,60 +870,38 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
-          },
-        a =
-          (this && this.__spreadArrays) ||
-          function() {
-            for (var e = 0, t = 0, o = arguments.length; t < o; t++) e += arguments[t].length
-            var n = Array(e),
-              r = 0
-            for (t = 0; t < o; t++)
-              for (var a = arguments[t], i = 0, c = a.length; i < c; i++, r++) n[r] = a[i]
-            return n
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var i = o(0),
-        c = o(0),
-        s = o(1),
-        l = o(2)
-      o(94)
-      var u = l.setPrefixClassName('coo-radio')
-      t.default = function(e) {
-        var t = e.className,
-          o = e.options,
-          d = e.name,
-          f = e.onChange,
-          p = e.defaultValue,
-          b = e.radioStyle,
-          h = void 0 === b ? {} : b,
-          m = e.mode,
-          v = void 0 === m ? 'horizontal' : m,
-          g = r(e, [
+      const r = o(0),
+        a = o(0),
+        i = o(1),
+        s = o(2)
+      o(91)
+      const c = s.setPrefixClassName('coo-radio')
+      t.default = e => {
+        const {
+            className: t,
+            options: o,
+            name: l,
+            onChange: d,
+            defaultValue: u,
+            radioStyle: p = {},
+            mode: f = 'horizontal',
+          } = e,
+          b = n(e, [
             'className',
             'options',
             'name',
@@ -1271,83 +910,67 @@
             'radioStyle',
             'mode',
           ]),
-          y = c.useState(a(o)),
-          x = y[0],
-          w = y[1]
-        c.useEffect(function() {
-          x
-            .map(function(e) {
-              return !0 === e.checked
-            })
-            .filter(function(e) {
-              return !0 === e
-            }).length > 1 &&
+          [m, h] = a.useState([...o])
+        a.useEffect(() => {
+          m.map(e => !0 === e.checked).filter(e => !0 === e).length > 1 &&
             console.warn(
               "Radio props options have more than one 'checked' props, which could result in an error, please only have one checked = true in options",
             )
         }, []),
-          c.useEffect(function() {
-            w(
-              x.map(function(e) {
-                return (
+          a.useEffect(() => {
+            h(
+              m.map(
+                e => (
                   void 0 === e.disabled && (e.disabled = !1),
                   void 0 === e.checked && (e.checked = !1),
-                  l.stringEqual(e.value, p) &&
+                  s.stringEqual(e.value, u) &&
                     console.warn(
-                      'Detected defaultValue datatype maybe incorrect. options have a value ' +
-                        typeof e.value +
-                        ': ' +
-                        e.value +
-                        ', defaultValue = ' +
-                        typeof p +
-                        ': ' +
-                        p,
+                      `Detected defaultValue datatype maybe incorrect. options have a value ${typeof e.value}: ${
+                        e.value
+                      }, defaultValue = ${typeof u}: ${u}`,
                     ),
-                  e.value === p && (e.checked = !0),
+                  e.value === u && (e.checked = !0),
                   e
-                )
-              }),
+                ),
+              ),
             )
           }, [])
-        return i.createElement(
+        return r.createElement(
           'div',
-          n({ className: s.default(u(), u('vertical' === v ? 'vertical' : 'horizontal'), t) }, g),
-          x.map(function(e, t) {
-            var n = !1 === e.disabled && e.checked
+          Object.assign(
+            { className: i.default(c(), c('vertical' === f ? 'vertical' : 'horizontal'), t) },
+            b,
+          ),
+          m.map((e, t) => {
+            const n = !1 === e.disabled && e.checked
             return (
               void 0 !== e.checked &&
-              i.createElement(
+              r.createElement(
                 'label',
                 {
-                  className: s.default(
-                    u('label'),
-                    n && u('label-active'),
-                    l.stringEqual(t, o.length - 1) && u('label-last'),
-                    e.disabled && u('label-disabled'),
+                  className: i.default(
+                    c('label'),
+                    n && c('label-active'),
+                    s.stringEqual(t, o.length - 1) && c('label-last'),
+                    e.disabled && c('label-disabled'),
                   ),
                   key: t,
-                  style: h,
+                  style: p,
                 },
-                i.createElement('span', { className: u('inner') }),
-                i.createElement('input', {
-                  className: s.default(u('input')),
-                  onChange: function(t) {
-                    return (function(e, t) {
-                      w(
-                        x.map(function(e) {
-                          return (e.checked = e === t), e
-                        }),
-                      ),
-                        f(e)
-                    })(t, e)
-                  },
+                r.createElement('span', { className: c('inner') }),
+                r.createElement('input', {
+                  className: i.default(c('input')),
+                  onChange: t =>
+                    ((e, t) => {
+                      h(m.map(e => ((e.checked = e === t), e))), d(e)
+                    })(t, e),
                   type: 'radio',
-                  name: d,
+                  name: l,
                   value: e.value,
                   checked: n,
                   disabled: e.disabled,
                 }),
-                i.createElement('span', { className: u('label-text') }, e.label),
+                r.createElement('span', { className: c('label-text') }, e.label),
               )
             )
           }),
@@ -1357,198 +980,158 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(2)
-      o(96)
-      var s = c.setPrefixClassName('coo-example')
-      t.default = function(e) {
-        var t = e.children,
-          o = e.className,
-          c = r(e, ['children', 'className'])
-        return a.createElement('div', n({ className: i.default(s(), o) }, c), t)
+      const r = o(0),
+        a = o(1),
+        i = o(2)
+      o(93)
+      const s = i.setPrefixClassName('coo-example')
+      t.default = e => {
+        const { children: t, className: o } = e,
+          i = n(e, ['children', 'className'])
+        return r.createElement('div', Object.assign({ className: a.default(s(), o) }, i), t)
       }
     },
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(2),
+      const r = o(0),
+        a = o(1),
+        i = o(2),
         s = o(5)
-      o(98)
-      var l = c.setPrefixClassName('coo-progress')
-      t.default = function(e) {
-        var t = e.className,
-          o = e.percent,
-          c = e.status,
-          u = e.color,
-          d = r(e, ['className', 'percent', 'status', 'color'])
-        return a.createElement(
+      o(95)
+      const c = i.setPrefixClassName('coo-progress')
+      t.default = e => {
+        const { className: t, percent: o, status: i, color: l } = e,
+          d = n(e, ['className', 'percent', 'status', 'color'])
+        return r.createElement(
           'div',
-          { className: l('wrapper') },
-          a.createElement(
+          { className: c('wrapper') },
+          r.createElement(
             'div',
-            n({ className: i.default(l(), t) }, d),
+            Object.assign({ className: a.default(c(), t) }, d),
             void 0 !== o
-              ? a.createElement('div', {
-                  className: i.default(
-                    l('percent-bar'),
-                    (100 === o || 'success' === c) && l('success'),
-                    'error' === c && l('error'),
+              ? r.createElement('div', {
+                  className: a.default(
+                    c('percent-bar'),
+                    (100 === o || 'success' === i) && c('success'),
+                    'error' === i && c('error'),
                   ),
-                  style: { width: o + '%', background: u },
+                  style: { width: `${o}%`, background: l },
                 })
-              : a.createElement('div', {
-                  className: i.default(
-                    l('bar'),
-                    'success' === c && l('success'),
-                    'error' === c && l('error'),
+              : r.createElement('div', {
+                  className: a.default(
+                    c('bar'),
+                    'success' === i && c('success'),
+                    'error' === i && c('error'),
                   ),
-                  style: { background: u },
+                  style: { background: l },
                 }),
           ),
-          (void 0 !== o || 'error' === c || 'success' === c) &&
-            a.createElement(s.default, {
-              className: i.default(
-                l('icon'),
-                'error' === c && l('icon-error'),
-                (100 === o || 'success' === c) && l('icon-success'),
+          (void 0 !== o || 'error' === i || 'success' === i) &&
+            r.createElement(s.default, {
+              className: a.default(
+                c('icon'),
+                'error' === i && c('icon-error'),
+                (100 === o || 'success' === i) && c('icon-success'),
               ),
-              name: 'error' === c ? 'error' : 'success',
+              name: 'error' === i ? 'error' : 'success',
             }),
         )
       }
     },
     function(e, t, o) {
       'use strict'
-      var n =
-        (this && this.__assign) ||
-        function() {
-          return (n =
-            Object.assign ||
-            function(e) {
-              for (var t, o = 1, n = arguments.length; o < n; o++)
-                for (var r in (t = arguments[o]))
-                  Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-              return e
-            }).apply(this, arguments)
-        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var r = o(0),
-        a = o(6),
-        i = o(1),
-        c = o(2),
-        s = o(100)
-      o(25)
-      var l = function(e) {
-        var t = e.placement,
-          o = void 0 === t ? 'top' : t,
-          c = 'bottom' === o ? 'coo-message-container-bottom' : 'coo-message-container',
-          l = 'bottom' === o ? 'coo-message-wrapper-bottom' : 'coo-message-wrapper',
-          u = document.createElement('div')
-        u.setAttribute('class', i.default(l, 'coo-message-enter-animat'))
-        var d = document.querySelector('.' + c)
-        d ||
-          ((d = document.createElement('div')).setAttribute('class', c),
-          document.body.appendChild(d)),
-          d.appendChild(u)
-        var f = r.createElement(
+      const n = o(0),
+        r = o(6),
+        a = o(1),
+        i = o(2),
+        s = o(97)
+      o(24)
+      const c = e => {
+        const { placement: t = 'top' } = e,
+          o = 'bottom' === t ? 'coo-message-container-bottom' : 'coo-message-container',
+          i = 'bottom' === t ? 'coo-message-wrapper-bottom' : 'coo-message-wrapper',
+          c = document.createElement('div')
+        c.setAttribute('class', a.default(i, 'coo-message-enter-animat'))
+        let l = document.querySelector(`.${o}`)
+        l ||
+          ((l = document.createElement('div')),
+          l.setAttribute('class', o),
+          document.body.appendChild(l)),
+          l.appendChild(c)
+        const d = n.createElement(
           s.default,
-          n(
+          Object.assign(
             {
-              _onShowClose: function() {
-                p()
+              _onShowClose: () => {
+                u()
               },
             },
             e,
           ),
         )
-        a.render(f, u)
-        var p = function() {
-          u.setAttribute('class', l + ' coo-message-exit-animat'),
-            setTimeout(function() {
-              a.unmountComponentAtNode(u) && u.parentNode && u.parentNode.removeChild(u)
+        r.render(d, c)
+        const u = () => {
+          c.setAttribute('class', `${i} coo-message-exit-animat`),
+            setTimeout(() => {
+              r.unmountComponentAtNode(c) && c.parentNode && c.parentNode.removeChild(c)
             }, 280)
         }
-        return { close: p }
+        return { close: u }
       }
-      ;(l.$success = function() {}),
-        (l.$info = function() {}),
-        (l.$error = function() {}),
-        (l.$warning = function() {}),
-        ['$success', '$info', '$error', '$warning'].forEach(function(e) {
-          l[e] = function(t) {
-            var o = c.isString(t) ? { message: t } : n({}, t)
-            return l.call(null, Object.assign({ type: e.substr(1) }, o))
+      ;(c.$success = () => {}),
+        (c.$info = () => {}),
+        (c.$error = () => {}),
+        (c.$warning = () => {}),
+        ['$success', '$info', '$error', '$warning'].forEach(e => {
+          c[e] = t => {
+            const o = i.isString(t) ? { message: t } : Object.assign({}, t)
+            return c.call(null, Object.assign({ type: e.substr(1) }, o))
           }
         })
-      var u = l.$success
-      t.$success = u
-      var d = l.$info
+      const l = c.$success
+      t.$success = l
+      const d = c.$info
       t.$info = d
-      var f = l.$error
-      t.$error = f
-      var p = l.$warning
-      ;(t.$warning = p), (t.default = l)
+      const u = c.$error
+      t.$error = u
+      const p = c.$warning
+      ;(t.$warning = p), (t.default = c)
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(101)
+        r = o(98)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -1557,65 +1140,48 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(2),
+      const r = o(0),
+        a = o(1),
+        i = o(2),
         s = o(5),
-        l = o(7)
-      o(102)
-      var u = c.setPrefixClassName('coo-loading')
-      t.default = function(e) {
-        var t = e.children,
-          o = e.className,
-          c = e.visible,
-          d = e.color,
-          f = e.type,
-          p = void 0 === f ? 'light' : f,
-          b = r(e, ['children', 'className', 'visible', 'color', 'type'])
-        return a.createElement(
+        c = o(7)
+      o(99)
+      const l = i.setPrefixClassName('coo-loading')
+      t.default = e => {
+        const { children: t, className: o, visible: i, color: d, type: u = 'light' } = e,
+          p = n(e, ['children', 'className', 'visible', 'color', 'type'])
+        return r.createElement(
           'div',
-          n({ className: i.default(u('container'), o) }, b),
+          Object.assign({ className: a.default(l('container'), o) }, p),
           t,
-          a.createElement(
-            l.default,
-            { visible: c },
-            a.createElement(
+          r.createElement(
+            c.default,
+            { visible: i },
+            r.createElement(
               'div',
-              { className: i.default(u('mask'), 'dark' === p ? u('mask-dark') : null) },
-              a.createElement(
+              { className: a.default(l('mask'), 'dark' === u ? l('mask-dark') : null) },
+              r.createElement(
                 'div',
-                { className: u('wrapper') },
-                a.createElement(s.default, {
-                  className: u(''),
+                { className: l('wrapper') },
+                r.createElement(s.default, {
+                  className: l(''),
                   style: { color: d },
-                  name: 'dark' === p ? 'loading-spot' : 'loading-rotate',
+                  name: 'dark' === u ? 'loading-spot' : 'loading-rotate',
                 }),
               ),
             ),
@@ -1626,53 +1192,40 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1),
+      const r = o(0),
+        a = o(0),
+        i = o(1),
         s = o(2)
-      o(104)
-      var l = s.setPrefixClassName('coo-drawer')
-      t.default = function(e) {
-        var t = e.children,
-          o = e.visible,
-          s = e.mask,
-          u = void 0 === s || s,
-          d = (e.maskClosable, e.destroyOnClose, e.direction),
-          f = void 0 === d ? 'left' : d,
-          p = e.contentBackground,
-          b = void 0 === p ? '#fff' : p,
-          h = e.zIndex,
-          m = void 0 === h ? 1001 : h,
-          v = e.onCancel,
-          g = void 0 === v ? function() {} : v,
-          y = r(e, [
+      o(101)
+      const c = s.setPrefixClassName('coo-drawer')
+      t.default = e => {
+        const {
+            children: t,
+            visible: o,
+            mask: s = !0,
+            maskClosable: l = !0,
+            destroyOnClose: d = !1,
+            direction: u = 'left',
+            contentBackground: p = '#fff',
+            zIndex: f = 1001,
+            onCancel: b = () => {},
+          } = e,
+          m = n(e, [
             'children',
             'visible',
             'mask',
@@ -1683,55 +1236,48 @@
             'zIndex',
             'onCancel',
           ]),
-          x = {
+          h = {
             left: { transform: 'translate3d(-100%, 0, 0)' },
             right: { transform: 'translate3d(100%, 0, 0)' },
             top: { transform: 'translate3d(0, -100%, 0)' },
             bottom: { transform: 'translate3d(0, 100%, 0)' },
           },
-          w = i.useState(n({ display: 'none' }, x[f])),
-          O = w[0],
-          k = w[1],
-          E = i.useState({ display: 'none', opacity: 0 }),
-          j = E[0],
-          _ = E[1]
-        i.useEffect(
-          function() {
-            o
-              ? (_({ display: 'block', opacity: 0 }),
-                k(n({ display: 'inline-block' }, x[f])),
-                setTimeout(function() {
-                  _({ display: 'block', opacity: 1 }),
-                    k({ display: 'inline-block', transform: 'translate3d(0, 0, 0)' })
-                }, 20))
-              : (_({ display: 'block', opacity: 0 }),
-                k(n({ display: 'inline-block' }, x[f])),
-                setTimeout(function() {
-                  k(n({ display: 'none' }, x[f])), _({ display: 'none', opacity: 0 })
-                }, 300))
-          },
-          [o],
-        )
-        return a.createElement(
+          [g, v] = a.useState(Object.assign({ display: 'none' }, h[u])),
+          [y, x] = a.useState({ display: 'none', opacity: 0 })
+        a.useEffect(() => {
+          o
+            ? (x({ display: 'block', opacity: 0 }),
+              v(Object.assign({ display: 'inline-block' }, h[u])),
+              setTimeout(() => {
+                x({ display: 'block', opacity: 1 }),
+                  v({ display: 'inline-block', transform: 'translate3d(0, 0, 0)' })
+              }, 20))
+            : (x({ display: 'block', opacity: 0 }),
+              v(Object.assign({ display: 'inline-block' }, h[u])),
+              setTimeout(() => {
+                v(Object.assign({ display: 'none' }, h[u])), x({ display: 'none', opacity: 0 })
+              }, 300))
+        }, [o])
+        return r.createElement(
           'div',
-          n(
+          Object.assign(
             {
-              onClick: function() {
-                g()
+              onClick: () => {
+                b()
               },
-              className: c.default(u && l('mask')),
-              style: n({ zIndex: m }, j),
+              className: i.default(s && c('mask')),
+              style: Object.assign({ zIndex: f }, y),
             },
-            y,
+            m,
           ),
-          a.createElement(
+          r.createElement(
             'div',
             {
-              onClick: function(e) {
+              onClick: e => {
                 e.stopPropagation()
               },
-              className: c.default(l('content'), l('content-' + f)),
-              style: n({ backgroundColor: b }, O),
+              className: i.default(c('content'), c(`content-${u}`)),
+              style: Object.assign({ backgroundColor: p }, g),
             },
             t,
           ),
@@ -1741,51 +1287,38 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(2)
-      o(106)
-      var s = c.setPrefixClassName('coo-badges')
-      t.default = function(e) {
-        var t = e.className,
-          o = e.children,
-          c = e.badgeContent,
-          l = e.color,
-          u = e.bgColor,
-          d = e.type,
-          f = void 0 === d ? 'default' : d,
-          p = e.placement,
-          b = void 0 === p ? 'right-top' : p,
-          h = e.dot,
-          m = void 0 !== h && h,
-          v = r(e, [
+      const r = o(0),
+        a = o(1),
+        i = o(2)
+      o(103)
+      const s = i.setPrefixClassName('coo-badges')
+      t.default = e => {
+        const {
+            className: t,
+            children: o,
+            badgeContent: i,
+            color: c,
+            bgColor: l,
+            type: d = 'default',
+            placement: u = 'right-top',
+            dot: p = !1,
+          } = e,
+          f = n(e, [
             'className',
             'children',
             'badgeContent',
@@ -1795,14 +1328,14 @@
             'placement',
             'dot',
           ])
-        return a.createElement(
+        return r.createElement(
           'div',
-          n({ className: i.default(s('wrapper'), t) }, v),
+          Object.assign({ className: a.default(s('wrapper'), t) }, f),
           o,
-          a.createElement(
+          r.createElement(
             'div',
-            { className: i.default(s(''), s(b), s(f), m && s('dot')), style: { background: u } },
-            a.createElement('span', { style: { color: l } }, !m && c),
+            { className: a.default(s(''), s(u), s(d), p && s('dot')), style: { background: l } },
+            r.createElement('span', { style: { color: c } }, !p && i),
           ),
         )
       }
@@ -1810,55 +1343,39 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(2)
-      o(108)
-      var s = c.setPrefixClassName('coo-skeleton')
-      t.default = function(e) {
-        var t = e.children,
-          o = e.className,
-          c = e.loading,
-          l = e.row,
-          u = void 0 === l ? 4 : l,
-          d = e.avatar,
-          f = void 0 !== d && d,
-          p = e.avatarShape,
-          b = void 0 === p ? 'round' : p,
-          h = e.avatarSize,
-          m = void 0 === h ? '32px' : h,
-          v = e.title,
-          g = void 0 === v || v,
-          y = e.animat,
-          x = void 0 === y || y,
-          w = r(e, [
+      const r = o(0),
+        a = o(1),
+        i = o(2)
+      o(105)
+      const s = i.setPrefixClassName('coo-skeleton')
+      t.default = e => {
+        const {
+            children: t,
+            className: o,
+            loading: i,
+            row: c = 4,
+            avatar: l = !1,
+            avatarShape: d = 'round',
+            avatarSize: u = '32px',
+            title: p = !0,
+            animat: f = !0,
+          } = e,
+          b = n(e, [
             'children',
             'className',
             'loading',
@@ -1869,277 +1386,180 @@
             'title',
             'animat',
           ]),
-          O = x ? s('animat') : null
-        return a.createElement(
-          a.Fragment,
+          m = f ? s('animat') : null
+        return r.createElement(
+          r.Fragment,
           null,
-          c
-            ? a.createElement(
+          i
+            ? r.createElement(
                 'div',
-                n({ className: i.default(s(), o, f && s('has-avatar')) }, w),
-                (f || g) &&
-                  a.createElement(
+                Object.assign({ className: a.default(s(), o, l && s('has-avatar')) }, b),
+                (l || p) &&
+                  r.createElement(
                     'div',
-                    { className: i.default(s('avatar-wrapper'), O) },
-                    f &&
-                      a.createElement('div', {
+                    { className: a.default(s('avatar-wrapper'), m) },
+                    l &&
+                      r.createElement('div', {
                         className: s('avatar'),
                         style: {
-                          borderRadius: 'round' === b ? '50%' : 'none',
-                          width: m,
-                          height: m,
+                          borderRadius: 'round' === d ? '50%' : 'none',
+                          width: u,
+                          height: u,
                         },
                       }),
-                    g && a.createElement('div', { className: s('title') }),
+                    p && r.createElement('div', { className: s('title') }),
                   ),
-                1 === u
-                  ? a.createElement('div', { className: i.default(s('row-one'), O) })
-                  : Array(u)
+                1 === c
+                  ? r.createElement('div', { className: a.default(s('row-one'), m) })
+                  : Array(c)
                       .fill(1)
-                      .map(function(e, t) {
-                        return a.createElement('div', { key: t, className: i.default(s('row'), O) })
-                      }),
+                      .map((e, t) =>
+                        r.createElement('div', { key: t, className: a.default(s('row'), m) }),
+                      ),
               )
-            : a.createElement(a.Fragment, null, t),
+            : r.createElement(r.Fragment, null, t),
         )
       }
     },
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(2)
-      o(110)
-      var s = c.setPrefixClassName('coo-card')
-      t.default = function(e) {
-        var t = e.children,
-          o = e.className,
-          c = e.header,
-          l = e.shadow,
-          u = void 0 === l ? 'always' : l,
-          d = r(e, ['children', 'className', 'header', 'shadow'])
-        return a.createElement(
+      const r = o(0),
+        a = o(1),
+        i = o(2)
+      o(107)
+      const s = i.setPrefixClassName('coo-card')
+      t.default = e => {
+        const { children: t, className: o, header: i, shadow: c = 'always' } = e,
+          l = n(e, ['children', 'className', 'header', 'shadow'])
+        return r.createElement(
           'div',
-          n(
+          Object.assign(
             {
-              className: i.default(
+              className: a.default(
                 s(),
                 o,
-                'always' === u && s('has-shadow'),
-                'hover' === u && s('hover-shadow'),
+                'always' === c && s('has-shadow'),
+                'hover' === c && s('hover-shadow'),
               ),
             },
-            d,
+            l,
           ),
-          c && a.createElement('div', { className: s('header') }, c),
-          a.createElement('div', { className: s('body') }, t),
+          i && r.createElement('div', { className: s('header') }, i),
+          r.createElement('div', { className: s('body') }, t),
         )
       }
     },
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1),
+      const r = o(0),
+        a = o(0),
+        i = o(1),
         s = o(2),
-        l = o(112),
-        u = o(114)
-      o(12)
-      var d = s.setPrefixClassName('coo-menu'),
-        f = function(e) {
-          var t = e.children,
-            o = e.className,
-            s = e.align,
-            f = void 0 === s ? 'left' : s,
-            p = e.activeIndex,
-            b = e.onSelect,
-            h = void 0 === b ? function() {} : b,
-            m = e.trigger,
-            v = void 0 === m ? 'hover' : m,
-            g = r(e, ['children', 'className', 'align', 'activeIndex', 'onSelect', 'trigger']),
-            y = i.useState(p),
-            x = y[0],
-            w = y[1],
-            O = function(e) {
-              h(e), w(e)
+        c = o(109),
+        l = o(111)
+      o(11)
+      const d = s.setPrefixClassName('coo-menu'),
+        u = e => {
+          const {
+              children: t,
+              className: o,
+              mode: s = 'horizontal',
+              align: u = 'left',
+              activeIndex: p,
+              onSelect: f = () => {},
+              trigger: b = 'hover',
+            } = e,
+            m = n(e, [
+              'children',
+              'className',
+              'mode',
+              'align',
+              'activeIndex',
+              'onSelect',
+              'trigger',
+            ]),
+            [h, g] = a.useState(p),
+            v = e => {
+              f(e), g(e)
             },
-            k = function(e) {
-              return a.Children.map(e, function(e) {
-                if (e.type && e.type === u.default) {
-                  var t = !1
+            y = e =>
+              r.Children.map(e, e => {
+                if (e.type && e.type === l.default) {
+                  let t = !1
                   return (
-                    a.Children.forEach(e.props.children, function(e) {
-                      e.props.index === x && (t = !0)
+                    r.Children.forEach(e.props.children, e => {
+                      e.props.index === h && (t = !0)
                     }),
-                    a.cloneElement(e, { children: k(e.props.children), _trigger: v, _isActive: t })
+                    r.cloneElement(e, {
+                      children: y(e.props.children),
+                      _trigger: b,
+                      _isActive: t,
+                      mode: s,
+                    })
                   )
                 }
-                return e.type && e.type === l.default
-                  ? a.cloneElement(e, {
-                      className: x === e.props.index ? d('item-active') : '',
-                      _onchange: O,
+                return e.type && e.type === c.default
+                  ? r.cloneElement(e, {
+                      className: h === e.props.index ? d('item-active') : '',
+                      _onchange: v,
                     })
                   : e
               })
-            }
-          return a.createElement(
+          return r.createElement(
             'div',
-            n(
+            Object.assign(
               {
-                className: c.default(
+                className: i.default(
                   d(),
-                  'left' === f && d('left'),
-                  'center' === f && d('center'),
-                  'right' === f && d('right'),
+                  'left' === u && d('left'),
+                  'center' === u && d('center'),
+                  'right' === u && d('right'),
+                  'vertical' === s && d('vertical'),
                   o,
                 ),
               },
-              g,
+              m,
             ),
-            t && k(t),
+            t && y(t),
           )
         }
-      ;(f.MenuItem = l.default), (f.SubMenu = u.default), (t.default = f)
-    },
-    function(e, t, o) {
-      'use strict'
-      var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
-          }
-      Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1),
-        s = o(2),
-        l = o(115)
-      o(33)
-      var u = s.setPrefixClassName('coo-collapse'),
-        d = function(e) {
-          var t = e.children,
-            o = e.className,
-            l = e.accordion,
-            d = e.value,
-            f = r(e, ['children', 'className', 'accordion', 'value']),
-            p = l ? d || -1 : d || [],
-            b = []
-          if (s.isArray(p))
-            for (var h = 0; h < t.length; h++) b.push({ visible: p.indexOf(h) > -1 })
-          var m = i.useState(b),
-            v = m[0],
-            g = m[1],
-            y = i.useState({ name: p, visible: !0 }),
-            x = y[0],
-            w = y[1],
-            O = function(e, t) {
-              if (l) w({ name: +e, visible: !t })
-              else {
-                var o = v.map(function(o, n) {
-                  return +e === n ? { visible: !t } : o
-                })
-                g(o)
-              }
-            },
-            k = function(e) {
-              return l ? x.name === e && !0 === x.visible : v[e].visible
-            }
-          return a.createElement(
-            'div',
-            n({ className: c.default(u(), o) }, f),
-            a.Children.map(t, function(e, t) {
-              return a.cloneElement(e, {
-                name: t.toString(),
-                key: t,
-                contentvisible: k(t),
-                onClick: O,
-              })
-            }),
-          )
-        }
-      ;(d.Item = l.default), (t.default = d)
+      ;(u.MenuItem = c.default), (u.SubMenu = l.default), (t.default = u)
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(116)
+        r = o(113)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -2148,117 +1568,91 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(2)
-      o(117)
-      var s = c.setPrefixClassName('coo-divider')
-      t.default = function(e) {
-        var t = e.children,
-          o = e.className,
-          c = e.dashed,
-          l = void 0 !== c && c,
-          u = e.orientation,
-          d = void 0 === u ? 'center' : u,
-          f = e.type,
-          p = void 0 === f ? 'horizontal' : f,
-          b = r(e, ['children', 'className', 'dashed', 'orientation', 'type'])
-        return a.createElement(
+      const r = o(0),
+        a = o(1),
+        i = o(2)
+      o(114)
+      const s = i.setPrefixClassName('coo-divider')
+      t.default = e => {
+        const {
+            children: t,
+            className: o,
+            dashed: i = !1,
+            orientation: c = 'center',
+            type: l = 'horizontal',
+          } = e,
+          d = n(e, ['children', 'className', 'dashed', 'orientation', 'type'])
+        return r.createElement(
           'div',
-          n(
+          Object.assign(
             {
-              className: i.default(
+              className: a.default(
                 s(),
-                l && s('dashed'),
-                'left' === d && s('left'),
-                'right' === d && s('right'),
-                'vertical' === p && s('vertical'),
+                i && s('dashed'),
+                'left' === c && s('left'),
+                'right' === c && s('right'),
+                'vertical' === l && s('vertical'),
                 o,
               ),
             },
-            b,
+            d,
           ),
-          'horizontal' === p && t && a.createElement('span', { className: s('content') }, t),
+          'horizontal' === l && t && r.createElement('span', { className: s('content') }, t),
         )
       }
     },
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(2)
-      o(119)
-      var s = c.setPrefixClassName('coo-text-link')
-      t.default = function(e) {
-        var t = e.children,
-          o = e.className,
-          c = e.type,
-          l = void 0 === c ? 'default' : c,
-          u = e.underline,
-          d = void 0 === u || u,
-          f = e.disabled,
-          p = void 0 !== f && f,
-          b = r(e, ['children', 'className', 'type', 'underline', 'disabled'])
-        return a.createElement(
+      const r = o(0),
+        a = o(1),
+        i = o(2)
+      o(116)
+      const s = i.setPrefixClassName('coo-text-link')
+      t.default = e => {
+        const {
+            children: t,
+            className: o,
+            type: i = 'default',
+            underline: c = !0,
+            disabled: l = !1,
+          } = e,
+          d = n(e, ['children', 'className', 'type', 'underline', 'disabled'])
+        return r.createElement(
           'a',
-          n(
-            { className: i.default(s(), s(l), d && s('underline'), o, p && s(l + '-disabled')) },
-            b,
+          Object.assign(
+            { className: a.default(s(), s(i), c && s('underline'), o, l && s(`${i}-disabled`)) },
+            d,
           ),
           t,
         )
@@ -2267,59 +1661,41 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1),
+      const r = o(0),
+        a = o(0),
+        i = o(1),
         s = o(2),
-        l = o(5)
-      o(121)
-      var u = s.setPrefixClassName('coo-pagination')
-      t.default = function(e) {
-        var t = e.className,
-          o = e.size,
-          d = void 0 === o ? 'normal' : o,
-          f = e.defaultCurrent,
-          p = void 0 === f ? 1 : f,
-          b = e.pagerCount,
-          h = void 0 === b ? 5 : b,
-          m = e.pageCount,
-          v = void 0 === m ? 0 : m,
-          g = e.disabled,
-          y = void 0 !== g && g,
-          x = e.hideOnSinglePage,
-          w = void 0 !== x && x,
-          O = e.showQuickJumper,
-          k = void 0 !== O && O,
-          E = e.onChange,
-          j = void 0 === E ? function() {} : E,
-          _ = r(e, [
+        c = o(5)
+      o(118)
+      const l = s.setPrefixClassName('coo-pagination')
+      t.default = e => {
+        const {
+            className: t,
+            size: o = 'normal',
+            defaultCurrent: d = 1,
+            pagerCount: u = 5,
+            pageCount: p = 0,
+            disabled: f = !1,
+            hideOnSinglePage: b = !1,
+            showQuickJumper: m = !1,
+            onChange: h = () => {},
+          } = e,
+          g = n(e, [
             'className',
             'size',
             'defaultCurrent',
@@ -2330,212 +1706,176 @@
             'showQuickJumper',
             'onChange',
           ])
-        if (w && 1 === v) return null
-        var N = Math.floor(h / 2),
-          P = Array.from(Array(v <= h ? v : h), function(e, t) {
-            return e || t + 1
-          }),
-          C = i.useState(P),
-          S = C[0],
-          M = C[1],
-          z = i.useState(p),
-          T = z[0],
-          L = z[1],
-          I = i.useState('ellipsis'),
-          A = I[0],
-          B = I[1],
-          R = i.useState('ellipsis'),
-          D = R[0],
-          q = R[1],
-          F = function(e) {
-            y || ('prev' === e ? B('double-left') : q('double-right'))
+        if (b && 1 === p) return null
+        const v = Math.floor(u / 2),
+          y = Array.from(Array(p <= u ? p : u), (e, t) => e || t + 1),
+          [x, w] = a.useState(y),
+          [O, k] = a.useState(d),
+          [E, j] = a.useState('ellipsis'),
+          [N, _] = a.useState('ellipsis'),
+          C = e => {
+            f || ('prev' === e ? j('double-left') : _('double-right'))
           },
-          V = function(e) {
-            y || ('prev' === e ? B('ellipsis') : q('ellipsis'))
+          P = e => {
+            f || ('prev' === e ? j('ellipsis') : _('ellipsis'))
           },
-          H = function(e) {
-            if (!y) {
-              if ((v > h && M($(e)), e > v))
-                return void Promise.resolve().then(function() {
-                  L(v)
+          S = e => {
+            if (!f) {
+              if ((p > u && w(z(e)), e > p))
+                return void Promise.resolve().then(() => {
+                  k(p)
                 })
               if (e < 1)
-                return void Promise.resolve().then(function() {
-                  L(1)
+                return void Promise.resolve().then(() => {
+                  k(1)
                 })
-              Promise.resolve().then(function() {
-                L(e)
+              Promise.resolve().then(() => {
+                k(e)
               })
             }
           },
-          U = function(e) {
-            y ||
+          M = e => {
+            f ||
               ('prev' === e &&
-                (v > h && M($(T - 1)),
-                Promise.resolve().then(function() {
-                  T > 1 && L(T - 1)
+                (p > u && w(z(O - 1)),
+                Promise.resolve().then(() => {
+                  O > 1 && k(O - 1)
                 })),
               'next' === e &&
-                (v > h && M($(T + 1)),
-                Promise.resolve().then(function() {
-                  T < v && L(T + 1)
+                (p > u && w(z(O + 1)),
+                Promise.resolve().then(() => {
+                  O < p && k(O + 1)
                 })))
           },
-          $ = function(e) {
-            var t = e
-            t < N + 1 && (t = N + 1), e > v - N && (t = v - N)
-            for (var o = [], n = 0; n < h; n++) o.push(t - N + n)
+          z = e => {
+            let t = e
+            t < v + 1 && (t = v + 1), e > p - v && (t = p - v)
+            let o = []
+            for (let e = 0; e < u; e++) o.push(t - v + e)
             return o
           },
-          X = i.useState(''),
-          Y = X[0],
-          W = X[1]
+          [T, L] = a.useState('')
         return (
-          i.useEffect(function() {
-            p > h && M($(T))
+          a.useEffect(() => {
+            d > u && w(z(O))
           }, []),
-          i.useEffect(
-            function() {
-              T >= v - N && q('ellipsis'), T <= h && B('ellipsis'), j(T)
-            },
-            [T],
-          ),
-          a.createElement(
+          a.useEffect(() => {
+            O >= p - v && _('ellipsis'), O <= u && j('ellipsis'), h(O)
+          }, [O]),
+          r.createElement(
             'ul',
-            n(
+            Object.assign(
               {
-                className: c.default(
-                  u(),
-                  'normal' === d && u('normal'),
-                  'small' === d && u('small'),
-                  'large' === d && u('large'),
+                className: i.default(
+                  l(),
+                  'normal' === o && l('normal'),
+                  'small' === o && l('small'),
+                  'large' === o && l('large'),
                   t,
                 ),
               },
-              _,
+              g,
             ),
-            a.createElement(
+            r.createElement(
               'li',
               {
-                className: c.default(u('prev'), (1 === T || y) && u('disabled')),
-                onClick: function() {
-                  return U('prev')
-                },
+                className: i.default(l('prev'), (1 === O || f) && l('disabled')),
+                onClick: () => M('prev'),
                 title: '上一页',
               },
-              a.createElement(l.default, { name: 'arrow-left' }),
+              r.createElement(c.default, { name: 'arrow-left' }),
             ),
-            T > h &&
-              a.createElement(
-                a.Fragment,
+            O > u &&
+              r.createElement(
+                r.Fragment,
                 null,
-                a.createElement(
+                r.createElement(
                   'li',
                   {
-                    className: c.default(u('item'), y && u('disabled')),
-                    onClick: function() {
-                      return H(1)
-                    },
+                    className: i.default(l('item'), f && l('disabled')),
+                    onClick: () => S(1),
                     title: '1',
                   },
                   1,
                 ),
-                a.createElement(
+                r.createElement(
                   'li',
                   {
-                    className: c.default(u('item'), y && u('disabled')),
-                    onMouseEnter: function() {
-                      return F('prev')
-                    },
-                    onMouseLeave: function() {
-                      return V('prev')
-                    },
-                    onClick: function() {
-                      return H(T - h)
-                    },
-                    title: '向前' + h + '页',
+                    className: i.default(l('item'), f && l('disabled')),
+                    onMouseEnter: () => C('prev'),
+                    onMouseLeave: () => P('prev'),
+                    onClick: () => S(O - u),
+                    title: `向前${u}页`,
                   },
-                  a.createElement(l.default, { name: A }),
+                  r.createElement(c.default, { name: E }),
                 ),
               ),
-            S.map(function(e) {
-              return a.createElement(
+            x.map(e =>
+              r.createElement(
                 'li',
                 {
                   key: e,
-                  className: c.default(u('item'), e === T && u('item-active'), y && u('disabled')),
-                  onClick: function() {
-                    return H(e)
-                  },
-                  title: '' + e,
+                  className: i.default(l('item'), e === O && l('item-active'), f && l('disabled')),
+                  onClick: () => S(e),
+                  title: `${e}`,
                 },
                 e,
-              )
-            }),
-            v > h &&
-              T < v - N &&
-              a.createElement(
-                a.Fragment,
+              ),
+            ),
+            p > u &&
+              O < p - v &&
+              r.createElement(
+                r.Fragment,
                 null,
-                a.createElement(
+                r.createElement(
                   'li',
                   {
-                    className: c.default(u('item'), y && u('disabled')),
-                    onMouseEnter: function() {
-                      return F('next')
-                    },
-                    onMouseLeave: function() {
-                      return V('next')
-                    },
-                    onClick: function() {
-                      return H(T + h)
-                    },
-                    title: '向后' + h + '页',
+                    className: i.default(l('item'), f && l('disabled')),
+                    onMouseEnter: () => C('next'),
+                    onMouseLeave: () => P('next'),
+                    onClick: () => S(O + u),
+                    title: `向后${u}页`,
                   },
-                  a.createElement(l.default, { name: D }),
+                  r.createElement(c.default, { name: N }),
                 ),
-                a.createElement(
+                r.createElement(
                   'li',
                   {
-                    className: c.default(u('item'), y && u('disabled')),
-                    onClick: function() {
-                      return H(v)
-                    },
-                    title: '' + v,
+                    className: i.default(l('item'), f && l('disabled')),
+                    onClick: () => S(p),
+                    title: `${p}`,
                   },
-                  v,
+                  p,
                 ),
               ),
-            a.createElement(
+            r.createElement(
               'li',
               {
-                className: c.default(u('next'), (T === v || y) && u('disabled')),
-                onClick: function() {
-                  return U('next')
-                },
+                className: i.default(l('next'), (O === p || f) && l('disabled')),
+                onClick: () => M('next'),
                 title: '下一页',
               },
-              a.createElement(l.default, { name: 'arrow-right' }),
+              r.createElement(c.default, { name: 'arrow-right' }),
             ),
-            k &&
-              a.createElement(
+            m &&
+              r.createElement(
                 'li',
-                { className: c.default(u('quick-jumper'), y && u('disabled')) },
-                a.createElement('span', null, '跳至'),
-                a.createElement('input', {
-                  className: u('quick-jumper-input'),
-                  value: Y,
-                  onChange: function(e) {
-                    W(e.target.value)
+                { className: i.default(l('quick-jumper'), f && l('disabled')) },
+                r.createElement('span', null, '跳至'),
+                r.createElement('input', {
+                  className: l('quick-jumper-input'),
+                  value: T,
+                  onChange: e => {
+                    L(e.target.value)
                   },
-                  onKeyDown: function(e) {
+                  onKeyDown: e => {
                     if (13 === e.keyCode) {
-                      var t = parseInt(e.target.value, 10)
-                      s.isNumber(t) && H(t), W('')
+                      const t = parseInt(e.target.value, 10)
+                      s.isNumber(t) && S(t), L('')
                     }
                   },
                 }),
-                a.createElement('span', null, '页'),
+                r.createElement('span', null, '页'),
               ),
           )
         )
@@ -2544,156 +1884,112 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1),
+      const r = o(0),
+        a = o(0),
+        i = o(1),
         s = o(2),
-        l = o(123)
-      o(38)
-      var u = s.setPrefixClassName('coo-tabs'),
-        d = function(e) {
-          var t = e.children,
-            o = e.className,
-            s = e.defaultActiveKey,
-            d = e.destoryOnChange,
-            f = void 0 !== d && d,
-            p =
-              (e.animat,
-              r(e, ['children', 'className', 'defaultActiveKey', 'destoryOnChange', 'animat'])),
-            b = a.Children.map(t, function(e) {
-              var t = e
+        c = o(120)
+      o(36)
+      const l = s.setPrefixClassName('coo-tabs'),
+        d = e => {
+          const {
+              children: t,
+              className: o,
+              defaultActiveKey: s,
+              destoryOnChange: d = !1,
+              animat: u = !0,
+            } = e,
+            p = n(e, ['children', 'className', 'defaultActiveKey', 'destoryOnChange', 'animat']),
+            f = r.Children.map(t, e => {
+              const t = e
               return { key: t.key, tab: t.props.tab }
             }),
-            h = i.useState(),
-            m = h[0],
-            v = h[1],
-            g = i.useState(0),
-            y = g[0],
-            x = g[1],
-            w = i.useState({ key: s || t[0].key || '', tab: '' }),
-            O = w[0],
-            k = w[1],
-            E = i.useRef(null)
+            [b, m] = a.useState(),
+            [h, g] = a.useState(0),
+            [v, y] = a.useState({ key: s || t[0].key || '', tab: '' }),
+            x = a.useRef(null)
           return (
-            i.useEffect(
-              function() {
-                var e = E.current
-                if (null !== e && e.children.length > 0) {
-                  var t = Array.prototype.map
-                    .call(e.children, function(e) {
-                      return e.className.includes('coo-tabs-tab-item')
-                        ? getComputedStyle(e).width
-                        : null
-                    })
-                    .filter(function(e) {
-                      return null !== e
-                    })
-                  v(t)
-                  var o = b.findIndex(function(e) {
-                      return e.key === s
-                    }),
-                    n = t.slice(0, o).reduce(function(e, t) {
-                      return e + parseInt(t, 10) + 16
-                    }, 0)
-                  x(n)
-                }
-              },
-              [E],
-            ),
-            a.createElement(
+            a.useEffect(() => {
+              const e = x.current
+              if (null !== e && e.children.length > 0) {
+                const t = Array.prototype.map
+                  .call(e.children, e =>
+                    e.className.includes('coo-tabs-tab-item') ? getComputedStyle(e).width : null,
+                  )
+                  .filter(e => null !== e)
+                m(t)
+                const o = f.findIndex(e => e.key === s),
+                  n = t.slice(0, o).reduce((e, t) => e + parseInt(t, 10) + 16, 0)
+                g(n)
+              }
+            }, [x]),
+            r.createElement(
               'div',
-              n({ className: c.default(u(), o) }, p),
-              a.createElement(
+              Object.assign({ className: i.default(l(), o) }, p),
+              r.createElement(
                 'ul',
-                { ref: E, className: u('tab') },
-                a.Children.map(t, function(e) {
-                  var t = e
-                  if (t.type === l.default) {
-                    var o = t.key || '',
-                      n = t.props.tab
-                    return a.createElement(
+                { ref: x, className: l('tab') },
+                r.Children.map(t, e => {
+                  const t = e
+                  if (t.type === c.default) {
+                    const e = t.key || '',
+                      { tab: o } = t.props
+                    return r.createElement(
                       'li',
                       {
-                        key: o,
-                        className: c.default(u('tab-item'), O.key === o && u('tab-item-active')),
-                        onClick: function() {
-                          return (
-                            (e = o),
-                            (t = n),
-                            (r = b.findIndex(function(t) {
-                              return t.key === e
-                            })),
-                            (a = m.slice(0, r).reduce(function(e, t) {
-                              return e + parseInt(t, 10) + 16
-                            }, 0)),
-                            x(a),
-                            void k({ key: e, tab: t })
-                          )
-                          var e, t, r, a
-                        },
+                        key: e,
+                        className: i.default(l('tab-item'), v.key === e && l('tab-item-active')),
+                        onClick: () =>
+                          ((e, t) => {
+                            const o = f.findIndex(t => t.key === e),
+                              n = b.slice(0, o).reduce((e, t) => e + parseInt(t, 10) + 16, 0)
+                            g(n), y({ key: e, tab: t })
+                          })(e, o),
                       },
-                      n,
+                      o,
                     )
                   }
                   return null
                 }),
-                a.createElement('div', {
-                  className: u('tab-bar'),
+                r.createElement('div', {
+                  className: l('tab-bar'),
                   style: {
-                    width:
-                      m &&
-                      m[
-                        b.findIndex(function(e) {
-                          return e.key === O.key
-                        })
-                      ],
-                    transform: 'translateX(' + y + 'px)',
+                    width: b && b[f.findIndex(e => e.key === v.key)],
+                    transform: `translateX(${h}px)`,
                   },
                 }),
               ),
-              a.createElement(
+              r.createElement(
                 'div',
-                { className: u('pane') },
-                a.Children.map(t, function(e) {
-                  var t = e
-                  if (t.type === l.default) {
-                    var o = t.key || ''
-                    return f
-                      ? O.key === o
-                        ? a.createElement('div', { className: u('pane-content') }, e)
+                { className: l('pane') },
+                r.Children.map(t, e => {
+                  const t = e
+                  if (t.type === c.default) {
+                    const o = t.key || ''
+                    return d
+                      ? v.key === o
+                        ? r.createElement('div', { className: l('pane-content') }, e)
                         : null
-                      : a.createElement(
+                      : r.createElement(
                           'div',
                           {
-                            className: u('pane-content'),
-                            style: { display: O.key === o ? 'block' : 'none' },
+                            className: l('pane-content'),
+                            style: { display: v.key === o ? 'block' : 'none' },
                           },
                           e,
                         )
@@ -2704,11 +2000,11 @@
             )
           )
         }
-      ;(d.TabPane = l.default), (t.default = d)
+      ;(d.TabPane = c.default), (t.default = d)
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(124)
+        r = o(121)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -2717,83 +2013,69 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(6),
+      const r = o(0),
+        a = o(0),
+        i = o(6),
         s = o(1),
-        l = o(2),
-        u = o(5)
-      o(125)
-      var d = l.setPrefixClassName('coo-back-top')
-      t.default = function(e) {
-        var t = e.className,
-          o = e.children,
-          f = e.behavior,
-          p = void 0 === f ? 'smooth' : f,
-          b = e.visibilityHeight,
-          h = void 0 === b ? 400 : b,
-          m = e.animat,
-          v = void 0 === m || m,
-          g = r(e, ['className', 'children', 'behavior', 'visibilityHeight', 'animat']),
-          y = i.useState(!1),
-          x = y[0],
-          w = y[1],
-          O = l.throttle(function() {
-            var e = document.documentElement.scrollTop
-            w(+e > h)
+        c = o(2),
+        l = o(5)
+      o(122)
+      const d = c.setPrefixClassName('coo-back-top')
+      t.default = e => {
+        const {
+            className: t,
+            children: o,
+            behavior: u = 'smooth',
+            visibilityHeight: p = 400,
+            animat: f = !0,
+          } = e,
+          b = n(e, ['className', 'children', 'behavior', 'visibilityHeight', 'animat']),
+          [m, h] = a.useState(!1),
+          g = c.throttle(() => {
+            const e = document.documentElement.scrollTop
+            h(+e > p)
           }, 100)
         return (
-          i.useEffect(function() {
-            return (
-              window.addEventListener('scroll', O),
-              function() {
-                window.removeEventListener('scroll', O)
+          a.useEffect(
+            () => (
+              window.addEventListener('scroll', g),
+              () => {
+                window.removeEventListener('scroll', g)
               }
-            )
-          }, []),
-          a.createElement(
-            a.Fragment,
+            ),
+            [],
+          ),
+          r.createElement(
+            r.Fragment,
             null,
-            c.createPortal(
-              a.createElement(
+            i.createPortal(
+              r.createElement(
                 'div',
-                n(
+                Object.assign(
                   {
-                    className: s.default(d(), x && d('visible'), v && d('animat'), t),
-                    onClick: function() {
-                      window.scroll({ left: 0, top: 0, behavior: p })
+                    className: s.default(d(), m && d('visible'), f && d('animat'), t),
+                    onClick: () => {
+                      window.scroll({ left: 0, top: 0, behavior: u })
                     },
                   },
-                  g,
+                  b,
                 ),
-                o || a.createElement(u.default, { name: 'back-top' }),
+                o || r.createElement(l.default, { name: 'back-top' }),
               ),
               document.body,
             ),
@@ -2804,100 +2086,78 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1),
+      const r = o(0),
+        a = o(0),
+        i = o(1),
         s = o(2),
-        l = o(5)
-      o(127)
-      var u = s.setPrefixClassName('coo-image')
-      t.default = function(e) {
-        var t = e.className,
-          o = e.style,
-          s = e.fit,
-          d = e.src,
-          f = e.error,
-          p = e.fallbackSrc,
-          b = e.onError,
-          h = r(e, ['className', 'style', 'fit', 'src', 'error', 'fallbackSrc', 'onError']),
-          m = i.useState(!1),
-          v = m[0],
-          g = m[1],
-          y = function(e) {
-            var t = e.className,
-              o = e.style,
-              n = e.children
-            return a.createElement('div', { className: c.default(u(), t), style: o }, n)
+        c = o(5)
+      o(124)
+      const l = s.setPrefixClassName('coo-image')
+      t.default = e => {
+        const { className: t, style: o, fit: s, src: d, error: u, fallbackSrc: p, onError: f } = e,
+          b = n(e, ['className', 'style', 'fit', 'src', 'error', 'fallbackSrc', 'onError']),
+          [m, h] = a.useState(!1),
+          g = e => {
+            const { className: t, style: o, children: n } = e
+            return r.createElement('div', { className: i.default(l(), t), style: o }, n)
           },
-          x = function(e) {
-            var t = e.src,
-              o = e.fit,
-              r = e.onImageError,
-              i = e.imgLeftProps
-            return a.createElement(
+          v = e => {
+            const { src: t, fit: o, onImageError: n, imgLeftProps: a } = e
+            return r.createElement(
               'img',
-              n({ src: t, className: u('inner'), style: { objectFit: o }, onError: r }, i),
+              Object.assign(
+                { src: t, className: l('inner'), style: { objectFit: o }, onError: n },
+                a,
+              ),
             )
           }
-        return v
+        return m
           ? p
-            ? a.createElement(
-                y,
+            ? r.createElement(
+                g,
                 { className: t, style: o },
-                a.createElement(x, n({ src: p, onImageError: null, fit: s }, h)),
+                r.createElement(v, Object.assign({ src: p, onImageError: null, fit: s }, b)),
               )
-            : f
-            ? a.createElement(y, { className: t, style: o }, f)
-            : a.createElement(
-                y,
+            : u
+            ? r.createElement(g, { className: t, style: o }, u)
+            : r.createElement(
+                g,
                 { className: t, style: o },
-                a.createElement(
+                r.createElement(
                   'div',
-                  { className: u('error') },
-                  a.createElement(l.default, { className: u('error-icon'), name: 'img-error' }),
+                  { className: l('error') },
+                  r.createElement(c.default, { className: l('error-icon'), name: 'img-error' }),
                 ),
               )
-          : a.createElement(
-              y,
+          : r.createElement(
+              g,
               { className: t, style: o },
-              a.createElement(
-                x,
-                n(
+              r.createElement(
+                v,
+                Object.assign(
                   {
                     src: d,
-                    onImageError: function(e) {
-                      g(!0), b && b(e)
+                    onImageError: e => {
+                      h(!0), f && f(e)
                     },
                     fit: s,
                   },
-                  h,
+                  b,
                 ),
               ),
             )
@@ -2906,56 +2166,41 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1),
+      const r = o(0),
+        a = o(0),
+        i = o(1),
         s = o(2),
-        l = o(5)
-      o(129)
-      var u = s.setPrefixClassName('coo-switch')
-      t.default = function(e) {
-        var t = e.className,
-          o = e.checked,
-          s = e.defaultChecked,
-          d = void 0 !== s && s,
-          f = e.checkedChildren,
-          p = e.unCheckedChildren,
-          b = e.size,
-          h = void 0 === b ? 'default' : b,
-          m = e.loading,
-          v = void 0 !== m && m,
-          g = e.disabled,
-          y = void 0 !== g && g,
-          x = e.onChange,
-          w = void 0 === x ? function() {} : x,
-          O = r(e, [
+        c = o(5)
+      o(126)
+      const l = s.setPrefixClassName('coo-switch')
+      t.default = e => {
+        const {
+            className: t,
+            checked: o,
+            defaultChecked: s = !1,
+            checkedChildren: d,
+            unCheckedChildren: u,
+            size: p = 'default',
+            loading: f = !1,
+            disabled: b = !1,
+            onChange: m = () => {},
+          } = e,
+          h = n(e, [
             'className',
             'checked',
             'defaultChecked',
@@ -2966,41 +2211,36 @@
             'disabled',
             'onChange',
           ]),
-          k = i.useState(d || o),
-          E = k[0],
-          j = k[1]
+          [g, v] = a.useState(s || o)
         return (
-          i.useEffect(
-            function() {
-              j(o), w(o)
-            },
-            [o],
-          ),
-          a.createElement(
+          a.useEffect(() => {
+            v(o), m(o)
+          }, [o]),
+          r.createElement(
             'div',
-            n(
+            Object.assign(
               {
-                className: c.default(
-                  u(),
-                  'small' === h && u('small'),
-                  E && u('active'),
-                  y && u('disabled'),
-                  v && u('loading'),
+                className: i.default(
+                  l(),
+                  'small' === p && l('small'),
+                  g && l('active'),
+                  b && l('disabled'),
+                  f && l('loading'),
                   t,
                 ),
-                onClick: function() {
-                  y || void 0 !== o || (j(!E), w(!E))
+                onClick: () => {
+                  b || void 0 !== o || (v(!g), m(!g))
                 },
               },
-              O,
+              h,
             ),
-            E ? f : p,
-            a.createElement(
+            g ? d : u,
+            r.createElement(
               'div',
-              { className: u('button') },
-              v &&
-                a.createElement(l.default, {
-                  className: u('button-loading'),
+              { className: l('button') },
+              f &&
+                r.createElement(c.default, {
+                  className: l('button-loading'),
                   name: 'loading-spot',
                 }),
             ),
@@ -3008,10 +2248,145 @@
         )
       }
     },
+    function(e, t, o) {
+      'use strict'
+      o.r(t)
+      o(42)
+      var n = o(5),
+        r = o.n(n)
+      o.d(t, 'Icon', function() {
+        return r.a
+      })
+      var a = o(9),
+        i = o.n(a)
+      o.d(t, 'Button', function() {
+        return i.a
+      })
+      var s = o(14),
+        c = o.n(s)
+      o.d(t, 'Dialog', function() {
+        return c.a
+      })
+      var l = o(15),
+        d = o.n(l)
+      o.d(t, 'Layout', function() {
+        return d.a
+      })
+      var u = o(17),
+        p = o.n(u)
+      o.d(t, 'Popover', function() {
+        return p.a
+      })
+      var f = o(18),
+        b = o.n(f)
+      o.d(t, 'Tooltip', function() {
+        return b.a
+      })
+      var m = o(19),
+        h = o.n(m)
+      o.d(t, 'Foldcard', function() {
+        return h.a
+      })
+      var g = o(20),
+        v = o.n(g)
+      o.d(t, 'Radio', function() {
+        return v.a
+      })
+      var y = o(21),
+        x = o.n(y)
+      o.d(t, 'Checkbox', function() {
+        return x.a
+      })
+      var w = o(7),
+        O = o.n(w)
+      o.d(t, 'Transition', function() {
+        return O.a
+      })
+      var k = o(22),
+        E = o.n(k)
+      o.d(t, 'Progress', function() {
+        return E.a
+      })
+      var j = o(23),
+        N = o.n(j)
+      o.d(t, 'Message', function() {
+        return N.a
+      })
+      var _ = o(25),
+        C = o.n(_)
+      o.d(t, 'Loading', function() {
+        return C.a
+      })
+      var P = o(26),
+        S = o.n(P)
+      o.d(t, 'Drawer', function() {
+        return S.a
+      })
+      var M = o(27),
+        z = o.n(M)
+      o.d(t, 'Badges', function() {
+        return z.a
+      })
+      var T = o(28),
+        L = o.n(T)
+      o.d(t, 'Skeleton', function() {
+        return L.a
+      })
+      var I = o(29),
+        A = o.n(I)
+      o.d(t, 'Card', function() {
+        return A.a
+      })
+      var $ = o(30),
+        B = o.n($)
+      o.d(t, 'Menu', function() {
+        return B.a
+      })
+      var R = o(12),
+        D = o.n(R)
+      o.d(t, 'Collapse', function() {
+        return D.a
+      })
+      var q = o(32),
+        F = o.n(q)
+      o.d(t, 'Divider', function() {
+        return F.a
+      })
+      var V = o(33),
+        H = o.n(V)
+      o.d(t, 'TextLink', function() {
+        return H.a
+      })
+      var U = o(34),
+        X = o.n(U)
+      o.d(t, 'Pagination', function() {
+        return X.a
+      })
+      var Y = o(35),
+        W = o.n(Y)
+      o.d(t, 'Tabs', function() {
+        return W.a
+      })
+      var J = o(37),
+        G = o.n(J)
+      o.d(t, 'BackTop', function() {
+        return G.a
+      })
+      var K = o(38),
+        Q = o.n(K)
+      o.d(t, 'Image', function() {
+        return Q.a
+      })
+      var Z = o(39),
+        ee = o.n(Z)
+      o.d(t, 'Switch', function() {
+        return ee.a
+      })
+    },
     ,
     function(e, t, o) {
       var n = o(3),
-        r = o(44)
+        r = o(43)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -3027,7 +2402,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(46)
+        r = o(45)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -3043,29 +2418,29 @@
     },
     function(e, t, o) {
       var n = {
-        './arrow-down.svg': 48,
-        './arrow-left.svg': 49,
-        './arrow-right.svg': 50,
-        './arrow-up.svg': 51,
-        './back-top.svg': 52,
-        './close.svg': 53,
-        './correct.svg': 54,
-        './double-left.svg': 55,
-        './double-right.svg': 56,
-        './down.svg': 57,
-        './ellipsis.svg': 58,
-        './error.svg': 59,
-        './eyes.svg': 60,
-        './hint.svg': 61,
-        './img-error.svg': 62,
-        './info.svg': 63,
-        './loading-rotate.svg': 64,
-        './loading-spot.svg': 65,
-        './loading.svg': 66,
-        './message.svg': 67,
-        './share.svg': 68,
-        './success.svg': 69,
-        './warning.svg': 70,
+        './arrow-down.svg': 47,
+        './arrow-left.svg': 48,
+        './arrow-right.svg': 49,
+        './arrow-up.svg': 50,
+        './back-top.svg': 51,
+        './close.svg': 52,
+        './correct.svg': 53,
+        './double-left.svg': 54,
+        './double-right.svg': 55,
+        './down.svg': 56,
+        './ellipsis.svg': 57,
+        './error.svg': 58,
+        './eyes.svg': 59,
+        './hint.svg': 60,
+        './img-error.svg': 61,
+        './info.svg': 62,
+        './loading-rotate.svg': 63,
+        './loading-spot.svg': 64,
+        './loading.svg': 65,
+        './message.svg': 66,
+        './share.svg': 67,
+        './success.svg': 68,
+        './warning.svg': 69,
       }
       function r(e) {
         var t = a(e)
@@ -3083,7 +2458,7 @@
       }),
         (r.resolve = a),
         (e.exports = r),
-        (r.id = 47)
+        (r.id = 46)
     },
     function(e, t, o) {
       'use strict'
@@ -3226,18 +2601,14 @@
     function(e, t, o) {
       'use strict'
       Object.defineProperty(t, '__esModule', { value: !0 }),
-        (t.default = function(e) {
-          return function(t) {
-            return e + (t ? '-' + t : '')
-          }
-        })
+        (t.default = e => t => `${e}${t ? '-' + t : ''}`)
     },
     function(e, t, o) {
       'use strict'
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var n = o(14)
-      t.default = function(e, t) {
-        var o = e,
+      const n = o(13)
+      t.default = (e, t) => {
+        let o = e,
           r = t
         return (
           n.isNull(e) && (o = 'null'),
@@ -3251,63 +2622,40 @@
     function(e, t, o) {
       'use strict'
       Object.defineProperty(t, '__esModule', { value: !0 }),
-        (t.default = function(e, t, o) {
-          void 0 === e && (e = function() {})
-          var n,
-            r,
-            a = void 0 === o ? {} : o,
-            i = a.leading,
-            c = void 0 === i || i,
-            s = a.trailing,
-            l = void 0 === s || s,
-            u = 0,
-            d = 0
-          return function() {
-            for (var o = [], a = 0; a < arguments.length; a++) o[a] = arguments[a]
-            var i = this
-            return new Promise(function(a) {
-              var s = new Date().getTime(),
-                f = s - d
-              ;(d = s), !1 === c && (!u || f > t) && ((u = s), n && (clearTimeout(n), (n = null)))
-              var p = t - (s - u)
-              p <= 0 || p > t
-                ? (n && (clearTimeout(n), (n = null)),
-                  (u = s),
-                  (r = e.apply(i, o)),
-                  a(r),
-                  n || (i = o = null))
-                : n ||
-                  !1 === l ||
-                  (n = setTimeout(function() {
-                    ;(u = !1 === c ? 0 : new Date().getTime()),
-                      (n = null),
-                      (r = e.apply(i, o)),
-                      a(r),
-                      n || (i = o = null)
-                  }, p))
+        (t.default = (e = () => {}, t, { leading: o = !0, trailing: n = !0 } = {}) => {
+          let r,
+            a,
+            i = 0,
+            s = 0
+          return function(...c) {
+            let l = this
+            return new Promise(d => {
+              let u = new Date().getTime(),
+                p = u - s
+              ;(s = u), !1 === o && (!i || p > t) && ((i = u), r && (clearTimeout(r), (r = null)))
+              let f = t - (u - i)
+              f <= 0 || f > t
+                ? (r && (clearTimeout(r), (r = null)),
+                  (i = u),
+                  (a = e.apply(l, c)),
+                  d(a),
+                  r || (l = c = null))
+                : r ||
+                  !1 === n ||
+                  (r = setTimeout(() => {
+                    ;(i = !1 === o ? 0 : new Date().getTime()),
+                      (r = null),
+                      (a = e.apply(l, c)),
+                      d(a),
+                      r || (l = c = null)
+                  }, f))
             })
           }
         })
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(75)
-      'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
-      var a = { insert: 'head', singleton: !1 },
-        i = (n(e.i, r, a), r.locals ? r.locals : {})
-      e.exports = i
-    },
-    function(e, t, o) {
-      ;(t = o(4)(!1)).push([
-        e.i,
-        '.coo-input{position:relative;display:inline-block}.coo-input-field{color:#33353b;padding:9px 15px;border:none;border-radius:3px;background:#f2f2f2;transition:background 0.3s}.coo-input-field:hover{background:#ededed}.coo-input-field:active,.coo-input-field:focus{outline:none}.coo-input-field.coo-input-field-allow-clear{padding-right:32px}.coo-input-allow-clear.coo-button{position:absolute;right:10px;top:50%;transform:translateY(-50%);padding:2px;font-size:12px;border:none;border-radius:50%;color:#fff;background:#bdc2ce;display:flex;justify-content:center;align-items:center}.coo-input-allow-clear.coo-button:hover{background:#5c667d}.coo-input-allow-clear.coo-button:focus,.coo-input-allow-clear.coo-button:active{background:#5c667d}.coo-input-field-disabled{cursor:not-allowed;background:#dcdde0}.coo-input-field-disabled:hover{background:#dcdde0}\n',
-        '',
-      ]),
-        (e.exports = t)
-    },
-    function(e, t, o) {
-      var n = o(3),
-        r = o(77)
+        r = o(74)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -3324,36 +2672,24 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
           (this && this.__awaiter) ||
           function(e, t, o, n) {
             return new (o || (o = Promise))(function(r, a) {
               function i(e) {
                 try {
-                  s(n.next(e))
-                } catch (e) {
-                  a(e)
-                }
-              }
-              function c(e) {
-                try {
-                  s(n.throw(e))
+                  c(n.next(e))
                 } catch (e) {
                   a(e)
                 }
               }
               function s(e) {
+                try {
+                  c(n.throw(e))
+                } catch (e) {
+                  a(e)
+                }
+              }
+              function c(e) {
                 var t
                 e.done
                   ? r(e.value)
@@ -3362,102 +2698,12 @@
                       ? t
                       : new o(function(e) {
                           e(t)
-                        })).then(i, c)
+                        })).then(i, s)
               }
-              s((n = n.apply(e, t || [])).next())
+              c((n = n.apply(e, t || [])).next())
             })
           },
-        a =
-          (this && this.__generator) ||
-          function(e, t) {
-            var o,
-              n,
-              r,
-              a,
-              i = {
-                label: 0,
-                sent: function() {
-                  if (1 & r[0]) throw r[1]
-                  return r[1]
-                },
-                trys: [],
-                ops: [],
-              }
-            return (
-              (a = { next: c(0), throw: c(1), return: c(2) }),
-              'function' == typeof Symbol &&
-                (a[Symbol.iterator] = function() {
-                  return this
-                }),
-              a
-            )
-            function c(a) {
-              return function(c) {
-                return (function(a) {
-                  if (o) throw new TypeError('Generator is already executing.')
-                  for (; i; )
-                    try {
-                      if (
-                        ((o = 1),
-                        n &&
-                          (r =
-                            2 & a[0]
-                              ? n.return
-                              : a[0]
-                              ? n.throw || ((r = n.return) && r.call(n), 0)
-                              : n.next) &&
-                          !(r = r.call(n, a[1])).done)
-                      )
-                        return r
-                      switch (((n = 0), r && (a = [2 & a[0], r.value]), a[0])) {
-                        case 0:
-                        case 1:
-                          r = a
-                          break
-                        case 4:
-                          return i.label++, { value: a[1], done: !1 }
-                        case 5:
-                          i.label++, (n = a[1]), (a = [0])
-                          continue
-                        case 7:
-                          ;(a = i.ops.pop()), i.trys.pop()
-                          continue
-                        default:
-                          if (
-                            !(r = (r = i.trys).length > 0 && r[r.length - 1]) &&
-                            (6 === a[0] || 2 === a[0])
-                          ) {
-                            i = 0
-                            continue
-                          }
-                          if (3 === a[0] && (!r || (a[1] > r[0] && a[1] < r[3]))) {
-                            i.label = a[1]
-                            break
-                          }
-                          if (6 === a[0] && i.label < r[1]) {
-                            ;(i.label = r[1]), (r = a)
-                            break
-                          }
-                          if (r && i.label < r[2]) {
-                            ;(i.label = r[2]), i.ops.push(a)
-                            break
-                          }
-                          r[2] && i.ops.pop(), i.trys.pop()
-                          continue
-                      }
-                      a = t.call(e, i)
-                    } catch (e) {
-                      ;(a = [6, e]), (n = 0)
-                    } finally {
-                      o = r = 0
-                    }
-                  if (5 & a[0]) throw a[1]
-                  return { value: a[0] ? a[1] : void 0, done: !0 }
-                })([a, c])
-              }
-            }
-          },
-        i =
+        r =
           (this && this.__rest) ||
           function(e, t) {
             var o = {}
@@ -3473,47 +2719,36 @@
             return o
           }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var c = o(0),
-        s = o(0),
-        l = o(6),
-        u = o(1),
-        d = o(2),
-        f = o(5),
-        p = o(10)
-      o(79)
-      var b = d.setPrefixClassName('coo-dialog'),
-        h = function(e) {
-          var t = e.className,
-            o = void 0 === t ? '' : t,
-            d = e.children,
-            h = e.style,
-            m = void 0 === h ? {} : h,
-            v = e.visible,
-            g = void 0 !== v && v,
-            y = e.width,
-            x = e.header,
-            w = e.footer,
-            O = e.okText,
-            k = void 0 === O ? '确认' : O,
-            E = e.cancelText,
-            j = void 0 === E ? '取消' : E,
-            _ = e.cancelable,
-            N = void 0 === _ || _,
-            P = e.closable,
-            C = void 0 === P || P,
-            S = e.animat,
-            M = void 0 === S || S,
-            z = e.mask,
-            T = void 0 === z || z,
-            L = e.maskClosable,
-            I = void 0 === L || L,
-            A = e.lockScroll,
-            B = void 0 === A || A,
-            R = e.onOk,
-            D = void 0 === R ? function() {} : R,
-            q = e.onCancel,
-            F = void 0 === q ? function() {} : q,
-            V = i(e, [
+      const a = o(0),
+        i = o(0),
+        s = o(6),
+        c = o(1),
+        l = o(2),
+        d = o(5),
+        u = o(9)
+      o(76)
+      const p = l.setPrefixClassName('coo-dialog'),
+        f = e => {
+          const {
+              className: t = '',
+              children: o,
+              style: l = {},
+              visible: f = !1,
+              width: b,
+              header: m,
+              footer: h,
+              okText: g = '确认',
+              cancelText: v = '取消',
+              cancelable: y = !0,
+              closable: x = !0,
+              animat: w = !0,
+              mask: O = !0,
+              maskClosable: k = !0,
+              lockScroll: E = !0,
+              onOk: j = () => {},
+              onCancel: N = () => {},
+            } = e,
+            _ = r(e, [
               'className',
               'children',
               'style',
@@ -3532,152 +2767,110 @@
               'onOk',
               'onCancel',
             ]),
-            H = function(e, t) {
-              return (
-                void 0 === e && (e = 'none'), void 0 === t && (t = 0), { display: e, opacity: t }
-              )
-            },
-            U = s.useState(H('none', 0)),
-            $ = U[0],
-            X = U[1],
-            Y = function() {
-              return new Promise(function(e) {
-                M
-                  ? (X(H('block', 0)),
-                    setTimeout(function() {
-                      X(H('none', 0)), e()
+            C = (e = 'none', t = 0) => ({ display: e, opacity: t }),
+            [P, S] = i.useState(C('none', 0)),
+            M = () =>
+              new Promise(e => {
+                w
+                  ? (S(C('block', 0)),
+                    setTimeout(() => {
+                      S(C('none', 0)), e()
                     }, 300))
-                  : (X(H('none', 0)), e())
+                  : (S(C('none', 0)), e())
               })
-            },
-            W = ''
+          let z = ''
           return (
-            s.useEffect(
-              function() {
-                if (
-                  (g &&
-                    (M
-                      ? (X(H('block', 0)),
-                        setTimeout(function() {
-                          X(H('block', 1))
-                        }, 20))
-                      : X(H('block', 1))),
-                  g && !0 === B)
-                ) {
-                  var e = window.getComputedStyle(document.body, null).overflow
-                  'hidden' !== e && ((W = e), (document.body.style.overflow = 'hidden'))
-                }
-                return function() {
-                  var e = window.getComputedStyle(document.body, null).overflow
-                  g && 'hidden' === e && (document.body.style.overflow = W)
-                }
-              },
-              [g],
-            ),
-            g
-              ? c.createElement(
+            i.useEffect(() => {
+              if (
+                (f &&
+                  (w
+                    ? (S(C('block', 0)),
+                      setTimeout(() => {
+                        S(C('block', 1))
+                      }, 20))
+                    : S(C('block', 1))),
+                f && !0 === E)
+              ) {
+                const e = window.getComputedStyle(document.body, null).overflow
+                'hidden' !== e && ((z = e), (document.body.style.overflow = 'hidden'))
+              }
+              return () => {
+                const e = window.getComputedStyle(document.body, null).overflow
+                f && 'hidden' === e && (document.body.style.overflow = z)
+              }
+            }, [f]),
+            f
+              ? a.createElement(
                   'div',
-                  n({ className: u.default(b(), o), style: n(n({ width: y }, $), m) }, V),
-                  !0 !== C
+                  Object.assign(
+                    {
+                      className: c.default(p(), t),
+                      style: Object.assign(Object.assign({ width: b }, P), l),
+                    },
+                    _,
+                  ),
+                  !0 !== x
                     ? null
-                    : c.createElement(f.default, {
+                    : a.createElement(d.default, {
                         name: 'close',
-                        className: b('close'),
-                        onClick: F,
+                        className: p('close'),
+                        onClick: N,
                       }),
-                  null !== x
-                    ? c.createElement('header', { className: b('header') }, x || '提示')
+                  null !== m
+                    ? a.createElement('header', { className: p('header') }, m || '提示')
                     : null,
-                  c.createElement('main', { className: b('main') }, d),
-                  w
-                    ? c.createElement('footer', { className: b('footer') }, w)
-                    : null !== w
-                    ? c.createElement(
+                  a.createElement('main', { className: p('main') }, o),
+                  h
+                    ? a.createElement('footer', { className: p('footer') }, h)
+                    : null !== h
+                    ? a.createElement(
                         'footer',
-                        { className: b('footer') },
-                        c.createElement(
+                        { className: p('footer') },
+                        a.createElement(
                           'div',
-                          { className: b('footer-button-wrapper') },
-                          !0 === N &&
-                            c.createElement(
-                              p.default,
+                          { className: p('footer-button-wrapper') },
+                          !0 === y &&
+                            a.createElement(
+                              u.default,
                               {
-                                className: b('footer-button-cancel'),
-                                onClick: function() {
-                                  return r(void 0, void 0, void 0, function() {
-                                    return a(this, function(e) {
-                                      switch (e.label) {
-                                        case 0:
-                                          return [4, Y()]
-                                        case 1:
-                                          return e.sent(), F(), [2]
-                                      }
-                                    })
-                                  })
-                                },
+                                className: p('footer-button-cancel'),
+                                onClick: () =>
+                                  n(void 0, void 0, void 0, function*() {
+                                    yield M(), N()
+                                  }),
                               },
-                              j,
+                              v,
                             ),
-                          c.createElement(
-                            p.default,
+                          a.createElement(
+                            u.default,
                             {
-                              className: b('footer-button-ok'),
+                              className: p('footer-button-ok'),
                               type: 'primary',
-                              onClick: function() {
-                                return r(void 0, void 0, void 0, function() {
-                                  return a(this, function(e) {
-                                    switch (e.label) {
-                                      case 0:
-                                        return D
-                                          ? (D(function() {
-                                              return r(void 0, void 0, void 0, function() {
-                                                return a(this, function(e) {
-                                                  switch (e.label) {
-                                                    case 0:
-                                                      return [4, Y()]
-                                                    case 1:
-                                                      return e.sent(), F(), [2]
-                                                  }
-                                                })
-                                              })
-                                            }),
-                                            [3, 3])
-                                          : [3, 1]
-                                      case 1:
-                                        return [4, Y()]
-                                      case 2:
-                                        e.sent(), F(), (e.label = 3)
-                                      case 3:
-                                        return [2]
-                                    }
-                                  })
-                                })
-                              },
+                              onClick: () =>
+                                n(void 0, void 0, void 0, function*() {
+                                  j
+                                    ? j(() =>
+                                        n(void 0, void 0, void 0, function*() {
+                                          yield M(), N()
+                                        }),
+                                      )
+                                    : (yield M(), N())
+                                }),
                             },
-                            k,
+                            g,
                           ),
                         ),
                       )
                     : null,
-                  !0 === T &&
-                    l.createPortal(
-                      c.createElement('div', {
-                        onClick: function() {
-                          return r(void 0, void 0, void 0, function() {
-                            return a(this, function(e) {
-                              switch (e.label) {
-                                case 0:
-                                  return I ? [4, Y()] : [3, 2]
-                                case 1:
-                                  e.sent(), F(), (e.label = 2)
-                                case 2:
-                                  return [2]
-                              }
-                            })
-                          })
-                        },
-                        className: b('mask'),
-                        style: n({}, $),
+                  !0 === O &&
+                    s.createPortal(
+                      a.createElement('div', {
+                        onClick: () =>
+                          n(void 0, void 0, void 0, function*() {
+                            k && (yield M(), N())
+                          }),
+                        className: p('mask'),
+                        style: Object.assign({}, P),
                       }),
                       document.body,
                     ),
@@ -3685,14 +2878,11 @@
               : null
           )
         }
-      ;(h.Alert = function() {}),
-        (h.Confirm = function() {}),
-        (h.Modal = function() {}),
-        (t.default = h)
+      ;(f.Alert = () => {}), (f.Confirm = () => {}), (f.Modal = () => {}), (t.default = f)
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(80)
+        r = o(77)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -3709,58 +2899,41 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(2)
-      o(17)
-      var s = c.setPrefixClassName('coo-layout'),
-        l = function(e) {
-          var t = e.children,
-            o = e.className,
-            c = r(e, ['children', 'className']),
-            u = a.Children.map(t, function(e) {
-              return e.type
-            }).some(function(e) {
-              return e === l.Aside
-            })
-          return a.createElement(
+      const r = o(0),
+        a = o(1),
+        i = o(2)
+      o(16)
+      const s = i.setPrefixClassName('coo-layout'),
+        c = e => {
+          const { children: t, className: o } = e,
+            i = n(e, ['children', 'className']),
+            l = r.Children.map(t, e => e.type).some(e => e === c.Aside)
+          return r.createElement(
             'section',
-            n({ className: i.default(s(), o, u ? s('has-aside') : '') }, c),
+            Object.assign({ className: a.default(s(), o, l ? s('has-aside') : '') }, i),
             t,
           )
         }
-      ;(l.Header = function() {}),
-        (l.Content = function() {}),
-        (l.Footer = function() {}),
-        (l.Aside = function() {}),
-        (t.default = l)
+      ;(c.Header = () => {}),
+        (c.Content = () => {}),
+        (c.Footer = () => {}),
+        (c.Aside = () => {}),
+        (t.default = c)
     },
     function(e, t, o) {
       ;(t = o(4)(!1)).push([
@@ -3771,34 +2944,18 @@
         (e.exports = t)
     },
     function(e, t, o) {
-      var n = o(3),
-        r = o(84)
-      'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
-      var a = { insert: 'head', singleton: !1 },
-        i = (n(e.i, r, a), r.locals ? r.locals : {})
-      e.exports = i
-    },
-    function(e, t, o) {
-      ;(t = o(4)(!1)).push([
-        e.i,
-        '.coo-popover{position:relative;display:inline-block;vertical-align:top}.coo-popover-children{position:relative;z-index:2}.coo-popover-content{position:absolute;z-index:3;font-size:0.8em;white-space:nowrap;padding:10px;border-radius:4px;background:#fff;box-shadow:0 0 10px 1px #e4e4e4;visibility:visible;transition:opacity 0.2s}.coo-popover-content-icon{position:absolute;z-index:1;left:50%;bottom:0;border:6px solid transparent;border-color:transparent;border-top-color:#fff;margin-bottom:-12px;transform:translateX(-50%)}.coo-popover-content-show{opacity:1;transform:scale(1);visibility:visible}.coo-popover-content-hidden{opacity:0;transform:scale(0);visibility:hidden}.coo-popover .coo-popover-content-top{left:50%;top:-10px;transform:translate(-50%, -100%)}.coo-popover .coo-popover-content-bottom{left:50%;bottom:-10px;transform:translate(-50%, 100%)}.coo-popover .coo-popover-content-bottom .coo-popover-content-icon{transform:translateX(-50%) rotateX(180deg);transform-origin:top;top:0}.coo-popover .coo-popover-content-left{left:-5px;top:50%;transform:translateX(calc(-100% - 12px)) translateY(-50%)}.coo-popover .coo-popover-content-left .coo-popover-content-icon{left:unset;bottom:unset;right:0;top:50%;transform:translateY(-50%) rotate(270deg);margin-right:-12px}.coo-popover .coo-popover-content-right{right:-5px;top:50%;transform:translateX(calc(100% + 12px)) translateY(-50%)}.coo-popover .coo-popover-content-right .coo-popover-content-icon{bottom:unset;left:0;top:50%;transform:translateY(-50%) rotate(90deg);margin-left:-12px}\n',
-        '',
-      ]),
-        (e.exports = t)
-    },
-    function(e, t, o) {
       'use strict'
-      var n = o(86)
+      var n = o(81)
       function r() {}
       function a() {}
       ;(a.resetWarningCache = r),
         (e.exports = function() {
           function e(e, t, o, r, a, i) {
             if (i !== n) {
-              var c = new Error(
+              var s = new Error(
                 'Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types',
               )
-              throw ((c.name = 'Invariant Violation'), c)
+              throw ((s.name = 'Invariant Violation'), s)
             }
           }
           function t() {
@@ -3837,82 +2994,71 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1)
-      o(11)
-      t.default = function(e) {
-        var t = e.name,
-          o = void 0 === t ? 'fade-css-transition' : t,
-          s = e.children,
-          l = e.visible,
-          u = e.duration,
-          d = void 0 === u ? 300 : u,
-          f = e.className,
-          p = r(e, ['name', 'children', 'visible', 'duration', 'className']),
-          b = i.useRef(null),
-          h = d > 0,
-          m = function(e) {
-            return c.default('coo-transiton', f, o + '-' + e)
-          }
+      const r = o(0),
+        a = o(0),
+        i = o(1)
+      o(10)
+      t.default = e => {
+        const {
+            name: t = 'fade-css-transition',
+            children: o,
+            visible: s,
+            duration: c = 300,
+            className: l,
+          } = e,
+          d = n(e, ['name', 'children', 'visible', 'duration', 'className']),
+          u = a.useRef(null),
+          p = c > 0,
+          f = e => i.default('coo-transiton', l, `${t}-${e}`)
         return (
-          !h &&
-            l &&
-            Promise.resolve().then(function() {
-              b.current.style.display = 'block'
+          !p &&
+            s &&
+            Promise.resolve().then(() => {
+              u.current.style.display = 'block'
             }),
-          h ||
-            l ||
-            Promise.resolve().then(function() {
-              b.current.style.display = 'none'
+          p ||
+            s ||
+            Promise.resolve().then(() => {
+              u.current.style.display = 'none'
             }),
-          h &&
-            l &&
-            (Promise.resolve().then(function() {
-              b.current.style.display = 'block'
+          p &&
+            s &&
+            (Promise.resolve().then(() => {
+              u.current.style.display = 'block'
             }),
-            setTimeout(function() {
-              b.current.setAttribute('class', m('enter'))
+            setTimeout(() => {
+              u.current.setAttribute('class', f('enter'))
             }, 20)),
-          h &&
-            !l &&
-            (Promise.resolve().then(function() {
-              b.current.setAttribute('class', m('exit'))
+          p &&
+            !s &&
+            (Promise.resolve().then(() => {
+              u.current.setAttribute('class', f('exit'))
             }),
-            setTimeout(function() {
-              b.current.style.display = 'none'
-            }, d - 20)),
-          a.createElement(
+            setTimeout(() => {
+              u.current.style.display = 'none'
+            }, c - 20)),
+          r.createElement(
             'div',
-            n({ ref: b, className: f, style: { transition: h ? 'all ' + d + 'ms' : '' } }, p),
-            s,
+            Object.assign(
+              { ref: u, className: l, style: { transition: p ? `all ${c}ms` : '' } },
+              d,
+            ),
+            o,
           )
         )
       }
@@ -3928,89 +3074,94 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1)
-      o(11)
-      t.default = function(e) {
-        var t = e.name,
-          o = void 0 === t ? 'fade-css-transition' : t,
-          s = e.children,
-          l = e.visible,
-          u = e.duration,
-          d = void 0 === u ? 300 : u,
-          f = e.className,
-          p = r(e, ['name', 'children', 'visible', 'duration', 'className']),
-          b = i.useRef(null),
-          h = d > 0,
-          m = function(e) {
-            return c.default('coo-transiton', f, o + '-' + e)
-          }
+      const r = o(0),
+        a = o(0),
+        i = o(1)
+      o(10)
+      t.default = e => {
+        const {
+            name: t = 'fade-css-transition',
+            children: o,
+            visible: s,
+            duration: c = 300,
+            className: l,
+          } = e,
+          d = n(e, ['name', 'children', 'visible', 'duration', 'className']),
+          u = a.useRef(null),
+          p = c > 0,
+          f = e => i.default('coo-transiton', l, `${t}-${e}`)
         return (
-          !h &&
-            l &&
-            Promise.resolve().then(function() {
-              b.current.style.display = 'block'
+          !p &&
+            s &&
+            Promise.resolve().then(() => {
+              u.current.style.display = 'block'
             }),
-          h ||
-            l ||
-            Promise.resolve().then(function() {
-              b.current.style.display = 'none'
+          p ||
+            s ||
+            Promise.resolve().then(() => {
+              u.current.style.display = 'none'
             }),
-          h &&
-            l &&
-            (Promise.resolve().then(function() {
-              b.current.style.display = 'block'
+          p &&
+            s &&
+            (Promise.resolve().then(() => {
+              u.current.style.display = 'block'
             }),
-            setTimeout(function() {
-              b.current.setAttribute('class', m('enter'))
+            setTimeout(() => {
+              u.current.setAttribute('class', f('enter'))
             }, 20)),
-          h &&
-            !l &&
-            (Promise.resolve().then(function() {
-              b.current.setAttribute('class', m('exit'))
+          p &&
+            !s &&
+            (Promise.resolve().then(() => {
+              u.current.setAttribute('class', f('exit'))
             }),
-            setTimeout(function() {
-              b.current.style.display = 'none'
-            }, d - 20)),
-          a.createElement(
+            setTimeout(() => {
+              u.current.style.display = 'none'
+            }, c - 20)),
+          r.createElement(
             'div',
-            n({ ref: b, className: f, style: { transition: h ? 'all ' + d + 'ms' : '' } }, p),
-            s,
+            Object.assign(
+              { ref: u, className: l, style: { transition: p ? `all ${c}ms` : '' } },
+              d,
+            ),
+            o,
           )
         )
       }
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(91)
+        r = o(86)
+      'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
+      var a = { insert: 'head', singleton: !1 },
+        i = (n(e.i, r, a), r.locals ? r.locals : {})
+      e.exports = i
+    },
+    function(e, t, o) {
+      ;(t = o(4)(!1)).push([
+        e.i,
+        '.coo-popover{position:relative;display:inline-block;vertical-align:top}.coo-popover-children{position:relative;z-index:2}.coo-popover-content{position:absolute;z-index:3;font-size:0.8em;white-space:nowrap;padding:10px;border-radius:4px;background:#fff;box-shadow:0 0 10px 1px #e4e4e4;visibility:visible;transition:opacity 0.2s}.coo-popover-content-icon{position:absolute;z-index:1;left:50%;bottom:0;border:6px solid transparent;border-color:transparent;border-top-color:#fff;margin-bottom:-12px;transform:translateX(-50%)}.coo-popover-content-show{opacity:1;transform:scale(1);visibility:visible}.coo-popover-content-hidden{opacity:0;transform:scale(0);visibility:hidden}.coo-popover .coo-popover-content-top{left:50%;top:-10px;transform:translate(-50%, -100%)}.coo-popover .coo-popover-content-bottom{left:50%;bottom:-10px;transform:translate(-50%, 100%)}.coo-popover .coo-popover-content-bottom .coo-popover-content-icon{transform:translateX(-50%) rotateX(180deg);transform-origin:top;top:0}.coo-popover .coo-popover-content-left{left:-5px;top:50%;transform:translateX(calc(-100% - 12px)) translateY(-50%)}.coo-popover .coo-popover-content-left .coo-popover-content-icon{left:unset;bottom:unset;right:0;top:50%;transform:translateY(-50%) rotate(270deg);margin-right:-12px}.coo-popover .coo-popover-content-right{right:-5px;top:50%;transform:translateX(calc(100% + 12px)) translateY(-50%)}.coo-popover .coo-popover-content-right .coo-popover-content-icon{bottom:unset;left:0;top:50%;transform:translateY(-50%) rotate(90deg);margin-left:-12px}\n',
+        '',
+      ]),
+        (e.exports = t)
+    },
+    function(e, t, o) {
+      var n = o(3),
+        r = o(88)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4026,7 +3177,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(93)
+        r = o(90)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4042,7 +3193,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(95)
+        r = o(92)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4058,7 +3209,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(97)
+        r = o(94)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4069,7 +3220,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(99)
+        r = o(96)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4086,67 +3237,51 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(5),
+      const r = o(0),
+        a = o(1),
+        i = o(5),
         s = o(2)
-      o(25)
-      var l = s.setPrefixClassName('coo-message')
-      t.default = function(e) {
-        var t = e.message,
-          o = e.type,
-          s = void 0 === o ? 'info' : o,
-          u = e.showClose,
-          d = void 0 !== u && u,
-          f = e.placement,
-          p = void 0 === f ? 'top' : f,
-          b = e.duration,
-          h = void 0 === b ? 3e3 : b,
-          m = e._onShowClose,
-          v = r(e, ['message', 'type', 'showClose', 'placement', 'duration', '_onShowClose'])
+      o(24)
+      const c = s.setPrefixClassName('coo-message')
+      t.default = e => {
+        const {
+            message: t,
+            type: o = 'info',
+            showClose: s = !1,
+            placement: l = 'top',
+            duration: d = 3e3,
+            _onShowClose: u,
+          } = e,
+          p = n(e, ['message', 'type', 'showClose', 'placement', 'duration', '_onShowClose'])
         return (
-          0 !== h &&
-            setTimeout(function() {
-              m()
-            }, h),
-          a.createElement(
+          0 !== d &&
+            setTimeout(() => {
+              u()
+            }, d),
+          r.createElement(
             'div',
-            n({ className: i.default(l(), l(s), 'top' === p && l('bottom')) }, v),
-            a.createElement(c.default, { name: s, className: l('icon') }),
-            a.createElement('div', { className: l('content') }, t),
-            d &&
-              a.createElement(c.default, {
-                onClick: function() {
-                  return m()
-                },
-                className: l('close-icon'),
+            Object.assign({ className: a.default(c(), c(o), 'top' === l && c('bottom')) }, p),
+            r.createElement(i.default, { name: o, className: c('icon') }),
+            r.createElement('div', { className: c('content') }, t),
+            s &&
+              r.createElement(i.default, {
+                onClick: () => u(),
+                className: c('close-icon'),
                 name: 'close',
               }),
           )
@@ -4163,7 +3298,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(103)
+        r = o(100)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4179,7 +3314,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(105)
+        r = o(102)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4195,7 +3330,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(107)
+        r = o(104)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4211,7 +3346,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(109)
+        r = o(106)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4227,7 +3362,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(111)
+        r = o(108)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4244,52 +3379,36 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(2)
-      o(12)
-      var s = c.setPrefixClassName('coo-menu')
-      t.default = function(e) {
-        var t = e.children,
-          o = e.className,
-          c = e._onchange,
-          l = e.index,
-          u = e._closesubmenu,
-          d = r(e, ['children', 'className', '_onchange', 'index', '_closesubmenu'])
-        return a.createElement(
+      const r = o(0),
+        a = o(1),
+        i = o(2)
+      o(11)
+      const s = i.setPrefixClassName('coo-menu')
+      t.default = e => {
+        const { children: t, className: o, _onchange: i, index: c, _closesubmenu: l } = e,
+          d = n(e, ['children', 'className', '_onchange', 'index', '_closesubmenu'])
+        return r.createElement(
           'div',
-          n(
+          Object.assign(
             {
-              className: i.default(s('item'), o),
-              onClick: function() {
-                c(l), u && u(!1)
+              className: a.default(s('item'), o),
+              onClick: () => {
+                i(c), l && l(!1)
               },
             },
             d,
@@ -4301,7 +3420,7 @@
     function(e, t, o) {
       ;(t = o(4)(!1)).push([
         e.i,
-        ".coo-menu{width:100%;display:flex;border-bottom:1px solid #dcdfe6}.coo-menu-item{display:flex;align-items:center;position:relative;padding:12px 25px;cursor:pointer;transition:color 0.3s}.coo-menu-item .coo-icon{font-size:14px;margin-left:5px;transition:all 0.3s}.coo-menu-item:after{content:'';position:absolute;left:0;bottom:-1px;width:0;height:2px;background:transparent;transition:all 0.3s}.coo-menu-item:hover{color:#409eff}.coo-menu-item:hover:after{width:100%;background:#409eff}.coo-menu-center{justify-content:center}.coo-menu-right{justify-content:flex-end}.coo-menu-submenu{position:relative}.coo-menu-submenu-item{display:flex;align-items:center;position:relative;padding:12px 25px;cursor:pointer;transition:color 0.3s}.coo-menu-submenu-item .coo-icon{font-size:14px;margin-left:5px;transition:all 0.3s}.coo-menu-submenu-item:after{content:'';position:absolute;left:0;bottom:-1px;width:0;height:2px;background:transparent;transition:all 0.3s}.coo-menu-submenu-item:hover{color:#409eff}.coo-menu-submenu-item:hover:after{width:100%;background:#409eff}.coo-menu-submenu-item{padding-right:18px;cursor:default}.coo-menu-submenu .coo-menu-item:after{display:none}.coo-menu-submenu-item-wrapper{position:absolute;left:0;top:100%;z-index:3;min-width:100%;display:block;background:#fff;box-shadow:0 5px 10px 1px #dcdfe6;border-radius:3px}.coo-menu-submenu-icon-open{transform:rotate(-180deg)}.coo-menu-item-active,.coo-menu-submenu-item-active{color:#409eff}.coo-menu-item-active:after,.coo-menu-submenu-item-active:after{width:100%;background:#409eff}\n",
+        ".coo-menu{width:100%;display:flex;border-bottom:1px solid #dcdfe6}.coo-menu-item{display:flex;align-items:center;position:relative;padding:12px 25px;color:#515a6e;cursor:pointer;transition:color 0.3s}.coo-menu-item .coo-icon{font-size:14px;margin-left:5px;transition:all 0.3s}.coo-menu-item:after:not(.coo-menu-vertical){content:'';position:absolute;left:0;bottom:-1px;width:0;height:2px;background:transparent;transition:all 0.3s}.coo-menu-item:hover{color:#409eff}.coo-menu-item:hover:after{width:100%;background:#409eff}.coo-menu-center{justify-content:center}.coo-menu-right{justify-content:flex-end}.coo-menu-vertical{flex-direction:column;border-bottom:none}.coo-menu-vertical>.coo-menu-item{padding:12px 20px}.coo-menu-vertical>.coo-menu-item:hover{background:#f7f7f7}.coo-menu-submenu{position:relative}.coo-menu-submenu-item{display:flex;align-items:center;position:relative;padding:12px 25px;color:#515a6e;cursor:pointer;transition:color 0.3s}.coo-menu-submenu-item .coo-icon{font-size:14px;margin-left:5px;transition:all 0.3s}.coo-menu-submenu-item:after:not(.coo-menu-vertical){content:'';position:absolute;left:0;bottom:-1px;width:0;height:2px;background:transparent;transition:all 0.3s}.coo-menu-submenu-item:hover{color:#409eff}.coo-menu-submenu-item:hover:after{width:100%;background:#409eff}.coo-menu-submenu-item{padding-right:18px;cursor:default}.coo-menu-submenu .coo-menu-item:after{display:none}.coo-menu-submenu-item-wrapper{position:absolute;left:0;top:100%;z-index:3;min-width:100%;display:block;background:#fff;box-shadow:0 5px 10px 1px #dcdfe6;border-radius:3px}.coo-menu-submenu-icon-open{transform:rotate(-180deg)}.coo-menu-submenu.coo-collapse>.coo-collapse-item{background:#fff}.coo-menu-submenu.coo-collapse>.coo-collapse-item>.coo-collapse-item-title{color:#515a6e}.coo-menu-item-active,.coo-menu-submenu-item-active{color:#409eff}.coo-menu-item-active:after,.coo-menu-submenu-item-active:after{width:100%;background:#409eff}\n",
         '',
       ]),
         (e.exports = t)
@@ -4309,49 +3428,42 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(0),
-        c = o(1),
+      const r = o(0),
+        a = o(0),
+        i = o(1),
         s = o(2),
-        l = o(5),
-        u = o(7)
-      o(12)
-      var d = s.setPrefixClassName('coo-menu-submenu')
-      t.default = function(e) {
-        var t = e.children,
-          o = e.className,
-          s = (e._onchange, e.title),
-          f = (e.index, e._trigger),
-          p = void 0 === f ? 'hover' : f,
-          b = e._isActive,
-          h = r(e, [
+        c = o(5),
+        l = o(12),
+        d = o(7)
+      o(11)
+      const u = s.setPrefixClassName('coo-menu-submenu')
+      t.default = e => {
+        const {
+            children: t,
+            className: o,
+            _onchange: s,
+            title: p,
+            index: f,
+            _trigger: b = 'hover',
+            _isActive: m,
+            mode: h,
+          } = e,
+          g = n(e, [
             'children',
             'className',
             '_onchange',
@@ -4359,155 +3471,148 @@
             'index',
             '_trigger',
             '_isActive',
+            'mode',
           ]),
-          m = i.useState(!1),
-          v = m[0],
-          g = m[1]
-        return a.createElement(
-          'div',
-          n(
-            {},
-            {
-              onMouseEnter:
-                'hover' === p
-                  ? function() {
-                      return g(!0)
-                    }
-                  : function() {},
-              onMouseLeave:
-                'hover' === p
-                  ? function() {
-                      return g(!1)
-                    }
-                  : function() {},
-              onClick:
-                'click' === p
-                  ? function() {
-                      return g(!v)
-                    }
-                  : function() {},
-            },
-            { className: c.default(d(''), o) },
-            h,
-          ),
-          a.createElement(
-            'div',
-            { className: c.default(d('item'), b && d('item-active')) },
-            a.createElement('span', null, s),
-            a.createElement(
-              'span',
-              null,
-              a.createElement(l.default, {
-                className: c.default(v && d('icon-open')),
-                name: 'arrow-down',
-              }),
-            ),
-          ),
-          a.createElement(
-            u.CSSTransition,
-            { duration: 100, visible: v },
-            a.createElement(
+          [v, y] = a.useState(!1),
+          x = e => {
+            y(e)
+          }
+        return 'vertical' === h
+          ? r.createElement(
+              l.default,
+              { className: u(), accordion: !1 },
+              r.createElement(
+                l.default.Item,
+                { title: 'Collapse first', iconPlacement: 'right' },
+                t,
+              ),
+            )
+          : r.createElement(
               'div',
-              { className: c.default(d('item-wrapper')) },
-              a.Children.map(t, function(e) {
-                return a.cloneElement(e, {
-                  _closesubmenu: function(e) {
-                    return g(e)
-                  },
-                })
-              }),
-            ),
-          ),
-        )
+              Object.assign(
+                {},
+                {
+                  onMouseEnter: 'hover' === b ? () => x(!0) : () => {},
+                  onMouseLeave: 'hover' === b ? () => x(!1) : () => {},
+                  onClick: 'click' === b ? () => x(!v) : () => {},
+                },
+                { className: i.default(u(''), o) },
+                g,
+              ),
+              r.createElement(
+                'div',
+                { className: i.default(u('item'), m && u('item-active')) },
+                r.createElement('span', null, p),
+                r.createElement(
+                  'span',
+                  null,
+                  r.createElement(c.default, {
+                    className: i.default(v && u('icon-open')),
+                    name: 'arrow-down',
+                  }),
+                ),
+              ),
+              r.createElement(
+                d.CSSTransition,
+                { duration: 100, visible: v },
+                r.createElement(
+                  'div',
+                  { className: i.default(u('item-wrapper')) },
+                  r.Children.map(t, e => r.cloneElement(e, { _closesubmenu: e => y(e) })),
+                ),
+              ),
+            )
       }
     },
     function(e, t, o) {
       'use strict'
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var n = o(0),
+      const n = o(0),
         r = o(0),
         a = o(1),
         i = o(2),
-        c = o(5)
-      o(33)
-      var s = i.setPrefixClassName('coo-collapse-item')
-      t.default = function(e) {
-        var t,
-          o,
-          l = e.children,
-          u = e.className,
-          d = e.name,
-          f = void 0 === d ? '0' : d,
-          p = e.contentvisible,
-          b = e.title,
-          h = e.onClick,
-          m = void 0 === h ? function() {} : h,
-          v = i.stringEqual(p, !0),
-          g = { display: 'block', height: '0' },
-          y = r.useState(v ? { display: 'block' } : {}),
-          x = y[0],
-          w = y[1],
-          O = r.useRef(null)
-        n.useEffect(function() {
-          Promise.resolve().then(function() {
-            var e = getComputedStyle(O.current).height
-            v && w({ display: 'block', height: e })
+        s = o(5)
+      o(31)
+      const c = i.setPrefixClassName('coo-collapse-item')
+      t.default = e => {
+        const {
+            children: t,
+            className: o,
+            name: l = '0',
+            contentvisible: d,
+            title: u,
+            iconPlacement: p = 'left',
+            onClick: f = () => {},
+          } = e,
+          b = i.stringEqual(d, !0),
+          m = { display: 'block', height: '0' },
+          [h, g] = r.useState(b ? { display: 'block' } : {}),
+          v = r.useRef(null)
+        let y, x
+        r.useEffect(() => {
+          Promise.resolve().then(() => {
+            const e = getComputedStyle(v.current).height
+            b && g({ display: 'block', height: e })
           })
         }, []),
-          n.useEffect(
-            function() {
-              !1 === i.stringEqual(p, !0) &&
-                (w(g),
-                setTimeout(function() {
-                  w({ display: 'none' })
-                }, 290))
-            },
-            [p],
-          )
+          n.useEffect(() => {
+            !1 === i.stringEqual(d, !0) &&
+              (g(m),
+              setTimeout(() => {
+                g({ display: 'none' })
+              }, 290))
+          }, [d])
         return n.createElement(
           'div',
-          { className: a.default(s(''), u) },
+          { className: a.default(c(''), o) },
           n.createElement(
             'div',
             {
-              className: a.default(s('title'), v && s('title-visible')),
-              onClick: function() {
-                o && clearTimeout(o),
-                  t && clearTimeout(t),
-                  m(f, i.stringEqual(p, !0)),
-                  i.stringEqual(p, !0)
-                    ? (w(g),
-                      (t = setTimeout(function() {
-                        w({ display: 'none' })
+              className: a.default(
+                c('title'),
+                b && c('title-visible'),
+                'right' === p && c('title-icon-right'),
+              ),
+              onClick: () => {
+                x && clearTimeout(x),
+                  y && clearTimeout(y),
+                  f(l, i.stringEqual(d, !0)),
+                  i.stringEqual(d, !0)
+                    ? (g(m),
+                      (y = setTimeout(() => {
+                        g({ display: 'none' })
                       }, 290)))
-                    : (w({ display: 'block' }),
-                      Promise.resolve().then(function() {
-                        var e = getComputedStyle(O.current).height
-                        w(g),
-                          (o = setTimeout(function() {
-                            w({ display: 'block', height: e })
+                    : (g({ display: 'block' }),
+                      Promise.resolve().then(() => {
+                        const e = getComputedStyle(v.current).height
+                        g(m),
+                          (x = setTimeout(() => {
+                            g({ display: 'block', height: e })
                           }, 20))
                       }))
               },
             },
-            n.createElement(c.default, { className: s('title-icon'), name: 'arrow-right' }),
-            n.createElement('p', null, b),
+            'left' === p &&
+              n.createElement(s.default, { className: c('title-icon'), name: 'arrow-right' }),
+            n.createElement('p', null, u),
+            'right' === p &&
+              n.createElement(s.default, { className: c('title-icon'), name: 'arrow-right' }),
           ),
-          n.createElement('div', { ref: O, className: s('content'), style: x }, l),
+          n.createElement('div', { ref: v, className: c('content'), style: h }, t),
         )
       }
     },
     function(e, t, o) {
       ;(t = o(4)(!1)).push([
         e.i,
-        '.coo-collapse-item{border-radius:5px;background:#f2f2f2;margin-bottom:10px;overflow:hidden}.coo-collapse-item:last-child{margin-bottom:0}.coo-collapse-item-title{padding:15px 20px;color:#17233d;display:flex;align-items:center;cursor:pointer;font-size:14px}.coo-collapse-item-title:hover{background:#f7f7f7}.coo-collapse-item-title>p{margin-left:10px}.coo-collapse-item-title-icon{font-size:14px;transition:all 0.3s}.coo-collapse-item-title-visible{border-bottom-left-radius:0;border-bottom-right-radius:0;color:#409eff}.coo-collapse-item-title-visible>.coo-collapse-item-title-icon{transform:rotate(90deg)}.coo-collapse-item-content{border-radius:3px;border-top-left-radius:0;border-top-right-radius:0;display:none;overflow:hidden;transition:all 0.28s}\n',
+        '.coo-collapse-item{border-radius:5px;background:#f2f2f2;margin-bottom:10px;overflow:hidden}.coo-collapse-item:last-child{margin-bottom:0}.coo-collapse-item-title{padding:15px 20px;color:#17233d;display:flex;align-items:center;cursor:pointer;font-size:14px}.coo-collapse-item-title:hover{background:#f7f7f7}>p:not(.coo-collapse-item-title.coo-collapse-item-title-icon-right){margin-left:10px}.coo-collapse-item-title-icon{font-size:14px;transition:all 0.3s}.coo-collapse-item-title-visible{border-bottom-left-radius:0;border-bottom-right-radius:0;color:#409eff}.coo-collapse-item-title-visible>.coo-collapse-item-title-icon{transform:rotate(90deg)}.coo-collapse-item-title-icon-right{justify-content:space-between}.coo-collapse-item-content{border-radius:3px;border-top-left-radius:0;border-top-right-radius:0;display:none;overflow:hidden;transition:all 0.28s}\n',
         '',
       ]),
         (e.exports = t)
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(118)
+        r = o(115)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4523,7 +3628,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(120)
+        r = o(117)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4539,7 +3644,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(122)
+        r = o(119)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4556,45 +3661,32 @@
     function(e, t, o) {
       'use strict'
       var n =
-          (this && this.__assign) ||
-          function() {
-            return (n =
-              Object.assign ||
-              function(e) {
-                for (var t, o = 1, n = arguments.length; o < n; o++)
-                  for (var r in (t = arguments[o]))
-                    Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r])
-                return e
-              }).apply(this, arguments)
-          },
-        r =
-          (this && this.__rest) ||
-          function(e, t) {
-            var o = {}
-            for (var n in e)
-              Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
-            if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
-              var r = 0
-              for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
-                t.indexOf(n[r]) < 0 &&
-                  Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
-                  (o[n[r]] = e[n[r]])
-            }
-            return o
+        (this && this.__rest) ||
+        function(e, t) {
+          var o = {}
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (o[n] = e[n])
+          if (null != e && 'function' == typeof Object.getOwnPropertySymbols) {
+            var r = 0
+            for (n = Object.getOwnPropertySymbols(e); r < n.length; r++)
+              t.indexOf(n[r]) < 0 &&
+                Object.prototype.propertyIsEnumerable.call(e, n[r]) &&
+                (o[n[r]] = e[n[r]])
           }
+          return o
+        }
       Object.defineProperty(t, '__esModule', { value: !0 })
-      var a = o(0),
-        i = o(1),
-        c = o(2)
-      o(38)
-      var s = c.setPrefixClassName('coo-tab-pane')
-      t.default = function(e) {
-        var t = e.children,
-          o = e.className,
-          c = r(e, ['children', 'className'])
+      const r = o(0),
+        a = o(1),
+        i = o(2)
+      o(36)
+      const s = i.setPrefixClassName('coo-tab-pane')
+      t.default = e => {
+        const { children: t, className: o } = e,
+          i = n(e, ['children', 'className'])
         return (
           console.log('this is pane'),
-          a.createElement('div', n({ className: i.default(s(), o) }, c), t)
+          r.createElement('div', Object.assign({ className: a.default(s(), o) }, i), t)
         )
       }
     },
@@ -4608,7 +3700,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(126)
+        r = o(123)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4624,7 +3716,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(128)
+        r = o(125)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4640,7 +3732,7 @@
     },
     function(e, t, o) {
       var n = o(3),
-        r = o(130)
+        r = o(127)
       'string' == typeof (r = r.__esModule ? r.default : r) && (r = [[e.i, r, '']])
       var a = { insert: 'head', singleton: !1 },
         i = (n(e.i, r, a), r.locals ? r.locals : {})
@@ -4689,17 +3781,17 @@
           .replace(/\s+/g, ' ')
           .replace(/^\s*|\s*$/g, '')
       }
-      var c = o(0),
-        s = o.n(c),
+      var s = o(0),
+        c = o.n(s),
         l = o(6),
-        u = o.n(l),
-        d = { disabled: !1 },
-        f = s.a.createContext(null),
-        p = 'unmounted',
+        d = o.n(l),
+        u = { disabled: !1 },
+        p = c.a.createContext(null),
+        f = 'unmounted',
         b = 'exited',
-        h = 'entering',
-        m = 'entered',
-        v = (function(e) {
+        m = 'entering',
+        h = 'entered',
+        g = (function(e) {
           function t(t, o) {
             var n
             n = e.call(this, t, o) || this
@@ -4709,9 +3801,9 @@
               (n.appearStatus = null),
               t.in
                 ? a
-                  ? ((r = b), (n.appearStatus = h))
-                  : (r = m)
-                : (r = t.unmountOnExit || t.mountOnEnter ? p : b),
+                  ? ((r = b), (n.appearStatus = m))
+                  : (r = h)
+                : (r = t.unmountOnExit || t.mountOnEnter ? f : b),
               (n.state = { status: r }),
               (n.nextCallback = null),
               n
@@ -4719,7 +3811,7 @@
           }
           a(t, e),
             (t.getDerivedStateFromProps = function(e, t) {
-              return e.in && t.status === p ? { status: b } : null
+              return e.in && t.status === f ? { status: b } : null
             })
           var o = t.prototype
           return (
@@ -4731,8 +3823,8 @@
               if (e !== this.props) {
                 var o = this.state.status
                 this.props.in
-                  ? o !== h && o !== m && (t = h)
-                  : (o !== h && o !== m) || (t = 'exiting')
+                  ? o !== m && o !== h && (t = m)
+                  : (o !== m && o !== h) || (t = 'exiting')
               }
               this.updateStatus(!1, t)
             }),
@@ -4755,10 +3847,10 @@
             (o.updateStatus = function(e, t) {
               if ((void 0 === e && (e = !1), null !== t)) {
                 this.cancelNextCallback()
-                var o = u.a.findDOMNode(this)
-                t === h ? this.performEnter(o, e) : this.performExit(o)
+                var o = d.a.findDOMNode(this)
+                t === m ? this.performEnter(o, e) : this.performExit(o)
               } else
-                this.props.unmountOnExit && this.state.status === b && this.setState({ status: p })
+                this.props.unmountOnExit && this.state.status === b && this.setState({ status: f })
             }),
             (o.performEnter = function(e, t) {
               var o = this,
@@ -4766,15 +3858,15 @@
                 r = this.context ? this.context.isMounting : t,
                 a = this.getTimeouts(),
                 i = r ? a.appear : a.enter
-              ;(!t && !n) || d.disabled
-                ? this.safeSetState({ status: m }, function() {
+              ;(!t && !n) || u.disabled
+                ? this.safeSetState({ status: h }, function() {
                     o.props.onEntered(e)
                   })
                 : (this.props.onEnter(e, r),
-                  this.safeSetState({ status: h }, function() {
+                  this.safeSetState({ status: m }, function() {
                     o.props.onEntering(e, r),
                       o.onTransitionEnd(e, i, function() {
-                        o.safeSetState({ status: m }, function() {
+                        o.safeSetState({ status: h }, function() {
                           o.props.onEntered(e, r)
                         })
                       })
@@ -4784,7 +3876,7 @@
               var t = this,
                 o = this.props.exit,
                 n = this.getTimeouts()
-              o && !d.disabled
+              o && !u.disabled
                 ? (this.props.onExit(e),
                   this.safeSetState({ status: 'exiting' }, function() {
                     t.props.onExiting(e),
@@ -4827,7 +3919,7 @@
             }),
             (o.render = function() {
               var e = this.state.status
-              if (e === p) return null
+              if (e === f) return null
               var t = this.props,
                 o = t.children,
                 n = r(t, ['children'])
@@ -4848,36 +3940,36 @@
                 delete n.onExited,
                 'function' == typeof o)
               )
-                return s.a.createElement(f.Provider, { value: null }, o(e, n))
-              var a = s.a.Children.only(o)
-              return s.a.createElement(f.Provider, { value: null }, s.a.cloneElement(a, n))
+                return c.a.createElement(p.Provider, { value: null }, o(e, n))
+              var a = c.a.Children.only(o)
+              return c.a.createElement(p.Provider, { value: null }, c.a.cloneElement(a, n))
             }),
             t
           )
-        })(s.a.Component)
-      function g() {}
-      ;(v.contextType = f),
-        (v.propTypes = {}),
-        (v.defaultProps = {
+        })(c.a.Component)
+      function v() {}
+      ;(g.contextType = p),
+        (g.propTypes = {}),
+        (g.defaultProps = {
           in: !1,
           mountOnEnter: !1,
           unmountOnExit: !1,
           appear: !1,
           enter: !0,
           exit: !0,
-          onEnter: g,
-          onEntering: g,
-          onEntered: g,
-          onExit: g,
-          onExiting: g,
-          onExited: g,
+          onEnter: v,
+          onEntering: v,
+          onEntered: v,
+          onExit: v,
+          onExiting: v,
+          onExited: v,
         }),
-        (v.UNMOUNTED = 0),
-        (v.EXITED = 1),
-        (v.ENTERING = 2),
-        (v.ENTERED = 3),
-        (v.EXITING = 4)
-      var y = v,
+        (g.UNMOUNTED = 0),
+        (g.EXITED = 1),
+        (g.ENTERING = 2),
+        (g.ENTERED = 3),
+        (g.EXITING = 4)
+      var y = g,
         x = function(e, t) {
           return (
             e &&
@@ -4994,7 +4086,7 @@
             (o.render = function() {
               var e = this.props,
                 t = (e.classNames, r(e, ['classNames']))
-              return s.a.createElement(
+              return c.a.createElement(
                 y,
                 n({}, t, {
                   onEnter: this.onEnter,
@@ -5008,7 +4100,7 @@
             }),
             t
           )
-        })(s.a.Component)
+        })(c.a.Component)
       ;(w.defaultProps = { classNames: '' }), (w.propTypes = {})
       var O = w
       function k(e) {
@@ -5020,11 +4112,11 @@
         var o = Object.create(null)
         return (
           e &&
-            c.Children.map(e, function(e) {
+            s.Children.map(e, function(e) {
               return e
             }).forEach(function(e) {
               o[e.key] = (function(e) {
-                return t && Object(c.isValidElement)(e) ? t(e) : e
+                return t && Object(s.isValidElement)(e) ? t(e) : e
               })(e)
             }),
           o
@@ -5033,7 +4125,7 @@
       function j(e, t, o) {
         return null != o[t] ? o[t] : e.props[t]
       }
-      function _(e, t, o) {
+      function N(e, t, o) {
         var n = E(e.children),
           r = (function(e, t) {
             function o(o) {
@@ -5044,39 +4136,39 @@
               r = Object.create(null),
               a = []
             for (var i in e) i in t ? a.length && ((r[i] = a), (a = [])) : a.push(i)
-            var c = {}
-            for (var s in t) {
-              if (r[s])
-                for (n = 0; n < r[s].length; n++) {
-                  var l = r[s][n]
-                  c[r[s][n]] = o(l)
+            var s = {}
+            for (var c in t) {
+              if (r[c])
+                for (n = 0; n < r[c].length; n++) {
+                  var l = r[c][n]
+                  s[r[c][n]] = o(l)
                 }
-              c[s] = o(s)
+              s[c] = o(c)
             }
-            for (n = 0; n < a.length; n++) c[a[n]] = o(a[n])
-            return c
+            for (n = 0; n < a.length; n++) s[a[n]] = o(a[n])
+            return s
           })(t, n)
         return (
           Object.keys(r).forEach(function(a) {
             var i = r[a]
-            if (Object(c.isValidElement)(i)) {
-              var s = a in t,
+            if (Object(s.isValidElement)(i)) {
+              var c = a in t,
                 l = a in n,
-                u = t[a],
-                d = Object(c.isValidElement)(u) && !u.props.in
-              !l || (s && !d)
-                ? l || !s || d
+                d = t[a],
+                u = Object(s.isValidElement)(d) && !d.props.in
+              !l || (c && !u)
+                ? l || !c || u
                   ? l &&
-                    s &&
-                    Object(c.isValidElement)(u) &&
-                    (r[a] = Object(c.cloneElement)(i, {
+                    c &&
+                    Object(s.isValidElement)(d) &&
+                    (r[a] = Object(s.cloneElement)(i, {
                       onExited: o.bind(null, i),
-                      in: u.props.in,
+                      in: d.props.in,
                       exit: j(i, 'exit', e),
                       enter: j(i, 'enter', e),
                     }))
-                  : (r[a] = Object(c.cloneElement)(i, { in: !1 }))
-                : (r[a] = Object(c.cloneElement)(i, {
+                  : (r[a] = Object(s.cloneElement)(i, { in: !1 }))
+                : (r[a] = Object(s.cloneElement)(i, {
                     onExited: o.bind(null, i),
                     in: !0,
                     exit: j(i, 'exit', e),
@@ -5087,14 +4179,14 @@
           r
         )
       }
-      var N =
+      var _ =
           Object.values ||
           function(e) {
             return Object.keys(e).map(function(t) {
               return e[t]
             })
           },
-        P = (function(e) {
+        C = (function(e) {
           function t(t, o) {
             var n,
               r = (n = e.call(this, t, o) || this).handleExited.bind(k(k(n)))
@@ -5121,7 +4213,7 @@
                   ? ((o = e),
                     (n = a),
                     E(o.children, function(e) {
-                      return Object(c.cloneElement)(e, {
+                      return Object(s.cloneElement)(e, {
                         onExited: n.bind(null, e),
                         in: !0,
                         appear: j(e, 'appear', o),
@@ -5129,7 +4221,7 @@
                         exit: j(e, 'exit', o),
                       })
                     }))
-                  : _(e, r, a),
+                  : N(e, r, a),
                 firstRender: !1,
               }
             }),
@@ -5149,27 +4241,27 @@
                 o = e.childFactory,
                 n = r(e, ['component', 'childFactory']),
                 a = this.state.contextValue,
-                i = N(this.state.children).map(o)
+                i = _(this.state.children).map(o)
               return (
                 delete n.appear,
                 delete n.enter,
                 delete n.exit,
                 null === t
-                  ? s.a.createElement(f.Provider, { value: a }, i)
-                  : s.a.createElement(f.Provider, { value: a }, s.a.createElement(t, n, i))
+                  ? c.a.createElement(p.Provider, { value: a }, i)
+                  : c.a.createElement(p.Provider, { value: a }, c.a.createElement(t, n, i))
               )
             }),
             t
           )
-        })(s.a.Component)
-      ;(P.propTypes = {}),
-        (P.defaultProps = {
+        })(c.a.Component)
+      ;(C.propTypes = {}),
+        (C.defaultProps = {
           component: 'div',
           childFactory: function(e) {
             return e
           },
         })
-      var C = P,
+      var P = C,
         S = (function(e) {
           function t() {
             for (var t, o = arguments.length, n = new Array(o), r = 0; r < o; r++)
@@ -5214,18 +4306,18 @@
             (o.handleLifecycle = function(e, t, o) {
               var n,
                 r = this.props.children,
-                a = s.a.Children.toArray(r)[t]
+                a = c.a.Children.toArray(r)[t]
               a.props[e] && (n = a.props)[e].apply(n, o),
-                this.props[e] && this.props[e](u.a.findDOMNode(this))
+                this.props[e] && this.props[e](d.a.findDOMNode(this))
             }),
             (o.render = function() {
               var e = this.props,
                 t = e.children,
                 o = e.in,
                 n = r(e, ['children', 'in']),
-                a = s.a.Children.toArray(t),
+                a = c.a.Children.toArray(t),
                 i = a[0],
-                c = a[1]
+                s = a[1]
               return (
                 delete n.onEnter,
                 delete n.onEntering,
@@ -5233,17 +4325,17 @@
                 delete n.onExit,
                 delete n.onExiting,
                 delete n.onExited,
-                s.a.createElement(
-                  C,
+                c.a.createElement(
+                  P,
                   n,
                   o
-                    ? s.a.cloneElement(i, {
+                    ? c.a.cloneElement(i, {
                         key: 'first',
                         onEnter: this.handleEnter,
                         onEntering: this.handleEntering,
                         onEntered: this.handleEntered,
                       })
-                    : s.a.cloneElement(c, {
+                    : c.a.cloneElement(s, {
                         key: 'second',
                         onEnter: this.handleExit,
                         onEntering: this.handleExiting,
@@ -5254,7 +4346,7 @@
             }),
             t
           )
-        })(s.a.Component)
+        })(c.a.Component)
       S.propTypes = {}
       var M,
         z,
@@ -5267,14 +4359,14 @@
             e.props[t] && (n = e.props)[t].apply(n, arguments), o()
           }
         },
-        B =
+        $ =
           (((M = {})[L] = function(e) {
             var t = e.current,
               o = e.changeState
-            return s.a.cloneElement(t, {
+            return c.a.cloneElement(t, {
               in: !1,
               onExited: A(t, 'onExited', function() {
-                o(h, null)
+                o(m, null)
               }),
             })
           }),
@@ -5284,23 +4376,23 @@
               n = e.children
             return [
               t,
-              s.a.cloneElement(n, {
+              c.a.cloneElement(n, {
                 in: !0,
                 onEntered: A(n, 'onEntered', function() {
-                  o(h)
+                  o(m)
                 }),
               }),
             ]
           }),
           M),
-        R =
+        B =
           (((z = {})[L] = function(e) {
             var t = e.children,
               o = e.changeState
-            return s.a.cloneElement(t, {
+            return c.a.cloneElement(t, {
               in: !0,
               onEntered: A(t, 'onEntered', function() {
-                o(m, s.a.cloneElement(t, { in: !0 }))
+                o(h, c.a.cloneElement(t, { in: !0 }))
               }),
             })
           }),
@@ -5309,23 +4401,23 @@
               o = e.children,
               n = e.changeState
             return [
-              s.a.cloneElement(t, {
+              c.a.cloneElement(t, {
                 in: !1,
                 onExited: A(t, 'onExited', function() {
-                  n(m, s.a.cloneElement(o, { in: !0 }))
+                  n(h, c.a.cloneElement(o, { in: !0 }))
                 }),
               }),
-              s.a.cloneElement(o, { in: !0 }),
+              c.a.cloneElement(o, { in: !0 }),
             ]
           }),
           z),
-        D = (function(e) {
+        R = (function(e) {
           function t() {
             for (var t, o = arguments.length, n = new Array(o), r = 0; r < o; r++)
               n[r] = arguments[r]
             return (
               ((t = e.call.apply(e, [this].concat(n)) || this).state = {
-                status: m,
+                status: h,
                 current: null,
               }),
               (t.appeared = !1),
@@ -5344,17 +4436,17 @@
             (t.getDerivedStateFromProps = function(e, t) {
               return null == e.children
                 ? { current: null }
-                : t.status === h && e.mode === I
-                ? { status: h }
+                : t.status === m && e.mode === I
+                ? { status: m }
                 : !t.current ||
                   ((o = t.current),
                   (n = e.children),
                   o === n ||
-                    (s.a.isValidElement(o) &&
-                      s.a.isValidElement(n) &&
+                    (c.a.isValidElement(o) &&
+                      c.a.isValidElement(n) &&
                       null != o.key &&
                       o.key === n.key))
-                ? { current: s.a.cloneElement(e.children, { in: !0 }) }
+                ? { current: c.a.cloneElement(e.children, { in: !0 }) }
                 : { status: 'exiting' }
               var o, n
             }),
@@ -5366,24 +4458,24 @@
                 r = this.state,
                 a = r.status,
                 i = r.current,
-                c = { children: o, current: i, changeState: this.changeState, status: a }
+                s = { children: o, current: i, changeState: this.changeState, status: a }
               switch (a) {
-                case h:
-                  e = R[n](c)
+                case m:
+                  e = B[n](s)
                   break
                 case 'exiting':
-                  e = B[n](c)
+                  e = $[n](s)
                   break
-                case m:
+                case h:
                   e = i
               }
-              return s.a.createElement(f.Provider, { value: { isMounting: !this.appeared } }, e)
+              return c.a.createElement(p.Provider, { value: { isMounting: !this.appeared } }, e)
             }),
             t
           )
-        })(s.a.Component)
-      ;(D.propTypes = {}), (D.defaultProps = { mode: L })
-      var q = D
+        })(c.a.Component)
+      ;(R.propTypes = {}), (R.defaultProps = { mode: L })
+      var D = R
       o.d(t, 'CSSTransition', function() {
         return O
       }),
@@ -5391,16 +4483,16 @@
           return T
         }),
         o.d(t, 'SwitchTransition', function() {
-          return q
+          return D
         }),
         o.d(t, 'TransitionGroup', function() {
-          return C
+          return P
         }),
         o.d(t, 'Transition', function() {
           return y
         }),
         o.d(t, 'config', function() {
-          return d
+          return u
         })
     },
   ])

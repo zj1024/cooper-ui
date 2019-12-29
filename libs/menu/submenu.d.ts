@@ -5,6 +5,7 @@ interface PrivateProps {
   _onchange: (index: index) => void
   _isActive?: boolean
   _trigger?: string
+  mode?: string
 }
 interface Props extends PrivateProps {
   className?: string
