@@ -1,7 +1,6 @@
 /* eslint-disable */
 
 const path = require('path')
-const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 自定义控制台提示
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
@@ -10,7 +9,7 @@ const base = require('./webpack.config')
 const PORT = 8080
 const NODE_ENV = 'development'
 
-module.exports = merge(base, {
+module.exports = Object.assign({}, base, {
   mode: NODE_ENV,
   entry: path.resolve(__dirname, '../docs/src/index.tsx'),
   plugins: [

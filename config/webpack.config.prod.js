@@ -1,9 +1,10 @@
 /* eslint-disable */
-const merge = require('webpack-merge')
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const base = require('./webpack.config')
 const NODE_ENV = 'production'
 
-module.exports = merge(base, {
+module.exports = Object.assign({}, base, {
   mode: NODE_ENV,
   entry: './libs/index.js',
   externals: {
@@ -20,4 +21,5 @@ module.exports = merge(base, {
       root: 'ReactDOM',
     },
   },
+  plugins: [new CleanWebpackPlugin()],
 })

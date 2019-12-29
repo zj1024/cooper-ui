@@ -7,6 +7,7 @@ interface Props {
   className?: string
   defaultActiveKey?: string
   destoryOnChange?: boolean
+  animat?: boolean
 }
 declare const Tabs: TabsFC
 export default Tabs

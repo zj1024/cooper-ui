@@ -1,10 +1,6 @@
 /* eslint-disable */
 
 const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   output: {
@@ -19,28 +15,28 @@ module.exports = {
       src: path.resolve(__dirname, '../docs/src'),
     },
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         include: [path.resolve(__dirname, '../libs'), path.resolve(__dirname, '../docs')],
-        use: ['babel-loader', 'ts-loader'],
+        use: [
+          {
+            loader: 'ts-loader',
+          },
+        ],
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: 'thread-loader',
             options: {
-              sourceMap: true,
+              workerParallelJobs: 2,
             },
           },
+          'style-loader',
+          'css-loader',
           'sass-loader',
         ],
       },
@@ -63,10 +59,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-    }),
-    new CleanWebpackPlugin(),
-  ],
 }
