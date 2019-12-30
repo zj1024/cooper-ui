@@ -47,7 +47,6 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        include: path.resolve(__dirname, '../libs/assets/icons'),
         use: [
           'raw-loader',
           {

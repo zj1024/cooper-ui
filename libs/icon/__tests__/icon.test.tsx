@@ -30,7 +30,7 @@ describe('- Icon component', () => {
   })
 
   it('there is no name property value will return null', () => {
-    const component = renderer.create(<Icon name="" />)
+    const component = renderer.create(<Icon />)
     const tree = component.toJSON()
     expect(tree).toBeNull
   })
