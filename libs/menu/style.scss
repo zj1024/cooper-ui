@@ -6,6 +6,7 @@
     align-items: center;
     position: relative;
     padding: 12px 25px;
+    color: $color-content;
     cursor: pointer;
     transition: color 0.3s;
     .coo-icon {
@@ -13,7 +14,7 @@
       margin-left: 5px;
       transition: all 0.3s;
     }
-    &:after {
+    &:after:not(.coo-menu-vertical) {
       content: '';
       position: absolute;
       left: 0;
@@ -44,6 +45,16 @@
   &-right {
     justify-content: flex-end;
   }
+  &-vertical {
+    flex-direction: column;
+    border-bottom: none;
+    > .coo-menu-item {
+      padding: 12px 20px;
+      &:hover {
+        background: #f7f7f7;
+      }
+    }
+  }
 }
 
 .coo-menu-submenu {
@@ -72,6 +83,14 @@
   }
   &-icon-open {
     transform: rotate(-180deg);
+  }
+  &.coo-collapse {
+    > .coo-collapse-item {
+      background: #fff;
+      > .coo-collapse-item-title {
+        color: $color-content;
+      }
+    }
   }
 }
 

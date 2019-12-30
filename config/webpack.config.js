@@ -14,10 +14,8 @@ module.exports = {
     alias: {
       src: path.resolve(__dirname, '../docs/src'),
     },
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
+    alias: {
+      libs: path.resolve(__dirname, '../libs'),
     },
   },
   module: {

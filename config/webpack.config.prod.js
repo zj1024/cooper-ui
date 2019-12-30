@@ -7,11 +7,6 @@ const NODE_ENV = 'production'
 module.exports = Object.assign({}, base, {
   mode: NODE_ENV,
   entry: './libs/index.js',
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
   externals: {
     react: {
       commonjs: 'react',

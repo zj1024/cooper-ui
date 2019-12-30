@@ -1,12 +1,13 @@
 /* eslint-disable */
 
 const path = require('path')
+const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const base = require('./webpack.config')
 
-const NODE_ENV = 'development'
+const NODE_ENV = 'production'
 
-module.exports = Object.assign({}, base, {
+module.exports = merge(base, {
   mode: NODE_ENV,
   entry: './docs/src/index.tsx',
   output: {

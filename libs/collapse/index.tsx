@@ -20,7 +20,7 @@ interface CollapseFC extends React.FC<Props> {
  * @prop {[key: string]: any} any allows the user to set other props automatically
  */
 interface Props {
-  children: React.ReactElement[]
+  children: React.ReactNode
   accordion?: boolean
   value?: number | number[]
   [key: string]: any
@@ -42,7 +42,8 @@ const Collapse: CollapseFC = props => {
 
   // if accordion mode
   if (isArray(activeIndex)) {
-    for (let i = 0; i < children.length; i++) {
+    let mapChildren = isArray(children) ? children : [children]
+    for (let i = 0; i < (mapChildren as any).length; i++) {
       initActiveItem.push({ visible: (activeIndex as number[]).indexOf(i) > -1 })
     }
   }
@@ -74,7 +75,7 @@ const Collapse: CollapseFC = props => {
   const getContentVisible = (index: number): boolean => {
     return accordion
       ? accordActiveItem.name === index && accordActiveItem.visible === true
-      : activeItem[index].visible
+      : (activeItem[index] && activeItem[index].visible) || false
   }
 
   return (

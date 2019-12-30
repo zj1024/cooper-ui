@@ -18,7 +18,7 @@
     &:hover {
       background: darken($color-white, 3%);
     }
-    > p {
+    > p:not(&.coo-collapse-item-title-icon-right) {
       margin-left: 10px;
     }
     &-icon {
@@ -32,6 +32,9 @@
     }
     &-visible > &-icon {
       transform: rotate(90deg);
+    }
+    &-icon-right {
+      justify-content: space-between;
     }
   }
   &-content {
