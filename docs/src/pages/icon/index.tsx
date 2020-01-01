@@ -3,7 +3,7 @@ import { Icon, Foldcard, Tooltip } from '../../../../libs'
 import Codebox from '../../components/codebox'
 import { basic } from './example'
 
-// console.log(require('../../assets/icon/live.svg').default)
+import LiveIcon from '../../assets/icon/live.svg'
 
 export default () => {
   return (
@@ -85,7 +85,7 @@ export default () => {
           <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
             <section className="flex a-center j-between p-20 text-content">
               <Tooltip content="arrow-left">
-                {/* <Icon component={'1'} className="fs-30 cursor-pointer" /> */}
+                <Icon component={LiveIcon} className="fs-30 cursor-pointer" />
               </Tooltip>
             </section>
           </Foldcard>

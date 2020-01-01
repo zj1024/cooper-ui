@@ -191,6 +191,13 @@ export default [
     ),
   },
   {
+    path: '/result',
+    title: 'Result',
+    component: lazy(() =>
+      import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/result'),
+    ),
+  },
+  {
     path: '/demo',
     title: 'Demo',
     component: lazy(() =>
