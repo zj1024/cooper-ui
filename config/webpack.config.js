@@ -5,7 +5,7 @@ const path = require('path')
 module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist/lib'),
-    chunkFilename: '[name].bundle.js',
+    filename: 'cooper-ui.min.js',
     library: 'cui',
     libraryTarget: 'umd',
   },
@@ -13,9 +13,6 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
     alias: {
       src: path.resolve(__dirname, '../docs/src'),
-    },
-    alias: {
-      libs: path.resolve(__dirname, '../libs'),
     },
   },
   module: {
