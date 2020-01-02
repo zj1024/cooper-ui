@@ -40,7 +40,7 @@ export default () => {
         <div className="w-p-48">
           <h2 className="text-content">上中下布局</h2>
           <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
-            <Result status="404" title={'404'} />
+            <Result status="404" />
           </Foldcard>
         </div>
         <div className="w-p-48">
