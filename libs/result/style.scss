@@ -1,5 +1,6 @@
 .coo-result {
   width: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,8 +9,10 @@
     color: #888;
   }
   &-title {
+    width: 60%;
     font-size: 24px;
     color: #333;
     padding-bottom: 20px;
+    text-align: center;
   }
 }

@@ -22,8 +22,8 @@ const Result: React.FC<Props> = props => {
   return (
     <div className={classnames(setClass(), className)} {...leftProps}>
       <div className={setClass('icon')}>{icon ? icon : <Icon name={`result-${status}`} />}</div>
-      <div className={setClass('title')}>{title ? title : <p>this is title</p>}</div>
-      <div className={setClass('content')}>{content ? content : <p>this is content</p>}</div>
+      {title && <div className={setClass('title')}>{title}</div>}
+      {content && <div className={setClass('content')}>{content}</div>}
     </div>
   )
 }
