@@ -84,6 +84,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/progress'),
     ),
+    exact: true,
   },
   {
     path: '/message',
@@ -91,6 +92,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/message'),
     ),
+    exact: true,
   },
   {
     path: '/loading',
@@ -98,6 +100,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/loading'),
     ),
+    exact: true,
   },
   {
     path: '/drawer',
@@ -105,6 +108,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/drawer'),
     ),
+    exact: true,
   },
   {
     path: '/badges',
@@ -112,6 +116,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/badges'),
     ),
+    exact: true,
   },
   {
     path: '/skeleton',
@@ -119,6 +124,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/skeleton'),
     ),
+    exact: true,
   },
   {
     path: '/card',
@@ -126,6 +132,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/card'),
     ),
+    exact: true,
   },
   {
     path: '/menu',
@@ -133,6 +140,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/menu'),
     ),
+    exact: true,
   },
   {
     path: '/collapse',
@@ -140,6 +148,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/collapse'),
     ),
+    exact: true,
   },
   {
     path: '/divider',
@@ -147,6 +156,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/divider'),
     ),
+    exact: true,
   },
   {
     path: '/text-link',
@@ -154,6 +164,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/text-link'),
     ),
+    exact: true,
   },
   {
     path: '/pagination',
@@ -161,6 +172,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/pagination'),
     ),
+    exact: true,
   },
   {
     path: '/tabs',
@@ -168,6 +180,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/tabs'),
     ),
+    exact: true,
   },
   {
     path: '/back-top',
@@ -175,6 +188,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/back-top'),
     ),
+    exact: true,
   },
   {
     path: '/image',
@@ -182,6 +196,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/image'),
     ),
+    exact: true,
   },
   {
     path: '/switch',
@@ -189,6 +204,7 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/switch'),
     ),
+    exact: true,
   },
   {
     path: '/result',
@@ -196,6 +212,17 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/result'),
     ),
+    exact: true,
+  },
+  {
+    path: '/date-picker',
+    title: 'DatePicker',
+    component: lazy(() =>
+      import(
+        /* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/date-picker'
+      ),
+    ),
+    exact: true,
   },
   {
     path: '/demo',
@@ -203,5 +230,6 @@ export default [
     component: lazy(() =>
       import(/* webpackChunkName: "route-chunk" */ /* webpackMode: "lazy" */ '../pages/demo'),
     ),
+    exact: true,
   },
 ]

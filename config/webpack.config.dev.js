@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const base = require('./webpack.config')
 
-const PORT = 8080
+const PORT = 3000
 const NODE_ENV = 'development'
 
 module.exports = Object.assign({}, base, {
