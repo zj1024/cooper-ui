@@ -9,7 +9,8 @@
     "docs:build": "webpack --progress --config ./config/webpack.config.docs",
     "build": "webpack --progress --config ./config/webpack.config.prod",
     "test": "jest",
-    "ci": "JEST_JUNIT_OUTPUT_DIR=./test-results/jest/ JEST_JUNIT_OUTPUT_NAME=results.xml jest --ci --reporters=jest-junit"
+    "ci": "JEST_JUNIT_OUTPUT_DIR=./test-results/jest/ JEST_JUNIT_OUTPUT_NAME=results.xml jest --ci --reporters=jest-junit",
+    "prepublish": "tsc libs/*.* --outDir ./dist/npm/es6 --declaration --jsx react"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.8.3",
     "@babel/plugin-syntax-dynamic-import": "^7.7.4",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
