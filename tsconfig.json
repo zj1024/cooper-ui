@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
-    "declaration": true,
+    "declaration": false,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
