@@ -16,6 +16,7 @@ interface Props {
   defaultActiveKey?: string
   destoryOnChange?: boolean
   animat?: boolean
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-tabs')
@@ -55,13 +56,13 @@ const Tabs: TabsFC = props => {
   const tabsRef = useRef(null)
 
   // 获取当前tab的下标
-  const getCurrentTabActiveIndex = () => {
-    return tabsValue.findIndex(d => d.key === active.key)
+  const getCurrentTabActiveIndex = (): number => {
+    return tabsValue?.findIndex(d => d.key === active.key) || 0
   }
 
   // 点击设置tabActive和tab-tab index
   const onTabClick = (key: any, tab: string) => {
-    const currentActiveIndex = tabsValue.findIndex(d => d.key === key)
+    const currentActiveIndex = tabsValue?.findIndex(d => d.key === key)
     const translateX = tabsWidthList
       .slice(0, currentActiveIndex)
       .reduce((sum: number, current: string) => {
@@ -82,7 +83,7 @@ const Tabs: TabsFC = props => {
         .filter((d: any) => d !== null)
       setTabsWidthList(widthList)
 
-      const currentActiveIndex = tabsValue.findIndex(d => d.key === defaultActiveKey)
+      const currentActiveIndex = tabsValue?.findIndex(d => d.key === defaultActiveKey)
       const translateX = widthList.slice(0, currentActiveIndex).reduce((sum: any, current: any) => {
         return sum + parseInt(current, 10) + 16
       }, 0)

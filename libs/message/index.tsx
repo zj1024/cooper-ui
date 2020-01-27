@@ -12,6 +12,7 @@ interface Props {
   showClose?: boolean
   placement?: 'top' | 'bottom'
   duration?: number
+  [key: string]: any
 }
 
 // message function api

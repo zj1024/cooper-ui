@@ -10,6 +10,7 @@ interface Props {
   className?: string
   content: React.ReactNode
   placement?: 'top' | 'bottom' | 'left' | 'right'
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-tooltip')

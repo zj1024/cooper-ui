@@ -10,6 +10,7 @@ interface Props {
   name?: string
   duration?: number
   children: React.ReactNode
+  [key: string]: any
 }
 
 export default (props: Props) => {

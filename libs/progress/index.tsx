@@ -10,6 +10,7 @@ interface Props {
   percent?: number
   status?: 'error' | 'success' | null
   color?: string
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-progress')

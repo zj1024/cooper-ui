@@ -11,6 +11,7 @@ interface Props {
   visible: boolean
   color?: string
   type?: 'light' | 'dark'
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-loading')

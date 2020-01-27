@@ -15,6 +15,7 @@ interface Props {
   avatarSize?: string
   title?: boolean
   animat?: boolean
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-skeleton')

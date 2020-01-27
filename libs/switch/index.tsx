@@ -18,6 +18,7 @@ interface Props {
   loading?: boolean
   disabled?: boolean
   onChange: (params?: any) => any
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-switch')

@@ -11,6 +11,7 @@ interface Props {
   placement?: 'top' | 'bottom' | 'left' | 'right'
   content: React.ReactNode
   trigger?: 'hover' | 'click' | 'contextMenu'
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-popover')

@@ -16,6 +16,7 @@ interface Props {
   activeIndex?: index
   trigger?: string
   onSelect?: (params?: any) => any
+  [key: string]: any
 }
 
 interface MenuFC extends React.FC<Props> {

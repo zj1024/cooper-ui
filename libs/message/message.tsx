@@ -12,6 +12,7 @@ interface Props {
   placement?: 'top' | 'bottom'
   duration?: number
   _onShowClose: () => void
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-message')

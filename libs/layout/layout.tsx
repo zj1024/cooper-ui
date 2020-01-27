@@ -6,6 +6,7 @@ import './style.scss'
 
 interface Props {
   className?: string
+  [key: string]: any
 }
 
 interface LayoutFC extends React.FC<Props> {
@@ -21,10 +22,12 @@ const Layout: LayoutFC = props => {
   const { children, className, ...leftProps } = props
 
   // judge children has aside to add className
-  const hasAside = React.Children.map(
+  const childrenType = React.Children.map(
     children,
     (child: React.ReactNode) => (child as React.ReactElement).type,
-  ).some(type => type === Layout.Aside)
+  )
+
+  const hasAside = childrenType?.some(type => type === Layout.Aside)
 
   return (
     <section

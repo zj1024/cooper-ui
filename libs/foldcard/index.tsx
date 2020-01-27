@@ -11,6 +11,7 @@ interface Props {
   className?: string
   fold: React.ReactNode
   foldName?: string
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-foldcard')

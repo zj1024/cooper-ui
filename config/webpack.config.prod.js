@@ -6,7 +6,7 @@ const NODE_ENV = 'production'
 
 module.exports = Object.assign({}, base, {
   mode: NODE_ENV,
-  entry: './libs/index.js',
+  entry: './libs/index.ts',
   externals: {
     react: {
       commonjs: 'react',

@@ -22,6 +22,7 @@ interface Props {
   hideOnSinglePage?: boolean
   showQuickJumper?: boolean
   onChange?: (current: number) => void
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-pagination')

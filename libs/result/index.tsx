@@ -14,6 +14,7 @@ interface Props {
   icon?: React.ReactNode
   title?: React.ReactNode
   content?: React.ReactNode
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-result')

@@ -21,6 +21,7 @@ interface Props extends PrivateProps {
   className?: string
   index: index
   title?: string
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-menu-submenu')

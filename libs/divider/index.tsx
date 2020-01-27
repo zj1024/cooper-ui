@@ -9,6 +9,7 @@ interface Props {
   dashed?: boolean
   orientation?: 'left' | 'center' | 'right'
   type?: 'horizontal' | 'vertical'
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-divider')

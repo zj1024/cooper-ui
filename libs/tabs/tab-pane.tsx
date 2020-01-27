@@ -6,6 +6,7 @@ import './style.scss'
 
 interface Props {
   className?: string
+  [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-tab-pane')
