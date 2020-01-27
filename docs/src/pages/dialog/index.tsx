@@ -13,7 +13,6 @@ export default () => {
       message: 'test',
       width: '300px',
       onOk: (done: any) => {
-        console.log('docs done:', done)
         done()
       },
     })
@@ -40,14 +39,12 @@ export default () => {
       okText: '是的',
       cancelText: '不是的',
       onOk: (done: any) => {
-        console.log(1)
         done()
       },
     })
   }
 
   const handleOk = (done: () => void) => {
-    console.log('666')
     done()
   }
 

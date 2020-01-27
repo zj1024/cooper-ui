@@ -184,13 +184,20 @@ const Dialog: DialogFC = props => {
         <footer className={setClass('footer')}>
           <div className={setClass('footer-button-wrapper')}>
             {cancelable === true ? (
-              <Button className={setClass('footer-button-cancel')} onClick={onDialogCancel}>
+              <Button
+                shadow={true}
+                className={setClass('footer-button-cancel')}
+                onClick={onDialogCancel}>
                 {cancelText}
               </Button>
             ) : (
               false
             )}
-            <Button className={setClass('footer-button-ok')} type="primary" onClick={onDialogOk}>
+            <Button
+              shadow={true}
+              className={setClass('footer-button-ok')}
+              type="primary"
+              onClick={onDialogOk}>
               {okText}
             </Button>
           </div>
