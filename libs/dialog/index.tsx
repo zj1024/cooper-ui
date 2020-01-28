@@ -10,7 +10,6 @@ import Dialog from './dialog'
  * @prop {string} cancelText like dialog props cancelText
  * @prop {(params?: any) => any} onOk like dialog props onOk
  * @prop {(params?: any) => any} onCancel like dialog props onCancel
- *
  */
 interface DialogFuncProps {
   title?: React.ReactNode

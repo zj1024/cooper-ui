@@ -4,6 +4,12 @@ import { setPrefixClassName } from '../utils'
 
 import './style.scss'
 
+/**
+ * @prop {boolean} dashed line style
+ * @prop {left | center | right} orientation text-align
+ * @prop {horizontal | vertical} type the divider direction
+ * @prop {[key: string]: any} any allows the user to set other props automatically
+ */
 interface Props {
   className?: string
   dashed?: boolean

@@ -48,7 +48,7 @@ const SubMenu: React.FC<Props> = props => {
   if (mode === 'vertical') {
     return (
       <Collapse className={setClass()} accordion={false}>
-        <Collapse.Item title="Collapse first" iconPlacement="right">
+        <Collapse.Item title={title} iconPlacement="right">
           {children}
         </Collapse.Item>
       </Collapse>

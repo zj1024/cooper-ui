@@ -6,6 +6,12 @@ import Transition from '../transition'
 
 import './style.scss'
 
+/**
+ * @prop {boolean} visible
+ * @prop {string} color loading icon color
+ * @prop {light | dark} type loading theme
+ * @prop {[key: string]: any} any allows the user to set other props automatically
+ */
 interface Props {
   className?: string
   visible: boolean
