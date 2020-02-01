@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 import Icon from '../icon'
-// import Transition from '../transition'
 
 import './style.scss'
 
