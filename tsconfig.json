@@ -8,7 +8,7 @@
     "jsx": "react", // 在 .tsx文件里支持JSX： "React"或 "Preserve"
     "sourceMap": true, // 生成相应的 .map文件。
     "declaration": false, // 生成相应的 '.d.ts' 文件
-    "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost"], // 注意：如果--lib没有指定默认注入的库的列表。默认注入的库为
+    "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost"],
 
     /* 严格的类型检查选项 */
     "strict": true,
