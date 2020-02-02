@@ -8,7 +8,7 @@ import TabPane from './tab-pane'
 import './style.scss'
 
 interface TabsFC extends React.FC<Props> {
-  TabPane: (params?: any) => any
+  TabPane(params?: any): any
 }
 
 interface Props {

@@ -11,7 +11,7 @@ import './style.scss'
 export type index = string | number | null
 
 interface PrivateProps {
-  _onchange: (index: index) => void
+  _onchange(index: index): void
   _isActive?: boolean
   _trigger?: string
   mode?: string

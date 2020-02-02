@@ -17,10 +17,10 @@ interface Props {
 
 // message function api
 interface MessageFC {
-  $success: (props?: any) => any
-  $info: (props?: any) => any
-  $error: (props?: any) => any
-  $warning: (props?: any) => any
+  $success(props?: any): any
+  $info(props?: any): any
+  $error(props?: any): any
+  $warning(props?: any): any
   [key: string]: any
 }
 

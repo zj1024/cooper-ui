@@ -11,7 +11,7 @@ interface Props {
   showClose?: boolean
   placement?: 'top' | 'bottom'
   duration?: number
-  _onShowClose: () => void
+  _onShowClose(): void
   [key: string]: any
 }
 

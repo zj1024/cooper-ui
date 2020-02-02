@@ -15,13 +15,13 @@ interface Props {
   align?: string
   activeIndex?: index
   trigger?: string
-  onSelect?: (params?: any) => any
+  onSelect?(params?: any): any
   [key: string]: any
 }
 
 interface MenuFC extends React.FC<Props> {
-  MenuItem: (params?: any) => any
-  SubMenu: (params?: any) => any
+  MenuItem(params?: any): any
+  SubMenu(params?: any): any
 }
 
 const setClass = setPrefixClassName('coo-menu')

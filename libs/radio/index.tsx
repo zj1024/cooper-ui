@@ -16,7 +16,7 @@ interface optionItem {
 export interface Props {
   className?: string
   options: optionItem[]
-  onChange: (e: React.BaseSyntheticEvent) => void
+  onChange(e: React.BaseSyntheticEvent): void
   name?: string
   defaultValue?: any
   radioStyle?: any

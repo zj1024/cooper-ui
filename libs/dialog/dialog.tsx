@@ -45,9 +45,9 @@ export interface Props {
 
 // dialog function api
 interface DialogFC extends React.FC<Props> {
-  Modal: (props?: any) => any
-  Alert: (props?: any) => any
-  Confirm: (props?: any) => any
+  Modal(props?: any): any
+  Alert(props?: any): any
+  Confirm(props?: any): any
 }
 
 const setClass = setPrefixClassName('coo-dialog')

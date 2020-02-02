@@ -21,7 +21,7 @@ interface Props {
   disabled?: boolean
   hideOnSinglePage?: boolean
   showQuickJumper?: boolean
-  onChange?: (current: number) => void
+  onChange?(current: number): void
   [key: string]: any
 }
 

@@ -17,7 +17,7 @@ interface Props {
   size?: string
   loading?: boolean
   disabled?: boolean
-  onChange: (params?: any) => any
+  onChange(params?: any): any
   [key: string]: any
 }
 

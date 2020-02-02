@@ -7,8 +7,8 @@ import './style.scss'
 export type index = string | number | null
 
 interface PrivateProps {
-  _onchange: (index: index) => void
-  _closesubmenu: (params: boolean) => void
+  _onchange(index: index): void
+  _closesubmenu(params: boolean): void
 }
 
 interface Props extends PrivateProps {

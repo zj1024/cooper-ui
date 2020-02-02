@@ -10,8 +10,8 @@ import './style.scss'
 /**
  * @Item {React.ReactElement} Collapse content
  */
-interface CollapseFC extends React.FC<Props> {
-  Item: (params: any) => any
+interface ICollapseFC extends React.FC<Props> {
+  Item(params: any): any
 }
 
 /**
@@ -28,7 +28,7 @@ interface Props {
 
 const setClass = setPrefixClassName('coo-collapse')
 
-const Collapse: CollapseFC = props => {
+const Collapse: ICollapseFC = props => {
   const { children, className, accordion, value, ...leftProps } = props
 
   // initialize
