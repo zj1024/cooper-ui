@@ -17,13 +17,14 @@ interface Props {
   visible: boolean
   color?: string
   type?: 'light' | 'dark'
+  text?: string | React.ReactNode
   [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-loading')
 
 const Loading: React.FC<Props> = props => {
-  const { children, className, visible, color, type = 'light', ...leftProps } = props
+  const { children, className, visible, color, type = 'light', text = '', ...leftProps } = props
   return (
     <div className={classnames(setClass('container'), className)} {...leftProps}>
       {children}
@@ -36,6 +37,11 @@ const Loading: React.FC<Props> = props => {
               style={{ color }}
               name={type === 'dark' ? 'loading-spot' : 'loading-rotate'}
             />
+            {text !== '' && (
+              <div className={setClass('text')}>
+                {React.isValidElement(text) ? React.cloneElement(text) : text}
+              </div>
+            )}
           </div>
         </div>
       </Transition>

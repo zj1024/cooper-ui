@@ -29,4 +29,12 @@
   border-radius: 50%;
   transform: rotate(360deg);
   animation: loading-rotate 4s infinite linear;
+  &-text {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

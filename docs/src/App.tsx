@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { ComponentRoutes } from './routes'
-import { Layout } from '../../libs'
+import { Layout, Loading, Icon } from '../../libs'
 
 import GuidePage from './pages/guide'
 
@@ -12,6 +12,8 @@ import './style.scss'
 const { Aside, Header, Content } = Layout
 
 export default () => {
+  const [isFull, setIsFull] = useState<boolean>(true)
+  const handleToggleLeftBar = () => setIsFull(!isFull)
   return (
     <Router>
       <Layout className="h-full">
@@ -33,19 +35,38 @@ export default () => {
             children={({ location }) => {
               return (
                 <Layout>
-                  <Aside className="navbar b-r">
-                    <ul className="text-content">
+                  <Aside
+                    className="navbar b-r"
+                    style={{ width: isFull === false ? '100px' : '270px' }}>
+                    <div
+                      className="absolute right-0 top-20 bg-grey b-r-3 p-10 cursor-pointer"
+                      onClick={handleToggleLeftBar}>
+                      <Icon
+                        className="fs-20 text-yellow"
+                        name={isFull ? 'double-left' : 'double-right'}
+                      />
+                    </div>
+                    <ul className="p-v-10">
                       {ComponentRoutes.map(d => (
-                        <li
-                          className={`p-20 ${location.pathname === d.path ? 'text-yellow' : ''}`}
-                          key={d.path}>
-                          <Link to={d.path}>{d.title}</Link>
-                        </li>
+                        <Link className="text-title" to={d.path} key={d.path}>
+                          <li
+                            className={`fw-400 fs-14 p-10 ${
+                              location.pathname === d.path ? 'text-yellow navbar-active-bg' : ''
+                            }${isFull ? ' p-l-30' : ' p-l-15'}`}>
+                            {d.title} {isFull && d.desc}
+                          </li>
+                        </Link>
                       ))}
                     </ul>
                   </Aside>
-                  <Content>
-                    <Suspense fallback={<div>加载中......</div>}>
+                  <Content className="relative">
+                    <Suspense
+                      fallback={
+                        <Loading
+                          className="absolute left-0 top-0 right-0 bottom-0"
+                          visible={true}
+                          text={'加载中...'}></Loading>
+                      }>
                       <Switch>
                         {ComponentRoutes.map(d => (
                           <Route key={d.path} exact path={d.path} component={d.component} />
