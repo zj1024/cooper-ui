@@ -6,7 +6,7 @@ import { basic } from './example'
 export default () => {
   return (
     <div className="bg-grey h-full">
-      <h1>- </h1>
+      <h1>- 回到顶部</h1>
       <div className="flex j-between">
         <div className="w-p-48">
           <h2 className="text-content">基础用法</h2>

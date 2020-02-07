@@ -56,7 +56,7 @@ export default () => {
       <h1>- </h1>
       <div className="flex j-between">
         <div className="w-p-48">
-          <h2 className="text-content">基础用法</h2>
+          <h2 className="text-content">设置展示方式</h2>
           <Foldcard fold={<Codebox source={basic} />} foldName="展开代码">
             <Radio defaultValue={options[0].value} options={options} onChange={onChange} />
             <Image

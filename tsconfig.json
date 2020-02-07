@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
     /* 基本选项 */
-    "target": "ES6", // 指定ECMAScript目标版本 "ES3"（默认）， "ES5"， "ES6"/ "ES2015"， "ES2016"， "ES2017"或 "ESNext"。
-    "module": "esnext", // 指定生成哪个模块系统代码： "None"， "CommonJS"， "AMD"， "System"， "UMD"， "ES6"或 "ES2015"。
+    "target": "ES2015", // 指定ECMAScript目标版本 "ES3"（默认）， "ES5"， "ES6"/ "ES2015"， "ES2016"， "ES2017"或 "ESNext"。
+    "module": "ESNext", // 指定生成哪个模块系统代码： "None"， "CommonJS"， "AMD"， "System"， "UMD"， "ES6"或 "ES2015"。
     "allowJs": true, // 允许编译 javascript 文件
     "checkJs": true, // 报告 javascript 文件中的错误
     "jsx": "react", // 在 .tsx文件里支持JSX： "React"或 "Preserve"
     "sourceMap": true, // 生成相应的 .map文件。
     "declaration": false, // 生成相应的 '.d.ts' 文件
-    "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "ScriptHost"],
 
     /* 严格的类型检查选项 */
     "strict": true,

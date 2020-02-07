@@ -59,7 +59,7 @@ export default () => {
                       ))}
                     </ul>
                   </Aside>
-                  <Content className="relative">
+                  <Content className="relative p-h-100 bg-grey">
                     <Suspense
                       fallback={
                         <Loading

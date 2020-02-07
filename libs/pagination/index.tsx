@@ -135,9 +135,9 @@ const Pagination: React.FC<Props> = props => {
     setQuickJumperValue(e.target.value)
   }
 
-  const onQuickJumperKeyDown = (e: any) => {
+  const onQuickJumperKeyDown = (e: React.KeyboardEvent) => {
     if (e.keyCode === 13) {
-      const value = parseInt(e.target.value, 10)
+      const value = parseInt((e.target as any).value, 10)
       if (isNumber(value)) {
         onItemClick(value)
       }
