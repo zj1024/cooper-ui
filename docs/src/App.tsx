@@ -14,6 +14,7 @@ const { Aside, Header, Content } = Layout
 export default () => {
   const [isFull, setIsFull] = useState<boolean>(true)
   const handleToggleLeftBar = () => setIsFull(!isFull)
+
   return (
     <Router>
       <Layout className="h-full">
