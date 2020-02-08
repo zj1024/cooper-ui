@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Suspense, useState } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { ComponentRoutes } from './routes'
 import { Layout, Loading, Icon } from '../../libs'
@@ -14,6 +14,12 @@ const { Aside, Header, Content } = Layout
 export default () => {
   const [isFull, setIsFull] = useState<boolean>(true)
   const handleToggleLeftBar = () => setIsFull(!isFull)
+
+  useEffect(() => {
+    window.addEventListener('hashchange', () => {
+      document.documentElement.scrollTo(0, 0)
+    })
+  }, [])
 
   return (
     <Router>

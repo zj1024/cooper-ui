@@ -1,4 +1,16 @@
 {
   "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
-  "plugins": ["@babel/plugin-syntax-dynamic-import", "react-hot-loader/babel"]
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "react-hot-loader/babel",
+    [
+      "prismjs",
+      {
+        "languages": ["jsx", "css", "html"],
+        "plugins": ["line-numbers", "show-language"],
+        "theme": "okaidia",
+        "css": true
+      }
+    ]
+  ]
 }

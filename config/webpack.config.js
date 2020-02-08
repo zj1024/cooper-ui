@@ -57,6 +57,10 @@ module.exports = {
         test: /\.(jpe?g|png|gif)$/i,
         loader: 'file-loader',
       },
+      {
+        test: /\.md$/,
+        loader: 'raw-loader',
+      },
     ],
   },
 }
