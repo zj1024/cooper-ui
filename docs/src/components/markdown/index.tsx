@@ -9,6 +9,7 @@ export interface ICode {
   [key: string]: {
     desc: string
     code: string
+    source: string
   }
 }
 
@@ -26,10 +27,12 @@ const Markdown = (props: { mdString: string }) => {
     const document = p1.match(/([^]*)\n?(```[^]+```)/)
     const desc = marked(document[1])
     const code = marked(document[2])
+    const source = document[2].match(/```(.*)\n?([^]+)```/)[2]
     const id = offset.toString(16)
     codes[id] = {
       desc,
       code,
+      source,
     }
     return `<div id="${id}" class="codebox"></div>`
   })

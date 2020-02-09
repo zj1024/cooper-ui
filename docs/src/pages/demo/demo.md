@@ -9,30 +9,12 @@
 :::demo 定义`value`属性，它接受`Number`或者`String`。
 
 ```js
-render() {
+const App = () => {
   return (
     <div>
-      <Badge value={ 12 }>
-        <Button size="small">评论</Button>
-      </Badge>
-      <Badge value={ 3 }>
-        <Button size="small">回复</Button>
-      </Badge>
-      <Dropdown trigger="click" menu={(
-        <Dropdown.Menu>
-          <Dropdown.Item className="clearfix">
-            <span>评论</span><Badge className="mark" value={ 12 } />
-          </Dropdown.Item>
-          <Dropdown.Item className="clearfix">
-            <span>回复</span><Badge className="mark" value={ 3 } />
-          </Dropdown.Item>
-        </Dropdown.Menu>
-        )}
-      >
-        <span className="el-dropdown-link">
-          点我查看<i className="el-icon-caret-bottom el-icon--right"></i>
-        </span>
-      </Dropdown>
+      <Button>按钮</Button>
+      <Button type="primary">按钮</Button>
+      <Button type="danger">按钮</Button>
     </div>
   )
 }
@@ -47,15 +29,12 @@ render() {
 :::demo 由`max`属性定义，它接受一个`Number`，需要注意的是，只有当`value`为`Number`时，它才会生效。
 
 ```js
-render() {
+const App = () => {
   return (
     <div>
-      <Badge value={ 200 } max={ 99 }>
-        <Button size="small">评论</Button>
-      </Badge>
-      <Badge value={ 100 } max={ 10 }>
-        <Button size="small">回复</Button>
-      </Badge>
+      <Button>按钮</Button>
+      <Button type="primary">按钮</Button>
+      <Button type="danger">按钮</Button>
     </div>
   )
 }
@@ -70,15 +49,12 @@ render() {
 :::demo 定义`value`为`String`类型是时可以用于显示自定义文本。
 
 ```js
-render() {
+const App = () => {
   return (
     <div>
-      <Badge value={ 'new' }>
-        <Button size="small">评论</Button>
-      </Badge>
-      <Badge value={ 'hot' }>
-        <Button size="small">回复</Button>
-      </Badge>
+      <Button>按钮</Button>
+      <Button type="primary">按钮</Button>
+      <Button type="danger">按钮</Button>
     </div>
   )
 }
@@ -93,15 +69,12 @@ render() {
 :::demo 除了数字外，设置`isDot`属性，它接受一个`Boolean`。
 
 ```js
-render() {
+const App = () => {
   return (
     <div>
-      <Badge isDot>
-        数据查询
-      </Badge>
-      <Badge isDot>
-        <Button className="share-button" icon="share" type="primary"></Button>
-      </Badge>
+      <Button>按钮</Button>
+      <Button type="primary">按钮</Button>
+      <Button type="danger">按钮</Button>
     </div>
   )
 }
