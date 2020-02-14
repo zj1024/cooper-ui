@@ -1,0 +1,23 @@
+.coo-transition {
+  display: inline-block;
+}
+
+// test
+.coo-fade-enter-active {
+  width: 200px;
+  height: 200px;
+  background: #188eee;
+}
+
+.coo-fade-enter,
+.coo-fade-leave-to {
+  width: 100px;
+  height: 100px;
+  background: #000;
+}
+
+.coo-fade-leave-active {
+  width: 100px;
+  height: 100px;
+  background: #000;
+}

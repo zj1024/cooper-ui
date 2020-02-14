@@ -16,6 +16,7 @@ interface Props {
 const setClass = setPrefixClassName('coo-foldcard')
 
 const Foldcard: React.FC<Props> = props => {
+  const { children, className, fold, foldName, ...leftProps } = props
   const foldRef = useRef(null)
   const [visible, setVisible] = useState(false)
   // 获取高度，便于折叠 TODO: 麻烦，要想出更好的解决方案
@@ -28,8 +29,6 @@ const Foldcard: React.FC<Props> = props => {
       setFoldHeight({ height })
     }
   }, [])
-
-  const { children, className, fold, foldName, ...leftProps } = props
 
   return (
     <section className={classnames(setClass(), className)} {...leftProps}>

@@ -202,4 +202,11 @@ export default [
     desc: '测试',
     exact: true,
   },
+  {
+    path: '/markdown',
+    title: 'Markdown',
+    component: lazy(() => import(/* webpackMode: "lazy" */ '../pages/markdown')),
+    desc: 'markdown',
+    exact: true,
+  },
 ]
