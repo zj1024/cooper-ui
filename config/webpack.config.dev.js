@@ -18,6 +18,15 @@ module.exports = Object.assign({}, base, {
     'react-hot-loader/patch',
     path.resolve(__dirname, '../docs/src/index'),
   ],
+  output: {
+    path: path.resolve(__dirname, '../dist/docs'),
+    chunkFilename: '[name].bundle.js',
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   devServer: {
     quiet: true,
     port: PORT,

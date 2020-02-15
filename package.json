@@ -6,7 +6,7 @@
   "scripts": {
     "start": "yarn docs:env",
     "docs:env": "webpack-dev-server --config ./config/webpack.config.dev",
-    "docs:build": "webpack --progress --config ./config/webpack.config.docs",
+    "docs:build": "webpack --progress --config ./config/webpack.config.dev",
     "build": "webpack --progress --config ./config/webpack.config.prod",
     "test": "jest",
     "ci": "JEST_JUNIT_OUTPUT_DIR=./test-results/jest/ JEST_JUNIT_OUTPUT_NAME=results.xml jest --ci --reporters=jest-junit",

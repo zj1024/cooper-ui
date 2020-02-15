@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 import './universal-style.scss'
@@ -21,27 +21,44 @@ import './universal-style.scss'
  * 用到了destory，使用class做的动画
  */
 
+interface ITransitionStyles {
+  enter?: React.CSSProperties
+  enterActive?: React.CSSProperties
+  enterTo?: React.CSSProperties
+  leave?: React.CSSProperties
+  leaveAvtive?: React.CSSProperties
+  leaveTo?: React.CSSProperties
+}
+
 interface IProps {
   visible: boolean
+  styles?: ITransitionStyles
   classNames?: string
   duration?: number
   unmountOnExit?: boolean
   [key: string]: any
 }
 
+let timer: any
 const setClass = setPrefixClassName('coo-transition')
 
 const Transition = (props: IProps) => {
   const {
     children,
     visible = false,
+    styles,
     classNames = 'fade',
     duration = 300,
-    unmountOnExit = true,
+    unmountOnExit = false,
   } = props
 
-  console.log(unmountOnExit)
+  // 如果是根据 style 来执行动画的
+  let isStyles = false
+  if (styles) {
+    isStyles = true
+  }
 
+  // 初始化变量
   const getClassNames = () => {
     return {
       enter: `coo-${classNames}-enter`, // 初始化状态
@@ -52,16 +69,23 @@ const Transition = (props: IProps) => {
       leaveTo: `coo-${classNames}-leave-to`,
     }
   }
-
+  const [visibleState, setVisibleState] = useState(visible)
   const [classNameState, setClassNameState] = useState(getClassNames().enter)
+  const [styleState, setStyleState] = useState(styles?.enter)
   const [isInit, setInit] = useState(true) // 判断是不是第一次进来的，用于visible effect
-  const refDOM = useRef(null)
 
   const render = () => {
     const { className } = children.props
-    return React.cloneElement(children, {
-      className: classnames(className, classNameState),
-    })
+    const curStyle = { ...children.props.style, ...styleState }
+    if (isStyles) {
+      return React.cloneElement(children, {
+        style: curStyle,
+      })
+    } else {
+      return React.cloneElement(children, {
+        className: classnames(className, classNameState),
+      })
+    }
   }
 
   useEffect(() => {
@@ -69,34 +93,60 @@ const Transition = (props: IProps) => {
   }, [])
 
   useEffect(() => {
-    const { enterActive, leaveAvtive, leaveTo } = getClassNames()
-    if (visible === true && !isInit) {
-      // 动画执行
-      setTimeout(() => {
-        setClassNameState(enterActive)
-      }, 20)
-    }
-
-    if (visible === false && !isInit) {
-      // 动画结束
-      setClassNameState(leaveAvtive)
-      setTimeout(() => {
-        setClassNameState(leaveTo)
-      }, duration)
+    // 如果销毁dom的话，需要先设置enter，然后requestAnimation设置enterActive
+    const { enter, enterActive, leaveAvtive, leaveTo } = getClassNames()
+    if (!isInit) {
+      if (visible) {
+        // 如果动画在执行时候，终止上一个，运行新的
+        if (timer) {
+          clearTimeout(timer)
+        }
+        // 动画执行
+        setVisibleState(visible)
+        if (isStyles) {
+          setStyleState(styles?.enter)
+        } else {
+          setClassNameState(enter)
+        }
+        requestAnimationFrame(() => {
+          if (isStyles) {
+            setStyleState(styles?.enterActive)
+          } else {
+            setClassNameState(enterActive)
+          }
+        })
+      }
+      if (!visible) {
+        // 动画结束
+        if (isStyles) {
+          setStyleState(styles?.leaveAvtive)
+        } else {
+          setClassNameState(leaveAvtive)
+        }
+        timer = setTimeout(() => {
+          if (isStyles) {
+            setStyleState(styles?.leaveTo)
+          } else {
+            setClassNameState(leaveTo)
+          }
+          setVisibleState(visible)
+          timer = null
+        }, duration)
+      }
     }
   }, [visible])
 
-  // const TransitionDOM = () => <div className={classnames(setClass(''))}>{render()}</div>
-
-  // if (unmountOnExit === true) {
-  //   return <>{visible ? <TransitionDOM /> : null}</>
-  // }
-
-  return (
-    <div ref={refDOM} className={classnames(setClass(''))}>
-      {render()}
-    </div>
-  )
+  if (unmountOnExit) {
+    return (
+      <>
+        {unmountOnExit && visibleState ? (
+          <div className={classnames(setClass(''))}>{render()}</div>
+        ) : null}
+      </>
+    )
+  } else {
+    return <div className={classnames(setClass(''))}>{render()}</div>
+  }
 }
 
 export default Transition
