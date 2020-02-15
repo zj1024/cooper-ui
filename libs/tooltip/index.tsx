@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 import classnames from 'classnames'
-import Transition from '../transition'
+import Transition from '../transition/universal-transition'
 import { setPrefixClassName } from '../utils'
 
 import './style.scss'

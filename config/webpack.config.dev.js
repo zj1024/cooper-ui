@@ -3,8 +3,10 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// 自定义控制台提示
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const pkg = require('../package.json')
+
 const base = require('./webpack.config')
 
 const PORT = 9527
@@ -20,12 +22,7 @@ module.exports = Object.assign({}, base, {
   ],
   output: {
     path: path.resolve(__dirname, '../dist/docs'),
-    chunkFilename: '[name].bundle.js',
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
+    chunkFilename: `[name].cooper-ui-docs.${pkg.version}.js`,
   },
   devServer: {
     quiet: true,

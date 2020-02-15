@@ -2,22 +2,22 @@
   display: inline-block;
 }
 
+.coo-fade {
+  transition: all .3s;
+}
+
 // test
 .coo-fade-enter-active {
-  width: 200px;
-  height: 200px;
-  background: #188eee;
+  visibility: visible;
+  opacity: 1;
 }
 
 .coo-fade-enter,
 .coo-fade-leave-to {
-  width: 100px;
-  height: 100px;
-  background: #000;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .coo-fade-leave-active {
-  width: 100px;
-  height: 100px;
-  background: #000;
+  opacity: 0;
 }

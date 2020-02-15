@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 import classnames from 'classnames'
-import Transition from '../transition'
+import Transition from '../transition/universal-transition'
 import { setPrefixClassName } from '../utils'
+import Icon from '../icon'
 
 import './style.scss'
 
@@ -22,9 +23,7 @@ const Popover: React.FC<Props> = props => {
   const [visible, setVisible] = useState(false)
 
   const handleToggleTooltip = (isShow: boolean) => {
-    setTimeout(() => {
-      setVisible(isShow)
-    }, 150)
+    setVisible(isShow)
   }
 
   if (trigger === 'click' || trigger === 'contextMenu') {
@@ -72,8 +71,10 @@ const Popover: React.FC<Props> = props => {
         <div
           className={classnames(setClass('content'), setClass(`content-${placement}`))}
           {...contentOnTrigger}>
-          <i className={classnames(setClass('content-icon'))}></i>
           {content}
+          <div className={classnames(setClass('content-icon'))}>
+            <Icon name="down" />
+          </div>
         </div>
       </Transition>
     </div>

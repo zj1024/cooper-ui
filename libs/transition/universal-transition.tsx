@@ -7,6 +7,7 @@ import './universal-style.scss'
 /**
  * 动画结束后挂载
  * style支持
+ * 注意： 不要在children最外层使用fragment，否则挂载不上去
  */
 
 /**
@@ -61,17 +62,19 @@ const Transition = (props: IProps) => {
   // 初始化变量
   const getClassNames = () => {
     return {
-      enter: `coo-${classNames}-enter`, // 初始化状态
-      enterActive: `coo-${classNames}-enter-active`, // 动画变化最终样式
-      enterTo: `coo-${classNames}-enter-to`, // 动画执行结束的样式
-      leave: `coo-${classNames}-leave`,
-      leaveAvtive: `coo-${classNames}-leave-active`,
-      leaveTo: `coo-${classNames}-leave-to`,
+      enter: `coo-${classNames} coo-${classNames}-enter`, // 初始化状态
+      enterActive: `coo-${classNames} coo-${classNames}-enter-active`, // 动画变化最终样式
+      enterTo: `coo-${classNames} coo-${classNames}-enter-to`, // 动画执行结束的样式
+      leave: `coo-${classNames} coo-${classNames}-leave`,
+      leaveAvtive: `coo-${classNames} coo-${classNames}-leave-active`,
+      leaveTo: `coo-${classNames} coo-${classNames}-leave-to`,
     }
   }
   const [visibleState, setVisibleState] = useState(visible)
-  const [classNameState, setClassNameState] = useState(getClassNames().enter)
-  const [styleState, setStyleState] = useState(styles?.enter)
+  const [classNameState, setClassNameState] = useState(
+    getClassNames()[visibleState ? 'enterTo' : 'enter'],
+  )
+  const [styleState, setStyleState] = useState(visibleState ? styles?.enterTo : styles?.enter)
   const [isInit, setInit] = useState(true) // 判断是不是第一次进来的，用于visible effect
 
   const render = () => {

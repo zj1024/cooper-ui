@@ -15,19 +15,13 @@
     border-radius: 4px;
     background: #fff;
     box-shadow: 0 0 10px 1px #e4e4e4;
-    visibility: visible;
-    transition: opacity 0.2s;
   }
   &-content-icon {
     position: absolute;
-    z-index: 1;
-    left: 50%;
-    bottom: 0;
-    border: 6px solid transparent;
-    border-color: transparent;
-    border-top-color: #fff;
-    margin-bottom: -12px;
-    transform: translateX(-50%);
+    z-index: 3;
+    width: 100%;
+    color: #fff;
+    text-align: center;
   }
   &-content-show {
     opacity: 1;
@@ -39,45 +33,51 @@
     transform: scale(0);
     visibility: hidden;
   }
-  // placement 样式重写
+  // placement
   .coo-popover-content-top {
     left: 50%;
     top: -10px;
     transform: translate(-50%, -100%);
+    > .coo-popover-content-icon {
+      left: 0;
+      bottom: -13px;
+    }
   }
   .coo-popover-content-bottom {
     left: 50%;
     bottom: -10px;
     transform: translate(-50%, 100%);
-    .coo-popover-content-icon {
-      transform: translateX(-50%) rotateX(180deg);
-      transform-origin: top;
-      top: 0;
+    > .coo-popover-content-icon {
+      left: 0;
+      top: -9px;
+      > .coo-icon {
+        transform: rotate(180deg);
+      }
     }
   }
   .coo-popover-content-left {
     left: -5px;
-    top: 50%;
+    top: 30%;
     transform: translateX(calc(-100% - 12px)) translateY(-50%);
     .coo-popover-content-icon {
       left: unset;
       bottom: unset;
-      right: 0;
+      right: -50%;
       top: 50%;
       transform: translateY(-50%) rotate(270deg);
-      margin-right: -12px;
+      margin-right: -4px;
     }
   }
   .coo-popover-content-right {
     right: -5px;
-    top: 50%;
+    top: 30%;
     transform: translateX(calc(100% + 12px)) translateY(-50%);
     .coo-popover-content-icon {
       bottom: unset;
-      left: 0;
+      left: -50%;
       top: 50%;
       transform: translateY(-50%) rotate(90deg);
-      margin-left: -12px;
+      margin-left: -4px;
     }
   }
 }
