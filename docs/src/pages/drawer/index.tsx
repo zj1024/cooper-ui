@@ -12,7 +12,7 @@ export default () => {
   const [leftMaskVisible, setLeftMaskVisible] = useState(false)
   const [leftMaskCloseVisible, setLeftMaskCloseVisible] = useState(false)
   return (
-    <div className="bg-grey h-full">
+    <div className="h-full">
       <h1>- </h1>
       <div className="flex j-between">
         <div className="w-p-48">

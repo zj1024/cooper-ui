@@ -6,9 +6,6 @@ import { Layout, Loading, Icon } from '../../libs'
 
 import GuidePage from './pages/guide'
 
-import 'assembly-css/lib/index.scss'
-import './style.scss'
-
 const { Aside, Header, Content } = Layout
 
 export default () => {
@@ -24,8 +21,11 @@ export default () => {
   return (
     <Router>
       <Layout className="h-full">
-        <Header className="w-full flex p-h-20 p-v-10 b-b j-between text-content">
-          <img className="w-50" src={require('./assets/images/logo.png')} alt="cooper-ui" />
+        <Header
+          className="w-full flex p-h-20 p-v-20 j-between text-white"
+          style={{ background: '#ff9400' }}>
+          {/* <img className="w-50" src={require('./assets/images/logo.png')} alt="cooper-ui" /> */}
+          <h1 className="fs-18">COOPER-UI</h1>
           <div className="flex a-center">
             <li className="m-r-10">
               <Link to="/guide">Guide</Link>
@@ -55,7 +55,7 @@ export default () => {
                     </div>
                     <ul className="p-v-10">
                       {ComponentRoutes.map(d => (
-                        <Link className="text-title" to={d.path} key={d.path}>
+                        <Link className="text-content" to={d.path} key={d.path}>
                           <li
                             className={`fw-400 fs-14 p-10 ${
                               location.pathname === d.path ? 'text-yellow navbar-active-bg' : ''
@@ -66,7 +66,7 @@ export default () => {
                       ))}
                     </ul>
                   </Aside>
-                  <Content className="relative p-h-100 bg-grey">
+                  <Content className="relative p-t-80" style={{ background: '#fbfbfb' }}>
                     <Suspense
                       fallback={
                         <Loading
@@ -74,11 +74,13 @@ export default () => {
                           visible={true}
                           text={'加载中...'}></Loading>
                       }>
-                      <Switch>
-                        {ComponentRoutes.map(d => (
-                          <Route key={d.path} exact path={d.path} component={d.component} />
-                        ))}
-                      </Switch>
+                      <div className="docs-container">
+                        <Switch>
+                          {ComponentRoutes.map(d => (
+                            <Route key={d.path} exact path={d.path} component={d.component} />
+                          ))}
+                        </Switch>
+                      </div>
                     </Suspense>
                   </Content>
                 </Layout>

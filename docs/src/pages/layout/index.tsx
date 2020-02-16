@@ -12,7 +12,7 @@ const { Header, Content, Footer, Aside } = Layout
 
 export default () => {
   return (
-    <div className="bg-grey h-full">
+    <div className="h-full">
       <h1>- 布局</h1>
       <div className="flex j-between">
         <div className="w-p-48">

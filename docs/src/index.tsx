@@ -3,7 +3,9 @@ import * as ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import App from './App'
 
+import 'assembly-css/lib/index.scss'
 import './style/index.scss'
+import './style.scss'
 
 ReactDOM.render(
   <AppContainer>

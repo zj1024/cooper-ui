@@ -1,5 +1,7 @@
 import * as React from 'react'
 import * as marked from 'marked'
+import * as prism from 'prismjs'
+import 'prismjs/components/prism-jsx'
 
 import codebox from './codebox'
 
@@ -15,6 +17,10 @@ export interface ICode {
 
 marked.setOptions({
   renderer: new marked.Renderer(),
+  breaks: true,
+  highlight: function(code, lang) {
+    return prism.highlight(code, prism.languages[lang], lang)
+  },
 })
 
 const Markdown = (props: { mdString: string }) => {
@@ -28,6 +34,7 @@ const Markdown = (props: { mdString: string }) => {
     const desc = marked(document[1])
     const code = marked(document[2])
     const source = document[2].match(/```(.*)\n?([^]+)```/)[2]
+
     const id = offset.toString(16)
     codes[id] = {
       desc,
@@ -40,9 +47,7 @@ const Markdown = (props: { mdString: string }) => {
 
   return (
     <>
-      <div
-        className="p-20 content"
-        dangerouslySetInnerHTML={{ __html: marked(replacedDocument) }}></div>
+      <div className="content" dangerouslySetInnerHTML={{ __html: marked(replacedDocument) }}></div>
     </>
   )
 }

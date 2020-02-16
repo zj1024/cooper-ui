@@ -4,9 +4,12 @@ import * as ReactDOM from 'react-dom'
 import { transform } from 'babel-standalone'
 import * as prism from 'prismjs'
 
+import Divider from '../../../../libs/divider'
+
 import { ICode } from './index'
 
 import './style.scss'
+
 interface ICodeProps {
   element: {
     desc: string
@@ -35,8 +38,7 @@ const Code = (props: ICodeProps) => {
       })
       .then(({ args, argv }) => {
         const code = transform(
-          `
-          ${source}
+          `${source}
         ReactDOM.render(<App />, document.getElementById('${id}-code'))
       `,
           {
@@ -58,9 +60,11 @@ const Code = (props: ICodeProps) => {
 
   return (
     <>
-      <div id={`${id}-code`}></div>
-      <div onClick={() => setVisible(!visible)}>{visible} 展开</div>
-      <div className="desc language-" dangerouslySetInnerHTML={{ __html: desc }} />
+      <div id={`${id}-code`} className="p-20"></div>
+      <div className="desc language- p-20 p-b-10" dangerouslySetInnerHTML={{ __html: desc }} />
+      <Divider onClick={() => setVisible(!visible)} orientation="left" className="p-h-10">
+        <span className="cursor-pointer text-content">{visible ? '收起' : '展开'} </span>
+      </Divider>
       {visible && <div className="code" dangerouslySetInnerHTML={{ __html: code }} />}
     </>
   )
@@ -82,4 +86,4 @@ const Codebox = (props: { codes: ICode }) => {
 
 export default Codebox
 
-setTimeout(() => prism.highlightAll(), 0)
+setTimeout(() => prism.highlightAll(), 20)

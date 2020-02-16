@@ -5,7 +5,7 @@ import { basic } from './example'
 
 export default () => {
   return (
-    <div className="bg-grey h-full">
+    <div className="h-full">
       <h1>- 文字链接</h1>
       <div className="flex j-between">
         <div className="w-p-48">
