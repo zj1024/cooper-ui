@@ -22,18 +22,18 @@ import './universal-style.scss'
  * 用到了destory，使用class做的动画
  */
 
-interface ITransitionStyles {
-  enter?: React.CSSProperties
-  enterActive?: React.CSSProperties
-  enterTo?: React.CSSProperties
-  leave?: React.CSSProperties
-  leaveActive?: React.CSSProperties
-  leaveTo?: React.CSSProperties
-}
+// export interface ITransitionStyles {
+//   enter?: React.CSSProperties
+//   enterActive?: React.CSSProperties
+//   enterTo?: React.CSSProperties
+//   leave?: React.CSSProperties
+//   leaveActive?: React.CSSProperties
+//   leaveTo?: React.CSSProperties
+// }
 
 interface IProps {
   visible: boolean
-  styles?: ITransitionStyles
+  styles?: any
   classNames?: string
   duration?: number
   unmountOnExit?: boolean

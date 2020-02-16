@@ -55,18 +55,18 @@ const Drawer: React.FC<Props> = props => {
 
   const contentStyles = {
     enter: {
-      visible: 'hidden',
+      visibility: 'hidden',
       ...placementStyle[direction],
     },
     enterActive: {
-      visible: 'visible',
+      visibility: 'visible',
       transform: 'translate3d(0, 0, 0)',
     },
     leaveActive: {
       ...placementStyle[direction],
     },
     leaveTo: {
-      visible: 'hidden',
+      visibility: 'hidden',
       ...placementStyle[direction],
     },
   }
