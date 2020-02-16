@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 import Loading from '../index'
 
-describe('- Button component', () => {
+describe('- Loading component', () => {
   it('exist', () => {
     const component = renderer.create(<Loading visible={true}>exist</Loading>)
     let tree: any = component.toJSON()
@@ -16,7 +16,9 @@ describe('- Button component', () => {
       </Loading>,
     )
     let tree: any = component.toJSON()
-    expect(tree.children[1].props.className.includes('coo-loading-mask-dark')).toBeTruthy()
+    expect(
+      tree.children[1].children[0].props.className.includes('coo-loading-mask-dark'),
+    ).toBeTruthy()
   })
 
   it(`accept color '#188eee'`, () => {
@@ -26,6 +28,8 @@ describe('- Button component', () => {
       </Loading>,
     )
     let tree: any = component.toJSON()
-    expect(tree.children[1].children[0].children[0].props.style.color).toEqual('#188eee')
+    expect(tree.children[1].children[0].children[0].children[0].props.style.color).toEqual(
+      '#188eee',
+    )
   })
 })
