@@ -9,6 +9,9 @@ import Button from '../button'
 
 import './style.scss'
 
+// transition 备注，当前组件有funciton api，动画需要定制
+// 所以不能用transition组件替代
+
 /**
  * @prop {boolean} visible prop passed in by user
  * @prop {string} width custom dialog content width
@@ -53,9 +56,6 @@ interface DialogFC extends React.FC<Props> {
 const setClass = setPrefixClassName('coo-dialog')
 
 const Dialog: DialogFC = props => {
-  /**
-   * @prop {object} style custom style
-   */
   const {
     className = '',
     children,

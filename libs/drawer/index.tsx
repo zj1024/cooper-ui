@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState, useEffect } from 'react'
+import Transition from '../transition/universal-transition'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
@@ -44,7 +44,7 @@ const Drawer: React.FC<Props> = props => {
     ...leftProps
   } = props
 
-  const initStyle = {
+  const placementStyle = {
     left: {
       transform: 'translate3d(-100%, 0, 0)',
     },
@@ -53,35 +53,23 @@ const Drawer: React.FC<Props> = props => {
     bottom: { transform: 'translate3d(0, 100%, 0)' },
   }
 
-  const [drawerStyle, setDrawerStyle] = useState({
-    display: 'none',
-    ...initStyle[direction],
-  })
-  const [drawerMaskStyle, setDrawerMaskStyle] = useState({ display: 'none', opacity: 0 })
-
-  const openDrawer = () => {
-    setDrawerMaskStyle({ display: 'block', opacity: 0 })
-    setDrawerStyle({ display: 'inline-block', ...initStyle[direction] })
-
-    setTimeout(() => {
-      setDrawerMaskStyle({ display: 'block', opacity: 1 })
-      setDrawerStyle({ display: 'inline-block', transform: 'translate3d(0, 0, 0)' })
-    }, 20)
+  const contentStyles = {
+    enter: {
+      visible: 'hidden',
+      ...placementStyle[direction],
+    },
+    enterActive: {
+      visible: 'visible',
+      transform: 'translate3d(0, 0, 0)',
+    },
+    leaveActive: {
+      ...placementStyle[direction],
+    },
+    leaveTo: {
+      visible: 'hidden',
+      ...placementStyle[direction],
+    },
   }
-
-  const closeDrawer = () => {
-    setDrawerMaskStyle({ display: 'block', opacity: 0 })
-    setDrawerStyle({ display: 'inline-block', ...initStyle[direction] })
-
-    setTimeout(() => {
-      setDrawerStyle({ display: 'none', ...initStyle[direction] })
-      setDrawerMaskStyle({ display: 'none', opacity: 0 })
-    }, 300)
-  }
-
-  useEffect(() => {
-    visible ? openDrawer() : closeDrawer()
-  }, [visible])
 
   const onPrevent = (e: { stopPropagation: () => void }) => {
     e.stopPropagation()
@@ -92,21 +80,22 @@ const Drawer: React.FC<Props> = props => {
   }
 
   return (
-    <div
-      onClick={onMaskClick}
-      className={classnames(mask && setClass('mask'))}
-      style={{ zIndex, ...drawerMaskStyle }}
-      {...leftProps}>
+    <Transition visible={visible}>
       <div
-        onClick={onPrevent}
-        className={classnames(setClass('content'), setClass(`content-${direction}`))}
-        style={{
-          backgroundColor: contentBackground,
-          ...drawerStyle,
-        }}>
-        {children}
+        onClick={onMaskClick}
+        className={classnames(mask && setClass('mask'))}
+        style={{ zIndex }}
+        {...leftProps}>
+        <Transition visible={visible} styles={contentStyles} duration={3000}>
+          <div
+            onClick={onPrevent}
+            className={classnames(setClass('content'), setClass(`content-${direction}`))}
+            style={{ backgroundColor: contentBackground }}>
+            {children}
+          </div>
+        </Transition>
       </div>
-    </div>
+    </Transition>
   )
 }
 export default Drawer

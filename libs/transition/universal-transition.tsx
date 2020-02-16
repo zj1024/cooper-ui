@@ -12,7 +12,7 @@ import './universal-style.scss'
 
 /**
  * 场景分类
- * 1.dialog drawer
+ * 1. drawer
  * 通过改变静态的style
  * 2.popover tooltip
  * 通过transition-group做的
@@ -27,7 +27,7 @@ interface ITransitionStyles {
   enterActive?: React.CSSProperties
   enterTo?: React.CSSProperties
   leave?: React.CSSProperties
-  leaveAvtive?: React.CSSProperties
+  leaveActive?: React.CSSProperties
   leaveTo?: React.CSSProperties
 }
 
@@ -66,7 +66,7 @@ const Transition = (props: IProps) => {
       enterActive: `coo-${classNames} coo-${classNames}-enter-active`, // 动画变化最终样式
       enterTo: `coo-${classNames} coo-${classNames}-enter-to`, // 动画执行结束的样式
       leave: `coo-${classNames} coo-${classNames}-leave`,
-      leaveAvtive: `coo-${classNames} coo-${classNames}-leave-active`,
+      leaveActive: `coo-${classNames} coo-${classNames}-leave-active`,
       leaveTo: `coo-${classNames} coo-${classNames}-leave-to`,
     }
   }
@@ -97,7 +97,7 @@ const Transition = (props: IProps) => {
 
   useEffect(() => {
     // 如果销毁dom的话，需要先设置enter，然后requestAnimation设置enterActive
-    const { enter, enterActive, leaveAvtive, leaveTo } = getClassNames()
+    const { enter, enterActive, leaveActive, leaveTo } = getClassNames()
     if (!isInit) {
       if (visible) {
         // 如果动画在执行时候，终止上一个，运行新的
@@ -122,9 +122,9 @@ const Transition = (props: IProps) => {
       if (!visible) {
         // 动画结束
         if (isStyles) {
-          setStyleState(styles?.leaveAvtive)
+          setStyleState(styles?.leaveActive)
         } else {
-          setClassNameState(leaveAvtive)
+          setClassNameState(leaveActive)
         }
         timer = setTimeout(() => {
           if (isStyles) {
