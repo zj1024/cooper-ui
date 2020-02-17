@@ -2,29 +2,67 @@ import * as React from 'react'
 import { Suspense, useState, useEffect } from 'react'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { ComponentRoutes } from './routes'
-import { Layout, Loading, Icon } from '../../libs'
+import { Layout, Icon, Drawer } from '../../libs'
+import throttle from '../../libs/utils/throttle'
 
 import GuidePage from './pages/guide'
 
 const { Aside, Header, Content } = Layout
 
+const List = (props: any) => {
+  const { location } = props
+  return (
+    <ul className="p-v-10 p-t-60">
+      {ComponentRoutes.map(d => (
+        <Link className="text-content" to={d.path} key={d.path}>
+          <li
+            className={`fw-400 fs-14 p-10 ${
+              location.pathname === d.path ? 'text-yellow navbar-active-bg' : ''
+            } p-l-30`}>
+            {d.title} {d.desc}
+          </li>
+        </Link>
+      ))}
+    </ul>
+  )
+}
+
 export default () => {
-  const [isFull, setIsFull] = useState<boolean>(true)
-  const handleToggleLeftBar = () => setIsFull(!isFull)
+  const [visible, setVisible] = useState(false)
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(window.document.documentElement.clientWidth)
 
   useEffect(() => {
     window.addEventListener('hashchange', () => {
       document.documentElement.scrollTo(0, 0)
     })
+
+    window.addEventListener(
+      'resize',
+      throttle(() => {
+        const width = window.document.documentElement.clientWidth
+        setWindowWidth(width)
+      }, 100),
+    )
   }, [])
+
+  useEffect(() => {
+    if (isSmallScreen && windowWidth >= 768) {
+      setIsSmallScreen(false)
+      setVisible(false)
+    }
+    if (!isSmallScreen && windowWidth < 768) {
+      setIsSmallScreen(true)
+      setVisible(false)
+    }
+  }, [windowWidth])
 
   return (
     <Router>
       <Layout className="h-full">
         <Header
-          className="w-full flex p-h-20 p-v-20 j-between text-white"
+          className="sticky top-0 z-index-5 w-full flex p-h-20 p-v-5 j-between text-white"
           style={{ background: '#ff9400' }}>
-          {/* <img className="w-50" src={require('./assets/images/logo.png')} alt="cooper-ui" /> */}
           <h1 className="fs-18">COOPER-UI</h1>
           <div className="flex a-center">
             <li className="m-r-10">
@@ -36,43 +74,42 @@ export default () => {
           </div>
         </Header>
 
-        <Content className="flex flex-1">
+        <Content className="flex flex-1 main">
           <Route exact path="/guide" component={GuidePage} />
           <Route
             children={({ location }) => {
               return (
                 <Layout>
-                  <Aside
-                    className="navbar b-r"
-                    style={{ width: isFull === false ? '100px' : '270px' }}>
-                    <div
-                      className="absolute right-0 top-20 bg-grey b-r-3 p-10 cursor-pointer"
-                      onClick={handleToggleLeftBar}>
-                      <Icon
-                        className="fs-20 text-yellow"
-                        name={isFull ? 'double-left' : 'double-right'}
-                      />
-                    </div>
-                    <ul className="p-v-10">
-                      {ComponentRoutes.map(d => (
-                        <Link className="text-content" to={d.path} key={d.path}>
-                          <li
-                            className={`fw-400 fs-14 p-10 ${
-                              location.pathname === d.path ? 'text-yellow navbar-active-bg' : ''
-                            }${isFull ? ' p-l-30' : ' p-l-15'}`}>
-                            {d.title} {isFull && d.desc}
-                          </li>
-                        </Link>
-                      ))}
-                    </ul>
-                  </Aside>
-                  <Content className="relative p-t-80" style={{ background: '#fbfbfb' }}>
+                  {isSmallScreen ? (
+                    <Aside className="relative z-index-3">
+                      <div
+                        className="zoom-btn fixed left-0 top-100 z-index-3 b-r-5 bg-grey p-10 cursor-pointer"
+                        onClick={() => setVisible(!visible)}>
+                        <Icon
+                          className="fs-20 text-yellow"
+                          name={visible ? 'double-left' : 'double-right'}
+                        />
+                      </div>
+                      <Drawer visible={visible} onCancel={() => setVisible(false)} mask={false}>
+                        <List location={location} />
+                      </Drawer>
+                    </Aside>
+                  ) : (
+                    <Aside className="navbar o-y-scroll scroll-touch b-r">
+                      <List location={location} />
+                    </Aside>
+                  )}
+
+                  <Content className="relative p-t-80">
                     <Suspense
                       fallback={
-                        <Loading
-                          className="absolute left-0 top-0 right-0 bottom-0"
-                          visible={true}
-                          text={'加载中...'}></Loading>
+                        <div className="text-content p-10 fs-13">
+                          <Icon
+                            className="fixed right-3 top-3 z-index-100 text-white"
+                            name="loading-rotate"
+                          />
+                          加载中...
+                        </div>
                       }>
                       <div className="docs-container">
                         <Switch>

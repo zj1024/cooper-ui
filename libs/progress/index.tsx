@@ -18,8 +18,8 @@ const setClass = setPrefixClassName('coo-progress')
 const Progress: React.FC<Props> = props => {
   const { className, percent, status, color, ...leftProps } = props
   return (
-    <div className={setClass('wrapper')}>
-      <div className={classnames(setClass(), className)} {...leftProps}>
+    <div className={classnames(setClass('wrapper'), className)}>
+      <div className={setClass()} {...leftProps}>
         {percent !== undefined ? (
           <div
             className={classnames(

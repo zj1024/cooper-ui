@@ -101,16 +101,16 @@ const Transition = (props: IProps) => {
     if (!isInit) {
       if (visible) {
         // 如果动画在执行时候，终止上一个，运行新的
-        if (timer) {
-          clearTimeout(timer)
-        }
+        timer && clearTimeout(timer)
         // 动画执行
         setVisibleState(visible)
+
         if (isStyles) {
           setStyleState(styles?.enter)
         } else {
           setClassNameState(enter)
         }
+
         requestAnimationFrame(() => {
           if (isStyles) {
             setStyleState(styles?.enterActive)
@@ -126,6 +126,7 @@ const Transition = (props: IProps) => {
         } else {
           setClassNameState(leaveActive)
         }
+
         timer = setTimeout(() => {
           if (isStyles) {
             setStyleState(styles?.leaveTo)
@@ -134,7 +135,7 @@ const Transition = (props: IProps) => {
           }
           setVisibleState(visible)
           timer = null
-        }, duration)
+        }, duration - 20)
       }
     }
   }, [visible])

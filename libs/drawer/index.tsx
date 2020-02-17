@@ -86,7 +86,7 @@ const Drawer: React.FC<Props> = props => {
         className={classnames(mask && setClass('mask'))}
         style={{ zIndex }}
         {...leftProps}>
-        <Transition visible={visible} styles={contentStyles} duration={3000}>
+        <Transition visible={visible} styles={contentStyles}>
           <div
             onClick={onPrevent}
             className={classnames(setClass('content'), setClass(`content-${direction}`))}

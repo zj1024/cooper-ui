@@ -22,7 +22,7 @@ const MessageComponent: React.FC<Props> = props => {
     type = 'info',
     showClose = false,
     placement = 'top',
-    duration = 3000,
+    duration = 300,
     _onShowClose,
     ...leftProps
   } = props

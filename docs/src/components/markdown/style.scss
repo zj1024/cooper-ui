@@ -2,19 +2,16 @@
 @import '../../style/index';
 
 .content {
-  display: inline-block;
-  vertical-align: top;
-
   h1 {
     font-size: 40px;
-    margin: 16px 0;
+    margin: 16px 0 30px;
     font-weight: 400;
     line-height: 1.167;
     letter-spacing: 0em;
   }
 
   h2 {
-    margin: 40px 0 16px;
+    margin: 60px 0 25px;
     font-size: 30px;
     font-weight: 400;
     line-height: 1.235;
@@ -22,7 +19,7 @@
   }
 
   h3 {
-    margin: 40px 0 16px;
+    margin: 60px 0 20px;
     font-size: 1.5rem;
     font-weight: 400;
     line-height: 1.334;
@@ -48,6 +45,7 @@
     position: relative;
     color: $color-primary;
     padding-right: 20px;
+    margin: 0 5px;
     &:hover {
       text-decoration: underline;
     }
@@ -114,6 +112,7 @@
 }
 
 .codebox {
+  margin-top: 30px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   overflow: hidden;
@@ -124,8 +123,14 @@
     padding: 12px 18px;
     > pre {
       margin: 0;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
       .plain-text {
         color: #fff;
+      }
+      > code[class*='language-'] {
+        color: #fff;
+        padding: 0;
       }
     }
   }

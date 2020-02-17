@@ -1,3 +1,5 @@
+$navWidth: 270px;
+
 html,
 body {
   margin: 0;
@@ -19,14 +21,23 @@ body {
   margin-left: 20px;
 }
 
+.main {
+  padding-left: $navWidth;
+  height: calc(100% - 55px);
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  background: #fbfbfb;
+}
+
 .navbar {
-  width: 270px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: $navWidth;
   height: 100vh;
   flex-shrink: 0;
-  overflow: scroll;
-  position: sticky;
-  top: 0px;
-  opacity: 0.7;
+  background: #fff;
   transition: all 0.3s;
   &-active-bg {
     background: rgba(255, 153, 0, 0.075);
@@ -40,4 +51,16 @@ body {
   max-width: 810px;
   padding: 0 10px;
   margin: 0 auto;
+}
+
+.zoom-btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  opacity: 0.7;
+}
+
+@media (max-width: 769px) {
+  .main {
+    padding-left: 0;
+  }
 }
