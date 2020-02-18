@@ -65,7 +65,11 @@ const Code = (props: ICodeProps) => {
       <Divider onClick={() => setVisible(!visible)} orientation="left" className="p-h-10">
         <span className="cursor-pointer text-content">{visible ? '收起' : '展开'} </span>
       </Divider>
-      {visible && <div className="code" dangerouslySetInnerHTML={{ __html: code }} />}
+      <div
+        className="code"
+        style={{ display: visible ? 'block' : 'none' }}
+        dangerouslySetInnerHTML={{ __html: code }}
+      />
     </>
   )
 }

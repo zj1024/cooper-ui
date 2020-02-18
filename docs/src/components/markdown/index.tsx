@@ -28,12 +28,16 @@ const Markdown = (props: { mdString: string }) => {
   const codes: ICode = {}
 
   const replacedDocument = mdString.replace(/:::\s?demo\s([^]+?):::/g, (...rest) => {
-    const p1 = rest[1]
-    const offset = rest[2]
-    const document = p1.match(/([^]*)\n?(```[^]+```)/)
-    const desc = marked(document[1])
-    const code = marked(document[2])
-    const source = document[2].match(/```(.*)\n?([^]+)```/)[2]
+    const p1 = rest[1] || ''
+    const offset = rest[2] || ''
+    const document = p1.match(/([^]*)\n?(```[^]+```)/) || []
+
+    const descString = document.length ? document[1] : ''
+    const codeString = document.length ? document[2] : ''
+    const sourceString = codeString.match(/```(.*)\n?([^]+)```/) || []
+    const desc = marked(descString)
+    const code = marked(codeString)
+    const source = sourceString.length ? sourceString[2] : ''
 
     const id = offset.toString(16)
     codes[id] = {
@@ -45,9 +49,15 @@ const Markdown = (props: { mdString: string }) => {
   })
   codebox({ codes })
 
+  const contentString = marked(replacedDocument)
+  const tableFormated = contentString.replace(/<table>([^]+)<\/table>/, (...rest) => {
+    const includeString = rest[0] || ''
+    return `<div class="table-wrapper">${includeString}</div>`
+  })
+
   return (
     <>
-      <div className="content" dangerouslySetInnerHTML={{ __html: marked(replacedDocument) }}></div>
+      <div className="content" dangerouslySetInnerHTML={{ __html: tableFormated }}></div>
     </>
   )
 }

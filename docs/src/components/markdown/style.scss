@@ -65,72 +65,100 @@
     padding: 0.15rem 0.5rem;
     margin: 0 0.15rem;
     font-size: 0.85rem;
-    background-color: rgba(27, 31, 35, 0.05);
+    background: #f2f4f5;
     border-radius: 3px;
     font-family: Menlo, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
       'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
   }
 
-  table {
-    width: 100%;
-    font-size: 13px;
-    border-collapse: collapse;
-    border: 1px solid rgba(0, 0, 0, 0.02);
-    color: $color-content;
-    margin-bottom: 45px;
-    box-shadow: rgba(0, 0, 0, 0.03) 0px 3px 8px 0px;
+  :not(pre) > code[class*='language-'],
+  pre[class*='language-'] {
+    background: #f2f4f5;
+  }
 
-    strong {
-      font-weight: normal;
-    }
+  .table-wrapper {
+    overflow-x: auto;
 
-    th {
-      text-align: left;
-      white-space: nowrap;
-    }
+    table {
+      min-width: 720px;
+      width: 100%;
+      empty-cells: show;
+      font-size: 13px;
+      border-collapse: collapse;
+      border: 1px solid rgba(0, 0, 0, 0.02);
+      color: $color-content;
+      box-shadow: rgba(0, 0, 0, 0.03) 0px 3px 8px 0px;
+      display: table;
+      strong {
+        font-weight: normal;
+      }
 
-    thead th {
-      background-color: rgba(0, 0, 0, 0.02);
-    }
+      th {
+        text-align: left;
+        white-space: nowrap;
+      }
 
-    td,
-    th {
-      border-bottom: 1px solid #eaeefb;
-      padding: 10px;
-      max-width: 250px;
-    }
+      thead th {
+        background-color: rgba(0, 0, 0, 0.02);
+      }
 
-    th:first-child,
-    td:first-child {
-      padding-left: 10px;
-    }
+      td,
+      th {
+        border-bottom: 1px solid #eaeefb;
+        padding: 10px;
+        max-width: 250px;
+      }
 
-    tbody > tr:hover {
-      background: rgba(60, 90, 100, 0.04);
+      th:first-child,
+      td:first-child {
+        padding-left: 10px;
+      }
+
+      tbody > tr:hover {
+        background: rgba(60, 90, 100, 0.04);
+      }
     }
   }
 }
 
 .codebox {
+  width: 100%;
   margin-top: 30px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   overflow: hidden;
+
+  .code-wrapper {
+    display: flex;
+  }
+
   .code {
     color: #fff;
+    font-size: 1rem;
+    word-break: break-word;
+    font-weight: 400;
     line-height: 1.5;
-    background-color: #272c34;
-    padding: 12px 18px;
+    letter-spacing: 0.00938em;
+
     > pre {
-      margin: 0;
+      margin: 0px;
       overflow: auto;
-      -webkit-overflow-scrolling: touch;
+      max-height: 1000px;
+      line-height: 1.5;
+      padding: 12px 18px;
+      direction: ltr;
+      border-radius: 4px;
+      background-color: #272c34;
+
       .plain-text {
         color: #fff;
       }
+
       > code[class*='language-'] {
+        display: inline-block;
+        padding: 2px 6px;
         color: #fff;
-        padding: 0;
+        margin: 0;
       }
     }
   }

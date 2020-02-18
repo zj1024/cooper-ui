@@ -45,3 +45,10 @@ refactor:
 
 1. readme 支持
 2. 整体布局优化
+
+## 2020.2.17
+
+遇到的两个问题
+
+- table 不能 scroll
+- codebox， code 不能 scroll

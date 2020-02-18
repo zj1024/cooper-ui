@@ -1,3 +1,4 @@
+@import './style/index';
 $navWidth: 270px;
 
 html,
@@ -38,25 +39,33 @@ body {
   height: 100vh;
   flex-shrink: 0;
   background: #fff;
-  transition: all 0.3s;
   &-active-bg {
     background: rgba(255, 153, 0, 0.075);
   }
-  &:hover {
-    opacity: 1;
+
+  &-list {
+    li {
+      &:hover {
+        color: $color-primary;
+      }
+    }
   }
 }
 
 .docs-container {
-  max-width: 810px;
+  // max-width: 810px;
   padding: 0 10px;
   margin: 0 auto;
+  > .content {
+    padding-bottom: 50px;
+  }
 }
 
 .zoom-btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   opacity: 0.7;
+  top: 80px;
 }
 
 @media (max-width: 769px) {

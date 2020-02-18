@@ -12,7 +12,7 @@ const { Aside, Header, Content } = Layout
 const List = (props: any) => {
   const { location } = props
   return (
-    <ul className="p-v-10 p-t-60">
+    <ul className="navbar-list p-v-10 p-t-60">
       {ComponentRoutes.map(d => (
         <Link className="text-content" to={d.path} key={d.path}>
           <li
@@ -29,7 +29,7 @@ const List = (props: any) => {
 
 export default () => {
   const [visible, setVisible] = useState(false)
-  const [isSmallScreen, setIsSmallScreen] = useState(false)
+  const [isSmallScreen, setIsSmallScreen] = useState(true)
   const [windowWidth, setWindowWidth] = useState(window.document.documentElement.clientWidth)
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default () => {
 
   return (
     <Router>
-      <Layout className="h-full">
+      <Layout className="w-full h-full">
         <Header
           className="sticky top-0 z-index-5 w-full flex p-h-20 p-v-5 j-between text-white"
           style={{ background: '#ff9400' }}>
@@ -74,16 +74,16 @@ export default () => {
           </div>
         </Header>
 
-        <Content className="flex flex-1 main">
+        <Content className="main flex flex-1 w-full">
           <Route exact path="/guide" component={GuidePage} />
           <Route
             children={({ location }) => {
               return (
-                <Layout>
+                <Layout className="w-full">
                   {isSmallScreen ? (
                     <Aside className="relative z-index-3">
                       <div
-                        className="zoom-btn fixed left-0 top-100 z-index-3 b-r-5 bg-grey p-10 cursor-pointer"
+                        className="zoom-btn fixed left-0 z-index-3 b-r-5 bg-grey p-10 cursor-pointer"
                         onClick={() => setVisible(!visible)}>
                         <Icon
                           className="fs-20 text-yellow"
@@ -95,12 +95,14 @@ export default () => {
                       </Drawer>
                     </Aside>
                   ) : (
-                    <Aside className="navbar o-y-scroll scroll-touch b-r">
+                    <Aside
+                      className="navbar o-y-scroll scroll-touch b-r"
+                      style={{ display: isSmallScreen ? 'none' : 'block' }}>
                       <List location={location} />
                     </Aside>
                   )}
 
-                  <Content className="relative p-t-80">
+                  <Content className="w-full relative p-t-80">
                     <Suspense
                       fallback={
                         <div className="text-content p-10 fs-13">
