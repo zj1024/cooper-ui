@@ -74,9 +74,8 @@ const App = () => {
 
 ### Attributes
 
-| 参数      | 说明           | 类型   | 可选值 | 默认值 |
-| --------- | -------------- | ------ | ------ | ------ |
-| className | 容器 className | string | —      | —      |
-| style     | 指定样式       | object | —      | —      |
-| name      | 图标名称       | string | -      | -      |
-| component | svg 字符串     | string | -      | -      |
+| 参数  | 说明                                                         | 类型           | 可选值 | 默认值 |
+| ----- | ------------------------------------------------------------ | -------------- | ------ | ------ |
+| value | 显示值                                                       | string, number | —      | —      |
+| max   | 最大值，超过最大值会显示 '{max}+'，要求 value 是 Number 类型 | number         | —      | —      |
+| isDot | 小圆点                                                       | boolean        | —      | false  |
