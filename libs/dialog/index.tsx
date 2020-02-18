@@ -48,7 +48,8 @@ const FactoryDialog = (props: DialogFuncProps) => {
   const renderProps = { ...baseConfig, ...props }
 
   const _handleCancel = () => {
-    props.onCancel ? props.onCancel(destory) : destory()
+    props.onCancel && props.onCancel()
+    destory()
   }
 
   const render = (renderProps: PrivateProps) => {
@@ -93,7 +94,7 @@ Dialog.Confirm = (props: DialogFuncProps) => {
     closable: false,
     maskClosable: false,
   }
-  return FactoryDialog(Object.assign(config, props))
+  return FactoryDialog({ ...props, ...config })
 }
 
 Dialog.Modal = (props: DialogFuncProps) => {

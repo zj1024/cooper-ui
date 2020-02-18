@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as marked from 'marked'
 import * as prism from 'prismjs'
 import 'prismjs/components/prism-jsx'
+import 'prismjs/components/prism-tsx'
 
 import codebox from './codebox'
 

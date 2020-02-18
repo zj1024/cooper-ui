@@ -19,7 +19,7 @@
   }
 
   h3 {
-    margin: 60px 0 20px;
+    margin: 60px 0 20px 10px;
     font-size: 1.5rem;
     font-weight: 400;
     line-height: 1.334;
@@ -36,9 +36,18 @@
     color: $color-content;
     font-size: 0.9rem;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.8rem;
     letter-spacing: 0.00938em;
     margin-bottom: 0.5rem;
+  }
+
+  code {
+    color: #476582;
+    padding: 0.15rem 0.5rem;
+    margin: 0 0.15rem;
+    font-size: 0.85rem;
+    background: #f2f4f5;
+    border-radius: 3px;
   }
 
   a {
@@ -60,20 +69,34 @@
     }
   }
 
-  code {
-    color: #476582;
-    padding: 0.15rem 0.5rem;
-    margin: 0 0.15rem;
+  pre {
+    max-height: 1000px;
+    color: #fff;
+    padding: 12px 18px;
+    line-height: 1.5;
     font-size: 0.85rem;
-    background: #f2f4f5;
-    border-radius: 3px;
-    font-family: Menlo, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
-      'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
-  }
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    margin: 0px;
+    direction: ltr;
+    border-radius: 4px;
+    background-color: #272c34;
+    overflow: auto;
 
-  :not(pre) > code[class*='language-'],
-  pre[class*='language-'] {
-    background: #f2f4f5;
+    .plain-text {
+      color: #fff;
+    }
+
+    > code[class*='language-'] {
+      display: inline-block;
+      background: transparent;
+      padding: 2px 6px;
+      color: #fff;
+      margin: 0;
+      font-family: Menlo, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+        'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+    }
   }
 
   .table-wrapper {
@@ -130,37 +153,5 @@
 
   .code-wrapper {
     display: flex;
-  }
-
-  .code {
-    color: #fff;
-    font-size: 1rem;
-    word-break: break-word;
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0.00938em;
-
-    > pre {
-      margin: 0px;
-      overflow: auto;
-      max-height: 1000px;
-      line-height: 1.5;
-      padding: 12px 18px;
-      direction: ltr;
-      border-radius: 4px;
-      background-color: #272c34;
-
-      .plain-text {
-        color: #fff;
-      }
-
-      > code[class*='language-'] {
-        display: inline-block;
-        background: transparent;
-        padding: 2px 6px;
-        color: #fff;
-        margin: 0;
-      }
-    }
   }
 }

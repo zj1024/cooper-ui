@@ -131,15 +131,11 @@ const Dialog: DialogFC = props => {
   }
 
   const onDialogOk = async () => {
-    if (onOk) {
+    onOk &&
       onOk(async () => {
         await closeAnimat()
-        onCancel()
       })
-    } else {
-      await closeAnimat()
-      onCancel()
-    }
+    await closeAnimat()
   }
 
   /**
@@ -173,7 +169,7 @@ const Dialog: DialogFC = props => {
       style={{ width, ...animation, ...style }}
       {...leftProps}>
       {closable !== true ? null : (
-        <Icon name="close" className={setClass('close')} onClick={onCancel} />
+        <Icon name="close" className={setClass('close')} onClick={onDialogCancel} />
       )}
       {header !== null ? <header className={setClass('header')}>{header || '提示'}</header> : null}
       <main className={setClass('main')}>{children}</main>
