@@ -6,18 +6,22 @@
   transition: all .3s;
 }
 
-// test
-.coo-fade-enter-active {
-  visibility: visible;
-  opacity: 1;
-}
-
-.coo-fade-enter,
-.coo-fade-leave-to {
-  visibility: hidden;
+.coo-fade-enter {
+  display: block;
   opacity: 0;
 }
 
+.coo-fade-enter-active {
+  display: block;
+  opacity: 1;
+}
+
 .coo-fade-leave-active {
+  display: block;
+  opacity: 0;
+}
+
+.coo-fade-leave-to {
+  display: none;
   opacity: 0;
 }

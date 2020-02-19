@@ -1,5 +1,12 @@
 @import './style/index';
-$navWidth: 270px;
+
+.text-primary {
+  color: $color-text-primary;
+}
+
+.text-active-primary {
+  color: $color-primary;
+}
 
 html,
 body {

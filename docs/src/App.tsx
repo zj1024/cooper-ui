@@ -14,7 +14,7 @@ const List = (props: any) => {
   return (
     <ul className="navbar-list p-v-10 p-t-60">
       {ComponentRoutes.map(d => (
-        <Link className="text-content" to={d.path} key={d.path}>
+        <Link className="text-primary" to={d.path} key={d.path}>
           <li
             className={`fw-400 fs-14 p-10 ${
               location.pathname === d.path ? 'navbar-active' : ''
@@ -60,8 +60,8 @@ export default () => {
   return (
     <Router>
       <Layout className="w-full h-full">
-        <Header className="header flex text-content w-full flex p-h-20 p-v-5 j-between">
-          <h1 className="fs-18">COOPER-UI</h1>
+        <Header className="header flex text-primary w-full flex p-h-20 p-v-5 j-between">
+          <h1 className="fs-18 text-active-primary">COOPER-UI</h1>
           <div className="flex a-center">
             {/* <li className={`m-r-15${location.pathname === '/guide' ? ' text-yellow' : ''}`}> */}
             <li className="m-r-15">
@@ -101,10 +101,10 @@ export default () => {
                     </Aside>
                   )}
 
-                  <Content className="w-full relative p-t-80">
+                  <Content className="w-full relative p-t-80 p-h-20">
                     <Suspense
                       fallback={
-                        <div className="text-content p-10 fs-13">
+                        <div className="text-primary p-10 fs-13">
                           <Icon
                             className="fixed right-3 top-3 z-index-100 text-white"
                             name="loading-rotate"

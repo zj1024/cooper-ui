@@ -91,13 +91,21 @@ const Transition = (props: IProps) => {
     }
   }
 
+  const setClassAndStyles = (name: string) => {
+    if (isStyles) {
+      setStyleState(styles[name])
+    } else {
+      setClassNameState(name)
+    }
+  }
+
   useEffect(() => {
     setInit(false)
   }, [])
 
   useEffect(() => {
     // 如果销毁dom的话，需要先设置enter，然后requestAnimation设置enterActive
-    const { enter, enterActive, leaveActive, leaveTo } = getClassNames()
+    const { enter, enterActive, enterTo, leave, leaveActive, leaveTo } = getClassNames()
     if (!isInit) {
       if (visible) {
         // 如果动画在执行时候，终止上一个，运行新的
@@ -105,37 +113,27 @@ const Transition = (props: IProps) => {
         // 动画执行
         setVisibleState(visible)
 
-        if (isStyles) {
-          setStyleState(styles?.enter)
-        } else {
-          setClassNameState(enter)
-        }
+        setClassAndStyles(enter)
 
         requestAnimationFrame(() => {
-          if (isStyles) {
-            setStyleState(styles?.enterActive)
-          } else {
-            setClassNameState(enterActive)
-          }
+          setClassAndStyles(enterActive)
+          setTimeout(() => {
+            setClassAndStyles(enterTo)
+          }, duration)
         })
       }
       if (!visible) {
         // 动画结束
-        if (isStyles) {
-          setStyleState(styles?.leaveActive)
-        } else {
-          setClassNameState(leaveActive)
-        }
+        setClassAndStyles(leave)
 
-        timer = setTimeout(() => {
-          if (isStyles) {
-            setStyleState(styles?.leaveTo)
-          } else {
-            setClassNameState(leaveTo)
-          }
-          setVisibleState(visible)
-          timer = null
-        }, duration - 20)
+        requestAnimationFrame(() => {
+          setClassAndStyles(leaveActive)
+          timer = setTimeout(() => {
+            setClassAndStyles(leaveTo)
+            setVisibleState(visible)
+            timer = null
+          }, duration - 20)
+        })
       }
     }
   }, [visible])
