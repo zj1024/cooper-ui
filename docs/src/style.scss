@@ -18,8 +18,13 @@ body {
   flex-direction: column;
 }
 
-.button-test {
-  margin-left: 20px;
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+  background: #fff;
+  box-shadow: $color-shadow;
 }
 
 .main {
@@ -27,7 +32,7 @@ body {
   height: calc(100% - 55px);
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
-  background: #fbfbfb;
+  background: $bg-primary;
 }
 
 .navbar {
@@ -39,8 +44,20 @@ body {
   height: 100vh;
   flex-shrink: 0;
   background: #fff;
-  &-active-bg {
-    background: rgba(255, 153, 0, 0.075);
+  box-shadow: $color-shadow;
+  &-active {
+    position: relative;
+    color: $color-primary;
+    background: rgba($color-primary, 0.1);
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to right, $color-primary 50%, #fff);
+    }
   }
 
   &-list {
@@ -53,9 +70,11 @@ body {
 }
 
 .docs-container {
-  max-width: 810px;
-  padding: 0 10px;
-  margin: 0 auto;
+  max-width: 1000px;
+  padding: 30px;
+  margin: 0 auto 80px;
+  background: #fff;
+  border-radius: 5px;
   > .content {
     padding-bottom: 50px;
   }

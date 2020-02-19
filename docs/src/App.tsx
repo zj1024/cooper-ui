@@ -17,7 +17,7 @@ const List = (props: any) => {
         <Link className="text-content" to={d.path} key={d.path}>
           <li
             className={`fw-400 fs-14 p-10 ${
-              location.pathname === d.path ? 'text-yellow navbar-active-bg' : ''
+              location.pathname === d.path ? 'navbar-active' : ''
             } p-l-30`}>
             {d.title} {d.desc}
           </li>
@@ -60,12 +60,11 @@ export default () => {
   return (
     <Router>
       <Layout className="w-full h-full">
-        <Header
-          className="sticky top-0 z-index-5 w-full flex p-h-20 p-v-5 j-between text-white"
-          style={{ background: '#ff9400' }}>
+        <Header className="header flex text-content w-full flex p-h-20 p-v-5 j-between">
           <h1 className="fs-18">COOPER-UI</h1>
           <div className="flex a-center">
-            <li className="m-r-10">
+            {/* <li className={`m-r-15${location.pathname === '/guide' ? ' text-yellow' : ''}`}> */}
+            <li className="m-r-15">
               <Link to="/guide">Guide</Link>
             </li>
             <li>
@@ -96,7 +95,7 @@ export default () => {
                     </Aside>
                   ) : (
                     <Aside
-                      className="navbar o-y-scroll scroll-touch b-r"
+                      className="navbar o-y-scroll scroll-touch"
                       style={{ display: isSmallScreen ? 'none' : 'block' }}>
                       <List location={location} />
                     </Aside>

@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom'
 import { transform } from 'babel-standalone'
 import * as prism from 'prismjs'
 
-import Divider from '../../../../libs/divider'
+import { Divider, Card } from '../../../../libs'
 
 import { ICode } from './index'
 
@@ -59,7 +59,7 @@ const Code = (props: ICodeProps) => {
   renderSource(source)
 
   return (
-    <>
+    <Card shadow="always">
       <div id={`${id}-code`} className="p-20"></div>
       <div className="desc language- p-h-20 p-b-10" dangerouslySetInnerHTML={{ __html: desc }} />
       <Divider onClick={() => setVisible(!visible)} orientation="left" className="p-h-10">
@@ -70,7 +70,7 @@ const Code = (props: ICodeProps) => {
         style={{ display: visible ? 'block' : 'none' }}
         dangerouslySetInnerHTML={{ __html: code }}
       />
-    </>
+    </Card>
   )
 }
 
