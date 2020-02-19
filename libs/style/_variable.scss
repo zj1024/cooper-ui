@@ -21,7 +21,10 @@ $bg-white: #ffffff !default;
 $bg-black: #393d49 !default;
 
 // 边框
-$color-border: #dcdfe6 !default;
+$color-border: #e0e0e0 !default;
+
+// 阴影
+$color-shadow: 0 5px 15px 0 rgba(#1b1b4e, 0.1);
 
 // 主题背景色
 $bg-colors: (

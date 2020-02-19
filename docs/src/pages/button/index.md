@@ -188,30 +188,30 @@ const styles = {
 
 :::
 
-## 扁平化按钮
+## 取消阴影
 
-:::demo 使用`<Button />`标签声明组件，设置`shadow`属性为 true
+:::demo 使用`<Button />`标签声明组件，设置`shadow`属性为 false
 
 ```jsx
 const App = () => {
   return (
     <div>
-      <Button shadow={true} style={styles.btn}>
+      <Button shadow={false} style={styles.btn}>
         按钮
       </Button>
-      <Button type="primary" shadow={true} style={styles.btn}>
+      <Button type="primary" shadow={false} style={styles.btn}>
         按钮
       </Button>
-      <Button type="warning" shadow={true} style={styles.btn}>
+      <Button type="warning" shadow={false} style={styles.btn}>
         按钮
       </Button>
-      <Button type="success" shadow={true} style={styles.btn}>
+      <Button type="success" shadow={false} style={styles.btn}>
         按钮
       </Button>
-      <Button type="danger" shadow={true} style={styles.btn}>
+      <Button type="danger" shadow={false} style={styles.btn}>
         按钮
       </Button>
-      <Button type="info" shadow={true} style={styles.btn}>
+      <Button type="info" shadow={false} style={styles.btn}>
         按钮
       </Button>
     </div>
@@ -367,4 +367,4 @@ const styles = {
 | circle    | 圆形按钮       | boolean | —                                                | false   |
 | loading   | 加载中状态     | boolean | —                                                | false   |
 | disabled  | 禁用状态       | boolean | —                                                | false   |
-| shadow    | 阴影           | boolean | —                                                | false   |
+| shadow    | 阴影           | boolean | —                                                | true    |

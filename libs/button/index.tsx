@@ -38,7 +38,7 @@ const Button: React.FC<Props> = ({
   circle = false,
   loading = false,
   disabled = false,
-  shadow = false,
+  shadow = true,
   ...props
 }) => {
   return (

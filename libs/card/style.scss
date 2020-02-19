@@ -7,21 +7,20 @@
 
 .coo-card {
   display: inline-block;
-  border: 1px solid lighten($color-border, 5%);
   border-radius: 4px;
   &-header {
     @include content;
-    border-bottom: 1px solid $color-border;
+    border-bottom: 1px solid lighten($color-border, 6%);
   }
   &-body {
     @include content;
   }
   &-has-shadow {
-    box-shadow: 0 2px 10px 1px $color-border;
+    box-shadow: $color-shadow;
   }
   &-hover-shadow {
     box-shadow: none;
-    transition: box-shadow .3s;
+    transition: box-shadow 0.3s;
     &:hover {
       box-shadow: 0 2px 10px 1px $color-border;
     }

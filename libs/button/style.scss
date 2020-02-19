@@ -1,7 +1,6 @@
 @import '../style/variable';
 
 // button default variable
-$color-box-shadow: #bbb;
 $--button-base-padding-v: 8;
 $--button-base-padding-h: 20;
 $--button-disabled-base: #bbb !default;
@@ -59,9 +58,6 @@ $--button-info-border: $color-grey;
       animation: loadingMove 1s linear infinite;
     }
   }
-  &-has-shadow {
-    box-shadow: 0 5px 10px 0px $color-box-shadow;
-  }
 }
 
 @keyframes loadingMove {
@@ -92,17 +88,20 @@ $--button-info-border: $color-grey;
     background: darken($background-color, 5%);
     border-color: darken($border-color, 5%);
   }
+  &.coo-button-has-shadow {
+    box-shadow: 0 5px 15px 0px rgba($background-color, 0.3);
+  }
   &.has-shadow:hover,
   &.has-shadow:focus,
   &.has-shadow:visited {
-    box-shadow: 0 3px 10px 0px $color-box-shadow;
+    box-shadow: 0 5px 15px 0px rgba($background-color, 0.5);
   }
   &:active {
     background: darken($background-color, 15%);
     border-color: darken($border-color, 15%);
   }
   &.coo-button-has-shadow:active {
-    box-shadow: 0 0 10px 0px $color-box-shadow;
+    box-shadow: 0 5px 15px 0px rgba($background-color, 0.5);
   }
   &.coo-button-is-plain {
     color: $background-color;
