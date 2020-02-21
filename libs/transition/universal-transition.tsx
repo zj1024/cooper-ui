@@ -40,7 +40,6 @@ interface IProps {
   [key: string]: any
 }
 
-let timer: any
 const setClass = setPrefixClassName('coo-transition')
 
 const Transition = (props: IProps) => {
@@ -70,31 +69,18 @@ const Transition = (props: IProps) => {
       leaveTo: `coo-${classNames} coo-${classNames}-leave-to`,
     }
   }
-  const [visibleState, setVisibleState] = useState(visible)
+
   const [classNameState, setClassNameState] = useState(
-    getClassNames()[visibleState ? 'enterTo' : 'enter'],
+    getClassNames()[visible ? 'enterTo' : 'enter'],
   )
-  const [styleState, setStyleState] = useState(visibleState ? styles?.enterTo : styles?.enter)
+  const [styleState, setStyleState] = useState(visible ? styles?.enterTo : styles?.enter)
   const [isInit, setInit] = useState(true) // 判断是不是第一次进来的，用于visible effect
 
-  const render = () => {
-    const { className } = children.props
-    const curStyle = { ...children.props.style, ...styleState }
-    if (isStyles) {
-      return React.cloneElement(children, {
-        style: curStyle,
-      })
-    } else {
-      return React.cloneElement(children, {
-        className: classnames(className, classNameState),
-      })
-    }
-  }
-
   const setClassAndStyles = (name: string) => {
-    if (isStyles) {
+    if (isStyles && name !== styleState) {
       setStyleState(styles[name])
-    } else {
+    }
+    if (!isStyles && name !== classNameState) {
       setClassNameState(name)
     }
   }
@@ -109,10 +95,8 @@ const Transition = (props: IProps) => {
     if (!isInit) {
       if (visible) {
         // 如果动画在执行时候，终止上一个，运行新的
-        timer && clearTimeout(timer)
-        // 动画执行
-        setVisibleState(visible)
 
+        // 动画执行
         setClassAndStyles(enter)
 
         requestAnimationFrame(() => {
@@ -128,24 +112,30 @@ const Transition = (props: IProps) => {
 
         requestAnimationFrame(() => {
           setClassAndStyles(leaveActive)
-          timer = setTimeout(() => {
+          setTimeout(() => {
             setClassAndStyles(leaveTo)
-            setVisibleState(visible)
-            timer = null
-          }, duration - 20)
+          }, duration)
         })
       }
     }
   }, [visible])
 
+  const render = () => {
+    const { className } = children.props
+    const curStyle = { ...children.props.style, ...styleState }
+    if (isStyles) {
+      return React.cloneElement(children, {
+        style: curStyle,
+      })
+    } else {
+      return React.cloneElement(children, {
+        className: classnames(className, classNameState),
+      })
+    }
+  }
+
   if (unmountOnExit) {
-    return (
-      <>
-        {unmountOnExit && visibleState ? (
-          <div className={classnames(setClass(''))}>{render()}</div>
-        ) : null}
-      </>
-    )
+    return visible ? <div className={classnames(setClass(''))}>{render()}</div> : null
   } else {
     return <div className={classnames(setClass(''))}>{render()}</div>
   }
