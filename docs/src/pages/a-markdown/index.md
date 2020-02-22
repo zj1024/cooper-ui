@@ -1,8 +1,6 @@
-# Icon 图标
+# Radio 单选框
 
-仅提供了`cooper-ui`用到的图标
-
-支持并建议使用自定义图标库：<a href="https://www.iconfont.cn/" target="_blank">Iconfont</a>
+通过单选框从一组按钮中选择一个选项。
 
 ## 基本用法
 
@@ -12,31 +10,7 @@
 
 ```jsx
 const App = () => {
-  return (
-    <div>
-      <Icon name="arrow-down" style={styles.item} />
-      <Icon name="arrow-left" style={styles.item} />
-      <Icon name="arrow-right" style={styles.item} />
-      <Icon name="arrow-up" style={styles.item} />
-      <Icon name="close" style={styles.item} />
-      <Icon name="correct" style={styles.item} />
-      <Icon name="double-left" style={styles.item} />
-      <Icon name="double-right" style={styles.item} />
-      <Icon name="down" style={styles.item} />
-      <Icon name="ellipsis" style={styles.item} />
-      <Icon name="error" style={styles.item} />
-      <Icon name="eyes" style={styles.item} />
-      <Icon name="hint" style={styles.item} />
-      <Icon name="info" style={styles.item} />
-      <Icon name="loading-rotate" style={styles.item} />
-      <Icon name="loading-spot" style={styles.item} />
-      <Icon name="loading" style={styles.item} />
-      <Icon name="message" style={styles.item} />
-      <Icon name="share" style={styles.item} />
-      <Icon name="success" style={styles.item} />
-      <Icon name="warning" style={styles.item} />
-    </div>
-  )
+  return <div></div>
 }
 
 const styles = {

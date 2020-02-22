@@ -67,8 +67,13 @@ export default () => {
             <li className="m-r-15">
               <Link to="/guide">Guide</Link>
             </li>
-            <li>
+            <li className="m-r-15">
               <Link to="/">组件</Link>
+            </li>
+            <li>
+              <a className="flex h-30" href="https://github.com/zj1024/cooper-ui" target="_blank">
+                <Icon className="fs-30" name="github" />
+              </a>
             </li>
           </div>
         </Header>

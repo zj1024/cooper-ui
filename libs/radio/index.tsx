@@ -29,6 +29,7 @@ const setClass = setPrefixClassName('coo-radio')
 const Radio: React.FC<Props> = props => {
   const {
     className,
+    radioClassName = '',
     options,
     name,
     onChange,
