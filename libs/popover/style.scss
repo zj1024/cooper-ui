@@ -16,11 +16,11 @@
     padding: 10px;
     border-radius: 4px;
     background: #fff;
-    box-shadow: 0 0 10px 1px #e4e4e4;
+    box-shadow: 0 3px 15px rgba(90, 97, 105, 0.1), 0 2px 3px rgba(90, 97, 105, 0.2);
   }
   &-content-icon {
     position: absolute;
-    z-index: 3;
+    z-index: 4;
     width: 100%;
     color: #fff;
     text-align: center;
@@ -42,7 +42,7 @@
     transform: translate(-50%, -100%);
     > .coo-popover-content-icon {
       left: 0;
-      bottom: -13px;
+      bottom: -11px;
     }
   }
   .coo-popover-content-bottom {
