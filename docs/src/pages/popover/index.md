@@ -1,6 +1,6 @@
 # Popover 弹出框
 
-用于在元素边缘显示某些内容。
+用于在元素边缘显示某些内容。支持 鼠标移入 / 点击 / 右键 触发方式。
 
 ## 基本用法
 
@@ -9,32 +9,43 @@
 ```jsx
 const App = () => {
   return (
-    <div style={styles.wrapper}>
-      <Popover style={styles.mr10} placement="top" content="这是一段文本">
-        <Button>顶部显示</Button>
-      </Popover>
-      <Popover style={styles.mr10} placement="bottom" content="这是一段文本">
-        <Button type="primary">底部显示</Button>
-      </Popover>
-      <Popover style={styles.right} placement="right" content="这是一段文本">
-        <Button type="success">右边显示</Button>
-      </Popover>
-      <Popover style={styles.mr10} placement="left" content="这是一段文本">
-        <Button type="info">左边显示</Button>
-      </Popover>
+    <div style={styles.ph100}>
+      <div style={styles.item}>
+        <Popover style={styles.mr10} placement="top" content="这是一段文本">
+          <Button>上</Button>
+        </Popover>
+      </div>
+      <div style={styles.center}>
+        <Popover style={styles.mr10} placement="left" content="这是一段文本">
+          <Button type="info">左</Button>
+        </Popover>
+        <Popover style={styles.right} placement="right" content="这是一段文本">
+          <Button type="success">右</Button>
+        </Popover>
+      </div>
+      <div style={styles.item}>
+        <Popover style={styles.mr10} placement="bottom" content="这是一段文本">
+          <Button type="primary">下</Button>
+        </Popover>
+      </div>
     </div>
   )
 }
 
 const styles = {
-  wrapper: {
-    marginTop: '40px',
+  item: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '30px 0',
   },
-  right: {
-    marginRight: '120px',
+  center: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    margin: '20px 0',
   },
-  mr10: {
-    marginRight: '10px',
+  ph100: {
+    paddingLeft: '20%',
+    paddingRight: '20%',
   },
 }
 ```

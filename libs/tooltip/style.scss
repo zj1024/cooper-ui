@@ -2,16 +2,18 @@
   position: relative;
   display: inline-block;
   vertical-align: top;
+  font-size: 0;
   &-children {
     position: relative;
     z-index: 2;
+    font-size: 1rem;
   }
   &-content {
     position: absolute;
     z-index: 3;
     height: 24px;
     color: #fff;
-    font-size: 0.8em;
+    font-size: 0.8rem;
     white-space: nowrap;
     line-height: 24px;
     padding-left: 20px;
@@ -60,7 +62,7 @@
   }
   .coo-tooltip-content-left {
     left: 0;
-    top: 35%;
+    top: 50%;
     transform: translateX(calc(-100% - 12px)) translateY(-50%);
     .coo-tooltip-content-icon {
       left: unset;
@@ -73,7 +75,7 @@
   }
   .coo-tooltip-content-right {
     right: 0;
-    top: 35%;
+    top: 50%;
     transform: translateX(calc(100% + 12px)) translateY(-50%);
     .coo-tooltip-content-icon {
       bottom: unset;
