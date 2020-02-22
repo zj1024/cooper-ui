@@ -40,6 +40,8 @@ interface IProps {
   [key: string]: any
 }
 
+let enterTimer: any
+let leaveTimer: any
 const setClass = setPrefixClassName('coo-transition')
 
 const Transition = (props: IProps) => {
@@ -90,6 +92,14 @@ const Transition = (props: IProps) => {
   }, [])
 
   useEffect(() => {
+    if (enterTimer) {
+      clearTimeout(enterTimer)
+      enterTimer = null
+    }
+    if (leaveTimer) {
+      clearTimeout(leaveTimer)
+      leaveTimer = null
+    }
     // 如果销毁dom的话，需要先设置enter，然后requestAnimation设置enterActive
     const { enter, enterActive, enterTo, leave, leaveActive, leaveTo } = getClassNames()
     if (!isInit) {
@@ -101,8 +111,10 @@ const Transition = (props: IProps) => {
 
         requestAnimationFrame(() => {
           setClassAndStyles(enterActive)
-          setTimeout(() => {
+          enterTimer = setTimeout(() => {
             setClassAndStyles(enterTo)
+            clearTimeout(enterTimer)
+            enterTimer = null
           }, duration)
         })
       }
@@ -112,8 +124,10 @@ const Transition = (props: IProps) => {
 
         requestAnimationFrame(() => {
           setClassAndStyles(leaveActive)
-          setTimeout(() => {
+          leaveTimer = setTimeout(() => {
             setClassAndStyles(leaveTo)
+            clearTimeout(leaveTimer)
+            leaveTimer = null
           }, duration)
         })
       }
