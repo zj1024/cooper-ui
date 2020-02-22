@@ -75,21 +75,7 @@ const styles = {
 
 ## Dialog API
 
-通过函数方式调用 Dialog，接受的 options 如下所示：
-
-也可以从下方`Attributes`的`Dialog.Alert...`查看详细说明
-
-```tsx
-interface DialogFuncProps {
-  title?: React.ReactNode
-  message: React.ReactNode
-  width?: string
-  okText?: string
-  cancelText?: string
-  onOk: (done) => any
-  onCancel?: () => any
-}
-```
+通过函数方式调用 Dialog，提供了`Alert`、`Confirm`、`Modal`接口。
 
 ### Dialog.Alert
 
@@ -217,6 +203,8 @@ const App = () => {
 | lockScroll   | 背景不可滚动     | boolean         | -      | true                                   |
 | onOk         | 确认按钮点击回调 | (done) => any   | -      | -                                      |
 | onCancel     | 取消按钮点击回调 | () => any       | -      | -                                      |
+
+## API Options
 
 ### Dialog.Alert、Dialog.Confirm、Dialog.Modal
 

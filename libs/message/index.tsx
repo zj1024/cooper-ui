@@ -17,10 +17,10 @@ interface Props {
 
 // message function api
 interface MessageFC {
-  $success(props?: any): any
-  $info(props?: any): any
-  $error(props?: any): any
-  $warning(props?: any): any
+  success(props?: any): any
+  info(props?: any): any
+  error(props?: any): any
+  warning(props?: any): any
   [key: string]: any
 }
 
@@ -69,27 +69,27 @@ const Message: MessageFC = (props: Props) => {
   }
 }
 
-Message.$success = () => {}
-Message.$info = () => {}
-Message.$error = () => {}
-Message.$warning = () => {}
+Message.success = () => {}
+Message.info = () => {}
+Message.error = () => {}
+Message.warning = () => {}
 
 /**
  * @function api
  * Declare that the direct reference to the function is invalid
  */
-;['$success', '$info', '$error', '$warning'].forEach((type: any) => {
+;['success', 'info', 'error', 'warning'].forEach((type: any) => {
   Message[type] = (props: Props) => {
     const config = isString(props) ? { message: props } : { ...props }
-    return Message.call(null, Object.assign({ type: type.substr(1) }, config))
+    return Message.call(null, { type, ...config })
   }
 })
 
-const $success = Message.$success
-const $info = Message.$info
-const $error = Message.$error
-const $warning = Message.$warning
+const success = Message.success
+const info = Message.info
+const error = Message.error
+const warning = Message.warning
 
-export { $success, $info, $error, $warning }
+export { success, info, error, warning }
 
 export default Message
