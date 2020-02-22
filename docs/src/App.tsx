@@ -63,7 +63,7 @@ export default () => {
         <Header className="header flex text-primary w-full flex p-h-20 p-v-5 j-between">
           <h1 className="fs-18 text-active-primary">COOPER-UI</h1>
           <div className="flex a-center">
-            {/* <li className={`m-r-15${location.pathname === '/guide' ? ' text-yellow' : ''}`}> */}
+            {/* <li className={`m-r-15${location.pathname === '/guide' ? ' text-blue' : ''}`}> */}
             <li className="m-r-15">
               <Link to="/guide">Guide</Link>
             </li>
@@ -90,7 +90,7 @@ export default () => {
                         className="zoom-btn fixed left-0 z-index-3 b-r-5 bg-grey p-10 cursor-pointer"
                         onClick={() => setVisible(!visible)}>
                         <Icon
-                          className="fs-20 text-yellow"
+                          className="fs-20 text-blue"
                           name={visible ? 'double-left' : 'double-right'}
                         />
                       </div>
