@@ -75,17 +75,21 @@ const Drawer: React.FC<Props> = props => {
   }
 
   const onMaskClick = () => {
-    onCancel()
+    maskClosable && onCancel()
   }
 
   return (
-    <Transition visible={visible} duration={500}>
+    <Transition visible={visible} duration={300} classNames="drawer-fade">
       <div
         onClick={onMaskClick}
         className={classnames(mask && setClass('mask'))}
         style={{ zIndex }}
         {...leftProps}>
-        <Transition visible={visible} styles={contentStyles} duration={500}>
+        <Transition
+          visible={visible}
+          styles={contentStyles}
+          duration={300}
+          unmountOnExit={destroyOnClose}>
           <div
             onClick={onPrevent}
             className={classnames(setClass('content'), setClass(`content-${direction}`))}
