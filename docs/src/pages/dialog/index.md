@@ -122,7 +122,6 @@ const App = () => {
   const openDialog = () => {
     Dialog.Confirm({
       message: '确认删除吗？',
-      width: '400px',
       onCancel: () => {
         console.log('Dialog.Confirm onCancel called')
       },

@@ -40,20 +40,25 @@ $--button-info-border: $color-grey;
   outline: none;
   transition: all 0.2s;
   cursor: pointer;
+
   &-is-round {
     border-radius: 50px;
   }
+
   &-is-circle {
     padding: 12px;
     border-radius: 50%;
   }
+
   &-loading-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   &-loading {
     margin-right: 5px;
+
     > svg {
       animation: loadingMove 1s linear infinite;
     }
@@ -64,6 +69,7 @@ $--button-info-border: $color-grey;
   from {
     transform: rotate(0);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -73,6 +79,7 @@ $--button-info-border: $color-grey;
   color: lighten($color, 30%);
   background: mix(mix($background-color, $color-white, 40%), $--button-disabled-base, 95%);
   border: mix($border-color, $--button-disabled-base, 10%);
+
   @if $background-color == $--button-default-bg {
     background: mix($background-color, $--button-disabled-base, 30%);
   }
@@ -103,22 +110,18 @@ $--button-info-border: $color-grey;
 
   &.coo-button-has-shadow {
     box-shadow: 0 5px 15px 0px rgba($background-color, 0.3);
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($background-color, 0.15),
+        0 3px 15px rgba(darken($background-color, 10%), 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
   }
 
   &.coo-button-is-plain {
     color: $background-color;
     background: $color-white;
     border-color: $border-color;
-    // &:hover,
-    // &:focus {
-    //   background: lighten($background-color, 30%);
-    //   border-color: lighten($border-color, 10%);
-    // }
-    // &:active {
-    //   background: rgba(lighten($background-color, 30%), 0.1);
-    //   border-color: rgba(lighten($border-color, 10%), 0.1);
-    // }
   }
+
   &:disabled {
     @include button-disabled($color, $background-color, $border-color);
     cursor: not-allowed;
@@ -182,6 +185,7 @@ $--button-info-border: $color-grey;
     background: darken($bg-white, 10%);
     border-color: darken($color-border, 10%);
   }
+
   &:active {
     background: darken($bg-white, 5%);
     border-color: darken($color-border, 5%);

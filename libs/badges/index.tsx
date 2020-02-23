@@ -16,7 +16,7 @@ interface Props {
   className?: string
   type?: string
   placement?: string
-  badgeContent?: number | string
+  badgeContent?: React.ReactNode
   bgColor?: string
   color?: string
   dot?: boolean
