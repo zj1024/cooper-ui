@@ -21,7 +21,7 @@ exports[`- Tooltip component exist 1`] = `
     className="coo-transition"
   >
     <div
-      className="coo-tooltip-content coo-tooltip-content-top coo-fade coo-fade-enter"
+      className="coo-tooltip-content coo-tooltip-content-top coo-fade coo-fade-leave-to"
     >
       <i
         className="coo-tooltip-content-icon"
