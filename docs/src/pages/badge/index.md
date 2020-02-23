@@ -4,27 +4,27 @@
 
 ## 基本用法
 
-:::demo 使用`<Badges />`标签声明组件，通过`badgeContent`属性设置内容，`type`设置主题类型
+:::demo 使用`<Badge />`标签声明组件，通过`badgeContent`属性设置内容，`type`设置主题类型
 
 ```jsx
 const App = () => {
   return (
     <div>
-      <Badges badgeContent={9} style={styles.item}>
+      <Badge badgeContent={9} style={styles.item}>
         <Button>回复</Button>
-      </Badges>
+      </Badge>
 
-      <Badges badgeContent={9} type="success" style={styles.item}>
+      <Badge badgeContent={9} type="success" style={styles.item}>
         <Button>评论</Button>
-      </Badges>
+      </Badge>
 
-      <Badges badgeContent={9} type="warning" style={styles.item}>
+      <Badge badgeContent={9} type="warning" style={styles.item}>
         <Button>消息</Button>
-      </Badges>
+      </Badge>
 
-      <Badges badgeContent={9} type="danger" style={styles.item}>
+      <Badge badgeContent={9} type="danger" style={styles.item}>
         <Button>通知</Button>
-      </Badges>
+      </Badge>
     </div>
   )
 }
@@ -40,27 +40,27 @@ const styles = {
 
 ## 设置位置
 
-:::demo 使用`<Badges />`标签声明组件，通过`placement`属性设置徽标的位置
+:::demo 使用`<Badge />`标签声明组件，通过`placement`属性设置徽标的位置
 
 ```jsx
 const App = () => {
   return (
     <div>
-      <Badges placement="left-top" badgeContent={9} style={styles.item}>
+      <Badge placement="left-top" badgeContent={9} style={styles.item}>
         <Button>Badge</Button>
-      </Badges>
+      </Badge>
 
-      <Badges placement="left-bottom" badgeContent={9} type="success" style={styles.item}>
+      <Badge placement="left-bottom" badgeContent={9} type="success" style={styles.item}>
         <Button>Badge</Button>
-      </Badges>
+      </Badge>
 
-      <Badges placement="right-top" badgeContent={9} type="warning" style={styles.item}>
+      <Badge placement="right-top" badgeContent={9} type="warning" style={styles.item}>
         <Button>Badge</Button>
-      </Badges>
+      </Badge>
 
-      <Badges placement="right-bottom" badgeContent={9} type="danger" style={styles.item}>
+      <Badge placement="right-bottom" badgeContent={9} type="danger" style={styles.item}>
         <Button>Badge</Button>
-      </Badges>
+      </Badge>
     </div>
   )
 }
@@ -76,23 +76,23 @@ const styles = {
 
 ## 自定义颜色
 
-:::demo 使用`<Badges />`标签声明组件，通过`bgColor`属性设置徽标的背景颜色，`color`设置徽标的内容颜色
+:::demo 使用`<Badge />`标签声明组件，通过`bgColor`属性设置徽标的背景颜色，`color`设置徽标的内容颜色
 
 ```jsx
 const App = () => {
   return (
     <div>
-      <Badges bgColor="#188eee" color="#fff" badgeContent={9} style={styles.item}>
+      <Badge bgColor="#188eee" color="#fff" badgeContent={9} style={styles.item}>
         <Button>Badge</Button>
-      </Badges>
+      </Badge>
 
-      <Badges
+      <Badge
         bgColor="linear-gradient(to right, #ff668c, blue)"
         color="#fff"
         badgeContent={9}
         style={styles.item}>
         <Button>Badge</Button>
-      </Badges>
+      </Badge>
     </div>
   )
 }
@@ -108,19 +108,19 @@ const styles = {
 
 ## 状态点
 
-:::demo 使用`<Badges />`标签声明组件，通过`dot`属性设置为状态点
+:::demo 使用`<Badge />`标签声明组件，通过`dot`属性设置为状态点
 
 ```jsx
 const App = () => {
   return (
     <div>
-      <Badges dot={true} badgeContent={9} style={styles.item}>
+      <Badge dot={true} badgeContent={9} style={styles.item}>
         <Button>动态</Button>
-      </Badges>
+      </Badge>
 
-      <Badges dot={true} type="danger" badgeContent={9} style={styles.item}>
+      <Badge dot={true} type="danger" badgeContent={9} style={styles.item}>
         <Button>新闻</Button>
-      </Badges>
+      </Badge>
     </div>
   )
 }

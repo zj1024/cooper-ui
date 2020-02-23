@@ -1,20 +1,20 @@
 import * as React from 'react'
 import * as renderer from 'react-test-renderer'
-import Badges from '../index'
+import Badge from '../index'
 
 const badgeContent = 10
-describe('- Badges component', () => {
+describe('- Badge component', () => {
   it('exist', () => {
-    const component = renderer.create(<Badges badgeContent={badgeContent}>test</Badges>)
+    const component = renderer.create(<Badge badgeContent={badgeContent}>test</Badge>)
     let tree: any = component.toJSON()
     expect(tree.children[1].children[0].children[0]).toEqual(badgeContent.toString())
   })
 
   it('accept bgColor', () => {
     const component = renderer.create(
-      <Badges badgeContent={badgeContent} bgColor="#188eee">
+      <Badge badgeContent={badgeContent} bgColor="#188eee">
         test
-      </Badges>,
+      </Badge>,
     )
     let tree: any = component.toJSON()
     expect(tree.children[1].props.style.background).toEqual('#188eee')
@@ -22,9 +22,9 @@ describe('- Badges component', () => {
 
   it(`accept color`, () => {
     const component = renderer.create(
-      <Badges badgeContent={badgeContent} color="#fff">
+      <Badge badgeContent={badgeContent} color="#fff">
         test
-      </Badges>,
+      </Badge>,
     )
     let tree: any = component.toJSON()
     expect(tree.children[1].children[0].props.style.color).toEqual('#fff')
@@ -32,29 +32,29 @@ describe('- Badges component', () => {
 
   it(`accept type`, () => {
     const component = renderer.create(
-      <Badges badgeContent={badgeContent} type="success">
+      <Badge badgeContent={badgeContent} type="success">
         test
-      </Badges>,
+      </Badge>,
     )
     let tree: any = component.toJSON()
-    expect(tree.children[1].props.className.includes('coo-badges-success')).toBeTruthy()
+    expect(tree.children[1].props.className.includes('coo-badge-success')).toBeTruthy()
   })
 
   it(`accept placement`, () => {
     const component = renderer.create(
-      <Badges badgeContent={badgeContent} placement="left-bottom">
+      <Badge badgeContent={badgeContent} placement="left-bottom">
         test
-      </Badges>,
+      </Badge>,
     )
     let tree: any = component.toJSON()
-    expect(tree.children[1].props.className.includes('coo-badges-left-bottom')).toBeTruthy()
+    expect(tree.children[1].props.className.includes('coo-badge-left-bottom')).toBeTruthy()
   })
 
   it(`accept dot`, () => {
     const component = renderer.create(
-      <Badges badgeContent={badgeContent} dot={true}>
+      <Badge badgeContent={badgeContent} dot={true}>
         test
-      </Badges>,
+      </Badge>,
     )
     let tree: any = component.toJSON()
     expect(tree.children[1].children[0].children).toBeNull()

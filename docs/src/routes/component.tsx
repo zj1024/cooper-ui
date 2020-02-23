@@ -98,9 +98,9 @@ export default [
     exact: true,
   },
   {
-    path: '/badges',
-    title: 'Badges',
-    component: lazy(() => import(/* webpackMode: "lazy" */ '../pages/badges')),
+    path: '/badge',
+    title: 'Badge',
+    component: lazy(() => import(/* webpackMode: "lazy" */ '../pages/badge')),
     desc: '徽标',
     exact: true,
   },
