@@ -48,6 +48,7 @@
       top: 50%;
       width: 6px;
       height: 6px;
+      border-radius: 50%;
       background: transparent;
       transform: translate3d(-50%, -50%, 0) scale(0);
       transition: all 0.3s;
@@ -59,9 +60,10 @@
   &-label-active {
     > .coo-radio-inner {
       border: 1px solid $color-primary;
+      background: $color-primary;
       &:after {
         transform: translate3d(-50%, -50%, 0) scale(1);
-        background: $color-primary;
+        background: #fff;
       }
     }
   }

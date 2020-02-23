@@ -51,24 +51,23 @@ const Drawer: React.FC<Props> = props => {
     right: { transform: 'translate3d(100%, 0, 0)' },
     top: { transform: 'translate3d(0, -100%, 0)' },
     bottom: { transform: 'translate3d(0, 100%, 0)' },
+    active: { transform: 'translate3d(0, 0, 0)' },
+  }
+
+  const getContentStyles = (display: string, leftParams: any) => {
+    return {
+      display,
+      ...leftParams,
+    }
   }
 
   const contentStyles = {
-    enter: {
-      visibility: 'hidden',
-      ...placementStyle[direction],
-    },
-    enterActive: {
-      visibility: 'visible',
-      transform: 'translate3d(0, 0, 0)',
-    },
-    leaveActive: {
-      ...placementStyle[direction],
-    },
-    leaveTo: {
-      visibility: 'hidden',
-      ...placementStyle[direction],
-    },
+    enter: getContentStyles('block', placementStyle[direction]),
+    enterActive: getContentStyles('block', placementStyle['active']),
+    enterTo: getContentStyles('block', placementStyle['active']),
+    leave: getContentStyles('block', placementStyle['active']),
+    leaveActive: getContentStyles('block', placementStyle[direction]),
+    leaveTo: getContentStyles('none', placementStyle[direction]),
   }
 
   const onPrevent = (e: { stopPropagation: () => void }) => {
@@ -80,13 +79,13 @@ const Drawer: React.FC<Props> = props => {
   }
 
   return (
-    <Transition visible={visible}>
+    <Transition visible={visible} duration={500}>
       <div
         onClick={onMaskClick}
         className={classnames(mask && setClass('mask'))}
         style={{ zIndex }}
         {...leftProps}>
-        <Transition visible={visible} styles={contentStyles}>
+        <Transition visible={visible} styles={contentStyles} duration={500}>
           <div
             onClick={onPrevent}
             className={classnames(setClass('content'), setClass(`content-${direction}`))}

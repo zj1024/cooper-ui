@@ -95,7 +95,6 @@ const Dialog: DialogFC = props => {
 
   // animat style include 'display' and 'opacity'
   const [animation, setAnimation] = useState(createStyle('none', 0))
-  console.log(animation)
 
   // click mask close dialog
   const maskOnClick = async () => {

@@ -22,14 +22,8 @@ import './universal-style.scss'
  * 用到了destory，使用class做的动画
  */
 
-// export interface ITransitionStyles {
-//   enter?: React.CSSProperties
-//   enterActive?: React.CSSProperties
-//   enterTo?: React.CSSProperties
-//   leave?: React.CSSProperties
-//   leaveActive?: React.CSSProperties
-//   leaveTo?: React.CSSProperties
-// }
+// init: visible ? enterTo : enter -> enterActive(20ms) -> enterTo(duration)
+// leave -> leaveActive(20ms) -> leaveTo(duration)
 
 interface IProps {
   visible: boolean
@@ -40,8 +34,6 @@ interface IProps {
   [key: string]: any
 }
 
-let enterTimer: any
-let leaveTimer: any
 const setClass = setPrefixClassName('coo-transition')
 
 const Transition = (props: IProps) => {
@@ -73,9 +65,9 @@ const Transition = (props: IProps) => {
   }
 
   const [classNameState, setClassNameState] = useState(
-    getClassNames()[visible ? 'enterTo' : 'enter'],
+    getClassNames()[visible ? 'enterTo' : 'leaveTo'],
   )
-  const [styleState, setStyleState] = useState(visible ? styles?.enterTo : styles?.enter)
+  const [styleState, setStyleState] = useState(visible ? styles?.enterTo : styles?.leaveTo)
   const [isInit, setInit] = useState(true) // 判断是不是第一次进来的，用于visible effect
 
   const setClassAndStyles = (name: string) => {
@@ -83,7 +75,7 @@ const Transition = (props: IProps) => {
       setStyleState(styles[name])
     }
     if (!isStyles && name !== classNameState) {
-      setClassNameState(name)
+      setClassNameState((getClassNames() as any)[name])
     }
   }
 
@@ -92,42 +84,29 @@ const Transition = (props: IProps) => {
   }, [])
 
   useEffect(() => {
-    if (enterTimer) {
-      clearTimeout(enterTimer)
-      enterTimer = null
-    }
-    if (leaveTimer) {
-      clearTimeout(leaveTimer)
-      leaveTimer = null
-    }
     // 如果销毁dom的话，需要先设置enter，然后requestAnimation设置enterActive
-    const { enter, enterActive, enterTo, leave, leaveActive, leaveTo } = getClassNames()
     if (!isInit) {
       if (visible) {
         // 如果动画在执行时候，终止上一个，运行新的
 
         // 动画执行
-        setClassAndStyles(enter)
+        setClassAndStyles('enter')
 
         requestAnimationFrame(() => {
-          setClassAndStyles(enterActive)
-          enterTimer = setTimeout(() => {
-            setClassAndStyles(enterTo)
-            clearTimeout(enterTimer)
-            enterTimer = null
+          setClassAndStyles('enterActive')
+          setTimeout(() => {
+            setClassAndStyles('enterTo')
           }, duration)
         })
       }
       if (!visible) {
         // 动画结束
-        setClassAndStyles(leave)
+        setClassAndStyles('leave')
 
         requestAnimationFrame(() => {
-          setClassAndStyles(leaveActive)
-          leaveTimer = setTimeout(() => {
-            setClassAndStyles(leaveTo)
-            clearTimeout(leaveTimer)
-            leaveTimer = null
+          setClassAndStyles('leaveActive')
+          setTimeout(() => {
+            setClassAndStyles('leaveTo')
           }, duration)
         })
       }
@@ -137,6 +116,7 @@ const Transition = (props: IProps) => {
   const render = () => {
     const { className } = children.props
     const curStyle = { ...children.props.style, ...styleState }
+
     if (isStyles) {
       return React.cloneElement(children, {
         style: curStyle,
