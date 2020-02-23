@@ -79,14 +79,23 @@ const Dialog: DialogFC = props => {
 
   // create style only include 'display' and 'opacity' to animat
   const createStyle = (display: string = 'none', opacity: number = 0) => {
+    const transform = opacity === 0 ? 'translate(-50%, calc(-50% - 50px))' : 'translate(-50%, -50%)'
     return {
-      display,
-      opacity,
+      dialog: {
+        transform,
+        display,
+        opacity,
+      },
+      mask: {
+        display,
+        opacity,
+      },
     }
   }
 
   // animat style include 'display' and 'opacity'
   const [animation, setAnimation] = useState(createStyle('none', 0))
+  console.log(animation)
 
   // click mask close dialog
   const maskOnClick = async () => {
@@ -166,7 +175,7 @@ const Dialog: DialogFC = props => {
   return visible ? (
     <div
       className={classnames(setClass(), className)}
-      style={{ width, ...animation, ...style }}
+      style={{ width, ...animation.dialog, ...style }}
       {...leftProps}>
       {closable !== true ? null : (
         <Icon name="close" className={setClass('close')} onClick={onDialogCancel} />
@@ -202,7 +211,10 @@ const Dialog: DialogFC = props => {
       {/* create portal to close modal */}
       {mask === true &&
         ReactDOM.createPortal(
-          <div onClick={maskOnClick} className={setClass('mask')} style={{ ...animation }}></div>,
+          <div
+            onClick={maskOnClick}
+            className={setClass('mask')}
+            style={{ ...animation.mask }}></div>,
           document.body,
         )}
     </div>

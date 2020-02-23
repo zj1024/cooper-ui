@@ -6,9 +6,11 @@
   z-index: 1001;
   width: 700px;
   background: $color-white;
-  border-radius: 3px;
+  border-radius: 8px;
   margin: 0 auto;
-  box-shadow: $color-shadow;
+  box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1),
+    0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12),
+    0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
   transform: translate(-50%, -50%);
   transition: all 0.3s;
   &-mask {
@@ -18,7 +20,7 @@
     top: 0;
     bottom: 0;
     z-index: 1000;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(#5a6169, 0.12);
     transition: all 0.3s;
   }
   &-close {
