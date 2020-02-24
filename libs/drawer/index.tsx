@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Transition from '../transition/universal-transition'
+import Transition from '../transition'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 

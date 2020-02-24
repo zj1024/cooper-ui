@@ -1,40 +1,39 @@
-// .coo-fade-enter {
-//   opacity: 0;
-// }
-// .coo-fade-enter-active {
-//   opacity: 1;
-//   transition: opacity 0.3s;
-// }
-// .coo-fade-exit {
-//   opacity: 1;
-// }
-// .coo-fade-exit-active {
-//   opacity: 0;
-//   transition: opacity 0.3s;
-// }
-
-.coo-message-entrance-enter {
-  opacity: 0;
-}
-.coo-message-entrance-enter-active {
-  opacity: 1;
-  transition: opacity 0.3s;
-}
-.coo-message-entrance-exit {
-  opacity: 1;
-}
-.coo-message-entrance-exit-active {
-  opacity: 0;
-  transition: opacity 0.3s;
+.coo-transition {
 }
 
-.fade-css-transition-enter {
-  opacity: 1;
+.coo-fade {
+  transition: all 0.3s;
 }
-.fade-css-transition-exit {
+
+// init: visible ? enterTo : enter -> enterActive(20ms) -> enterTo(duration)
+// leave -> leaveActive(20ms) -> leaveTo(duration)
+
+.coo-fade-enter {
+  display: block;
   opacity: 0;
 }
 
-.coo-transiton {
+.coo-fade-enter-active {
+  display: block;
+  opacity: 1;
+}
+
+.coo-fade-enter-to {
+  display: block;
+  opacity: 1;
+}
+
+.coo-fade-leave {
+  display: block;
+  opacity: 1;
+}
+
+.coo-fade-leave-active {
+  display: block;
+  opacity: 0;
+}
+
+.coo-fade-leave-to {
   display: none;
+  opacity: 0;
 }

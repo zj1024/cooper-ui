@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
-import Transition from '../../../../libs/transition/universal-transition'
+import Transition from '../../../../libs/transition'
 import { Button } from '../../../../libs'
 
 import './style.scss'

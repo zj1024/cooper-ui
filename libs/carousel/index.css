@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+  height: 100;
+  margin-top: 100;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+}
+
+.listItem {
+  position: absolute;
+  left: 0;
+  height: 37;
+  width: 272;
+  flex-direction: row;
+  transition: all 1s;
+  overflow: hidden;
+}
+
+.itemText {
+  width: 272;
+  font-size: 22;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: right;
+  margin-top: 3.5;
+  text-overflow: ellipsis;
+}

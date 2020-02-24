@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 import Icon from '../icon'
 import Collapse from '../collapse'
-import { CSSTransition } from '../transition'
+import Transition from '../transition'
 
 import './style.scss'
 
@@ -70,7 +70,7 @@ const SubMenu: React.FC<Props> = props => {
           <Icon className={classnames(isOpen && setClass('icon-open'))} name="arrow-down" />
         </span>
       </div>
-      <CSSTransition duration={100} visible={isOpen}>
+      <Transition duration={100} visible={isOpen}>
         <div className={classnames(setClass('item-wrapper'))}>
           {React.Children.map(children as React.ReactElement, (child: React.ReactElement) => {
             return React.cloneElement(child, {
@@ -78,7 +78,7 @@ const SubMenu: React.FC<Props> = props => {
             })
           })}
         </div>
-      </CSSTransition>
+      </Transition>
     </div>
   )
 }

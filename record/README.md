@@ -52,3 +52,12 @@ refactor:
 
 - table 不能 scroll
 - codebox， code 不能 scroll
+
+## 2020.2.23
+
+新增组件
+
+- slider 滑块
+- datepicker 日期选择器
+- tag 标签
+- carousel 走马灯
