@@ -196,17 +196,10 @@ export default [
     exact: true,
   },
   {
-    path: '/demo',
-    title: 'Demo',
-    component: lazy(() => import(/* webpackMode: "lazy" */ '../pages/demo')),
-    desc: '测试',
-    exact: true,
-  },
-  {
-    path: '/markdown',
-    title: 'Markdown',
-    component: lazy(() => import(/* webpackMode: "lazy" */ '../pages/markdown')),
-    desc: 'markdown',
+    path: '/carousel',
+    title: 'Carousel',
+    component: lazy(() => import(/* webpackMode: "lazy" */ '../pages/carousel')),
+    desc: '走马灯',
     exact: true,
   },
 ]
