@@ -1,26 +1,40 @@
+$icon-size: 30px;
+
 .coo-carousel {
   position: relative;
   overflow-x: hidden;
 
   &-slick {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-    transition: all 0.3s;
+    display: flex;
+    transition: transform 0.3s;
+  }
 
-    &-active {
-      transform: translateX(0);
+  &-slick-item {
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+  &-arrow {
+    position: absolute;
+    width: $icon-size;
+    height: $icon-size;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: $icon-size;
+    color: rgba(#000, 0.3);
+    transition: color 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      color: rgba(#000, 0.5);
     }
 
     &-left {
-      transform: translateX(-100%);
+      left: 5px;
     }
 
     &-right {
-      transform: translateX(100%);
+      right: 5px;
     }
   }
 
