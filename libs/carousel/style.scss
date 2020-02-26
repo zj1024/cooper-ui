@@ -6,7 +6,7 @@ $icon-size: 30px;
 
   &-slick {
     display: flex;
-    transition: transform 0.3s;
+    transition-property: transform;
   }
 
   &-slick-item {
