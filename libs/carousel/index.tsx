@@ -53,7 +53,6 @@ const Carousel: React.FC<IProps> = props => {
 
   // arrow用到的函数，定时器也要用到，提出来
   const handleClickArrow = (direction: string) => {
-    console.log(canIMove, active)
     if (!canIMove) {
       return
     }
@@ -103,6 +102,14 @@ const Carousel: React.FC<IProps> = props => {
     slickDOM.addEventListener('transitionend', listener)
     return () => slickDOM.removeEventListener('transitionend', listener)
   }, [])
+
+  // // autoplay
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     setActive(active + 1)
+  //     console.log(active)
+  //   }, duration)
+  // }, [])
 
   // 渲染指示器
   const indicatorRender = () => {
