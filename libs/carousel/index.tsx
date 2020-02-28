@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import classnames from 'classnames'
-import { setPrefixClassName } from '../utils'
+import { setPrefixClassName, useInterval } from '../utils'
 import Icon from '../icon'
 import Transition from '../transition'
 
@@ -18,8 +18,8 @@ interface IProps {
 }
 
 const setClass = setPrefixClassName('coo-carousel')
-
-let nativeActive: number
+const TRANSITION_DURATION = '300ms'
+const TRANSITION_NONE = '0ms'
 const Carousel: React.FC<IProps> = props => {
   const {
     className,
@@ -27,44 +27,37 @@ const Carousel: React.FC<IProps> = props => {
     dots = true,
     arrow = 'hover',
     autoplay = true,
-    duration = 1500,
+    duration = 5000,
     ...leftProps
   } = props
 
   const children = React.isValidElement(props.children) ? [props.children] : props.children
   const length = (children as React.ReactElement[]).length
+  const transferDuration = duration < 500 ? 500 : duration
 
   // state
   const [active, setActive] = useState(defaultActive)
   const [width, setWidth] = useState('')
-  const [transitionDuration, setTransitionDuration] = useState('0ms')
-  const [canIMove, setCanIMove] = useState(true)
+  const [transitionDuration, setTransitionDuration] = useState(TRANSITION_NONE)
   const [arrowVisible, setArrowVisible] = useState(arrow === 'always')
+  const [isMouseenter, setIsMouseenter] = useState(false)
 
   // ref
   const carouselRef = useRef(null)
   const slickRef = useRef(null)
 
-  // 对动画执行时间做一个封装
-  const setMoveTransition = () => {
-    setCanIMove(false)
-    setTransitionDuration('300ms')
-  }
-
-  // arrow用到的函数，定时器也要用到，提出来
-  const handleClickArrow = (direction: string) => {
-    if (!canIMove) {
-      return
-    }
-    setMoveTransition()
-    if (direction === 'left') {
-      setActive(active - 1)
-      nativeActive = active - 1
-    } else {
+  useInterval(() => {
+    if (!isMouseenter && autoplay) {
+      setTransitionDuration(TRANSITION_DURATION)
       setActive(active + 1)
-      nativeActive = active + 1
+      setTimeout(() => {
+        if (active >= length - 1) {
+          setTransitionDuration(TRANSITION_NONE)
+          setActive(0)
+        }
+      }, 300)
     }
-  }
+  }, transferDuration)
 
   // 窗口变化，宽度重新设置
   useEffect(() => {
@@ -79,44 +72,11 @@ const Carousel: React.FC<IProps> = props => {
     return () => window.removeEventListener('resize', resize)
   }, [])
 
-  // 监听动画逻辑
-  useEffect(() => {
-    const slickDOM = slickRef.current as any
-
-    // 根据nativeActive设置active
-    const listener = () => {
-      if (nativeActive > length - 1) {
-        nativeActive = 0
-        setActive(0)
-      }
-      if (nativeActive < 0) {
-        nativeActive = length - 1
-        setActive(length - 1)
-      }
-      setTransitionDuration('0ms')
-      setCanIMove(true)
-    }
-
-    listener()
-
-    slickDOM.addEventListener('transitionend', listener)
-    return () => slickDOM.removeEventListener('transitionend', listener)
-  }, [])
-
-  // // autoplay
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     setActive(active + 1)
-  //     console.log(active)
-  //   }, duration)
-  // }, [])
-
   // 渲染指示器
   const indicatorRender = () => {
     const onIndicatorChange = (index: number) => {
-      setMoveTransition()
+      setTransitionDuration(TRANSITION_DURATION)
       setActive(index)
-      nativeActive = index
     }
 
     return (
@@ -154,6 +114,29 @@ const Carousel: React.FC<IProps> = props => {
         arrow === 'hover' && setClass('arrow-hover'),
         setClass(`arrow-${direction}`),
       )
+    }
+
+    // arrow用到的函数，定时器也要用到，提出来
+    const handleClickArrow = (direction: string) => {
+      if (direction === 'left') {
+        setTransitionDuration(TRANSITION_DURATION)
+        setActive(active - 1)
+        setTimeout(() => {
+          if (active <= 0) {
+            setTransitionDuration(TRANSITION_NONE)
+            setActive(length - 1)
+          }
+        }, 300)
+      } else {
+        setTransitionDuration(TRANSITION_DURATION)
+        setActive(active + 1)
+        setTimeout(() => {
+          if (active >= length - 1) {
+            setTransitionDuration(TRANSITION_NONE)
+            setActive(0)
+          }
+        }, 300)
+      }
     }
 
     return (
@@ -206,10 +189,12 @@ const Carousel: React.FC<IProps> = props => {
   }
 
   const onMouseEnter = () => {
+    setIsMouseenter(true)
     arrow === 'hover' && setArrowVisible(true)
   }
 
   const onMouseLeave = () => {
+    setIsMouseenter(false)
     arrow === 'hover' && setArrowVisible(false)
   }
 
