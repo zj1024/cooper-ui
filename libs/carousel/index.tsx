@@ -87,7 +87,7 @@ const Carousel: React.FC<IProps> = props => {
       <div className={setClass('indicator')}>
         {React.Children.map(children as React.ReactElement, (child, index: number) => {
           if (child) {
-            const isActive = index === active ? setClass('indicator-item-active') : null
+            const isActive = index === active && !freeze ? setClass('indicator-item-active') : null
             const childClassName = classnames(
               child.props.className,
               setClass('indicator-item'),
