@@ -20,6 +20,8 @@ interface IProps {
 const setClass = setPrefixClassName('coo-carousel')
 const TRANSITION_DURATION = '300ms'
 const TRANSITION_NONE = '0ms'
+const NUMBER_OF_TRANSITION_DURATION = parseInt(TRANSITION_DURATION, 10)
+
 const Carousel: React.FC<IProps> = props => {
   const {
     className,
@@ -41,13 +43,14 @@ const Carousel: React.FC<IProps> = props => {
   const [transitionDuration, setTransitionDuration] = useState(TRANSITION_NONE)
   const [arrowVisible, setArrowVisible] = useState(arrow === 'always')
   const [isMouseenter, setIsMouseenter] = useState(false)
+  const [freeze, setFreeze] = useState(false)
 
   // ref
   const carouselRef = useRef(null)
   const slickRef = useRef(null)
 
-  useInterval(() => {
-    if (!isMouseenter && autoplay) {
+  useInterval(
+    () => {
       setTransitionDuration(TRANSITION_DURATION)
       setActive(active + 1)
       setTimeout(() => {
@@ -55,9 +58,10 @@ const Carousel: React.FC<IProps> = props => {
           setTransitionDuration(TRANSITION_NONE)
           setActive(0)
         }
-      }, 300)
-    }
-  }, transferDuration)
+      }, NUMBER_OF_TRANSITION_DURATION)
+    },
+    !isMouseenter && autoplay ? transferDuration : null,
+  )
 
   // 窗口变化，宽度重新设置
   useEffect(() => {
@@ -118,6 +122,11 @@ const Carousel: React.FC<IProps> = props => {
 
     // arrow用到的函数，定时器也要用到，提出来
     const handleClickArrow = (direction: string) => {
+      if (freeze) return
+
+      // 为了防抖
+      setFreeze(true)
+
       if (direction === 'left') {
         setTransitionDuration(TRANSITION_DURATION)
         setActive(active - 1)
@@ -126,7 +135,7 @@ const Carousel: React.FC<IProps> = props => {
             setTransitionDuration(TRANSITION_NONE)
             setActive(length - 1)
           }
-        }, 300)
+        }, NUMBER_OF_TRANSITION_DURATION)
       } else {
         setTransitionDuration(TRANSITION_DURATION)
         setActive(active + 1)
@@ -135,8 +144,12 @@ const Carousel: React.FC<IProps> = props => {
             setTransitionDuration(TRANSITION_NONE)
             setActive(0)
           }
-        }, 300)
+        }, NUMBER_OF_TRANSITION_DURATION)
       }
+
+      setTimeout(() => {
+        setFreeze(false)
+      }, NUMBER_OF_TRANSITION_DURATION)
     }
 
     return (

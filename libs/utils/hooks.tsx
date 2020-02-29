@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react'
 
-export const useInterval = (callback: (params: any) => any, delay: number) => {
+export const useInterval = (callback: (params: any) => any, delay: number | null) => {
   const savedCallback = useRef()
 
   // 保存新回调

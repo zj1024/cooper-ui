@@ -1,4 +1,4 @@
-export default (method = () => {}, wait: number, { leading = true, trailing = true } = {}) => {
+export default (method: any, wait: number, { leading = true, trailing = true } = {}) => {
   let timeout: any
   let result: any
   let methodPrevious = 0

@@ -2,6 +2,7 @@ import { isString, isNull, isUndefined, isBoolean, isNumber, isArray } from './t
 import setPrefixClassName from './getclass'
 import stringEqual from './stringEqual'
 import throttle from './throttle'
+import debounce from './debounce'
 import { useInterval } from './hooks'
 
 export {
@@ -14,5 +15,6 @@ export {
   setPrefixClassName,
   stringEqual,
   throttle,
+  debounce,
   useInterval,
 }
