@@ -19,14 +19,14 @@
 const App = () => {
   return (
     <Carousel>
-      <div>
-        <img style={styles.img} src="//t.tb.cn/44W5e" />
+      <div style={styles.item}>
+        <span style={styles.white}>1</span>
       </div>
-      <div>
-        <img style={styles.img} src="//t.tb.cn/341CV" />
+      <div style={styles.item}>
+        <span style={styles.pink}>2</span>
       </div>
-      <div>
-        <img style={styles.img} src="//t.tb.cn/WgC1Q" />
+      <div style={styles.item}>
+        <span style={styles.yellow}>3</span>
       </div>
     </Carousel>
   )
@@ -34,8 +34,24 @@ const App = () => {
 
 const styles = {
   // 这个样式仅声明内容的样式，并不需要用在组件上
-  img: {
+  item: {
     width: '100%',
+    height: '200px',
+    background: '#64a5f5',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '40px',
+    fontWeight: '500',
+  },
+  white: {
+    color: '#fff',
+  },
+  pink: {
+    color: 'pink',
+  },
+  yellow: {
+    color: 'yellow',
   },
 }
 ```
@@ -50,14 +66,14 @@ const styles = {
 const App = () => {
   return (
     <Carousel defaultActive={1}>
-      <div>
-        <img style={styles.img} src="//t.tb.cn/44W5e" />
+      <div style={styles.item}>
+        <span style={styles.white}>1</span>
       </div>
-      <div>
-        <img style={styles.img} src="//t.tb.cn/341CV" />
+      <div style={styles.item}>
+        <span style={styles.pink}>2</span>
       </div>
-      <div>
-        <img style={styles.img} src="//t.tb.cn/WgC1Q" />
+      <div style={styles.item}>
+        <span style={styles.yellow}>3</span>
       </div>
     </Carousel>
   )
@@ -65,8 +81,24 @@ const App = () => {
 
 const styles = {
   // 这个样式仅声明内容的样式，并不需要用在组件上
-  img: {
+  item: {
     width: '100%',
+    height: '200px',
+    background: '#64a5f5',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '40px',
+    fontWeight: '500',
+  },
+  white: {
+    color: '#fff',
+  },
+  pink: {
+    color: 'pink',
+  },
+  yellow: {
+    color: 'yellow',
   },
 }
 ```
@@ -84,26 +116,26 @@ const App = () => {
   return (
     <div>
       <Carousel autoplay={false}>
-        <div>
-          <img style={styles.img} src="//t.tb.cn/44W5e" />
+        <div style={styles.item}>
+          <span style={styles.white}>1</span>
         </div>
-        <div>
-          <img style={styles.img} src="//t.tb.cn/341CV" />
+        <div style={styles.item}>
+          <span style={styles.pink}>2</span>
         </div>
-        <div>
-          <img style={styles.img} src="//t.tb.cn/WgC1Q" />
+        <div style={styles.item}>
+          <span style={styles.yellow}>3</span>
         </div>
       </Carousel>
 
       <Carousel style={{ marginTop: '30px' }} duration={3000}>
-        <div>
-          <img style={styles.img} src="//t.tb.cn/44W5e" />
+        <div style={styles.item}>
+          <span style={styles.white}>1</span>
         </div>
-        <div>
-          <img style={styles.img} src="//t.tb.cn/341CV" />
+        <div style={styles.item}>
+          <span style={styles.pink}>2</span>
         </div>
-        <div>
-          <img style={styles.img} src="//t.tb.cn/WgC1Q" />
+        <div style={styles.item}>
+          <span style={styles.yellow}>3</span>
         </div>
       </Carousel>
     </div>
@@ -112,8 +144,24 @@ const App = () => {
 
 const styles = {
   // 这个样式仅声明内容的样式，并不需要用在组件上
-  img: {
+  item: {
     width: '100%',
+    height: '200px',
+    background: '#64a5f5',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '40px',
+    fontWeight: '500',
+  },
+  white: {
+    color: '#fff',
+  },
+  pink: {
+    color: 'pink',
+  },
+  yellow: {
+    color: 'yellow',
   },
 }
 ```
