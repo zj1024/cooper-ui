@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <title>Cooper UI</title>
+    <style>
+      ::selection {
+        color: #fff;
+        background: #64a5f5;
+      }
+      @keyframes home-loading {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+      html,
+      body,
+      .root,
+      .skeleton {
+        width: 100%;
+        height: 100%;
+      }
+      .skeleton header {
+        width: 100%;
+        height: 55px;
+        background: #fff;
+        box-shadow: 0 5px 15px 0 rgba(27, 27, 78, 0.1);
+        position: relative;
+        z-index: 3;
+      }
+      .skeleton main {
+        width: 100%;
+        height: calc(100% - 55px);
+        background: #f6f7fb;
+        display: flex;
+      }
+      .skeleton main aside {
+        width: 269px;
+        background: #fff;
+        box-shadow: 0 5px 15px 0 rgba(27, 27, 78, 0.1);
+      }
+      .skeleton main section {
+        flex: 1;
+      }
+      @media (max-width: 769px) {
+        .skeleton main aside {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" class="root">
+      <div class="skeleton">
+        <header></header>
+        <main>
+          <aside></aside>
+          <section></section>
+        </main>
+      </div>
+    </div>
+
+    
+  <script type="text/javascript" src="main.js"></script></body>
+</html>

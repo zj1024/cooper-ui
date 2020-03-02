@@ -24,6 +24,7 @@ $icon-size: 30px;
     color: rgba(#000, 0.3);
     transition: color 0.3s;
     cursor: pointer;
+    user-select: none;
 
     &:hover {
       color: rgba(#000, 0.5);
