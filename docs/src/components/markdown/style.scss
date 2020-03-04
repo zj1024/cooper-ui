@@ -34,6 +34,10 @@
     font-weight: 300;
   }
 
+  li {
+    list-style: inside;
+  }
+
   p {
     font-size: 0.9rem;
     font-weight: 400;
@@ -42,6 +46,7 @@
     margin-bottom: 0.5rem;
   }
 
+  code[class*='language-none'],
   code {
     color: #476582;
     padding: 0.15rem 0.5rem;

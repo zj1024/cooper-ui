@@ -15,6 +15,7 @@ const Example: React.FC<IProps> = props => {
   return (
     <div className={classnames(setClass(), className)} {...leftProps}>
       {children}
+      slider
     </div>
   )
 }

@@ -42,12 +42,13 @@ export default [
     desc: '文字提示',
     exact: true,
   },
-  // {
-  //   path: '/input',
-  //   title: 'Input',
-  //   component: lazy(() => import(* webpackMode: "lazy" */'../pages/input')),
-  //   exact: true,
-  // },
+  {
+    path: '/input',
+    title: 'Input',
+    desc: '输入框',
+    component: lazy(() => import(/* webpackMode: "lazy" */ '../pages/input')),
+    exact: true,
+  },
   {
     path: '/foldcard',
     title: 'Foldcard',
