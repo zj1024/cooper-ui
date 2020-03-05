@@ -36,7 +36,7 @@ $--button-info-border: $color-grey;
 .coo-button {
   padding: #{$--button-base-padding-v}px #{$--button-base-padding-h}px;
   border: 1px solid;
-  border-radius: 5px;
+  border-radius: $border-radius-middle;
   outline: none;
   transition: all 0.2s;
   cursor: pointer;

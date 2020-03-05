@@ -1,36 +1,180 @@
 @import '../style/variable';
 
+$size-large: 40px;
+$size-middle: 32px;
+$size-small: 24px;
+
+$addon-bg: #f9fafb;
+$addon-color: #abb6bf;
+
+@mixin font-size($size) {
+  @if $size == 40px {
+    font-size: 15px;
+  } @else if $size == 32px {
+    font-size: 13px;
+  } @else if $size == 24px {
+    font-size: 12px;
+  }
+  &::placeholder {
+    color: lighten($color-grey, 10%);
+    font-weight: 300;
+    @if $size == 40px {
+      font-size: 14px;
+    } @else if $size == 32px {
+      font-size: 12px;
+    } @else if $size == 24px {
+      font-size: 12px;
+    }
+  }
+}
+
+@mixin height($size) {
+  height: $size;
+}
+
+@mixin border-left {
+  border-radius: $border-radius-middle;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+@mixin border-right {
+  border-radius: $border-radius-middle;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+// addon component
+@mixin input-addon($size) {
+  .coo-input-addon {
+    height: $size;
+    padding: 0 10px;
+    color: $addon-color;
+    background: $addon-bg;
+    border-radius: $border-radius-middle;
+    border: 1px solid $color-border;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-is-element {
+      padding: 0;
+      color: unset;
+      background: unset;
+      border: none;
+      overflow-x: hidden;
+    }
+
+    > .coo-button {
+      width: 100%;
+      height: 100%;
+      padding: 0 10px;
+    }
+
+    &:first-child {
+      @include border-left;
+      > .coo-button {
+        @include border-left;
+        margin-right: -1px;
+      }
+    }
+
+    &:last-child {
+      @include border-right;
+      > .coo-button {
+        @include border-right;
+        margin-left: -1px;
+      }
+    }
+  }
+}
+
 .coo-input {
+  position: relative;
   width: 100%;
+  height: 100%;
   border: 1px solid $color-border;
-  border-radius: 4px;
-  padding: 8px 16px;
+  border-radius: $border-radius-middle;
+  padding: 0 10px;
   color: $color-content;
   transition: all 0.3s;
+  display: flex;
+
   &:focus {
     border-color: $color-primary;
-    // box-shadow: 0 4.5px 10px rgba(0, 123, 255, 0.1), 0 2px 1.75px rgba(0, 0, 0, 0.06);
     box-shadow: 0 0 0 3px rgba($color-primary, 0.15),
       0 3px 15px rgba(darken($color-primary, 10%), 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
     outline: none;
   }
+
   &:hover {
     border-color: lighten($color-primary, 10%);
+  }
+
+  &-large {
+    @include height($size-large);
+    @include font-size($size-large);
+    // @include placeholder($size-large);
+  }
+
+  &-middle {
+    @include height($size-middle);
+    @include font-size($size-middle);
+    // @include placeholder($size-middle);
+  }
+
+  &-small {
+    @include height($size-small);
+    @include font-size($size-small);
+    // @include placeholder($size-small);
   }
 }
 
 .coo-input-group {
+  display: flex;
+  align-items: center;
+
   > label {
-    margin-right: 10px;
+    margin: 0 7px;
     color: $color-content;
     cursor: pointer;
   }
+
+  &-large {
+    @include font-size($size-large);
+    @include input-addon($size-large);
+  }
+
+  &-middle {
+    @include font-size($size-middle);
+    @include input-addon($size-middle);
+  }
+
+  &-small {
+    @include font-size($size-small);
+    @include input-addon($size-small);
+  }
+
   &-column {
-    > * {
-      display: block;
-    }
+    flex-direction: column;
+    align-items: flex-start;
     > label {
-      margin-bottom: 7px;
+      margin: 7px 0;
+    }
+  }
+
+  &-has-addon {
+    > .coo-input {
+      &:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-right: -1px;
+      }
+      &:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: -1px;
+      }
     }
   }
 }

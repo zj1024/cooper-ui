@@ -1,13 +1,17 @@
+@import '../style/variable';
+
 .coo-tooltip {
   position: relative;
   display: inline-block;
   vertical-align: top;
   font-size: 0;
+
   &-children {
     position: relative;
     z-index: 2;
     font-size: 1rem;
   }
+
   &-content {
     position: absolute;
     z-index: 3;
@@ -18,11 +22,12 @@
     line-height: 24px;
     padding-left: 20px;
     padding-right: 20px;
-    border-radius: 4px;
+    border-radius: $border-radius-middle;
     background: rgba(0, 0, 0, 0.75);
     visibility: visible;
     transition: opacity 0.2s;
   }
+
   &-content-icon {
     position: absolute;
     z-index: 1;
@@ -34,32 +39,38 @@
     margin-bottom: -12px;
     transform: translateX(-50%);
   }
+
   &-content-show {
     opacity: 1;
     transform: scale(1);
     visibility: visible;
   }
+
   &-content-hidden {
     opacity: 0;
     transform: scale(0);
     visibility: hidden;
   }
+
   // placement 样式重写
   .coo-tooltip-content-top {
     left: 50%;
     top: -10px;
     transform: translate(-50%, -100%);
   }
+
   .coo-tooltip-content-bottom {
     left: 50%;
     bottom: -10px;
     transform: translate(-50%, 100%);
+
     .coo-tooltip-content-icon {
       transform: translateX(-50%) rotateX(180deg);
       transform-origin: top;
       top: 0;
     }
   }
+
   .coo-tooltip-content-left {
     left: 0;
     top: 50%;
@@ -77,6 +88,7 @@
     right: 0;
     top: 50%;
     transform: translateX(calc(100% + 12px)) translateY(-50%);
+
     .coo-tooltip-content-icon {
       bottom: unset;
       left: 0;

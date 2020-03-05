@@ -79,7 +79,7 @@
     display: block;
     background: $color-white;
     box-shadow: 0 5px 10px 1px $color-border;
-    border-radius: 3px;
+    border-radius: $border-radius-middle;
   }
   &-icon-open {
     transform: rotate(-180deg);

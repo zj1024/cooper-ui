@@ -16,9 +16,7 @@ const List = (props: any) => {
       {ComponentRoutes.map(d => (
         <Link className="text-primary" to={d.path} key={d.path}>
           <li
-            className={`fw-400 fs-14 p-10 ${
-              location.pathname === d.path ? 'navbar-active' : ''
-            } p-l-30`}>
+            className={`fs-14 p-10 ${location.pathname === d.path ? 'navbar-active' : ''} p-l-30`}>
             {d.title} {d.desc}
           </li>
         </Link>

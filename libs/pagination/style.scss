@@ -18,55 +18,67 @@ $--coo-pagination-disabled-base: #bbb;
   flex-shrink: 0;
   flex-wrap: wrap;
   user-select: none;
+
   &-item,
   &-prev,
   &-next {
     margin: 5px;
     color: $color-content;
-    border-radius: 3px;
+    border-radius: $border-radius-middle;
     background: $bg-grey;
     display: inline-block;
     cursor: pointer;
+
     &:hover {
       color: $color-primary;
     }
+
     &-active {
       color: $color-white;
       background: $color-primary;
+
       &:hover {
         color: $color-white;
       }
     }
   }
+
   &-normal {
     font-size: 15px;
+
     .coo-pagination-item,
     .coo-pagination-prev,
     .coo-pagination-next {
       @include item(30);
     }
+
     .coo-pagination-quick-jumper {
       font-size: 15px;
     }
   }
   &-small {
     font-size: 13px;
+
     .coo-pagination-item,
     .coo-pagination-prev,
     .coo-pagination-next {
       @include item(25);
     }
+
     .coo-pagination-quick-jumper {
       font-size: 13px;
     }
   }
+
   &-large {
     font-size: 17px;
+
     .coo-pagination-item,
     .coo-pagination-prev,
     .coo-pagination-next {
       @include item(45);
     }
+
     .coo-pagination-quick-jumper {
       font-size: 17px;
     }
@@ -74,6 +86,7 @@ $--coo-pagination-disabled-base: #bbb;
   &-quick-jumper {
     color: $color-content;
     margin-left: 10px;
+
     &-input {
       width: 50px;
       padding: 5px 10px;
@@ -83,9 +96,11 @@ $--coo-pagination-disabled-base: #bbb;
       border-radius: 3px;
       background: $bg-grey;
       transition: background 0.3s;
+
       &:hover {
         background: darken($bg-grey, 2%);
       }
+
       &:active,
       &:focus {
         outline: $color-primary auto 3px;
@@ -96,8 +111,13 @@ $--coo-pagination-disabled-base: #bbb;
     color: mix(mix($color-grey, $color-white, 40%), $--coo-pagination-disabled-base, 95%);
     background: mix(mix($bg-grey, $color-white, 40%), $--coo-pagination-disabled-base, 95%);
     cursor: not-allowed;
+
     &:hover {
       color: mix(mix($color-grey, $color-white, 40%), $--coo-pagination-disabled-base, 95%);
+    }
+
+    &.coo-pagination-quick-jumper {
+      background: unset;
     }
   }
 }
