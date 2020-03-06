@@ -27,7 +27,9 @@ const List = (props: any) => {
 
 export default () => {
   const [visible, setVisible] = useState(false)
-  const [isSmallScreen, setIsSmallScreen] = useState(true)
+  const [isSmallScreen, setIsSmallScreen] = useState(
+    /(?:iphone|ipod|ipad).*os 5/gi.test(navigator.userAgent),
+  )
   const [windowWidth, setWindowWidth] = useState(window.document.documentElement.clientWidth)
 
   useEffect(() => {

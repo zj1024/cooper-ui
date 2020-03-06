@@ -203,4 +203,11 @@ export default [
     desc: '走马灯',
     exact: true,
   },
+  {
+    path: '/dropdown',
+    title: 'Dropdown',
+    component: lazy(() => import(/* webpackMode: "lazy" */ '../pages/dropdown')),
+    desc: '下拉菜单',
+    exact: true,
+  },
 ]

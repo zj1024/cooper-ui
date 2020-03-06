@@ -1,12 +1,10 @@
-.coo-transition {
-}
+// init: visible ? enterTo : enter -> enterActive(20ms) -> enterTo(duration)
+// leave -> leaveActive(20ms) -> leaveTo(duration)
 
+// fade
 .coo-fade {
   transition: all 0.3s;
 }
-
-// init: visible ? enterTo : enter -> enterActive(20ms) -> enterTo(duration)
-// leave -> leaveActive(20ms) -> leaveTo(duration)
 
 .coo-fade-enter {
   display: block;
@@ -36,4 +34,60 @@
 .coo-fade-leave-to {
   display: none;
   opacity: 0;
+}
+
+// dropdown-transition
+
+.coo-dropdown-transition {
+  transition: all 0.3s;
+}
+
+.coo-dropdown-transition-enter {
+  display: block;
+  opacity: 0;
+  transform: scaleY(0);
+  &.coo-dropdown-overlay-bottom-center {
+    transform: scaleY(0) translateX(-50%);
+  }
+  &.coo-dropdown-overlay-top-center {
+    transform: scaleY(0) translateX(-50%);
+  }
+}
+
+.coo-dropdown-transition-enter-active,
+.coo-dropdown-transition-enter-to,
+.coo-dropdown-transition-leave {
+  display: block;
+  opacity: 1;
+  transform: scaleY(1);
+  &.coo-dropdown-overlay-bottom-center {
+    transform: scaleY(1) translateX(-50%);
+  }
+  &.coo-dropdown-overlay-top-center {
+    transform: scaleY(1) translateX(-50%);
+  }
+}
+
+.coo-dropdown-transition-leave-active {
+  display: block;
+  opacity: 0;
+  transform: scaleY(0);
+  &.coo-dropdown-overlay-bottom-center {
+    transform: scaleY(0) translateX(-50%);
+  }
+  &.coo-dropdown-overlay-top-center {
+    transform: scaleY(0) translateX(-50%);
+  }
+}
+
+.coo-dropdown-transition-leave-to {
+  display: none;
+  opacity: 0;
+  transform: scaleY(0);
+  &.coo-dropdown-overlay-bottom-center {
+    transform: scaleY(0) translateX(-50%);
+  }
+  &.coo-dropdown-overlay-top-center {
+    transform: scaleY(0) translateX(-50%);
+  }
 }
