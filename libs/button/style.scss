@@ -191,3 +191,41 @@ $--button-info-border: $color-grey;
     border-color: darken($color-border, 5%);
   }
 }
+
+.coo-button-group {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+
+  > .coo-button {
+    border-radius: 0;
+
+    &:first-child {
+      border-top-left-radius: $border-radius-middle;
+      border-bottom-left-radius: $border-radius-middle;
+    }
+
+    &:last-child {
+      border-top-right-radius: $border-radius-middle;
+      border-bottom-right-radius: $border-radius-middle;
+    }
+  }
+
+  // 这样写增加优先级
+  &.coo-button-group-vertical {
+    display: flex;
+    flex-direction: column;
+    > .coo-button {
+      border-radius: 0;
+      &:first-child {
+        border-top-left-radius: $border-radius-middle;
+        border-top-right-radius: $border-radius-middle;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: $border-radius-middle;
+        border-bottom-right-radius: $border-radius-middle;
+      }
+    }
+  }
+}

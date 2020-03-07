@@ -355,6 +355,38 @@ const styles = {
 
 :::
 
+## 按钮组
+
+:::demo 使用`<ButtonGroup />`标签声明按钮组
+
+```jsx
+const App = () => {
+  return (
+    <div>
+      <ButtonGroup>
+        <Button type="primary">按钮</Button>
+        <Button type="primary">按钮</Button>
+      </ButtonGroup>
+
+      <ButtonGroup style={{ marginLeft: '20px' }}>
+        <Button type="primary">按钮</Button>
+        <Button type="primary">按钮</Button>
+        <Button type="primary">按钮</Button>
+      </ButtonGroup>
+
+      <div>
+        <ButtonGroup vertical={true} style={{ marginTop: '20px' }}>
+          <Button type="primary">按钮</Button>
+          <Button type="primary">按钮</Button>
+        </ButtonGroup>
+      </div>
+    </div>
+  )
+}
+```
+
+:::
+
 ## Attributes
 
 | 参数      | 说明           | 类型    | 可选值                                           | 默认值  |

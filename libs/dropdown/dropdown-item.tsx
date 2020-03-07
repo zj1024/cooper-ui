@@ -1,5 +1,4 @@
 import * as React from 'react'
-// import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
 import './style.scss'
@@ -12,9 +11,9 @@ interface IProps {
 const setClass = setPrefixClassName('coo-dropdown-item')
 
 const DropdownItem: React.FC<IProps> = props => {
-  const { children, className, ...leftProps } = props
+  const { children, className, onClick, ...leftProps } = props
   return (
-    <div className={setClass()} {...leftProps}>
+    <div className={setClass()} {...leftProps} onClick={onClick}>
       {children}
     </div>
   )

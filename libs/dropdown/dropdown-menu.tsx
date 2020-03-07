@@ -1,10 +1,10 @@
 import * as React from 'react'
-// import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
 import './style.scss'
 
 interface IProps {
+  children: React.ReactElement
   className?: string
   [key: string]: any
 }
@@ -12,10 +12,12 @@ interface IProps {
 const setClass = setPrefixClassName('coo-dropdown-menu')
 
 const DropdownMenu: React.FC<IProps> = props => {
-  const { children, className, ...leftProps } = props
+  const { children, className, onClick, ...leftProps } = props
   return (
     <div className={setClass()} {...leftProps}>
-      {children}
+      {React.Children.map(children, (child: React.ReactElement) => {
+        return React.cloneElement(child, { onClick })
+      })}
     </div>
   )
 }
