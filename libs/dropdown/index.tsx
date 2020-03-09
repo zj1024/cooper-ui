@@ -68,7 +68,7 @@ const Dropdown: DropdownFC = props => {
   const triggerFN = {
     onMouseEnter: trigger === 'hover' ? () => setVisible(true) : () => {},
     onMouseLeave: trigger === 'hover' ? () => setVisible(false) : () => {},
-    onClick: trigger === 'click' ? () => !visible && setVisible(true) : () => {},
+    onClick: trigger === 'click' ? () => setVisible(true) : () => {},
   }
 
   const universalTriggerFN = !splitButton ? triggerFN : {}

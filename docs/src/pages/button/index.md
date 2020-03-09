@@ -365,10 +365,12 @@ const App = () => {
     <div>
       <ButtonGroup>
         <Button type="primary">按钮</Button>
-        <Button type="primary">按钮</Button>
+        <Button type="primary">
+          <Icon name="arrow-right" />
+        </Button>
       </ButtonGroup>
 
-      <ButtonGroup style={{ marginLeft: '20px' }}>
+      <ButtonGroup style={{ marginTop: '20px' }}>
         <Button type="primary">按钮</Button>
         <Button type="primary">按钮</Button>
         <Button type="primary">按钮</Button>
