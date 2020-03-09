@@ -45,7 +45,7 @@ const Menu: MenuFC = props => {
     setActiveIndex(index)
   }
 
-  const _deepJudgeIndex = (element: React.ReactElement): any => {
+  const deepJudgeIndex = (element: React.ReactElement): any => {
     return React.Children.map(element, (child: React.ReactElement) => {
       if (child.type && child.type === SubMenu) {
         let hasActiveIndex = false
@@ -57,7 +57,7 @@ const Menu: MenuFC = props => {
         })
 
         return React.cloneElement(child, {
-          children: _deepJudgeIndex(child.props.children),
+          children: deepJudgeIndex(child.props.children),
           _trigger: trigger,
           _isActive: hasActiveIndex,
           mode,
@@ -86,7 +86,7 @@ const Menu: MenuFC = props => {
         className,
       )}
       {...leftProps}>
-      {children && _deepJudgeIndex(children as React.ReactElement)}
+      {children && deepJudgeIndex(children as React.ReactElement)}
     </div>
   )
 }

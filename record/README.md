@@ -60,4 +60,3 @@ refactor:
 - slider 滑块
 - datepicker 日期选择器
 - tag 标签
-- carousel 走马灯
