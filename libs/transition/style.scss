@@ -91,3 +91,36 @@
     transform: scaleY(0) translateX(-50%);
   }
 }
+
+// menu-transition
+
+.coo-menu {
+  transition: all 0.3s;
+  transform-origin: top center;
+}
+
+.coo-menu-enter {
+  display: block;
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.coo-menu-enter-active,
+.coo-menu-enter-to,
+.coo-menu-leave {
+  display: block;
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.coo-menu-leave-active {
+  display: block;
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.coo-menu-leave-to {
+  display: none;
+  opacity: 0;
+  transform: scaleY(0);
+}
