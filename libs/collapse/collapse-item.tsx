@@ -41,6 +41,7 @@ const CollapseItem: React.FC<Props> = props => {
     title,
     iconPlacement = 'left',
     onClick = () => {},
+    ...leftProps
   } = props
 
   // Initialize
@@ -115,7 +116,7 @@ const CollapseItem: React.FC<Props> = props => {
   }
 
   return (
-    <div className={classnames(setClass(''), className)}>
+    <div className={classnames(setClass(''), className)} {...leftProps}>
       <div
         className={classnames(
           setClass('title'),
@@ -124,11 +125,11 @@ const CollapseItem: React.FC<Props> = props => {
         )}
         onClick={onTitleClick}>
         {iconPlacement === 'left' && (
-          <Icon className={setClass('title-icon')} name="arrow-right"></Icon>
+          <Icon className={setClass('title-icon')} name="arrow-down"></Icon>
         )}
         <p>{title}</p>
         {iconPlacement === 'right' && (
-          <Icon className={setClass('title-icon')} name="arrow-right"></Icon>
+          <Icon className={setClass('title-icon')} name="arrow-down"></Icon>
         )}
       </div>
       <div ref={contentRef} className={setClass('content')} style={contentStyle}>

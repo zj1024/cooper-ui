@@ -84,6 +84,11 @@
     }
   }
 
+  &-item-transition {
+    position: relative;
+    z-index: 10;
+  }
+
   &-item-wrapper {
     position: absolute;
     left: 0;

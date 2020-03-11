@@ -24,8 +24,6 @@ import './style.scss'
 
 // init: visible ? enterTo : enter -> enterActive(20ms) -> enterTo(duration)
 // leave -> leaveActive(20ms) -> leaveTo(duration)
-let entryTimer: any
-let leaveTimer: any
 interface IProps {
   visible: boolean
   styles?: any
@@ -85,6 +83,8 @@ const Transition = (props: IProps) => {
   }, [])
 
   useEffect(() => {
+    let entryTimer: any
+    let leaveTimer: any
     // 如果销毁dom的话，需要先设置enter，然后requestAnimation设置enterActive
     if (!isInit) {
       if (visible) {
@@ -140,4 +140,4 @@ const Transition = (props: IProps) => {
   }
 }
 
-export default Transition
+export default React.memo(Transition)

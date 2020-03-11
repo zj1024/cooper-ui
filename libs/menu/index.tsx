@@ -10,7 +10,6 @@ import './style.scss'
 
 interface Props {
   className?: string
-  style?: any
   mode?: string
   align?: string
   activeIndex?: index
@@ -32,17 +31,17 @@ const Menu: MenuFC = props => {
     className,
     mode = 'horizontal',
     align = 'left',
+    trigger = 'hover',
     activeIndex,
     onSelect = () => {},
-    trigger = 'hover',
     ...leftProps
   } = props
 
-  const [_activeIndex, setActiveIndex] = useState(activeIndex)
-
-  const _onChangeItemActive = (index: index) => {
+  const [menuActiveIndex, setMenuActiveIndex] = useState(activeIndex)
+  console.log(menuActiveIndex)
+  const onChangeItemActive = (index: index) => {
     onSelect(index)
-    setActiveIndex(index)
+    setMenuActiveIndex(index)
   }
 
   const deepJudgeIndex = (element: React.ReactElement): any => {
@@ -51,15 +50,15 @@ const Menu: MenuFC = props => {
         let hasActiveIndex = false
         // 判断当前的submenu子元素是否是active状态
         React.Children.forEach(child.props.children, (child: React.ReactElement) => {
-          if (child.props.index === _activeIndex) {
+          if (child.props.index === menuActiveIndex) {
             hasActiveIndex = true
           }
         })
 
         return React.cloneElement(child, {
           children: deepJudgeIndex(child.props.children),
-          _trigger: trigger,
-          _isActive: hasActiveIndex,
+          trigger: trigger,
+          isActive: hasActiveIndex,
           mode,
         })
       }
@@ -67,8 +66,8 @@ const Menu: MenuFC = props => {
       if (child.type && child.type === MenuItem) {
         return React.cloneElement(child as React.ReactElement, {
           // 判断index
-          className: _activeIndex === child.props.index ? setClass('item-active') : '',
-          _onchange: _onChangeItemActive,
+          className: classnames(menuActiveIndex === child.props.index && setClass('item-active')),
+          onchange: onChangeItemActive,
         })
       }
       return child

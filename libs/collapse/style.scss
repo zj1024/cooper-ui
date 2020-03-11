@@ -24,6 +24,7 @@
     &-icon {
       font-size: 14px;
       transition: all 0.3s;
+      margin-right: 5px;
     }
     &-visible {
       border-bottom-left-radius: 0;
@@ -31,10 +32,13 @@
       color: $color-primary;
     }
     &-visible > &-icon {
-      transform: rotate(90deg);
+      transform: rotate(180deg);
     }
     &-icon-right {
       justify-content: space-between;
+      > .coo-collapse-item-title-icon {
+        margin: 0;
+      }
     }
   }
   &-content {

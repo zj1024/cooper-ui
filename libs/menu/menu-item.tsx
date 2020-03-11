@@ -7,8 +7,8 @@ import './style.scss'
 export type index = string | number | null
 
 interface PrivateProps {
-  _onchange(index: index): void
-  _closesubmenu(params: boolean): void
+  onchange(index: index): void
+  closeSubmenu(params: boolean): void
 }
 
 interface Props extends PrivateProps {
@@ -20,13 +20,13 @@ interface Props extends PrivateProps {
 const setClass = setPrefixClassName('coo-menu')
 
 const MenuItem: React.FC<Props> = props => {
-  const { children, className, _onchange, index, _closesubmenu, ...leftProps } = props
-  const _onClick = () => {
-    _onchange(index)
-    _closesubmenu && _closesubmenu(false)
+  const { children, className, onchange, index, closeSubmenu, ...leftProps } = props
+  const onClick = () => {
+    onchange(index)
+    closeSubmenu && closeSubmenu(false)
   }
   return (
-    <div className={classnames(setClass('item'), className)} onClick={_onClick} {...leftProps}>
+    <div className={classnames(setClass('item'), className)} onClick={onClick} {...leftProps}>
       {children}
     </div>
   )

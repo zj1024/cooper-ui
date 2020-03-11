@@ -51,7 +51,7 @@ const App = () => {
   return (
     <div>
       <div style={styles.wrapper}>
-        <Dropdown overlay={overlay} placement="top-left">
+        <Dropdown overlay={overlay} placement="bottom-left">
           <Button type="primary">top-left</Button>
         </Dropdown>
         <Dropdown overlay={overlay} placement="top-center">
@@ -63,7 +63,7 @@ const App = () => {
       </div>
 
       <div style={styles.wrapper}>
-        <Dropdown overlay={overlay} placement="bottom-left">
+        <Dropdown overlay={overlay} placement="top-left">
           <Button type="primary">bottom-left</Button>
         </Dropdown>
         <Dropdown overlay={overlay} placement="bottom-center">

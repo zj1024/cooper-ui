@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
+
 import Icon from '../icon'
 import Collapse from '../collapse'
 import Transition from '../transition'
@@ -11,9 +12,9 @@ import './style.scss'
 export type index = string | number | null
 
 interface PrivateProps {
-  _onchange(index: index): void
-  _isActive?: boolean
-  _trigger?: string
+  onchange(index: index): void
+  isActive?: boolean
+  trigger?: string
   mode?: string
 }
 
@@ -30,20 +31,20 @@ const SubMenu: React.FC<Props> = props => {
   const {
     children,
     className,
-    _onchange,
+    onchange,
     title,
     index,
-    _trigger = 'hover',
-    _isActive,
+    trigger = 'hover',
+    isActive,
     mode,
     ...leftProps
   } = props
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [visible, setVisible] = useState(false)
   const menuItemRef = useRef(null)
 
   const onChange = (openStatus: boolean) => {
-    setIsOpen(openStatus)
+    setVisible(openStatus)
   }
 
   if (mode === 'vertical') {
@@ -58,17 +59,17 @@ const SubMenu: React.FC<Props> = props => {
 
   const clickTrigger = {
     onClick:
-      _trigger === 'click'
+      trigger === 'click'
         ? () => {
-            console.log(isOpen)
+            console.log(visible)
             onChange(true)
           }
         : () => {},
   }
 
-  const trigger = {
-    onMouseEnter: _trigger === 'hover' ? () => onChange(true) : () => {},
-    onMouseLeave: _trigger === 'hover' ? () => onChange(false) : () => {},
+  const triggerFN = {
+    onMouseEnter: trigger === 'hover' ? () => onChange(true) : () => {},
+    onMouseLeave: trigger === 'hover' ? () => onChange(false) : () => {},
   }
 
   useEffect(() => {
@@ -76,9 +77,9 @@ const SubMenu: React.FC<Props> = props => {
     let menuItemDispatchEvent: any
     let isMenuItemClick: boolean = false
 
-    if (_trigger === 'click' && isOpen) {
+    if (trigger === 'click' && visible) {
       // body注册事件
-      bodyDispatchEvent = () => !isMenuItemClick && setIsOpen(false)
+      bodyDispatchEvent = () => !isMenuItemClick && setVisible(false)
       menuItemDispatchEvent = () => {
         isMenuItemClick = true
       }
@@ -92,24 +93,24 @@ const SubMenu: React.FC<Props> = props => {
         document.body.removeEventListener('click', bodyDispatchEvent, false)
       }
     }
-  }, [isOpen])
+  }, [visible])
 
   return (
-    <div {...trigger} className={classnames(setClass(''), className)} {...leftProps}>
+    <div {...triggerFN} className={classnames(setClass(''), className)} {...leftProps}>
       <div
-        className={classnames(setClass('item'), _isActive && setClass('item-active'))}
+        className={classnames(setClass('item'), isActive && setClass('item-active'))}
         {...clickTrigger}>
         <span>{title}</span>
         <span>
-          <Icon className={classnames(isOpen && setClass('icon-open'))} name="arrow-down" />
+          <Icon className={classnames(visible && setClass('icon-open'))} name="arrow-down" />
         </span>
       </div>
-      <Transition duration={300} visible={isOpen} classNames="menu">
-        <div>
-          <div className={classnames(setClass('item-wrapper'))} ref={menuItemRef}>
+      <Transition duration={300} visible={visible} classNames="menu">
+        <div className={setClass('item-transition')}>
+          <div className={setClass('item-wrapper')} ref={menuItemRef}>
             {React.Children.map(children as React.ReactElement, (child: React.ReactElement) => {
               return React.cloneElement(child, {
-                _closesubmenu: (params: boolean) => setIsOpen(params),
+                closeSubmenu: (params: boolean) => setVisible(params),
               })
             })}
           </div>
