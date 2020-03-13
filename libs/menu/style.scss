@@ -41,7 +41,7 @@
 .coo-menu {
   width: 100%;
   display: flex;
-  border-bottom: 1px solid $color-border;
+  // border-bottom: 1px solid $color-border;
   @include item;
 
   &-center {
@@ -57,7 +57,7 @@
     border-bottom: none;
 
     > .coo-menu-item {
-      padding: 12px 20px;
+      padding: 15px 20px;
       &:hover {
         background: #f7f7f7;
       }

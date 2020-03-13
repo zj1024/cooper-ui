@@ -1,10 +1,6 @@
 import * as React from 'react'
-import { Icon } from '../../../../libs'
+import Markdown from '../../components/markdown'
 
 export default () => {
-  return (
-    <div>
-      <Icon name="arrow-right" />
-    </div>
-  )
+  return <Markdown mdString={require('./index.md').default} />
 }

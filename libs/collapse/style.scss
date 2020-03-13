@@ -4,6 +4,7 @@
   background: $bg-grey;
   margin-bottom: 10px;
   overflow: hidden;
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -15,25 +16,31 @@
     align-items: center;
     cursor: pointer;
     font-size: 14px;
+
     &:hover {
       background: darken($color-white, 3%);
     }
+
     > p:not(&.coo-collapse-item-title-icon-right) {
       margin-left: 10px;
     }
+
     &-icon {
       font-size: 14px;
       transition: all 0.3s;
       margin-right: 5px;
     }
+
     &-visible {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       color: $color-primary;
     }
+
     &-visible > &-icon {
       transform: rotate(180deg);
     }
+
     &-icon-right {
       justify-content: space-between;
       > .coo-collapse-item-title-icon {
@@ -41,6 +48,7 @@
       }
     }
   }
+
   &-content {
     border-radius: $border-radius-middle;
     border-top-left-radius: 0;

@@ -11,14 +11,15 @@ import './style.scss'
  */
 interface Props {
   header?: React.ReactNode
-  shadow?: string
+  footer?: React.ReactNode
+  shadow?: 'always' | 'hover' | 'never'
   [key: string]: any
 }
 
 const setClass = setPrefixClassName('coo-card')
 
 const Card: React.FC<Props> = props => {
-  const { children, className, header, shadow = 'always', ...leftProps } = props
+  const { children, className, header, footer, shadow = 'always', ...leftProps } = props
   return (
     <div
       className={classnames(
@@ -30,6 +31,7 @@ const Card: React.FC<Props> = props => {
       {...leftProps}>
       {header && <div className={setClass('header')}>{header}</div>}
       <div className={setClass('body')}>{children}</div>
+      {footer && <div className={setClass('footer')}>{footer}</div>}
     </div>
   )
 }

@@ -10,7 +10,11 @@ export default () => {
     <div className="h-full">
       <div className="m-t-30">
         <Menu activeIndex="101" onSelect={onSelect} align="left" trigger="click">
-          <MenuItem index="1">MenuItem1</MenuItem>
+          <MenuItem index="1">
+            <a href="https://zj1024.com" target="_blank">
+              ZJ1024
+            </a>
+          </MenuItem>
           <SubMenu index="5" title="测试文本">
             <MenuItem index="6">MenuItem6</MenuItem>
             <MenuItem index="7">MenuItem7</MenuItem>

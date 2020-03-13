@@ -38,7 +38,7 @@ const Menu: MenuFC = props => {
   } = props
 
   const [menuActiveIndex, setMenuActiveIndex] = useState(activeIndex)
-  console.log(menuActiveIndex)
+
   const onChangeItemActive = (index: index) => {
     onSelect(index)
     setMenuActiveIndex(index)
@@ -78,9 +78,7 @@ const Menu: MenuFC = props => {
     <div
       className={classnames(
         setClass(),
-        align === 'left' && setClass('left'),
-        align === 'center' && setClass('center'),
-        align === 'right' && setClass('right'),
+        setClass(align),
         mode === 'vertical' && setClass('vertical'),
         className,
       )}

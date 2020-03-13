@@ -68,7 +68,7 @@ const CollapseItem: React.FC<Props> = props => {
   }, [])
 
   // Set animat by props contentvisible
-  React.useEffect(() => {
+  useEffect(() => {
     if (stringEqual(contentvisible, true) === false) {
       setContentStyle(callbackContentStyle)
       setTimeout(() => {

@@ -186,7 +186,7 @@ export default [
     path: '/result',
     title: 'Result',
     component: lazy(() => import(/* webpackMode: "lazy" */ '../pages/result')),
-    desc: '结果页',
+    desc: '结果',
     exact: true,
   },
   {

@@ -10,13 +10,12 @@ import './style.scss'
 interface Props {
   className?: string
   style?: React.CSSProperties
-  status: string
+  status?: 'success' | 'error' | 'info' | 'warning' | '404' | 'warning'
   icon?: React.ReactNode
   title?: React.ReactNode
   content?: React.ReactNode
   [key: string]: any
 }
-
 const setClass = setPrefixClassName('coo-result')
 
 const Result: React.FC<Props> = props => {
