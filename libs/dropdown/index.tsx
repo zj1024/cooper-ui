@@ -25,6 +25,7 @@ interface IProps {
     | 'top-right'
   trigger?: 'hover' | 'click'
   splitButton?: boolean
+  // button
   type?: string
   plain?: boolean
   round?: boolean

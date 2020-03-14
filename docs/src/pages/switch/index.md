@@ -99,9 +99,14 @@ const styles = {
 
 ## Attributes
 
-| 参数      | 说明           | 类型   | 可选值 | 默认值 |
-| --------- | -------------- | ------ | ------ | ------ |
-| className | 容器 className | string | —      | —      |
-| style     | 指定样式       | object | —      | —      |
-| name      | 图标名称       | string | -      | -      |
-| component | svg 字符串     | string | -      | -      |
+| 参数              | 说明           | 类型            | 可选值 | 默认值 |
+| ----------------- | -------------- | --------------- | ------ | ------ |
+| className         | 容器 className | string          | —      | —      |
+| style             | 指定样式       | object          | —      | —      |
+| checked           | 开关状态       | boolean         | -      | false  |
+| checkedChildren   | 开启状态内容   | React.ReactNode | -      | -      |
+| unCheckedChildren | 关闭状态内容   | React.ReactNode | -      | -      |
+| size              | 开关大小       | string          | -      | -      |
+| loading           | 加载状态       | boolean         | -      | false  |
+| disabled          | svg 字符串     | boolean         | -      | false  |
+| onClick           | 点击函数       | () => any       | -      | -      |
