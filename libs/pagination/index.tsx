@@ -41,7 +41,7 @@ const Pagination: React.FC<Props> = props => {
     ...leftProps
   } = props
 
-  if (hideOnSinglePage && pageCount === 1) {
+  if (hideOnSinglePage && pageCount <= 1) {
     return null
   }
 
@@ -161,7 +161,7 @@ const Pagination: React.FC<Props> = props => {
     if (current <= pagerCount) {
       setPrevEllipsisIcon('ellipsis')
     }
-    onChange(current)
+    onChange && onChange(current)
   }, [current])
 
   return (
