@@ -71,9 +71,13 @@ const Dropdown: DropdownFC = props => {
     onMouseLeave: trigger === 'hover' ? () => setVisible(false) : () => {},
     onClick: trigger === 'click' ? () => setVisible(true) : () => {},
   }
+  const hoverFN = { onMouseLeave: triggerFN.onMouseLeave, onMouseEnter: triggerFN.onMouseEnter }
+  const clickFN = { onClick: triggerFN.onClick }
 
-  const universalTriggerFN = !splitButton ? triggerFN : {}
-  const splitBtnTriggerFN = splitButton ? triggerFN : {}
+  const universalHoverFN = hoverFN
+  const universalClickFN = !splitButton ? clickFN : {}
+
+  const splitBtnClickFN = trigger === 'click' ? { onClick: triggerFN.onClick } : {}
 
   useEffect(() => {
     let bodyDispatchEvent: any
@@ -98,7 +102,7 @@ const Dropdown: DropdownFC = props => {
   }, [visible])
 
   return (
-    <div className={classnames(setClass('wrapper'))} {...universalTriggerFN}>
+    <div className={classnames(setClass('wrapper'))} {...universalHoverFN}>
       <div className={classnames(setClass(), className)} {...leftProps}>
         {splitButton ? (
           <ButtonGroup>
@@ -120,12 +124,12 @@ const Dropdown: DropdownFC = props => {
               loading={loading}
               disabled={disabled}
               shadow={shadow}
-              {...splitBtnTriggerFN}>
+              {...splitBtnClickFN}>
               <Icon name="arrow-down" />
             </Button>
           </ButtonGroup>
         ) : (
-          children
+          React.cloneElement(children as any, universalClickFN)
         )}
       </div>
       <Transition visible={visible} classNames="dropdown-transition">
