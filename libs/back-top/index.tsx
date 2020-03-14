@@ -18,6 +18,7 @@ interface Props {
   behavior?: 'smooth' | 'auto'
   visibilityHeight?: number
   animat?: boolean
+  target?: any
   [key: string]: any
 }
 
@@ -30,13 +31,17 @@ const BackTop: React.FC<Props> = props => {
     behavior = 'smooth',
     visibilityHeight = 400,
     animat = true,
+    target,
     ...leftProps
   } = props
+
+  const targetDOM: HTMLElement = target ? target() : document.documentElement
+  const listenerDOM = target ? target() : window
 
   const [visible, setVisible] = useState(false)
 
   const onBackTopClick = () => {
-    window.scroll({
+    listenerDOM.scroll({
       left: 0,
       top: 0,
       behavior,
@@ -45,14 +50,14 @@ const BackTop: React.FC<Props> = props => {
 
   // use throttle to improve performance
   const scrollListener = throttle(() => {
-    const scrollTop = document.documentElement.scrollTop
+    const scrollTop = targetDOM.scrollTop
     ;+scrollTop > visibilityHeight ? setVisible(true) : setVisible(false)
   }, 100)
 
   useEffect(() => {
-    window.addEventListener('scroll', scrollListener)
+    listenerDOM.addEventListener('scroll', scrollListener)
     return () => {
-      window.removeEventListener('scroll', scrollListener)
+      listenerDOM.removeEventListener('scroll', scrollListener)
     }
   }, [])
 
