@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     /* 基本选项 */
-    "target": "ES2015", // 指定ECMAScript目标版本 "ES3"（默认）， "ES5"， "ES6"/ "ES2015"， "ES2016"， "ES2017"或 "ESNext"。
+    "target": "ES5", // 指定ECMAScript目标版本 "ES3"（默认）， "ES5"， "ES6"/ "ES2015"， "ES2016"， "ES2017"或 "ESNext"。
     "module": "ESNext", // 指定生成哪个模块系统代码： "None"， "CommonJS"， "AMD"， "System"， "UMD"， "ES6"或 "ES2015"。
     "allowJs": true, // 允许编译 javascript 文件
     "checkJs": true, // 报告 javascript 文件中的错误

@@ -154,13 +154,13 @@ export default [
     desc: '分页',
     exact: true,
   },
-  {
-    path: '/tabs',
-    title: 'Tabs',
-    component: lazy(() => import(/* webpackMode: "lazy" */ '../pages/tabs')),
-    desc: '标签页',
-    exact: true,
-  },
+  // {
+  //   path: '/tabs',
+  //   title: 'Tabs',
+  //   component: lazy(() => import(/* webpackMode: "lazy" */ '../pages/tabs')),
+  //   desc: '标签页',
+  //   exact: true,
+  // },
   {
     path: '/back-top',
     title: 'BackTop',

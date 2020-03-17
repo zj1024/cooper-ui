@@ -5,16 +5,12 @@ const path = require('path')
 module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist/lib'),
-    filename: 'cooper-ui.min.js',
+    filename: 'index.js',
     library: 'cui',
     libraryTarget: 'umd',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
-    alias: {
-      src: path.resolve(__dirname, '../docs/src'),
-      'react-dom': '@hot-loader/react-dom',
-    },
   },
   module: {
     rules: [

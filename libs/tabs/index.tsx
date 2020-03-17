@@ -41,7 +41,7 @@ const Tabs: TabsFC = props => {
   })
 
   // 所有的tab标题宽度
-  const [tabsWidthList, setTabsWidthList] = useState()
+  const [tabsWidthList, setTabsWidthList] = useState<any>()
 
   // tab-bar移动的位置
   const [tabBarTranslateX, setTabBarTranslateX] = useState(0)
@@ -76,7 +76,7 @@ const Tabs: TabsFC = props => {
     // 获取所有tabs的宽度，用来设置tab-bar的transform
     const tabsElement = tabsRef.current as any
     if (tabsElement !== null && tabsElement.children.length > 0) {
-      const widthList = Array.prototype.map
+      const widthList: any = Array.prototype.map
         .call(tabsElement.children, tab =>
           tab.className.includes('coo-tabs-tab-item') ? getComputedStyle(tab)['width'] : null,
         )

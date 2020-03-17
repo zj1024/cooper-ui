@@ -2,7 +2,8 @@
   "name": "cooper-ui",
   "version": "0.0.1",
   "description": "A React UI library",
-  "main": "./dist/lib/main.js",
+  "main": "./dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "start": "yarn docs:env",
     "docs:env": "webpack-dev-server --config ./config/webpack.config.dev",
@@ -10,7 +11,9 @@
     "build": "webpack --progress --config ./config/webpack.config.prod",
     "test": "jest",
     "ci": "JEST_JUNIT_OUTPUT_DIR=./test-results/jest/ JEST_JUNIT_OUTPUT_NAME=results.xml jest --ci --reporters=jest-junit",
-    "prepublish": "tsc libs/*.* --outDir ./dist/npm/es6 --declaration --jsx react"
+    "publish:pre": "tsc libs/*.* --outDir ./dist --declaration --jsx react",
+    "build:copy": "babel libs --out-dir ./dist --copy-files",
+    "publish:local": "rm -rf ./dist && npm run publish:pre && npm run build:copy && cnpm link"
   },
   "repository": {
     "type": "git",

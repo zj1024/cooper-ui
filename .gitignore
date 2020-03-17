@@ -13,3 +13,6 @@ test-results/
 
 # yarn
 yarn-error.log
+
+# dist
+dist/
