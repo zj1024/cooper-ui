@@ -26,13 +26,14 @@ const Popover: React.FC<Props> = props => {
     setVisible(isShow)
   }
 
-  if (trigger === 'click' || trigger === 'contextMenu') {
-    useEffect(() => {
+  useEffect(() => {
+    if (trigger === 'click' || trigger === 'contextMenu') {
       const close = () => handleToggleTooltip(false)
       window.addEventListener('click', close, false)
       return () => window.removeEventListener('click', close)
-    }, [])
-  }
+    }
+    return
+  }, [])
 
   const stopClose = (needClose: boolean, e: any) => {
     if (!needClose) {

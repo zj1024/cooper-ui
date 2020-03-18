@@ -36,5 +36,5 @@
     "emitDecoratorMetadata": true // 为装饰器提供元数据的支持
   },
   "include": ["libs/**/*", "docs/**/*"],
-  "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx"]
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx", "dist"]
 }

@@ -2,7 +2,7 @@
   "name": "cooper-ui",
   "version": "0.0.1",
   "description": "A React UI library",
-  "main": "./dist/index.js",
+  "main": "./dist/lib/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
     "start": "yarn docs:env",
@@ -13,7 +13,7 @@
     "ci": "JEST_JUNIT_OUTPUT_DIR=./test-results/jest/ JEST_JUNIT_OUTPUT_NAME=results.xml jest --ci --reporters=jest-junit",
     "publish:pre": "tsc libs/*.* --outDir ./dist --declaration --jsx react",
     "build:copy": "babel libs --out-dir ./dist --copy-files",
-    "publish:local": "rm -rf ./dist && npm run publish:pre && npm run build:copy && cnpm link"
+    "publish:local": "rm -rf ./dist && npm run publish:pre && cp -R libs/assets/ ./dist"
   },
   "repository": {
     "type": "git",
