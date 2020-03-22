@@ -12,8 +12,8 @@
     "test": "jest",
     "ci": "JEST_JUNIT_OUTPUT_DIR=./test-results/jest/ JEST_JUNIT_OUTPUT_NAME=results.xml jest --ci --reporters=jest-junit",
     "publish:pre": "tsc libs/*.* --outDir ./dist --declaration --jsx react",
-    "build:copy": "babel libs --out-dir ./dist --copy-files",
-    "publish:local": "rm -rf ./dist && npm run publish:pre && cp -R libs/assets/ ./dist"
+    "build:copy": "babel libs --out-dir ./cooper-ui --copy-files",
+    "publish:local": "rm -rf ./dist && npm run build:copy && cp -R libs/assets/ ./cooper-ui"
   },
   "repository": {
     "type": "git",

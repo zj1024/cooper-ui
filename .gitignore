@@ -6,6 +6,7 @@ Thumbs.db
 
 # dev
 node_modules/
+cooper-ui/
 
 # ci
 coverage/

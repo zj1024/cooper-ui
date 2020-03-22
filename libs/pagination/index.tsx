@@ -41,10 +41,6 @@ const Pagination: React.FC<Props> = props => {
     ...leftProps
   } = props
 
-  if (hideOnSinglePage && pageCount <= 1) {
-    return null
-  }
-
   // 页码中位数指针
   const pivotIndex = Math.floor(pagerCount / 2)
 
@@ -53,13 +49,36 @@ const Pagination: React.FC<Props> = props => {
     Array(pageCount <= pagerCount ? pageCount : pagerCount),
     (pager, index) => (pager ? pager : index + 1),
   )
+
   const [pagers, setPagers] = useState(initPagers)
-
   const [current, setCurrent] = useState(defaultCurrent)
-
   // 快速翻页按钮
   const [prevEllipsisIcon, setPrevEllipsisIcon] = useState('ellipsis')
   const [nextEllipsisIcon, setNextEllipsisIcon] = useState('ellipsis')
+  const [quickJumperValue, setQuickJumperValue] = useState('')
+
+  // defaultCurrent 大于 页码坑位，重新计算页码值
+  useEffect(() => {
+    if (defaultCurrent > pagerCount) {
+      setPagers(getNewPagers(current))
+    }
+  }, [])
+
+  // 监听current触发回调
+  useEffect(() => {
+    // 解决快速翻页页码点击状态临界值图标回到省略状态
+    if (current >= pageCount - pivotIndex) {
+      setNextEllipsisIcon('ellipsis')
+    }
+    if (current <= pagerCount) {
+      setPrevEllipsisIcon('ellipsis')
+    }
+    onChange && onChange(current)
+  }, [current])
+
+  if (hideOnSinglePage && pageCount <= 1) {
+    return null
+  }
 
   const onMouseEnter = (type: string) => {
     if (!disabled) {
@@ -129,8 +148,6 @@ const Pagination: React.FC<Props> = props => {
     return newPagers
   }
 
-  const [quickJumperValue, setQuickJumperValue] = useState('')
-
   const onQuickJumperChange = (e: { target: { value: React.SetStateAction<string> } }) => {
     setQuickJumperValue(e.target.value)
   }
@@ -144,25 +161,6 @@ const Pagination: React.FC<Props> = props => {
       setQuickJumperValue('')
     }
   }
-
-  // defaultCurrent 大于 页码坑位，重新计算页码值
-  useEffect(() => {
-    if (defaultCurrent > pagerCount) {
-      setPagers(getNewPagers(current))
-    }
-  }, [])
-
-  // 监听current触发回调
-  useEffect(() => {
-    // 解决快速翻页页码点击状态临界值图标回到省略状态
-    if (current >= pageCount - pivotIndex) {
-      setNextEllipsisIcon('ellipsis')
-    }
-    if (current <= pagerCount) {
-      setPrevEllipsisIcon('ellipsis')
-    }
-    onChange && onChange(current)
-  }, [current])
 
   return (
     <ul

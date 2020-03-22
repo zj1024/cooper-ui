@@ -1,16 +1,13 @@
 .coo-icon {
   width: 1em;
   height: 1em;
+  line-height: 1.2;
   display: inline-block;
-  // width: 1.39065em;
-  // height: 1.39065em;
   overflow: hidden;
   > svg {
     width: 1em;
     height: 1em;
     fill: currentColor;
-    // width: 1.39065em;
-    // height: 1.39065em;
     overflow: hidden;
   }
 }

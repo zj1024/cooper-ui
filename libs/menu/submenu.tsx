@@ -43,6 +43,29 @@ const SubMenu: React.FC<Props> = props => {
   const [visible, setVisible] = useState(false)
   const menuItemRef = useRef(null)
 
+  useEffect(() => {
+    let bodyDispatchEvent: any
+    let menuItemDispatchEvent: any
+    let isMenuItemClick: boolean = false
+
+    if (trigger === 'click' && visible) {
+      // body注册事件
+      bodyDispatchEvent = () => !isMenuItemClick && setVisible(false)
+      menuItemDispatchEvent = () => {
+        isMenuItemClick = true
+      }
+      ;(menuItemRef as any).current.addEventListener('click', menuItemDispatchEvent, false)
+      document.body.addEventListener('click', bodyDispatchEvent, false)
+    }
+
+    return () => {
+      if (bodyDispatchEvent) {
+        ;(menuItemRef as any).current.removeEventListener('click', menuItemDispatchEvent, false)
+        document.body.removeEventListener('click', bodyDispatchEvent, false)
+      }
+    }
+  }, [visible])
+
   const onChange = (openStatus: boolean) => {
     setVisible(openStatus)
   }
@@ -71,29 +94,6 @@ const SubMenu: React.FC<Props> = props => {
     onMouseEnter: trigger === 'hover' ? () => onChange(true) : () => {},
     onMouseLeave: trigger === 'hover' ? () => onChange(false) : () => {},
   }
-
-  useEffect(() => {
-    let bodyDispatchEvent: any
-    let menuItemDispatchEvent: any
-    let isMenuItemClick: boolean = false
-
-    if (trigger === 'click' && visible) {
-      // body注册事件
-      bodyDispatchEvent = () => !isMenuItemClick && setVisible(false)
-      menuItemDispatchEvent = () => {
-        isMenuItemClick = true
-      }
-      ;(menuItemRef as any).current.addEventListener('click', menuItemDispatchEvent, false)
-      document.body.addEventListener('click', bodyDispatchEvent, false)
-    }
-
-    return () => {
-      if (bodyDispatchEvent) {
-        ;(menuItemRef as any).current.removeEventListener('click', menuItemDispatchEvent, false)
-        document.body.removeEventListener('click', bodyDispatchEvent, false)
-      }
-    }
-  }, [visible])
 
   return (
     <div {...triggerFN} className={classnames(setClass(''), className)} {...leftProps}>
