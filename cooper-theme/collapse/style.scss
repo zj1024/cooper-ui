@@ -21,7 +21,7 @@
       background: darken($color-white, 3%);
     }
 
-    > p:not(&.coo-collapse-item-title-icon-right) {
+    & > p:not(&.coo-collapse-item-title-icon-right) {
       margin-left: 10px;
     }
 

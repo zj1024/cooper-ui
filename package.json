@@ -9,12 +9,13 @@
     "docs:env": "webpack-dev-server --config ./config/webpack.config.dev",
     "docs:build": "webpack --progress --config ./config/webpack.config.dev",
     "build": "webpack --progress --config ./config/webpack.config.prod",
+    "build:ts": "tsc libs/*.* --outDir ./dist --declaration --jsx react",
+    "build:scss": "gulp -f ./build/shadking-css.gulpfile.js",
+    "publish:pre": "rm -rf ./dist && npm run build:ts && npm run build:scss",
     "test": "jest",
     "ci": "JEST_JUNIT_OUTPUT_DIR=./test-results/jest/ JEST_JUNIT_OUTPUT_NAME=results.xml jest --ci --reporters=jest-junit",
-    "publish:pre": "tsc libs/*.* --outDir ./dist --declaration --jsx react",
     "build:copy": "babel libs --out-dir ./cooper-ui --copy-files",
-    "publish:local": "rm -rf ./dist && npm run build:copy && cp -R libs/assets/ ./cooper-ui",
-    "build:scss": "gulp -f ./build/shadking-css.gulpfile.js"
+    "publish:local": "rm -rf ./dist && npm run build:copy && cp -R libs/assets/ ./cooper-ui"
   },
   "repository": {
     "type": "git",

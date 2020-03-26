@@ -973,7 +973,7 @@ html {
   background: #f7f7f7;
 }
 
-> p:not(.coo-collapse-item-title.coo-collapse-item-title-icon-right) {
+.coo-collapse-item-title > p:not(.coo-collapse-item-title.coo-collapse-item-title-icon-right) {
   margin-left: 10px;
 }
 
