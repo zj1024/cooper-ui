@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useState } from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
@@ -37,11 +36,8 @@ const Menu: MenuFC = props => {
     ...leftProps
   } = props
 
-  const [menuActiveIndex, setMenuActiveIndex] = useState(activeIndex)
-
   const onChangeItemActive = (index: index) => {
     onSelect(index)
-    setMenuActiveIndex(index)
   }
 
   const deepJudgeIndex = (element: React.ReactElement): any => {
@@ -50,7 +46,7 @@ const Menu: MenuFC = props => {
         let hasActiveIndex = false
         // 判断当前的submenu子元素是否是active状态
         React.Children.forEach(child.props.children, (child: React.ReactElement) => {
-          if (child.props.index === menuActiveIndex) {
+          if (child.props.index === activeIndex) {
             hasActiveIndex = true
           }
         })
@@ -66,7 +62,7 @@ const Menu: MenuFC = props => {
       if (child.type && child.type === MenuItem) {
         return React.cloneElement(child as React.ReactElement, {
           // 判断index
-          className: classnames(menuActiveIndex === child.props.index && setClass('item-active')),
+          className: classnames(activeIndex === child.props.index && setClass('item-active')),
           onchange: onChangeItemActive,
         })
       }
