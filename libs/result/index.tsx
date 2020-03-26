@@ -5,8 +5,6 @@ import { setPrefixClassName } from '../utils'
 
 import Icon from '../icon'
 
-import './style.scss'
-
 interface Props {
   className?: string
   style?: React.CSSProperties

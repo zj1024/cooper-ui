@@ -5,8 +5,6 @@ import { setPrefixClassName } from '../utils'
 import MenuItem, { index } from './menu-item'
 import SubMenu from './submenu'
 
-import './style.scss'
-
 interface Props {
   className?: string
   mode?: string

@@ -2,8 +2,6 @@ import * as React from 'react'
 import { setPrefixClassName } from '../utils'
 import classnames from 'classnames'
 
-import './style.scss'
-
 interface IProps {
   children: React.ReactElement
   className?: string

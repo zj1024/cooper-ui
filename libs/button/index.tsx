@@ -4,8 +4,6 @@ import { setPrefixClassName } from '../utils'
 
 import Icon from '../icon'
 
-import './style.scss'
-
 /**
  * @prop {default | primary | success | warning | danger | info} type button type
  * @prop {boolean} plain button plain style

@@ -5,8 +5,6 @@ import { setPrefixClassName, isNumber } from '../utils'
 
 import Icon from '../icon'
 
-import './style.scss'
-
 // pagerCount 页码按钮的数量
 // size 组件大小
 // defaultCurrent 默认active

@@ -3,8 +3,6 @@ import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 import Layout from './layout'
 
-import './style.scss'
-
 const setClass = setPrefixClassName('coo-layout')
 
 Layout.Header = props => {

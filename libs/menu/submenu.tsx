@@ -7,8 +7,6 @@ import Icon from '../icon'
 import Collapse from '../collapse'
 import Transition from '../transition'
 
-import './style.scss'
-
 export type index = string | number | null
 
 interface PrivateProps {

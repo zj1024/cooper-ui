@@ -4,8 +4,6 @@ import classnames from 'classnames'
 
 import { setPrefixClassName, stringEqual } from '../utils'
 
-import './style.scss'
-
 interface optionItem {
   value: any
   label: string

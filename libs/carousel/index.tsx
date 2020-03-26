@@ -5,8 +5,6 @@ import { setPrefixClassName, useInterval } from '../utils'
 import Icon from '../icon'
 import Transition from '../transition'
 
-import './style.scss'
-
 interface IProps {
   className?: string
   defaultActive?: number

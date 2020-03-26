@@ -2,7 +2,6 @@ import * as React from 'react'
 import { useState, useEffect } from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
-import './style.scss'
 
 /**
  * 动画结束后挂载

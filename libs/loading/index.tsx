@@ -4,8 +4,6 @@ import { setPrefixClassName } from '../utils'
 import Icon from '../icon'
 import Transition from '../transition'
 
-import './style.scss'
-
 /**
  * @prop {boolean} visible
  * @prop {string} color loading icon color

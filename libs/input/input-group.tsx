@@ -5,8 +5,6 @@ import { setPrefixClassName } from '../utils'
 import Input from './index'
 import InputAddon from './input-addon'
 
-import './style.scss'
-
 interface Props {
   row?: boolean
   [key: string]: any

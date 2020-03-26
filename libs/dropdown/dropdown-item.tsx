@@ -2,8 +2,6 @@ import * as React from 'react'
 import { setPrefixClassName } from '../utils'
 import classNames from 'classnames'
 
-import './style.scss'
-
 interface IProps {
   className?: string
   [key: string]: any

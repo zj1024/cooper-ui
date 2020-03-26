@@ -1,6 +1,0 @@
-export declare const basic =
-  "import React from 'react'\nimport { useState } from 'react'\nexport default () => {\n  const [count, setCount] = useState('')\n  const onChange = (value: any) => {\n    setCount(value)\n  }\n  return (\n    <Input\n      onChange={basicInputOnChange}\n      value={basicInput}\n      placeholder=\"\u57FA\u7840\u7528\u6CD5\"\n      allowClear={true}></Input>\n  )\n}"
-export declare const withButton =
-  'import React from \'react\'\nimport { useState } from \'react\'\nexport default () => {\n  const [count, setCount] = useState(\'\')\n  const onChange = (value: any) => {\n    setCount(value)\n  }\n\n  return (\n    <>\n      <Input\n        className="b-r-0"\n        onChange={withButtonInputOnChange}\n        value={withButtonInput}\n        placeholder="\u5E26Button\u6309\u94AE"></Input>\n      <Button className="b-r-0" type="primary">\n        \u786E\u5B9A\n      </Button>\n    </>\n  )\n}\n'
-export declare const autoFocus =
-  "import React from 'react'\nimport { useState } from 'react'\nexport default () => {\n  const [count, setCount] = useState('')\n  const onChange = (value: any) => {\n    setCount(value)\n  }\n\n  return (\n    <Input\n      onChange={autoFocusInputOnChange}\n      value={autoFocusInput}\n      autoFocus={true}\n      placeholder=\"\u81EA\u52A8\u83B7\u53D6\u7126\u70B9\"></Input>\n  )\n}"

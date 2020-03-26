@@ -3,8 +3,6 @@ import Transition from '../transition'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
-import './style.scss'
-
 /**
  * @prop {boolean} visible open drawer
  * @prop {boolean} mask mask under the drawer

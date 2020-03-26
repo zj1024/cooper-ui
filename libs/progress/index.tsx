@@ -3,8 +3,6 @@ import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 import Icon from '../icon'
 
-import './style.scss'
-
 interface Props {
   className?: string
   percent?: number

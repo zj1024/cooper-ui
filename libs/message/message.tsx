@@ -3,8 +3,6 @@ import classnames from 'classnames'
 import Icon from '../icon'
 import { setPrefixClassName } from '../utils'
 
-import './style.scss'
-
 interface Props {
   message: React.ReactNode
   type?: 'success' | 'info' | 'error' | 'warning'

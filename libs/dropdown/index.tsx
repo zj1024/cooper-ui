@@ -11,8 +11,6 @@ import Icon from '../icon'
 import DropdownMenu from './dropdown-menu'
 import DropdownItem from './dropdown-item'
 
-import './style.scss'
-
 interface IProps {
   className?: string
   overlay: React.ReactElement

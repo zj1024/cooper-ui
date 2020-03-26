@@ -2,8 +2,6 @@ import * as React from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
-import './style.scss'
-
 // avatarShape: default: round, square
 // avatarSize: {number}px
 interface Props {

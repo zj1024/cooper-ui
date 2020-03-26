@@ -2,8 +2,6 @@ import * as React from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
-import './style.scss'
-
 /**
  * @prop {default | success | warning | danger} type badge color
  * @prop {left-top | left-bottom | right-top | right-bottom} placement badge position

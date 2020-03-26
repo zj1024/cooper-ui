@@ -1,4 +1,3 @@
-import './style/index.scss'
 export { default as Icon } from './icon'
 export { default as ButtonGroup } from './button/button-group'
 export { default as Button } from './button'

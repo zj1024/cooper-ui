@@ -2,8 +2,6 @@ import * as React from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
-import './style.scss'
-
 /**
  * @prop {boolean} dashed line style
  * @prop {left | center | right} orientation text-align

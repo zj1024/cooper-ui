@@ -1,8 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
 
-import './style.scss'
-
 /**
  * @prop {string} name svg file name
  * @prop {string} component user custom icon

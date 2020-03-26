@@ -5,8 +5,6 @@ import { setPrefixClassName, isArray } from '../utils'
 
 import CollapseItem from './collapse-item'
 
-import './style.scss'
-
 /**
  * @Item {React.ReactElement} Collapse content
  */

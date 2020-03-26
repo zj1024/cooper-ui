@@ -2,8 +2,6 @@ import * as React from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
-import './style.scss'
-
 export type index = string | number | null
 
 interface PrivateProps {

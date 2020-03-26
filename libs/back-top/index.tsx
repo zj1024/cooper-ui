@@ -5,8 +5,6 @@ import classnames from 'classnames'
 import { setPrefixClassName, throttle } from '../utils'
 import Icon from '../icon'
 
-import './style.scss'
-
 /**
  * @prop {smooth | auto} behavior scroll spread or reset behavior
  * @prop {number} visibilityHeight scrollTop show component

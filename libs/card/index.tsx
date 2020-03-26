@@ -2,8 +2,6 @@ import * as React from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
-import './style.scss'
-
 /**
  * @prop {React.ReactNode} header user content
  * @prop {always | hover} shadow card shadow timing of emergence

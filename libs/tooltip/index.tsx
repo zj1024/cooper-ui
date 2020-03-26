@@ -4,8 +4,6 @@ import classnames from 'classnames'
 import Transition from '../transition'
 import { setPrefixClassName } from '../utils'
 
-import './style.scss'
-
 interface Props {
   className?: string
   content: React.ReactNode

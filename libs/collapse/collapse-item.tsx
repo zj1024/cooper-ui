@@ -5,8 +5,6 @@ import { setPrefixClassName, stringEqual } from '../utils'
 
 import Icon from '../icon'
 
-import './style.scss'
-
 /**
  * private props, passed through the parent component and parent in control
  * @prop {string} name unique sign

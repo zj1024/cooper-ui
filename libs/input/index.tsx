@@ -2,8 +2,6 @@ import * as React from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
-import './style.scss'
-
 interface Props {
   size?: 'large' | 'middle' | 'small'
   [key: string]: any

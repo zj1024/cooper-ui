@@ -5,8 +5,6 @@ import classnames from 'classnames'
 import { isString } from '../utils'
 import MessageComponent from './message'
 
-import './style.scss'
-
 interface Props {
   message: React.ReactNode
   showClose?: boolean
