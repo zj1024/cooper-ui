@@ -140,8 +140,9 @@ const Dialog: DialogFC = props => {
     onOk &&
       onOk(async () => {
         await closeAnimat()
+        onCancel()
       })
-    await closeAnimat()
+    // await closeAnimat()
   }
 
   /**
