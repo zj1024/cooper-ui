@@ -4,7 +4,7 @@ import { AppContainer } from 'react-hot-loader'
 import App from './App'
 
 import 'assembly-css/lib/index.scss'
-import '../../cooper-theme/css/cooper-ui.css'
+import '../../cooper-theme/index.scss'
 import './style/index.scss'
 import './style.scss'
 

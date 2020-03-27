@@ -210,4 +210,11 @@ export default [
     desc: '下拉菜单',
     exact: true,
   },
+  {
+    path: '/select',
+    title: 'Select',
+    component: lazy(() => import(/* webpackMode: "lazy" */ '../pages/select')),
+    desc: '选择框',
+    exact: true,
+  },
 ]
