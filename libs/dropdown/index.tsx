@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import classnames from 'classnames'
-import { setPrefixClassName } from '../utils'
+import { setPrefixClassName, isArray, isString } from '../utils'
 
 import Transition from '../transition'
 import Button from '../button'
@@ -61,6 +61,7 @@ const Dropdown: DropdownFC = props => {
 
   const [visible, setVisible] = useState(false)
   const overlayRef = useRef<any>(null)
+  const dropdownRef = useRef<any>(null)
 
   const isTopTransition = placement.split('-')[0] === 'top'
 
@@ -75,8 +76,7 @@ const Dropdown: DropdownFC = props => {
 
   const universalHoverFN = hoverFN
   const universalClickFN = !splitButton ? clickFN : {}
-
-  const splitBtnClickFN = trigger === 'click' ? { onClick: triggerFN.onClick } : {}
+  const splitBtnClickFN = trigger === 'click' ? clickFN : {}
 
   useEffect(() => {
     let bodyDispatchEvent: any
@@ -84,14 +84,26 @@ const Dropdown: DropdownFC = props => {
     let isOverlayClick: boolean = false
 
     if (trigger === 'click' && visible) {
-      // body注册事件
+      overlayDispatchEvent = () => (isOverlayClick = true)
       bodyDispatchEvent = (e: any) => {
-        // 简单做下dropdown元素点击阻止事件
-        if (e.target.parentNode.className === 'coo-dropdown') return
+        let isDropdown = false
+
+        // 判断是否是dropdown
+        if (isArray(e.path) && e.path.length) {
+          isDropdown =
+            e.path.findIndex((d: any) => {
+              if (isString(d.className)) {
+                return d.className.includes(setClass())
+              } else {
+                return false
+              }
+            }) > -1
+        }
+
+        if (isDropdown) return
+
         !isOverlayClick && setVisible(false)
       }
-
-      overlayDispatchEvent = () => (isOverlayClick = true)
 
       overlayRef.current.addEventListener('click', overlayDispatchEvent, false)
       document.body.addEventListener('click', bodyDispatchEvent, false)
@@ -128,12 +140,16 @@ const Dropdown: DropdownFC = props => {
               loading={loading}
               disabled={disabled}
               shadow={shadow}
+              ref={dropdownRef}
               {...splitBtnClickFN}>
               <Icon name="arrow-down" />
             </Button>
           </ButtonGroup>
         ) : (
-          React.cloneElement(children as any, universalClickFN)
+          React.cloneElement(children as any, {
+            ...universalClickFN,
+            ref: dropdownRef,
+          })
         )}
       </div>
       <Transition visible={visible} classNames="dropdown-transition">

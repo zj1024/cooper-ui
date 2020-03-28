@@ -45,6 +45,18 @@ $size-small: 24px;
   display: flex;
   align-items: center;
   cursor: pointer;
+
+  &-wrapper {
+    position: relative;
+  }
+
+  &-icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
   &-no-input {
     position: relative;
     width: 100%;

@@ -32,8 +32,13 @@ const Select: SelectFN = props => {
     onChange,
     ...leftProps
   } = props
+
+  const ICON_NAME = 'arrow-down'
+  const ICON_NAME_CLEAR = 'close'
+
   const mapChildren = isUndefined(children) ? [] : isArray(children) ? children : [children]
   const [dataState, setDataState] = useState({ label: '', value: '' })
+  const [iconName, setIconName] = useState('arrow-down')
 
   const overlay = (
     <Dropdown.Menu style={style}>
@@ -64,6 +69,19 @@ const Select: SelectFN = props => {
     </Dropdown.Menu>
   )
 
+  const triggerFN = {
+    onMouseEnter: () => {
+      dataState.value && setIconName(ICON_NAME_CLEAR)
+    },
+    onMouseLeave: () => {
+      iconName === ICON_NAME_CLEAR && setIconName(ICON_NAME)
+    },
+  }
+
+  const handleClear = () => {
+    iconName === ICON_NAME_CLEAR && dataState.value && setDataState({ value: '', label: '' })
+  }
+
   return (
     <Dropdown trigger="click" overlay={overlay}>
       {showSearch ? (
@@ -83,12 +101,14 @@ const Select: SelectFN = props => {
             className,
           )}
           style={style}
+          {...triggerFN}
           {...leftProps}>
           {dataState.value ? (
             dataState.value
           ) : (
             <span className={setClass('no-input-no-value')}>请选择</span>
           )}
+          <Icon className={setClass('icon')} name={iconName} onClick={handleClear} />
         </div>
       )}
     </Dropdown>
