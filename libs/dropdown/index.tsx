@@ -61,7 +61,6 @@ const Dropdown: DropdownFC = props => {
 
   const [visible, setVisible] = useState(false)
   const overlayRef = useRef<any>(null)
-  const dropdownRef = useRef<any>(null)
 
   const isTopTransition = placement.split('-')[0] === 'top'
 
@@ -140,16 +139,12 @@ const Dropdown: DropdownFC = props => {
               loading={loading}
               disabled={disabled}
               shadow={shadow}
-              ref={dropdownRef}
               {...splitBtnClickFN}>
               <Icon name="arrow-down" />
             </Button>
           </ButtonGroup>
         ) : (
-          React.cloneElement(children as any, {
-            ...universalClickFN,
-            ref: dropdownRef,
-          })
+          React.cloneElement(children as any, { ...universalClickFN })
         )}
       </div>
       <Transition visible={visible} classNames="dropdown-transition">
