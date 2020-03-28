@@ -53,6 +53,9 @@ export default () => {
           </InputAddon>
         </InputGroup>
       </div>
+      <div className="m-t-100">
+        <Input type="text" disabled placeholder="这里是智能的，是文本有默认样式" />
+      </div>
     </div>
   )
 }

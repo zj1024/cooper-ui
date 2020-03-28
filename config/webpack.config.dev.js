@@ -4,7 +4,6 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const pkg = require('../package.json')
 
 const base = require('./webpack.config')
@@ -14,12 +13,7 @@ const NODE_ENV = 'development'
 
 module.exports = Object.assign({}, base, {
   mode: NODE_ENV,
-  entry: [
-    `webpack-dev-server/client?http://localhost:${PORT}`,
-    'webpack/hot/only-dev-server',
-    'react-hot-loader/patch',
-    path.resolve(__dirname, '../docs/src/index'),
-  ],
+  entry: path.resolve(__dirname, '../docs/src/index'),
   output: {
     path: path.resolve(__dirname, '../dist/docs'),
     chunkFilename: `[name].cooper-ui-docs.${pkg.version}.js`,

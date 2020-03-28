@@ -10,14 +10,16 @@ import SelectOption from './select-option'
 interface IData {
   value: any
   label: any
+  disabled?: boolean
 }
 
 interface IProps {
-  className?: string
   children: React.ReactElement | React.ReactElement[]
+  className?: string
   showSearch?: boolean
   size?: 'large' | 'middle' | 'small'
   defaultValue?: IData
+  disabled?: boolean
   onChange: (params?: any) => any
   [key: string]: any
 }
@@ -28,6 +30,8 @@ interface SelectFN extends React.FC<IProps> {
 
 const setClass = setPrefixClassName('coo-select')
 
+// TODO: 远程搜索，自定义过滤
+
 const Select: SelectFN = props => {
   const {
     children,
@@ -36,6 +40,7 @@ const Select: SelectFN = props => {
     defaultValue,
     showSearch = false,
     size = 'middle',
+    disabled = false,
     onChange,
     ...leftProps
   } = props
@@ -97,14 +102,17 @@ const Select: SelectFN = props => {
     <Dropdown.Menu style={style}>
       {(mapChildren as any[]).length ? (
         React.Children.map(mapChildren as any[], (child: React.ReactElement, index) => {
-          const { value = '' } = child.props
+          const { value = '', disabled } = child.props
 
           if (inputValue) {
             if (!value.includes(inputValue)) return null
           }
 
           return (
-            <Dropdown.Item key={index} customClick={() => handleOptionClick(child.props)}>
+            <Dropdown.Item
+              key={index}
+              disabled={disabled}
+              customClick={() => handleOptionClick(child.props)}>
               {React.cloneElement(child, {
                 size,
               })}
@@ -138,6 +146,7 @@ const Select: SelectFN = props => {
             value={inputValue}
             onChange={handleInputChange}
             placeholder={EMPTY_TIP}
+            disabled={disabled}
           />
           {IconDOM}
         </div>

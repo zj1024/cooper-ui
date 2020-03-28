@@ -12,9 +12,17 @@ interface IProps {
 const setClass = setPrefixClassName('coo-select-option')
 
 const Select: React.FC<IProps> = props => {
-  const { children, label, value, className, size, ...leftProps } = props
+  const { children, label, value, className, size, disabled, ...leftProps } = props
+
   return (
-    <div className={classnames(setClass(), setClass(size), className)} {...leftProps}>
+    <div
+      className={classnames(
+        setClass(),
+        setClass(size),
+        disabled && setClass('disabled'),
+        className,
+      )}
+      {...leftProps}>
       {/* custom template */}
       {children ? children : <span>{label}</span>}
     </div>

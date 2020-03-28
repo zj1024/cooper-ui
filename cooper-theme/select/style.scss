@@ -60,37 +60,19 @@ $size-small: 24px;
     width: 100%;
   }
 
-  &:focus {
-    border-color: $color-primary;
-    box-shadow: 0 0 0 3px rgba($color-primary, 0.15),
-      0 3px 15px rgba(darken($color-primary, 10%), 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
-    outline: none;
-  }
-
-  &:hover {
-    border-color: lighten($color-primary, 10%);
-  }
-
   &-large {
     @include height($size-large);
     @include font-size($size-large);
-    // @include placeholder($size-large);
   }
 
   &-middle {
     @include height($size-middle);
     @include font-size($size-middle);
-    // @include placeholder($size-middle);
   }
 
   &-small {
     @include height($size-small);
     @include font-size($size-small);
-    // @include placeholder($size-small);
-  }
-
-  &-no-value {
-    color: $color-grey;
   }
 
   &-no-input {
@@ -100,6 +82,18 @@ $size-small: 24px;
     border-radius: $border-radius-middle;
     padding: 0 10px;
     transition: all 0.3s;
+
+    &-no-value {
+      color: lighten($color-grey, 10%);
+      font-weight: 300;
+    }
+
+    &:hover {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.15),
+        0 3px 15px rgba(darken($color-primary, 10%), 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
+      outline: none;
+    }
   }
 
   &-option {
@@ -118,6 +112,10 @@ $size-small: 24px;
 
     &-small {
       @include font-size($size-small);
+    }
+
+    &-disabled {
+      color: $color-disabled;
     }
   }
 
