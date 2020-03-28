@@ -3,7 +3,6 @@
 .coo-dropdown {
   &-wrapper {
     position: relative;
-    display: inline-block;
     margin: 0;
     padding: 0;
   }
@@ -49,6 +48,8 @@
   }
 
   &-menu {
+    max-height: 315px;
+    overflow: auto;
     padding: 8px 0;
     background: #fff;
     box-shadow: 0 7px 56px rgba(0, 0, 0, 0.11), 0 10px 20px rgba(0, 0, 0, 0.05),
@@ -61,10 +62,10 @@
   &-item {
     min-width: 89px;
     padding: 0 15px;
-    height: 36px;
-    line-height: 36px;
+    min-height: 36px;
     cursor: pointer;
     display: flex;
+    align-items: center;
     white-space: pre;
 
     &:active {

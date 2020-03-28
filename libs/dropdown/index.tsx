@@ -67,8 +67,9 @@ const Dropdown: DropdownFC = props => {
   const triggerFN = {
     onMouseEnter: trigger === 'hover' ? () => setVisible(true) : () => {},
     onMouseLeave: trigger === 'hover' ? () => setVisible(false) : () => {},
-    onClick: trigger === 'click' ? () => setVisible(true) : () => {},
+    onClick: trigger === 'click' ? () => setVisible(state => !state) : () => {},
   }
+
   const hoverFN = { onMouseLeave: triggerFN.onMouseLeave, onMouseEnter: triggerFN.onMouseEnter }
   const clickFN = { onClick: triggerFN.onClick }
 
@@ -84,7 +85,12 @@ const Dropdown: DropdownFC = props => {
 
     if (trigger === 'click' && visible) {
       // body注册事件
-      bodyDispatchEvent = () => !isOverlayClick && setVisible(false)
+      bodyDispatchEvent = (e: any) => {
+        // 简单做下dropdown元素点击阻止事件
+        if (e.target.parentNode.className === 'coo-dropdown') return
+        !isOverlayClick && setVisible(false)
+      }
+
       overlayDispatchEvent = () => (isOverlayClick = true)
 
       overlayRef.current.addEventListener('click', overlayDispatchEvent, false)

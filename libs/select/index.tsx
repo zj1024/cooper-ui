@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useState } from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName, isArray, isUndefined } from '../utils'
 import Dropdown from '../dropdown'
@@ -11,6 +12,7 @@ interface IProps {
   children: React.ReactElement | React.ReactElement[]
   showSearch?: boolean
   size?: 'large' | 'middle' | 'small'
+  onChange: (params?: any) => any
   [key: string]: any
 }
 
@@ -21,15 +23,30 @@ interface SelectFN extends React.FC<IProps> {
 const setClass = setPrefixClassName('coo-select')
 
 const Select: SelectFN = props => {
-  const { children, className, showSearch = false, size = 'middle', ...leftProps } = props
+  const {
+    children,
+    style,
+    className,
+    showSearch = false,
+    size = 'middle',
+    onChange,
+    ...leftProps
+  } = props
   const mapChildren = isUndefined(children) ? [] : isArray(children) ? children : [children]
+  const [dataState, setDataState] = useState({ label: '', value: '' })
 
   const overlay = (
-    <Dropdown.Menu>
+    <Dropdown.Menu style={style}>
       {(mapChildren as any).length ? (
         React.Children.map(children, (child: React.ReactElement) => {
+          const { label = '', value = '' } = child.props
+
           return (
-            <Dropdown.Item>
+            <Dropdown.Item
+              customClick={() => {
+                setDataState({ label, value })
+                onChange({ label, value })
+              }}>
               {React.cloneElement(child, {
                 size,
               })}
@@ -53,6 +70,7 @@ const Select: SelectFN = props => {
         <Input
           size={size}
           className={classnames(setClass(), className)}
+          style={style}
           {...leftProps}
           value={'1'}
         />
@@ -64,8 +82,13 @@ const Select: SelectFN = props => {
             setClass(`no-input-${size}`),
             className,
           )}
+          style={style}
           {...leftProps}>
-          测试测试
+          {dataState.value ? (
+            dataState.value
+          ) : (
+            <span className={setClass('no-input-no-value')}>请选择</span>
+          )}
         </div>
       )}
     </Dropdown>
