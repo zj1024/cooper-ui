@@ -18,14 +18,33 @@ const InputGroup: React.FC<Props> = props => {
   // find input size
   let size = 'middle'
   let hasAddon = false
-  React.Children.map(children as React.ReactElement, (child: React.ReactElement) => {
+  let addonPlacement = ''
+
+  // 找出是否有组件并确定位置
+  React.Children.forEach(children as React.ReactElement, (child: React.ReactElement, index) => {
     if (child.type === Input) {
       size = child?.props?.size || 'middle'
     }
+
     if (child.type === InputAddon) {
       hasAddon = true
+      addonPlacement = index === 0 ? 'left' : 'right'
     }
   })
+
+  const mapChildren = React.Children.map(
+    children as React.ReactElement,
+    (child: React.ReactElement) => {
+      return React.cloneElement(
+        child,
+        addonPlacement
+          ? {
+              addonPlacement,
+            }
+          : {},
+      )
+    },
+  )
 
   return (
     <div
@@ -37,7 +56,7 @@ const InputGroup: React.FC<Props> = props => {
         !row && setClass('column'),
       )}
       {...leftProps}>
-      {children}
+      {mapChildren}
     </div>
   )
 }

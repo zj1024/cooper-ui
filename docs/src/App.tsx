@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Suspense, useState, useEffect } from 'react'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { ComponentRoutes } from './routes'
-import { Layout, Icon, Drawer } from '../../libs'
+import { Layout, Icon, Drawer, Skeleton } from '../../libs'
 import throttle from '../../libs/utils/throttle'
 
 import GuidePage from './pages/guide'
@@ -109,12 +109,8 @@ export default () => {
                   <Content className="w-full relative p-t-80 p-h-20">
                     <Suspense
                       fallback={
-                        <div className="text-primary p-10 fs-13">
-                          <Icon
-                            className="fixed right-3 top-3 z-index-100 text-white"
-                            name="loading-rotate"
-                          />
-                          加载中...
+                        <div className="docs-container">
+                          <Skeleton loading={true} />
                         </div>
                       }>
                       <div className="docs-container">

@@ -20,6 +20,7 @@ interface IProps {
   size?: 'large' | 'middle' | 'small'
   defaultValue?: IData
   disabled?: boolean
+  addonPlacement?: 'left' | 'right' | ''
   onChange: (params?: any) => any
   [key: string]: any
 }
@@ -42,6 +43,7 @@ const Select: SelectFN = props => {
     size = 'middle',
     disabled = false,
     onChange,
+    addonPlacement = '',
     ...leftProps
   } = props
 
@@ -147,12 +149,19 @@ const Select: SelectFN = props => {
             onChange={handleInputChange}
             placeholder={EMPTY_TIP}
             disabled={disabled}
+            addonPlacement={addonPlacement}
           />
           {IconDOM}
         </div>
       ) : (
         <div
-          className={classnames(setClass(), setClass(size), setClass(`no-input`), className)}
+          className={classnames(
+            setClass(),
+            setClass(size),
+            setClass(`no-input`),
+            addonPlacement && setClass(`no-input-${addonPlacement === 'left' ? 'right' : 'left'}`),
+            className,
+          )}
           style={style}
           {...triggerFN}
           {...leftProps}>

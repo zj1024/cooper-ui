@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
-import Select from '../../../../libs/select'
+import { Select, InputGroup, InputAddon } from '../../../../libs'
 
 export default () => {
   const [value, setValue] = useState<string>('')
@@ -32,6 +32,30 @@ export default () => {
             return <Select.Option key={d.value} label={d.label} value={d.value} />
           })}
         </Select>
+      </div>
+      <div className="m-t-100">
+        <InputGroup>
+          <InputAddon>选择器</InputAddon>
+          <Select
+            value={value}
+            style={{ width: '300px' }}
+            showSearch={true}
+            onChange={data => setValue(data.value)}>
+            {options.map(d => {
+              return <Select.Option key={d.value} label={d.label} value={d.value} />
+            })}
+          </Select>
+        </InputGroup>
+      </div>
+      <div className="m-t-100">
+        <InputGroup>
+          <InputAddon>选择器</InputAddon>
+          <Select value={value} style={{ width: '300px' }} onChange={data => setValue(data.value)}>
+            {options.map(d => {
+              return <Select.Option key={d.value} label={d.label} value={d.value} />
+            })}
+          </Select>
+        </InputGroup>
       </div>
     </div>
   )
