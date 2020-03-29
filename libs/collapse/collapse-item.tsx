@@ -24,7 +24,7 @@ interface PrivateProps {
 interface Props extends PrivateProps {
   className?: string
   title: string
-  iconPlacement?: string
+  iconPlacement?: 'left' | 'right'
   [key: string]: any
 }
 
@@ -113,7 +113,7 @@ const CollapseItem: React.FC<Props> = props => {
     }
   }
 
-  return (
+  return contentStyle.display ? (
     <div className={classnames(setClass(''), className)} {...leftProps}>
       <div
         className={classnames(
@@ -125,7 +125,7 @@ const CollapseItem: React.FC<Props> = props => {
         {iconPlacement === 'left' && (
           <Icon className={setClass('title-icon')} name="arrow-down"></Icon>
         )}
-        <p>{title}</p>
+        {title}
         {iconPlacement === 'right' && (
           <Icon className={setClass('title-icon')} name="arrow-down"></Icon>
         )}
@@ -134,7 +134,7 @@ const CollapseItem: React.FC<Props> = props => {
         {children}
       </div>
     </div>
-  )
+  ) : null
 }
 
 export default CollapseItem
