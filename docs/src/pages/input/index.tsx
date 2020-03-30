@@ -19,6 +19,14 @@ export default () => {
       </div>
 
       <div className="m-t-100">
+        <Input vaild={false} type="text" size="large" />
+      </div>
+
+      <div className="m-t-100">
+        <Input vaild="" type="text" size="large" />
+      </div>
+
+      <div className="m-t-100">
         <InputGroup row={false}>
           <label htmlFor="name1">label</label>
           <Input id="name1" type="text" size="large" />

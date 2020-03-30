@@ -15,9 +15,11 @@ $addon-color: #abb6bf;
   } @else if $size == 24px {
     font-size: 12px;
   }
+
   &::placeholder {
     color: lighten($color-grey, 10%);
     font-weight: 300;
+
     @if $size == 40px {
       font-size: 14px;
     } @else if $size == 32px {
@@ -56,6 +58,13 @@ $addon-color: #abb6bf;
     border-bottom-left-radius: 0;
     margin-left: -1px;
   }
+}
+
+@mixin input-focus($color) {
+  border-color: $color;
+  box-shadow: 0 0 0 3px rgba($color, 0.15), 0 3px 15px rgba(darken($color, 10%), 0.2),
+    0 2px 5px rgba(0, 0, 0, 0.2);
+  outline: none;
 }
 
 // addon component
@@ -117,10 +126,7 @@ $addon-color: #abb6bf;
   display: flex;
 
   &:focus {
-    border-color: $color-primary;
-    box-shadow: 0 0 0 3px rgba($color-primary, 0.15),
-      0 3px 15px rgba(darken($color-primary, 10%), 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
-    outline: none;
+    @include input-focus($color-primary);
   }
 
   &:hover {
@@ -152,6 +158,14 @@ $addon-color: #abb6bf;
     &:hover {
       border: 1px solid lighten($color: $color-border, $amount: 5%);
     }
+  }
+
+  &-vaild {
+    @include input-focus($color-green);
+  }
+
+  &-invaild {
+    @include input-focus($color-red);
   }
 }
 
