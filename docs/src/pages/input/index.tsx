@@ -1,13 +1,20 @@
 import * as React from 'react'
+import { useRef } from 'react'
 import { Input, InputGroup, InputAddon, Button, Icon } from '../../../../libs'
 
 export default () => {
+  const ref = useRef<any>(null)
+
+  React.useEffect(() => {
+    ref.current.focus()
+  })
+
   return (
     <div>
       <div>
         <InputGroup>
           <label htmlFor="name">label</label>
-          <Input id="name" type="text" size="small" />
+          <Input ref={ref} id="name" type="text" size="small" />
         </InputGroup>
       </div>
 

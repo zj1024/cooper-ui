@@ -14,7 +14,7 @@ interface IData {
 }
 
 interface IProps {
-  children: React.ReactElement | React.ReactElement[]
+  children?: React.ReactElement | React.ReactElement[]
   className?: string
   showSearch?: boolean
   size?: 'large' | 'middle' | 'small'

@@ -1,8 +1,9 @@
 import * as React from 'react'
+import { forwardRef } from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
 
-interface Props {
+interface IProps {
   size?: 'large' | 'middle' | 'small'
   disabled?: boolean
   addonPlacement?: 'left' | 'right' | ''
@@ -11,11 +12,12 @@ interface Props {
 
 const setClass = setPrefixClassName('coo-input')
 
-const Input: React.FC<Props> = props => {
+const Input = forwardRef((props: IProps, ref: any) => {
   const { className, size = 'middle', disabled, addonPlacement = '', ...leftProps } = props
 
   return (
     <input
+      ref={ref}
       disabled={disabled}
       className={classnames(
         className,
@@ -28,6 +30,6 @@ const Input: React.FC<Props> = props => {
       {...leftProps}
     />
   )
-}
+})
 
 export default Input
