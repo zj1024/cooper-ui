@@ -56,7 +56,7 @@ const Select: SelectFN = props => {
     defaultValue ? defaultValue : { label: '', value: '' },
   )
   const [iconName, setIconName] = useState('arrow-down')
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState(defaultValue ? defaultValue.label : '')
 
   const triggerFN = {
     onMouseEnter: () => {
@@ -96,7 +96,7 @@ const Select: SelectFN = props => {
     setDataState({ label, value })
     onChange({ label, value })
     if (showSearch) {
-      setInputValue(value)
+      setInputValue(label)
     }
   }
 
@@ -104,10 +104,10 @@ const Select: SelectFN = props => {
     <Dropdown.Menu style={style}>
       {(mapChildren as any[]).length ? (
         React.Children.map(mapChildren as any[], (child: React.ReactElement, index) => {
-          const { value = '', disabled } = child.props
+          const { label = '', disabled } = child.props
 
           if (inputValue) {
-            if (!value.includes(inputValue)) return null
+            if (!`${label}`.includes(inputValue)) return null
           }
 
           return (
@@ -165,8 +165,8 @@ const Select: SelectFN = props => {
           style={style}
           {...triggerFN}
           {...leftProps}>
-          {dataState.value ? (
-            dataState.value
+          {dataState.label ? (
+            dataState.label
           ) : (
             <span className={setClass('no-input-no-value')}>{EMPTY_TIP}</span>
           )}

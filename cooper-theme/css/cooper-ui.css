@@ -1459,6 +1459,18 @@ html {
   border: 1px solid #ededed;
 }
 
+.coo-input-vaild {
+  border-color: #19be6b;
+  box-shadow: 0 0 0 3px rgba(25, 190, 107, 0.15), 0 3px 15px rgba(19, 145, 82, 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.coo-input-invaild {
+  border-color: #f35958;
+  box-shadow: 0 0 0 3px rgba(243, 89, 88, 0.15), 0 3px 15px rgba(240, 42, 40, 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
 .coo-input-group {
   display: flex;
   align-items: center;

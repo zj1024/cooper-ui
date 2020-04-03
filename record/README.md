@@ -60,3 +60,21 @@ refactor:
 - slider 滑块
 - datepicker 日期选择器
 - tag 标签
+
+# cooper-ui 优化点
+
+Input ref - done
+
+分页第一次会 onChange 执行逻辑 - done 设置了 firstload
+
+Select value.includes 字符串问题 - done value 强制转换成字符串
+
+Select defaultValue 不显示问题 - done 全部显示 label
+
+TextLink a 标签不兼容问题 - done 设置了 tag \_extends 函数
+
+Select 点击 disabled 后再点击 body 不会收回
+
+Message 组件会造成页面 translateY 抖动 - 添加 translateY(0)
+
+InputGroup 对于 size 兼容情况

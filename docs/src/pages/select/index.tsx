@@ -12,9 +12,15 @@ export default () => {
 
   return (
     <div>
-      <div>{value ? value : '-'}</div>
+      <div>
+        {value ? value : '-'} {typeof value}
+      </div>
       <div className="m-t-50">
-        <Select value={value} style={{ width: '300px' }} onChange={data => setValue(data.value)}>
+        <Select
+          value={value}
+          style={{ width: '300px' }}
+          onChange={data => setValue(data.value)}
+          defaultValue={{ label: 'label1', value: 'value1' }}>
           {options.map(d => {
             return (
               <Select.Option key={d.value} label={d.label} value={d.value} disabled={d.disabled} />
@@ -27,7 +33,8 @@ export default () => {
           value={value}
           style={{ width: '300px' }}
           showSearch={true}
-          onChange={data => setValue(data.value)}>
+          onChange={data => setValue(data.value)}
+          defaultValue={{ label: 'label1', value: 'value1' }}>
           {options.map(d => {
             return <Select.Option key={d.value} label={d.label} value={d.value} />
           })}
@@ -50,7 +57,7 @@ export default () => {
       <div className="m-t-100">
         <InputGroup>
           <InputAddon>选择器</InputAddon>
-          <Select value={value} onChange={data => setValue(data.value)}>
+          <Select value={value} onChange={data => setValue(data.value)} style={{ width: '200px' }}>
             {options.map(d => {
               return <Select.Option key={d.value} label={d.label} value={d.value} />
             })}

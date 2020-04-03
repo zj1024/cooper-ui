@@ -217,4 +217,11 @@ export default [
     desc: '选择框',
     exact: true,
   },
+  {
+    path: '/test',
+    title: 'Test',
+    component: lazy(() => import(/* webpackMode: "lazy" */ '../pages/test')),
+    desc: '测试页',
+    exact: true,
+  },
 ]

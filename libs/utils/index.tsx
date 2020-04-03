@@ -3,6 +3,7 @@ import setPrefixClassName from './getclass'
 import stringEqual from './stringEqual'
 import throttle from './throttle'
 import { useInterval } from './hooks'
+import { _extends } from './extends'
 
 export {
   isString,
@@ -15,4 +16,5 @@ export {
   stringEqual,
   throttle,
   useInterval,
+  _extends,
 }

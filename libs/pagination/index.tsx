@@ -54,9 +54,11 @@ const Pagination: React.FC<Props> = props => {
   const [prevEllipsisIcon, setPrevEllipsisIcon] = useState('ellipsis')
   const [nextEllipsisIcon, setNextEllipsisIcon] = useState('ellipsis')
   const [quickJumperValue, setQuickJumperValue] = useState('')
+  const [isFirstLoad, setIsFirstLoad] = useState(true)
 
   // defaultCurrent 大于 页码坑位，重新计算页码值
   useEffect(() => {
+    setIsFirstLoad(false)
     if (defaultCurrent > pagerCount) {
       setPagers(getNewPagers(current))
     }
@@ -64,14 +66,16 @@ const Pagination: React.FC<Props> = props => {
 
   // 监听current触发回调
   useEffect(() => {
-    // 解决快速翻页页码点击状态临界值图标回到省略状态
-    if (current >= pageCount - pivotIndex) {
-      setNextEllipsisIcon('ellipsis')
+    if (!isFirstLoad) {
+      // 解决快速翻页页码点击状态临界值图标回到省略状态
+      if (current >= pageCount - pivotIndex) {
+        setNextEllipsisIcon('ellipsis')
+      }
+      if (current <= pagerCount) {
+        setPrevEllipsisIcon('ellipsis')
+      }
+      onChange && onChange(current)
     }
-    if (current <= pagerCount) {
-      setPrevEllipsisIcon('ellipsis')
-    }
-    onChange && onChange(current)
   }, [current])
 
   if (hideOnSinglePage && pageCount <= 1) {
