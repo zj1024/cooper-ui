@@ -19,7 +19,7 @@ $icon-size: 30px;
     width: $icon-size;
     height: $icon-size;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate3d(0, -50%, 0);
     font-size: $icon-size;
     color: rgba(#000, 0.3);
     transition: color 0.3s;

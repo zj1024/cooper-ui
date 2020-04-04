@@ -13,7 +13,7 @@
     width: 50%;
     height: 1px;
     border-bottom: 1px solid $color-border;
-    transform: translateY(-50%);
+    transform: translate3d(0, -50%, 0);
     display: table-cell;
   }
 

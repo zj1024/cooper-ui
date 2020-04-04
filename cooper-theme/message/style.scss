@@ -8,11 +8,13 @@
 .coo-message-container-bottom {
   position: fixed;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate3d(-50%, 0, 0);
   z-index: 1001;
+
   .coo-message-enter-animat {
     animation: message-enter-animat 0.3s ease;
   }
+
   .coo-message-exit-animat {
     animation: message-exit-animat 0.3s ease;
   }
@@ -21,6 +23,7 @@
 .coo-message-container {
   top: 0;
   margin-top: 20px;
+
   .coo-message-wrapper {
     margin-top: 10px;
   }
@@ -29,6 +32,7 @@
 .coo-message-container-bottom {
   bottom: 0;
   margin-bottom: 20px;
+
   .coo-message-wrapper-bottom {
     margin-bottom: 10px;
   }
@@ -49,36 +53,43 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   &-info {
     color: $color-content;
     background: $bg-grey;
     @include message-box-shadow($bg-grey);
   }
+
   &-success {
     color: $color-white;
     background: $color-green;
     @include message-box-shadow($color-green);
   }
+
   &-error {
     color: $color-white;
     background: $color-red;
     @include message-box-shadow($color-red);
   }
+
   &-warning {
     color: $color-white;
     background: $color-yellow;
     @include message-box-shadow($color-yellow);
   }
+
   &-icon {
     font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   &-close-icon {
     font-size: 16px;
     cursor: pointer;
   }
+
   &-content {
     padding: 0 36px;
     flex-grow: 1;
@@ -97,6 +108,7 @@
     height: 32px;
   }
 }
+
 @keyframes message-exit-animat {
   from {
     height: 32px;
