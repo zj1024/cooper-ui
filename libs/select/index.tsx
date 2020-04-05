@@ -58,6 +58,14 @@ const Select: SelectFN = props => {
   const [iconName, setIconName] = useState('arrow-down')
   const [inputValue, setInputValue] = useState(defaultValue ? defaultValue.label : '')
 
+  // useEffect(() => {
+  //   console.log(props.defaultValue)
+  //   // 解决异步defaultValue
+  //   if (props?.defaultValue?.value && props?.defaultValue?.label) {
+  //     setDataState({ label: props.defaultValue.value, value: props.defaultValue.label })
+  //   }
+  // }, [props.defaultValue])
+
   const triggerFN = {
     onMouseEnter: () => {
       if (showSearch) {

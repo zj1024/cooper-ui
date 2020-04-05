@@ -887,7 +887,7 @@ html {
   width: 30px;
   height: 30px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate3d(0, -50%, 0);
   font-size: 30px;
   color: rgba(0, 0, 0, 0.3);
   transition: color 0.3s;
@@ -1015,7 +1015,7 @@ html {
   border-radius: 4px;
   margin: 0 auto;
   box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1), 0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12), 0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
-  transform: translate(-50%, -50%);
+  transform: translate3d(-50%, -50%, 0);
   transition: all 0.3s;
 }
 
@@ -1113,7 +1113,7 @@ html {
   width: 50%;
   height: 1px;
   border-bottom: 1px solid #e0e0e0;
-  transform: translateY(-50%);
+  transform: translate3d(0, -50%, 0);
   display: table-cell;
 }
 
@@ -1918,7 +1918,7 @@ html {
 .coo-message-container-bottom {
   position: fixed;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate3d(-50%, 0, 0);
   z-index: 1001;
 }
 
@@ -2827,6 +2827,10 @@ html {
   color: #67728b;
 }
 
+.coo-text-link-default:active {
+  color: #3b4251;
+}
+
 .coo-text-link-default-disabled {
   cursor: not-allowed;
   color: #b9bdc5;
@@ -2846,6 +2850,10 @@ html {
 
 .coo-text-link-primary:hover {
   color: #94c1f8;
+}
+
+.coo-text-link-primary:active {
+  color: #3489f2;
 }
 
 .coo-text-link-primary-disabled {
@@ -2869,6 +2877,10 @@ html {
   color: #27e384;
 }
 
+.coo-text-link-success:active {
+  color: #139152;
+}
+
 .coo-text-link-success-disabled {
   cursor: not-allowed;
   color: #a4e3c4;
@@ -2888,6 +2900,10 @@ html {
 
 .coo-text-link-warning:hover {
   color: #ffad33;
+}
+
+.coo-text-link-warning:active {
+  color: #cc7a00;
 }
 
 .coo-text-link-warning-disabled {
@@ -2911,6 +2927,10 @@ html {
   color: #f68888;
 }
 
+.coo-text-link-danger:active {
+  color: #f02a28;
+}
+
 .coo-text-link-danger-disabled {
   cursor: not-allowed;
   color: #f7bdbc;
@@ -2930,6 +2950,10 @@ html {
 
 .coo-text-link-info:hover {
   color: #969aa4;
+}
+
+.coo-text-link-info:active {
+  color: #636771;
 }
 
 .coo-text-link-info-disabled {
