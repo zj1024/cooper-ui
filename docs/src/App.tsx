@@ -1,11 +1,12 @@
 import * as React from 'react'
 import { Suspense, useState, useEffect } from 'react'
-import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom'
 import { ComponentRoutes } from './routes'
-import { Layout, Icon, Drawer, Skeleton } from '../../libs'
+import { Layout, Icon, Drawer, Skeleton, TextLink } from '../../libs'
 import throttle from '../../libs/utils/throttle'
 
 import GuidePage from './pages/guide'
+import Empty from './pages/empty'
 
 const { Aside, Header, Content } = Layout
 
@@ -63,12 +64,19 @@ export default () => {
         <Header className="header flex text-primary w-full flex p-h-20 p-v-5 j-between">
           <h1 className="fs-18 text-active-primary">COOPER-UI</h1>
           <div className="flex a-center">
-            {/* <li className={`m-r-15${location.pathname === '/guide' ? ' text-blue' : ''}`}> */}
             <li className="m-r-15">
-              <Link to="/guide">Guide</Link>
+              <Link to="/guide">
+                <TextLink tag="span" underline={false}>
+                  Guide
+                </TextLink>
+              </Link>
             </li>
             <li className="m-r-15">
-              <Link to="/">组件</Link>
+              <Link to="/components/icon">
+                <TextLink tag="span" underline={false}>
+                  组件
+                </TextLink>
+              </Link>
             </li>
             <li>
               <a className="flex h-30" href="https://github.com/zj1024/cooper-ui" target="_blank">
@@ -77,56 +85,57 @@ export default () => {
             </li>
           </div>
         </Header>
-
-        <Content className="main flex flex-1 w-full">
+        <Switch>
+          <Route exact path="/" render={() => <Redirect to="/guide" />} />
+          <Route exact path="/components" render={() => <Redirect to="/components/icon" />} />
           <Route exact path="/guide" component={GuidePage} />
           <Route
             children={({ location }) => {
               return (
-                <Layout className="w-full">
-                  {isSmallScreen ? (
-                    <Aside className="relative z-index-3">
-                      <div
-                        className="zoom-btn fixed left-0 z-index-3 b-r-5 bg-grey p-10 cursor-pointer"
-                        onClick={() => setVisible(!visible)}>
-                        <Icon
-                          className="fs-20 text-blue"
-                          name={visible ? 'double-left' : 'double-right'}
-                        />
-                      </div>
-                      <Drawer visible={visible} onCancel={() => setVisible(false)} mask={false}>
-                        <List location={location} />
-                      </Drawer>
-                    </Aside>
-                  ) : (
-                    <Aside
-                      className="navbar o-y-scroll scroll-touch"
-                      style={{ display: isSmallScreen ? 'none' : 'block' }}>
-                      <List location={location} />
-                    </Aside>
-                  )}
-
-                  <Content className="w-full relative p-t-80 p-h-20">
-                    <Suspense
-                      fallback={
-                        <div className="docs-container">
-                          <Skeleton loading={true} />
+                <Content className="main flex flex-1 w-full">
+                  <Layout className="w-full">
+                    {isSmallScreen ? (
+                      <Aside className="relative z-index-3">
+                        <div
+                          className="zoom-btn fixed left-0 z-index-3 b-r-5 bg-grey p-10 cursor-pointer"
+                          onClick={() => setVisible(!visible)}>
+                          <Icon
+                            className="fs-20 text-blue"
+                            name={visible ? 'double-left' : 'double-right'}
+                          />
                         </div>
-                      }>
-                      <div className="docs-container">
-                        <Switch>
+                        <Drawer visible={visible} onCancel={() => setVisible(false)} mask={false}>
+                          <List location={location} />
+                        </Drawer>
+                      </Aside>
+                    ) : (
+                      <Aside
+                        className="navbar o-y-scroll scroll-touch"
+                        style={{ display: isSmallScreen ? 'none' : 'block' }}>
+                        <List location={location} />
+                      </Aside>
+                    )}
+                    <Content className="w-full relative p-t-80 p-h-20">
+                      <Suspense
+                        fallback={
+                          <div className="docs-container">
+                            <Skeleton loading={true} />
+                          </div>
+                        }>
+                        <div className="docs-container">
                           {ComponentRoutes.map(d => (
                             <Route key={d.path} exact path={d.path} component={d.component} />
                           ))}
-                        </Switch>
-                      </div>
-                    </Suspense>
-                  </Content>
-                </Layout>
+                          <Route component={Empty} />
+                        </div>
+                      </Suspense>
+                    </Content>
+                  </Layout>
+                </Content>
               )
             }}
           />
-        </Content>
+        </Switch>
       </Layout>
     </Router>
   )

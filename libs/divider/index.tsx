@@ -28,7 +28,7 @@ const Divider: React.FC<Props> = props => {
     ...leftProps
   } = props
   return (
-    <div
+    <span
       className={classnames(
         setClass(),
         dashed && setClass('dashed'),
@@ -39,7 +39,7 @@ const Divider: React.FC<Props> = props => {
       )}
       {...leftProps}>
       {type === 'horizontal' && children && <span className={setClass('content')}>{children}</span>}
-    </div>
+    </span>
   )
 }
 

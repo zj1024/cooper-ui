@@ -38,6 +38,21 @@ const BackTop: React.FC<Props> = props => {
 
   const [visible, setVisible] = useState(false)
 
+  // use throttle to improve performance
+  const scrollListener = throttle(() => {
+    const scrollTop = targetDOM.scrollTop
+    ;+scrollTop > visibilityHeight ? setVisible(true) : setVisible(false)
+    console.log('执行')
+  }, 100)
+
+  useEffect(() => {
+    listenerDOM.addEventListener('scroll', scrollListener)
+    return () => {
+      console.log('执行清除')
+      listenerDOM.removeEventListener('scroll', scrollListener)
+    }
+  }, [])
+
   const onBackTopClick = () => {
     listenerDOM.scroll({
       left: 0,
@@ -45,19 +60,6 @@ const BackTop: React.FC<Props> = props => {
       behavior,
     })
   }
-
-  // use throttle to improve performance
-  const scrollListener = throttle(() => {
-    const scrollTop = targetDOM.scrollTop
-    ;+scrollTop > visibilityHeight ? setVisible(true) : setVisible(false)
-  }, 100)
-
-  useEffect(() => {
-    listenerDOM.addEventListener('scroll', scrollListener)
-    return () => {
-      listenerDOM.removeEventListener('scroll', scrollListener)
-    }
-  }, [])
 
   return (
     <>

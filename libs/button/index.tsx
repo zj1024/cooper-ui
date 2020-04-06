@@ -27,18 +27,20 @@ interface Props {
 
 const setClass = setPrefixClassName('coo-button')
 
-const Button: React.FC<Props> = ({
-  children,
-  className,
-  type = 'default',
-  plain = false,
-  round = false,
-  circle = false,
-  loading = false,
-  disabled = false,
-  shadow = true,
-  ...props
-}) => {
+const Button: React.FC<Props> = props => {
+  const {
+    children,
+    className,
+    type = 'default',
+    plain = false,
+    round = false,
+    circle = false,
+    loading = false,
+    disabled = false,
+    shadow = true,
+    ...leftProps
+  } = props
+
   return (
     <button
       className={classnames(
@@ -51,7 +53,7 @@ const Button: React.FC<Props> = ({
         className,
       )}
       disabled={disabled}
-      {...props}>
+      {...leftProps}>
       {/* Children is assigned twice in a row in order not to set flex for button in loading state */}
       {loading ? (
         <div className={setClass('loading-wrapper')}>
