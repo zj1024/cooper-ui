@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import * as ReactDOM from 'react-dom'
 import classnames from 'classnames'
 import { setPrefixClassName, throttle } from '../utils'
@@ -37,18 +37,18 @@ const BackTop: React.FC<Props> = props => {
   const listenerDOM = target ? target() : window
 
   const [visible, setVisible] = useState(false)
+  const ref = useRef(null)
 
   // use throttle to improve performance
   const scrollListener = throttle(() => {
     const scrollTop = targetDOM.scrollTop
     ;+scrollTop > visibilityHeight ? setVisible(true) : setVisible(false)
-    console.log('执行')
-  }, 100)
+  }, 200)
 
   useEffect(() => {
     listenerDOM.addEventListener('scroll', scrollListener)
+
     return () => {
-      console.log('执行清除')
       listenerDOM.removeEventListener('scroll', scrollListener)
     }
   }, [])
@@ -65,6 +65,7 @@ const BackTop: React.FC<Props> = props => {
     <>
       {ReactDOM.createPortal(
         <div
+          ref={ref}
           className={classnames(
             setClass(),
             visible && setClass('visible'),

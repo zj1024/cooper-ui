@@ -4,6 +4,7 @@ import stringEqual from './stringEqual'
 import throttle from './throttle'
 import { useInterval } from './hooks'
 import { _extends } from './extends'
+import { getScrollContainer, getStyle, isInContainer, isScroll } from './dom'
 
 export {
   isString,
@@ -15,6 +16,13 @@ export {
   setPrefixClassName,
   stringEqual,
   throttle,
+  // hooks:
   useInterval,
+  // createElement:
   _extends,
+  // dom:
+  getScrollContainer,
+  getStyle,
+  isInContainer,
+  isScroll,
 }

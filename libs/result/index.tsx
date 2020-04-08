@@ -1,7 +1,6 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import { setPrefixClassName } from '../utils'
-// import * as types from './types'
 
 import Icon from '../icon'
 
@@ -18,7 +17,7 @@ const setClass = setPrefixClassName('coo-result')
 
 const Result: React.FC<Props> = props => {
   const { className, status = 'info', icon, title, content, ...leftProps } = props
-  console.log(icon)
+
   return (
     <div className={classnames(setClass(), className)} {...leftProps}>
       <div className={setClass('icon')}>{icon ? icon : <Icon name={`result-${status}`} />}</div>

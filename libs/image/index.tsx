@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import classnames from 'classnames'
-import { setPrefixClassName } from '../utils'
+import { setPrefixClassName, throttle, getScrollContainer, isInContainer } from '../utils'
 
 import Icon from '../icon'
 
@@ -21,6 +21,7 @@ interface Props {
     | 'none'
     | 'scale-down'
     | undefined
+  lazy?: boolean
   error?: React.ReactNode
   fallbackSrc?: string
   onError?: (params?: any) => any
@@ -30,24 +31,69 @@ interface Props {
 const setClass = setPrefixClassName('coo-image')
 
 const Image: React.FC<Props> = props => {
-  const { className, style, fit, src, error, fallbackSrc, onError, ...leftProps } = props
+  const {
+    className,
+    style,
+    fit,
+    src,
+    lazy = false,
+    error,
+    fallbackSrc,
+    onError,
+    ...leftProps
+  } = props
+
   const [isError, setIsError] = useState(false)
-  const onImageError = (e: any) => {
-    setIsError(true)
-    onError && onError(e)
+  const [show, setShow] = useState<boolean>(false)
+
+  // lazymode
+  let _scrollContainer: HTMLElement | any = null
+  let _lazyLoadHandler: HTMLElement | any = null
+  const $el = useRef(null)
+  const showRef: any = useRef(show)
+
+  const handleLazyLoad = () => {
+    if (showRef.current !== true) {
+      const isShow = isInContainer($el.current as any, _scrollContainer)
+      if (isShow) {
+        setShow(() => {
+          showRef.current = true
+          return showRef.current
+        })
+        _scrollContainer.removeEventListener('scroll', _lazyLoadHandler)
+      }
+    }
   }
 
-  const Wrapper = (wrapperProps: any) => {
+  useEffect(() => {
+    if (lazy) {
+      _scrollContainer = getScrollContainer($el.current)
+      _lazyLoadHandler = throttle(handleLazyLoad, 200)
+
+      _scrollContainer.addEventListener('scroll', _lazyLoadHandler)
+      return () => {
+        _scrollContainer.removeEventListener('scroll', _lazyLoadHandler)
+      }
+    }
+    return
+  }, [])
+
+  const onImageError = useCallback((e: any) => {
+    setIsError(true)
+    onError && onError(e)
+  }, [])
+
+  const Wrapper = React.forwardRef((wrapperProps: any, ref: any) => {
     const { className, style, children } = wrapperProps
     return (
-      <div className={classnames(setClass(), className)} style={style}>
+      <div ref={ref} className={classnames(setClass(), className)} style={style}>
         {children}
       </div>
     )
-  }
+  })
 
   const Img = (imgProps: any) => {
-    const { src, fit, onImageError, imgLeftProps } = imgProps
+    const { src, fit, onImageError, ...imgLeftProps } = imgProps
     return (
       <img
         src={src}
@@ -86,7 +132,8 @@ const Image: React.FC<Props> = props => {
   }
 
   return (
-    <Wrapper className={className} style={style}>
+    <Wrapper ref={$el} className={className} style={style}>
+      {/* <div className="h-500 fs-80">placeholder</div> */}
       <Img src={src} onImageError={onImageError} fit={fit} {...leftProps} />
     </Wrapper>
   )

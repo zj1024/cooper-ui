@@ -123,10 +123,12 @@ export default () => {
                           </div>
                         }>
                         <div className="docs-container">
-                          {ComponentRoutes.map(d => (
-                            <Route key={d.path} exact path={d.path} component={d.component} />
-                          ))}
-                          <Route component={Empty} />
+                          <Switch>
+                            {ComponentRoutes.map(d => (
+                              <Route key={d.path} exact path={d.path} component={d.component} />
+                            ))}
+                            <Route component={Empty} />
+                          </Switch>
                         </div>
                       </Suspense>
                     </Content>
