@@ -78,3 +78,9 @@ Message 组件会造成页面 translateY 抖动 - 添加 translateY(0)
 InputGroup 对于 size 兼容情况
 
 Backtop 组件 effect 没有清除
+
+## 文档待写
+
+Image
+
+Collapse

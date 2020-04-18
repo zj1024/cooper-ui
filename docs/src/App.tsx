@@ -1,23 +1,28 @@
 import * as React from 'react'
 import { Suspense, useState, useEffect } from 'react'
-import { HashRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom'
-import { ComponentRoutes } from './routes'
-import { Layout, Icon, Drawer, Skeleton, TextLink } from '../../libs'
-import throttle from '../../libs/utils/throttle'
+import { HashRouter as Router, Route, Link, Switch, Redirect, useLocation } from 'react-router-dom'
+import { Layout, Icon, Drawer, Skeleton, TextLink } from 'cooper-ui/index'
+import throttle from 'cooper-ui/utils/throttle'
+import { ComponentRoutes } from 'src/routes'
+import classnames from 'classnames'
 
-import GuidePage from './pages/guide'
-import Empty from './pages/empty'
+import GuidePage from 'src/pages/guide'
+import Empty from 'src/pages/empty'
 
 const { Aside, Header, Content } = Layout
 
-const List = (props: any) => {
-  const { location } = props
+const AsideNavList = () => {
+  const location = useLocation()
+
   return (
-    <ul className="navbar-list p-v-10 p-t-60">
+    <ul className="navbar-lis t p-v-10 p-t-60">
       {ComponentRoutes.map(d => (
         <Link className="text-primary" to={d.path} key={d.path}>
           <li
-            className={`fs-14 p-10 ${location.pathname === d.path ? 'navbar-active' : ''} p-l-30`}>
+            className={classnames(
+              'fs-14 p-10 p-l-30',
+              location.pathname === d.path && 'navbar-active',
+            )}>
             {d.title} {d.desc}
           </li>
         </Link>
@@ -90,7 +95,7 @@ export default () => {
           <Route exact path="/components" render={() => <Redirect to="/components/icon" />} />
           <Route exact path="/guide" component={GuidePage} />
           <Route
-            children={({ location }) => {
+            children={() => {
               return (
                 <Content className="main flex flex-1 w-full">
                   <Layout className="w-full">
@@ -105,14 +110,14 @@ export default () => {
                           />
                         </div>
                         <Drawer visible={visible} onCancel={() => setVisible(false)} mask={false}>
-                          <List location={location} />
+                          <AsideNavList />
                         </Drawer>
                       </Aside>
                     ) : (
                       <Aside
                         className="navbar o-y-scroll scroll-touch"
                         style={{ display: isSmallScreen ? 'none' : 'block' }}>
-                        <List location={location} />
+                        <AsideNavList />
                       </Aside>
                     )}
                     <Content className="w-full relative p-t-80 p-h-20">

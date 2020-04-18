@@ -18,6 +18,14 @@ module.exports = Object.assign({}, base, {
     path: path.resolve(__dirname, '../dist/docs'),
     chunkFilename: `[name].cooper-ui-docs.${pkg.version}.js`,
   },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    alias: {
+      src: path.resolve(__dirname, '../docs/src'),
+      'cooper-ui': path.resolve(__dirname, '../libs'),
+      'cooper-theme': path.resolve(__dirname, '../cooper-theme'),
+    },
+  },
   devServer: {
     quiet: true,
     port: PORT,

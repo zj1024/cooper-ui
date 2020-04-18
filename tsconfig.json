@@ -9,6 +9,13 @@
     "sourceMap": true, // 生成相应的 .map文件。
     "declaration": false, // 生成相应的 '.d.ts' 文件
     "lib": ["DOM", "DOM.Iterable", "ESNext", "ScriptHost"],
+    "baseUrl": ".",
+    "paths": {
+      // dev模式别名
+      "src/*": ["docs/src/*"],
+      "cooper-ui/*": ["libs/*"],
+      "cooper-theme/*": ["cooper-theme/*"]
+    },
 
     /* 严格的类型检查选项 */
     "strict": true,
