@@ -12,6 +12,20 @@ cnpm install
 npm start
 ```
 
+# Build
+
+Library build
+
+```
+npm run publish:pre
+```
+
+Docs build
+
+```
+npm run build:docs
+```
+
 # Test
 
 ```

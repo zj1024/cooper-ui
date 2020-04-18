@@ -91,7 +91,7 @@ export default () => {
           </div>
         </Header>
         <Switch>
-          <Route exact path="/" render={() => <Redirect to="/guide" />} />
+          <Route exact path="/" render={() => <Redirect to="/components/icon" />} />
           <Route exact path="/components" render={() => <Redirect to="/components/icon" />} />
           <Route exact path="/guide" component={GuidePage} />
           <Route
