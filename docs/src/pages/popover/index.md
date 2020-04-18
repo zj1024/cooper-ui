@@ -109,8 +109,8 @@ const styles = {
 
 | 参数      | 说明           | 类型            | 可选值                    | 默认值 |
 | --------- | -------------- | --------------- | ------------------------- | ------ |
-| className | 容器 className | string          | —                         | —      |
-| style     | 指定样式       | object          | —                         | —      |
+| className | 容器 className | string          | -                         | -      |
+| style     | 指定样式       | object          | -                         | -      |
 | placement | 显示位置       | string          | top, bottom, left, right  | top    |
 | trigger   | 触发方式       | string          | hover, click, contextMenu | hover  |
 | content   | 内容           | React.ReactNode | -                         | -      |

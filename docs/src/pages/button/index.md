@@ -393,12 +393,12 @@ const App = () => {
 
 | 参数      | 说明           | 类型    | 可选值                                           | 默认值  |
 | --------- | -------------- | ------- | ------------------------------------------------ | ------- |
-| className | 容器 className | string  | —                                                | —       |
-| style     | 指定样式       | object  | —                                                | —       |
+| className | 容器 className | string  | -                                                | -       |
+| style     | 指定样式       | object  | -                                                | -       |
 | type      | 按钮类型       | string  | default, primary, success, warning, danger, info | default |
-| plain     | 缕空样式       | boolean | —                                                | false   |
-| round     | 圆角按钮       | boolean | —                                                | false   |
-| circle    | 圆形按钮       | boolean | —                                                | false   |
-| loading   | 加载中状态     | boolean | —                                                | false   |
-| disabled  | 禁用状态       | boolean | —                                                | false   |
-| shadow    | 阴影           | boolean | —                                                | true    |
+| plain     | 缕空样式       | boolean | -                                                | false   |
+| round     | 圆角按钮       | boolean | -                                                | false   |
+| circle    | 圆形按钮       | boolean | -                                                | false   |
+| loading   | 加载中状态     | boolean | -                                                | false   |
+| disabled  | 禁用状态       | boolean | -                                                | false   |
+| shadow    | 阴影           | boolean | -                                                | true    |

@@ -155,8 +155,8 @@ const styles = {
 
 | 参数      | 说明             | 类型            | 可选值                        | 默认值 |
 | --------- | ---------------- | --------------- | ----------------------------- | ------ |
-| className | 容器 className   | string          | —                             | —      |
-| style     | 指定样式         | object          | —                             | —      |
+| className | 容器 className   | string          | -                             | -      |
+| style     | 指定样式         | object          | -                             | -      |
 | type      | 组件主题         | string          | success，info，error，warning | info   |
 | message   | 信息内容         | React.ReactNode | -                             | -      |
 | showClose | 显示可关闭按钮   | boolean         | -                             | false  |
@@ -167,8 +167,8 @@ const styles = {
 
 | 参数      | 说明             | 类型            | 可选值      | 默认值 |
 | --------- | ---------------- | --------------- | ----------- | ------ |
-| className | 容器 className   | string          | —           | —      |
-| style     | 指定样式         | object          | —           | —      |
+| className | 容器 className   | string          | -           | -      |
+| style     | 指定样式         | object          | -           | -      |
 | message   | 信息内容         | React.ReactNode | -           | -      |
 | showClose | 显示可关闭按钮   | boolean         | -           | false  |
 | placement | 组件位置         | string          | top，bottom | top    |

@@ -186,8 +186,8 @@ const App = () => {
 
 | 参数         | 说明             | 类型            | 可选值 | 默认值                                 |
 | ------------ | ---------------- | --------------- | ------ | -------------------------------------- |
-| className    | 容器 className   | string          | —      | —                                      |
-| style        | 指定样式         | object          | —      | —                                      |
+| className    | 容器 className   | string          | -      | -                                      |
+| style        | 指定样式         | object          | -      | -                                      |
 | visible      | 对话框是否可见   | boolean         | -      | -                                      |
 | width        | 宽度             | string          | -      | 700px, 屏幕宽度小于 768px 按照 90%显示 |
 | header       | 自定义头部       | React.ReactNode | -      | -                                      |

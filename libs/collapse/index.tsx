@@ -27,7 +27,7 @@ interface Props {
 const setClass = setPrefixClassName('coo-collapse')
 
 const Collapse: ICollapseFC = props => {
-  const { children, className, accordion, value, ...leftProps } = props
+  const { children, className, accordion = false, value, ...leftProps } = props
 
   // initialize
 

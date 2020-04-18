@@ -65,8 +65,8 @@ const App = () => {
 
 | 参数        | 说明           | 类型    | 可选值       | 默认值 |
 | ----------- | -------------- | ------- | ------------ | ------ |
-| className   | 容器 className | string  | —            | —      |
-| style       | 指定样式       | object  | —            | —      |
+| className   | 容器 className | string  | -            | -      |
+| style       | 指定样式       | object  | -            | -      |
 | loading     | 显示/隐藏      | boolean | -            | -      |
 | row         | 占位行数       | number  | -            | 4      |
 | avatar      | 头像占位       | boolean | -            | false  |

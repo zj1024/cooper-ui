@@ -47,9 +47,9 @@ const App = () => {
 
 | 参数             | 说明                                   | 类型            | 可选值       | 默认值       |
 | ---------------- | -------------------------------------- | --------------- | ------------ | ------------ |
-| className        | 容器 className                         | string          | —            | —            |
-| style            | 指定样式                               | object          | —            | —            |
-| children         | 自定义内容                             | React.ReactNode | —            | —            |
+| className        | 容器 className                         | string          | -            | -            |
+| style            | 指定样式                               | object          | -            | -            |
+| children         | 自定义内容                             | React.ReactNode | -            | -            |
 | behavior         | 回到顶部行为                           | string          | smooth，auto | smooth       |
 | visibilityHeight | 距离底部多少高度显示                   | number          | -            | 400          |
 | animat           | 显示/隐藏动画                          | boolean         | -            | true         |

@@ -85,9 +85,9 @@ const App = () => {
 
 | 参数         | 说明                 | 类型                                                                   | 可选值 | 默认值     |
 | ------------ | -------------------- | ---------------------------------------------------------------------- | ------ | ---------- |
-| className    | 容器 className       | string                                                                 | —      | —          |
-| style        | 指定样式             | object                                                                 | —      | —          |
-| radioStyle   | 单选框样式           | object                                                                 | —      | —          |
+| className    | 容器 className       | string                                                                 | -      | -          |
+| style        | 指定样式             | object                                                                 | -      | -          |
+| radioStyle   | 单选框样式           | object                                                                 | -      | -          |
 | options      | 单选框               | {value: any, label: string, disabled?: boolean, checked?: boolean, }[] | -      | -          |
 | onChange     | 按钮状态变化接收函数 | (e) => {}                                                              | -      | -          |
 | defaultValue | 默认选中             | any                                                                    | -      | -          |

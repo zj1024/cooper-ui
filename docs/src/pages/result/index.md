@@ -85,8 +85,8 @@ const App = () => {
 
 | 参数      | 说明                                   | 类型            | 可选值                                      | 默认值 |
 | --------- | -------------------------------------- | --------------- | ------------------------------------------- | ------ |
-| className | 容器 className                         | string          | —                                           | —      |
-| style     | 指定样式                               | object          | —                                           | —      |
+| className | 容器 className                         | string          | -                                           | -      |
+| style     | 指定样式                               | object          | -                                           | -      |
 | status    | 状态                                   | string          | success，error，info，warning，404，warning | info   |
 | icon      | 自定义 icon，会覆盖 status 默认的 icon | React.ReactNode | -                                           | -      |
 | title     | 标题                                   | React.ReactNode | -                                           | -      |

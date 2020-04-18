@@ -138,8 +138,8 @@ const styles = {
 
 | 参数         | 说明           | 类型            | 可选值                                         | 默认值    |
 | ------------ | -------------- | --------------- | ---------------------------------------------- | --------- |
-| className    | 容器 className | string          | —                                              | —         |
-| style        | 指定样式       | object          | —                                              | —         |
+| className    | 容器 className | string          | -                                              | -         |
+| style        | 指定样式       | object          | -                                              | -         |
 | type         | 图标名称       | string          | default，success，warning，danger              | default   |
 | placement    | 位置           | string          | left-top，left-bottom，right-top，right-bottom | right-top |
 | badgeContent | 徽标内容       | React.ReactNode | -                                              | -         |

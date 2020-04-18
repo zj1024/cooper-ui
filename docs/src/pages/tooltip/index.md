@@ -76,7 +76,7 @@ const App = () => {
 
 | 参数      | 说明           | 类型   | 可选值                   | 默认值 |
 | --------- | -------------- | ------ | ------------------------ | ------ |
-| className | 容器 className | string | —                        | —      |
-| style     | 指定样式       | object | —                        | —      |
+| className | 容器 className | string | -                        | -      |
+| style     | 指定样式       | object | -                        | -      |
 | content   | 文字内容       | string | -                        | -      |
 | placement | 方向           | string | top，bottom，left，right | -      |

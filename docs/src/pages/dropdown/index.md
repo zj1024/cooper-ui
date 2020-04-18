@@ -172,8 +172,8 @@ const styles = {
 
 | 参数        | 说明           | 类型               | 可选值                                                               | 默认值 |
 | ----------- | -------------- | ------------------ | -------------------------------------------------------------------- | ------ |
-| className   | 容器 className | string             | —                                                                    | —      |
-| style       | 指定样式       | object             | —                                                                    | —      |
+| className   | 容器 className | string             | -                                                                    | -      |
+| style       | 指定样式       | object             | -                                                                    | -      |
 | overlay     | 下拉框内容     | React.ReactElement | -                                                                    | -      |
 | placement   | 位置           | string             | top-left,top-center,top-right,bottom-left,bottom-center,bottom-right | -      |
 | trigger     | 触发方式       | string             | hover, click                                                         | hover  |

@@ -63,8 +63,8 @@ const App = () => {
 
 | 参数      | 说明           | 类型   | 可选值                    | 默认值 |
 | --------- | -------------- | ------ | ------------------------- | ------ |
-| className | 容器 className | string | —                         | —      |
-| style     | 指定样式       | object | —                         | —      |
+| className | 容器 className | string | -                         | -      |
+| style     | 指定样式       | object | -                         | -      |
 | color     | 颜色           | string | 同 css 的 background 属性 | -      |
 | percent   | 进度           | number | 0-100                     | -      |
 | status    | 状态           | string | error，success，null      | null   |

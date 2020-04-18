@@ -45,8 +45,8 @@ const styles = {
 
 | 参数      | 说明           | 类型    | 可选值                                           | 默认值  |
 | --------- | -------------- | ------- | ------------------------------------------------ | ------- |
-| className | 容器 className | string  | —                                                | —       |
-| style     | 指定样式       | object  | —                                                | —       |
+| className | 容器 className | string  | -                                                | -       |
+| style     | 指定样式       | object  | -                                                | -       |
 | type      | 类型           | string  | default，primary，success，warning，danger，info | default |
 | underline | 图标名称       | boolean | -                                                | true    |
 | disabled  | 图标名称       | boolean | -                                                | false   |
