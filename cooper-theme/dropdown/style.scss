@@ -5,6 +5,11 @@
     position: relative;
     margin: 0;
     padding: 0;
+
+    // select 默认宽度100%
+    > .coo-select-wrapper + .coo-transition > .coo-dropdown-overlay {
+      min-width: 100%;
+    }
   }
 
   &-overlay {

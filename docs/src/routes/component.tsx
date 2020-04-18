@@ -119,13 +119,13 @@ export default [
     desc: '卡片',
     exact: true,
   },
-  {
-    path: '/components/menu',
-    title: 'Menu',
-    component: lazy(() => import(/* webpackMode: "lazy" */ 'src/pages/menu')),
-    desc: '菜单',
-    exact: true,
-  },
+  // {
+  //   path: '/components/menu',
+  //   title: 'Menu',
+  //   component: lazy(() => import(/* webpackMode: "lazy" */ 'src/pages/menu')),
+  //   desc: '菜单',
+  //   exact: true,
+  // },
   {
     path: '/components/collapse',
     title: 'Collapse',
@@ -168,13 +168,13 @@ export default [
     desc: '回到顶部',
     exact: true,
   },
-  {
-    path: '/components/image',
-    title: 'Image',
-    component: lazy(() => import(/* webpackMode: "lazy" */ 'src/pages/image')),
-    desc: '图片',
-    exact: true,
-  },
+  // {
+  //   path: '/components/image',
+  //   title: 'Image',
+  //   component: lazy(() => import(/* webpackMode: "lazy" */ 'src/pages/image')),
+  //   desc: '图片',
+  //   exact: true,
+  // },
   {
     path: '/components/switch',
     title: 'Switch',
@@ -189,13 +189,13 @@ export default [
     desc: '结果',
     exact: true,
   },
-  {
-    path: '/components/date-picker',
-    title: 'DatePicker',
-    component: lazy(() => import(/* webpackMode: "lazy" */ 'src/pages/date-picker')),
-    desc: '时间选择器',
-    exact: true,
-  },
+  // {
+  //   path: '/components/date-picker',
+  //   title: 'DatePicker',
+  //   component: lazy(() => import(/* webpackMode: "lazy" */ 'src/pages/date-picker')),
+  //   desc: '时间选择器',
+  //   exact: true,
+  // },
   {
     path: '/components/carousel',
     title: 'Carousel',
@@ -217,11 +217,11 @@ export default [
     desc: '选择框',
     exact: true,
   },
-  {
-    path: '/components/test',
-    title: 'Test',
-    component: lazy(() => import(/* webpackMode: "lazy" */ 'src/pages/test')),
-    desc: '测试页',
-    exact: true,
-  },
+  // {
+  //   path: '/components/test',
+  //   title: 'Test',
+  //   component: lazy(() => import(/* webpackMode: "lazy" */ 'src/pages/test')),
+  //   desc: '测试页',
+  //   exact: true,
+  // },
 ]

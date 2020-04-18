@@ -58,14 +58,6 @@ const Select: SelectFN = props => {
   const [iconName, setIconName] = useState('arrow-down')
   const [inputValue, setInputValue] = useState(defaultValue ? defaultValue.label : '')
 
-  // useEffect(() => {
-  //   console.log(props.defaultValue)
-  //   // 解决异步defaultValue
-  //   if (props?.defaultValue?.value && props?.defaultValue?.label) {
-  //     setDataState({ label: props.defaultValue.value, value: props.defaultValue.label })
-  //   }
-  // }, [props.defaultValue])
-
   const triggerFN = {
     onMouseEnter: () => {
       if (showSearch) {
@@ -114,7 +106,7 @@ const Select: SelectFN = props => {
         React.Children.map(mapChildren as any[], (child: React.ReactElement, index) => {
           const { label = '', disabled } = child.props
 
-          if (inputValue) {
+          if (inputValue && showSearch) {
             if (!`${label}`.includes(inputValue)) return null
           }
 
@@ -143,7 +135,7 @@ const Select: SelectFN = props => {
   const IconDOM = <Icon className={setClass('icon')} name={iconName} onClick={handleClear} />
 
   return (
-    <Dropdown trigger="click" overlay={overlay}>
+    <Dropdown className={setClass('wrapper')} trigger="click" overlay={overlay}>
       {showSearch ? (
         <div
           className={classnames(setClass(), setClass(size), className)}

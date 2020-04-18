@@ -4,8 +4,10 @@ import { setPrefixClassName } from '../utils'
 
 interface IProps {
   className?: string
+  size: 'large' | 'middle' | 'small'
   label: any
   value: any
+  disabled: boolean
   [key: string]: any
 }
 
