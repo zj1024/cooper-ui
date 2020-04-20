@@ -35,6 +35,7 @@ const Badge: React.FC<Props> = props => {
     dot = false,
     ...leftProps
   } = props
+
   return (
     <div className={classnames(setClass('wrapper'), className)} {...leftProps}>
       {children}
