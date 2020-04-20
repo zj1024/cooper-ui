@@ -14,7 +14,7 @@
       // dev模式别名
       "src/*": ["docs/src/*"],
       "cooper-ui/*": ["libs/*"],
-      "cooper-theme/*": ["cooper-theme/*"]
+      "cooper-theme/*": ["theme/*"]
     },
 
     /* 严格的类型检查选项 */

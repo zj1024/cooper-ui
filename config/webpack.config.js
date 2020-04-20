@@ -21,7 +21,7 @@ module.exports = Object.assign({}, base, {
     alias: {
       src: path.resolve(__dirname, '../docs/src'),
       'cooper-ui': path.resolve(__dirname, '../libs'),
-      'cooper-theme': path.resolve(__dirname, '../cooper-theme'),
+      'cooper-theme': path.resolve(__dirname, '../theme'),
     },
   },
   module: {
