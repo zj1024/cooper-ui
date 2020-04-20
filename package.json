@@ -9,7 +9,7 @@
     "docs:env": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.config",
     "build:docs": "cross-env NODE_ENV=production webpack --progress --config ./config/webpack.config",
     "build:ts": "tsc libs/*.* --outDir ./cooper-ui --declaration --jsx react",
-    "build:scss": "gulp -f ./build/shadking-css.gulpfile.js",
+    "build:scss": "gulp -f ./config/shadking-css.gulpfile.js",
     "publish:pre": "rm -rf ./cooper-ui && npm run build:ts && npm run build:scss && cp -R  ./libs/assets ./cooper-ui/",
     "test": "jest",
     "ci": "JEST_JUNIT_OUTPUT_DIR=./test-results/jest/ JEST_JUNIT_OUTPUT_NAME=results.xml jest --ci --reporters=jest-junit"

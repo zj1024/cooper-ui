@@ -31,3 +31,21 @@ npm run build:docs
 ```
 npm test
 ```
+
+# Directory
+
+```bash
+.
+├── config # webpack & gulp
+├── coverage # ci
+├── docs
+├── libs # all modules
+├── record
+├── tests # jest config
+├── theme # all style
+├── jest.config.js
+├── LICENSE
+├── package.json
+├── README.md
+└── tsconfig.json
+```
