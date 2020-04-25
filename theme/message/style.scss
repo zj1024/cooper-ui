@@ -1,7 +1,13 @@
 @import '../style/variable';
 
-@mixin message-box-shadow($color) {
-  box-shadow: 0 5px 15px 0px rgba($color, 0.3);
+@mixin icon($color) {
+  .coo-icon {
+    color: $color;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .coo-message-container,
@@ -49,40 +55,27 @@
   border-radius: $border-radius-middle;
   height: 100%;
   padding: 0 12px;
-  background: $bg-grey;
+  color: $color-content;
+  background: $bg-white;
+  box-shadow: 0 5px 15px 0px rgba($color-grey, 0.3);
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   &-info {
-    color: $color-content;
-    background: $bg-grey;
-    @include message-box-shadow($bg-grey);
+    @include icon($color-primary);
   }
 
   &-success {
-    color: $color-white;
-    background: $color-green;
-    @include message-box-shadow($color-green);
+    @include icon($color-green);
   }
 
   &-error {
-    color: $color-white;
-    background: $color-red;
-    @include message-box-shadow($color-red);
+    @include icon($color-red);
   }
 
   &-warning {
-    color: $color-white;
-    background: $color-yellow;
-    @include message-box-shadow($color-yellow);
-  }
-
-  &-icon {
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include icon($color-yellow);
   }
 
   &-close-icon {
