@@ -1,4 +1,5 @@
 import { lazy } from 'react'
+
 export default [
   {
     path: '/components/icon',

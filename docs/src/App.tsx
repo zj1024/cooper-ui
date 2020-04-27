@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { Suspense, useState, useEffect } from 'react'
 import { HashRouter as Router, Route, Link, Switch, Redirect, useLocation } from 'react-router-dom'
-import { Layout, Icon, Drawer, Skeleton, TextLink } from 'cooper-ui/index'
+import { Layout, Icon, Drawer, Skeleton, TextLink, Divider } from 'cooper-ui/index'
 import throttle from 'cooper-ui/utils/throttle'
-import { ComponentRoutes } from 'src/routes'
 import classnames from 'classnames'
+import routes from 'src/routes'
+
+import components, { IComponent } from './routes/components'
 
 import GuidePage from 'src/pages/guide'
 import Empty from 'src/pages/empty'
@@ -14,21 +16,46 @@ const { Aside, Header, Content } = Layout
 const AsideNavList = () => {
   const location = useLocation()
 
-  return (
-    <ul className="navbar-lis t p-v-10 p-t-60">
-      {ComponentRoutes.map(d => (
-        <Link className="text-primary" to={d.path} key={d.path}>
-          <li
-            className={classnames(
-              'fs-14 p-10 p-l-30',
-              location.pathname === d.path && 'navbar-active',
-            )}>
-            {d.title} {d.desc}
-          </li>
-        </Link>
-      ))}
-    </ul>
-  )
+  let result = []
+
+  for (const ele in routes) {
+    if (routes.hasOwnProperty(ele)) {
+      const routesItem = routes[ele]
+      result.push(
+        <div key={routesItem.title}>
+          <p className="fs-13 p-t-15 p-b-15 p-l-20 text-grey">{routesItem.title}</p>
+          <Divider className="p-h-20 m-v-0" />
+          {routesItem.components.map((d: IComponent) => (
+            <Link className="text-primary" to={d.path} key={d.path}>
+              <li
+                className={classnames(
+                  'fs-14 p-10 p-l-40',
+                  location.pathname === d.path && 'navbar-active',
+                )}>
+                {d.title} {d.desc}
+              </li>
+            </Link>
+          ))}
+        </div>,
+      )
+    }
+  }
+
+  return <ul className="navbar-list p-v-10 p-t-60">{result}</ul>
+}
+
+const ComponentsRouteList = () => {
+  let result = []
+
+  for (const key in components) {
+    if (components.hasOwnProperty(key)) {
+      const component = components[key]
+      result.push(
+        <Route key={component.path} exact path={component.path} component={component.component} />,
+      )
+    }
+  }
+  return <>{result}</>
 }
 
 export default () => {
@@ -129,9 +156,7 @@ export default () => {
                         }>
                         <div className="docs-container">
                           <Switch>
-                            {ComponentRoutes.map(d => (
-                              <Route key={d.path} exact path={d.path} component={d.component} />
-                            ))}
+                            <ComponentsRouteList />
                             <Route component={Empty} />
                           </Switch>
                         </div>
