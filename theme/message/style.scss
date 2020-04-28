@@ -1,7 +1,7 @@
 @import '../style/variable';
 
 @mixin icon($color) {
-  .coo-icon {
+  .coo-icon:not(.coo-message-close-icon) {
     color: $color;
     font-size: 20px;
     display: flex;
@@ -78,15 +78,19 @@
     @include icon($color-yellow);
   }
 
-  &-close-icon {
-    font-size: 16px;
-    cursor: pointer;
-  }
-
   &-content {
     padding: 0 36px;
     flex-grow: 1;
     text-align: center;
+  }
+
+  &-close-icon {
+    color: $color-grey;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+      color: $color-content;
+    }
   }
 }
 
