@@ -77,6 +77,18 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../docs/public/index.html'),
       NODE_ENV,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeEmptyAttributes: true,
+        removeAttributeQuotes: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
     }),
     new HtmlWebpackExternalsPlugin({
       externals: getPluginExternals(),
