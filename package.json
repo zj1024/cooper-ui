@@ -13,7 +13,7 @@
     "publish:pre": "rm -rf ./cooper-ui && npm run build:ts && npm run build:scss && cp -R  ./libs/assets ./cooper-ui/",
     "test": "jest",
     "ci": "JEST_JUNIT_OUTPUT_DIR=./test-results/jest/ JEST_JUNIT_OUTPUT_NAME=results.xml jest --ci --reporters=jest-junit",
-    "analyzer": "webpack --config ./config/webpack.config.analyzer.js --progress"
+    "analyzer": "rm -rf ./dist/docs && cross-env NODE_ENV=production webpack --config ./config/webpack.config.analyzer.js --progress"
   },
   "repository": {
     "type": "git",
@@ -56,7 +56,6 @@
     "@babel/preset-react": "^7.6.3",
     "@babel/preset-typescript": "^7.6.0",
     "@commitlint/config-conventional": "^8.2.0",
-    "@hot-loader/react-dom": "^16.11.0+4.12.16",
     "@types/classnames": "^2.2.9",
     "@types/enzyme": "^3.10.3",
     "@types/jest": "^24.0.21",
@@ -85,6 +84,7 @@
     "eslint": "^5.6.0",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^3.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "fibers": "^4.0.2",
     "file-loader": "^4.3.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
@@ -118,6 +118,7 @@
     "ts-loader": "^6.2.1",
     "tslint": "^6.1.0",
     "typescript": "^3.6.4",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.2",
     "webpack-bundle-analyzer": "^3.7.0",
     "webpack-cli": "^3.3.10",

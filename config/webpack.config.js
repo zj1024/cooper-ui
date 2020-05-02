@@ -1,10 +1,12 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+
 const pkg = require('../package.json')
 const base = require('./webpack.config')
-const externals = require('./externals')
+const { getExternals, getIPv4AddressList } = require('./utils')
 
 const { NODE_ENV = 'production' } = process.env
 const PORT = 9527
@@ -83,8 +85,9 @@ module.exports = Object.assign({}, base, {
     open: false,
     overlay: true,
     progress: true,
+    host: '0.0.0.0',
   },
-  externals,
+  externals: getExternals(),
   devtool: 'cheap-module-eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
@@ -93,11 +96,13 @@ module.exports = Object.assign({}, base, {
     }),
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: [`- Local: http://localhost:${PORT}`],
+        messages: getIPv4AddressList().map(d => `> http://${d}:${PORT}`),
         notes: ['Some additional notes to be displayed upon successful compilation'],
       },
     }),
+    new UglifyJsPlugin({
+      sourceMap: true,
+    }),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
   ],
 })
