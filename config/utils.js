@@ -19,7 +19,7 @@ const externalsArr = [
   {
     module: 'babel-standalone',
     entry: '//cdn.bootcdn.net/ajax/libs/babel-standalone/6.26.0/babel.min.js',
-    global: 'BabelStandalone',
+    global: 'Babel',
   },
 ]
 
