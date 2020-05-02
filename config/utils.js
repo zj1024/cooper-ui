@@ -1,29 +1,41 @@
-const { NODE_ENV = 'production' } = process.env
 const os = require('os')
+
+const externalsArr = [
+  {
+    module: 'react',
+    entry: '//cdn.bootcss.com/react/16.10.2/umd/react.production.min.js',
+    global: 'React',
+  },
+  {
+    module: 'react-dom',
+    entry: '//cdn.bootcss.com/react-dom/16.10.2/umd/react-dom.production.min.js',
+    global: 'ReactDOM',
+  },
+  {
+    module: 'react-router-dom',
+    entry: '//cdn.bootcdn.net/ajax/libs/react-router-dom/5.1.2/react-router-dom.min.js',
+    global: 'ReactRouterDOM',
+  },
+  {
+    module: 'babel-standalone',
+    entry: '//cdn.bootcdn.net/ajax/libs/babel-standalone/6.26.0/babel.min.js',
+    global: 'BabelStandalone',
+  },
+]
+
+function getExternals() {
+  let externals = {}
+  externalsArr.forEach(item => {
+    externals[item.module] = item.global
+  })
+  return externals
+}
 
 /**
  * webpack externals config
  */
-function getExternals() {
-  let externals = {}
-  if (NODE_ENV === 'production') {
-    externals = {
-      react: {
-        commonjs: 'react',
-        commonjs2: 'react',
-        amd: 'react',
-        root: 'React',
-      },
-      'react-dom': {
-        commonjs: 'react-dom',
-        commonjs2: 'react-dom',
-        amd: 'react-dom',
-        root: 'ReactDOM',
-      },
-    }
-  }
-
-  return externals
+function getPluginExternals() {
+  return externalsArr
 }
 
 /**
@@ -46,6 +58,7 @@ function getIPv4AddressList() {
 }
 
 module.exports = {
-  getExternals,
+  externals: getExternals(),
+  getPluginExternals,
   getIPv4AddressList,
 }

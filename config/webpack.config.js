@@ -1,22 +1,23 @@
+const os = require('os')
 const path = require('path')
 const webpack = require('webpack')
+const HappyPack = require('happypack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const pkg = require('../package.json')
-const base = require('./webpack.config')
-const { getExternals, getIPv4AddressList } = require('./utils')
+const { externals, getIPv4AddressList } = require('./utils')
 
-const { NODE_ENV = 'production' } = process.env
 const PORT = 9527
+const { NODE_ENV = 'development' } = process.env
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
-module.exports = Object.assign({}, base, {
+module.exports = {
   mode: NODE_ENV,
   entry: path.resolve(__dirname, '../docs/src/index'),
   output: {
     path: path.resolve(__dirname, '../dist/docs'),
-    chunkFilename: `[name].cooper-ui-docs.${pkg.version}.js`,
+    chunkFilename: `js/cooper-ui-docs.[name].[hash:5].${pkg.version}.js`,
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
@@ -29,13 +30,10 @@ module.exports = Object.assign({}, base, {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(jsx?|tsx?)$/,
         include: [path.resolve(__dirname, '../libs'), path.resolve(__dirname, '../docs')],
-        use: [
-          {
-            loader: 'ts-loader',
-          },
-        ],
+        exclude: /node_modules/,
+        use: ['happypack/loader?id=babel'],
       },
       {
         test: /\.s[ac]ss$/i,
@@ -87,7 +85,7 @@ module.exports = Object.assign({}, base, {
     progress: true,
     host: '0.0.0.0',
   },
-  externals: getExternals(),
+  externals,
   devtool: 'cheap-module-eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
@@ -104,5 +102,17 @@ module.exports = Object.assign({}, base, {
       sourceMap: true,
     }),
     new webpack.NamedModulesPlugin(),
+    new HappyPack({
+      id: 'babel',
+      loaders: [
+        {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+          },
+        },
+      ],
+      threadPool: happyThreadPool,
+    }),
   ],
-})
+}

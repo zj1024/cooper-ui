@@ -1,28 +1,27 @@
+const os = require('os')
 const path = require('path')
 const webpack = require('webpack')
+const HappyPack = require('happypack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const pkg = require('../package.json')
-const base = require('./webpack.config')
-const { getExternals, getIPv4AddressList } = require('./utils')
 
-const { NODE_ENV = 'production' } = process.env
-const PORT = 9527
+const { externals, getPluginExternals } = require('./utils')
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
-module.exports = Object.assign({}, base, {
+const { NODE_ENV = 'production', ANALYZER = 'false' } = process.env
+
+module.exports = {
   mode: NODE_ENV,
   entry: path.resolve(__dirname, '../docs/src/index'),
   output: {
     path: path.resolve(__dirname, '../dist/docs'),
-    chunkFilename: `js/[name].[hash:5].${pkg.version}.js`,
+    chunkFilename: `js/cooper-ui-docs.[name].[hash:5].${pkg.version}.js`,
   },
-  optimization: {
-    minimize: true,
-  },
+  externals,
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
     alias: {
@@ -34,21 +33,22 @@ module.exports = Object.assign({}, base, {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(jsx?|tsx?)$/,
         include: [path.resolve(__dirname, '../libs'), path.resolve(__dirname, '../docs')],
-        use: [
-          {
-            loader: 'ts-loader',
-          },
-        ],
+        exclude: /node_modules/,
+        use: ['happypack/loader?id=babel'],
       },
       {
-        test: /\.scss$/,
+        test: /\.s[ac]ss$/i,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           //如果需要，可以在 sass-loader 之前将 resolve-url-loader 链接进来
           use: ['css-loader', 'sass-loader'],
         }),
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.svg$/,
@@ -72,37 +72,31 @@ module.exports = Object.assign({}, base, {
       },
     ],
   },
-  devServer: {
-    quiet: true,
-    port: PORT,
-    compress: true,
-    hot: true,
-    open: false,
-    overlay: true,
-    progress: true,
-    host: '0.0.0.0',
-  },
-  externals: getExternals(),
-  // devtool: '(none)',
   plugins: [
+    ANALYZER === 'true' ? new BundleAnalyzerPlugin() : () => {},
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../docs/public/index.html'),
       NODE_ENV,
     }),
-    new FriendlyErrorsWebpackPlugin({
-      compilationSuccessInfo: {
-        messages: getIPv4AddressList().map(d => `> http://${d}:${PORT}`),
-        notes: ['Some additional notes to be displayed upon successful compilation'],
-      },
+    new HtmlWebpackExternalsPlugin({
+      externals: getPluginExternals(),
     }),
     new webpack.NamedModulesPlugin(),
-    new BundleAnalyzerPlugin(),
     new ExtractTextPlugin({
-      filename: `style/[name].[hash:5].${pkg.version}.css`,
-      allChunks: false,
+      filename: `style/cooper-ui-docs.[name].[hash:5].${pkg.version}.css`,
+      allChunks: true,
     }),
-    new UglifyJsPlugin({
-      sourceMap: false,
+    new HappyPack({
+      id: 'babel',
+      loaders: [
+        {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+          },
+        },
+      ],
+      threadPool: happyThreadPool,
     }),
   ],
-})
+}
