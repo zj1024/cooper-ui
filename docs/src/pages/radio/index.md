@@ -31,7 +31,7 @@ const App = () => {
   return (
     <div>
       <Radio options={[...options]} onChange={onChange}></Radio>
-      <span>选择了: {value}</span>
+      {value && <span>选择了: {value}</span>}
     </div>
   )
 }

@@ -57,8 +57,7 @@
     overflow: auto;
     padding: 8px 0;
     background: #fff;
-    box-shadow: 0 7px 56px rgba(0, 0, 0, 0.11), 0 10px 20px rgba(0, 0, 0, 0.05),
-      0 2px 3px rgba(0, 0, 0, 0.06);
+    box-shadow: $color-shadow;
     border-radius: $border-radius-middle;
     margin-top: 4px;
     margin-bottom: 4px;
