@@ -147,7 +147,7 @@ export default () => {
                         <AsideNavList />
                       </Aside>
                     )}
-                    <Content className="w-full relative p-t-80 p-h-20">
+                    <Content className="w-full relative p-t-60 p-h-20">
                       <Suspense
                         fallback={
                           <div className="docs-container">

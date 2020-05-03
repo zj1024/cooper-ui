@@ -2,8 +2,8 @@
   "name": "cooper-ui",
   "version": "0.0.1",
   "description": "A React UI library",
-  "main": "./dist/lib/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "./cooper-ui/index.js",
+  "typings": "./cooper-ui/index.d.ts",
   "scripts": {
     "start": "yarn docs:env",
     "docs:env": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.config",

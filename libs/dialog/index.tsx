@@ -52,14 +52,22 @@ const FactoryDialog = (props: DialogFuncProps) => {
     destory()
   }
 
+  const div = document.createElement('div')
+  document.body.appendChild(div)
+
   const render = (renderProps: PrivateProps) => {
     const { title, message, ...renderLeftProps } = renderProps
+
     ReactDOM.render(
       <Dialog {...renderLeftProps} onCancel={_handleCancel} header={title}>
         {message}
       </Dialog>,
       div,
     )
+  }
+
+  const update = (updateProps: PrivateProps) => {
+    render(Object.assign({}, renderProps, updateProps))
   }
 
   const destory = () => {
@@ -69,12 +77,10 @@ const FactoryDialog = (props: DialogFuncProps) => {
     }
   }
 
-  const div = document.createElement('div')
-  document.body.appendChild(div)
-
   render(renderProps)
   return {
     close: destory,
+    update,
   }
 }
 
