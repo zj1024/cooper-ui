@@ -3,13 +3,14 @@ const path = require('path')
 const webpack = require('webpack')
 const HappyPack = require('happypack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const pkg = require('../package.json')
-const { externals, getIPv4AddressList } = require('./utils')
 
 const PORT = 9527
 const { NODE_ENV = 'development' } = process.env
+const { getIPv4AddressList } = require('./utils')
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
 module.exports = {
@@ -37,17 +38,11 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          {
-            loader: 'thread-loader',
-            options: {
-              workerParallelJobs: 2,
-            },
-          },
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          //如果需要，可以在 sass-loader 之前将 resolve-url-loader 链接进来
+          use: ['css-loader', 'sass-loader'],
+        }),
       },
       {
         test: /\.css$/i,
@@ -85,7 +80,6 @@ module.exports = {
     progress: true,
     host: '0.0.0.0',
   },
-  externals,
   devtool: 'cheap-module-eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
@@ -98,10 +92,11 @@ module.exports = {
         notes: ['Some additional notes to be displayed upon successful compilation'],
       },
     }),
-    new UglifyJsPlugin({
-      sourceMap: true,
-    }),
     new webpack.NamedModulesPlugin(),
+    new ExtractTextPlugin({
+      filename: `css/cooper-ui-docs.[name].[hash:5].${pkg.version}.css`,
+      allChunks: true,
+    }),
     new HappyPack({
       id: 'babel',
       loaders: [

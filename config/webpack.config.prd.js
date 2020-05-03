@@ -95,7 +95,7 @@ module.exports = {
     }),
     new webpack.NamedModulesPlugin(),
     new ExtractTextPlugin({
-      filename: `style/cooper-ui-docs.[name].[hash:5].${pkg.version}.css`,
+      filename: `css/cooper-ui-docs.[name].[hash:5].${pkg.version}.css`,
       allChunks: true,
     }),
     new HappyPack({
