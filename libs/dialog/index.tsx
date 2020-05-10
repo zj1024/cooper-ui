@@ -90,6 +90,8 @@ Dialog.Alert = (props: DialogFuncProps) => {
     closable: false,
     maskClosable: false,
     cancelable: false,
+    title: null,
+    footerStyle: { border: 'none' },
   }
   return FactoryDialog({ ...props, ...config })
 }

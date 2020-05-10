@@ -70,6 +70,7 @@ const Dialog: DialogFC = props => {
     mask = true,
     maskClosable = true,
     lockScroll = true,
+    footerStyle = {},
     onOk = () => {},
     onCancel = () => {},
     ...leftProps
@@ -181,10 +182,13 @@ const Dialog: DialogFC = props => {
       {header !== null ? <header className={setClass('header')}>{header || '提示'}</header> : null}
       <main className={setClass('main')}>{children}</main>
       {/* judge footer show or hidden or custom */}
+      {/* new footerStyle for cancel border-top */}
       {footer ? (
-        <footer className={setClass('footer')}>{footer}</footer>
+        <footer className={setClass('footer')} style={footerStyle}>
+          {footer}
+        </footer>
       ) : footer !== null ? (
-        <footer className={setClass('footer')}>
+        <footer className={setClass('footer')} style={footerStyle}>
           <div className={setClass('footer-button-wrapper')}>
             {cancelable === true ? (
               <Button
