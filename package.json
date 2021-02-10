@@ -5,6 +5,10 @@
   "main": "./libs/index.js",
   "module": "./es/index.js",
   "typings": "./es/index.d.ts",
+  "files": [
+    "es",
+    "libs"
+  ],
   "scripts": {
     "start": "yarn docs:env",
     "docs:env": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.config",

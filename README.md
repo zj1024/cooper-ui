@@ -38,8 +38,8 @@ npm test
 .
 ├── config # webpack & gulp
 ├── coverage # ci
-├── docs
-├── libs # all modules
+├── site
+├── components # all modules
 ├── record
 ├── tests # jest config
 ├── theme # all style
