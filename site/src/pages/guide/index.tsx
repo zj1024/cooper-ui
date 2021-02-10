@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Icon } from 'components/index'
+import { Icon } from '../../../../components/index'
 
 export default () => {
   return (

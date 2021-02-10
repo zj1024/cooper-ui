@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Suspense, useState, useEffect } from 'react'
 import { HashRouter as Router, Route, Link, Switch, Redirect, useLocation } from 'react-router-dom'
-import { Layout, Icon, Drawer, Skeleton, TextLink, Divider } from 'components/index'
-import throttle from 'components/utils/throttle'
+import { Layout, Icon, Drawer, Skeleton, TextLink, Divider } from '../../components/index'
+import throttle from '../../components/utils/throttle'
 import classnames from 'classnames'
 import routes from 'src/routes'
 
