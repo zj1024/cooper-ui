@@ -2,18 +2,19 @@
   "name": "cooper-ui",
   "version": "0.0.1",
   "description": "A React UI library",
-  "main": "./cooper-ui/index.js",
-  "typings": "./cooper-ui/index.d.ts",
+  "main": "./libs/index.js",
+  "module": "./es/index.js",
+  "typings": "./es/index.d.ts",
   "scripts": {
     "start": "yarn docs:env",
     "docs:env": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.config",
-    "build:docs": "rm -rf ./dist/docs && cross-env NODE_ENV=production webpack --config ./config/webpack.config.prd.js --progress",
-    "build:ts": "tsc libs/*.* --outDir ./cooper-ui --declaration --jsx react",
+    "build:docs": "rm -rf ./docs && cross-env NODE_ENV=production webpack --config ./config/webpack.config.prd.js --progress",
+    "build:ts": "tsc components/*.* --outDir ./es --declaration --jsx react",
     "build:scss": "gulp -f ./config/shadking-css.gulpfile.js",
-    "publish:pre": "rm -rf ./cooper-ui && npm run build:ts && npm run build:scss && cp -R  ./libs/assets ./cooper-ui/",
+    "build": "rm -rf ./cooper-ui && npm run build:ts && npm run build:scss && cp -R ./components/assets ./libs/ & npm run build:docs",
     "test": "jest",
     "ci": "JEST_JUNIT_OUTPUT_DIR=./test-results/jest/ JEST_JUNIT_OUTPUT_NAME=results.xml jest --ci --reporters=jest-junit",
-    "analyzer": "rm -rf ./dist/docs && cross-env NODE_ENV=production ANALYZER=true webpack --config ./config/webpack.config.prd.js --progress"
+    "analyzer": "rm -rf ./docs && cross-env NODE_ENV=production ANALYZER=true webpack --config ./config/webpack.config.prd.js --progress"
   },
   "repository": {
     "type": "git",

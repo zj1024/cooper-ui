@@ -15,16 +15,16 @@ const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
 module.exports = {
   mode: NODE_ENV,
-  entry: path.resolve(__dirname, '../docs/src/index'),
+  entry: path.resolve(__dirname, '../site/src/index'),
   output: {
-    path: path.resolve(__dirname, '../dist/docs'),
-    chunkFilename: `js/cooper-ui-docs.[name].[hash:5].${pkg.version}.js`,
+    path: path.resolve(__dirname, '../docs'),
+    chunkFilename: `js/[name].[hash:5].${pkg.version}.js`,
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
     alias: {
-      src: path.resolve(__dirname, '../docs/src'),
-      'cooper-ui': path.resolve(__dirname, '../libs'),
+      src: path.resolve(__dirname, '../site/src'),
+      'cooper-ui': path.resolve(__dirname, '../components'),
       'cooper-theme': path.resolve(__dirname, '../theme'),
     },
   },
@@ -32,7 +32,7 @@ module.exports = {
     rules: [
       {
         test: /\.(jsx?|tsx?)$/,
-        include: [path.resolve(__dirname, '../libs'), path.resolve(__dirname, '../docs')],
+        include: [path.resolve(__dirname, '../components'), path.resolve(__dirname, '../site')],
         exclude: /node_modules/,
         use: ['happypack/loader?id=babel'],
       },
@@ -83,7 +83,7 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../docs/public/index.html'),
+      template: path.resolve(__dirname, '../site/public/index.html'),
       NODE_ENV,
     }),
     new FriendlyErrorsWebpackPlugin({
@@ -94,7 +94,7 @@ module.exports = {
     }),
     new webpack.NamedModulesPlugin(),
     new ExtractTextPlugin({
-      filename: `css/cooper-ui-docs.[name].[hash:5].${pkg.version}.css`,
+      filename: `css/[name].[hash:5].${pkg.version}.css`,
       allChunks: true,
     }),
     new HappyPack({

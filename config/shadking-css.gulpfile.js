@@ -10,7 +10,7 @@ const output = path.resolve(__dirname, '../theme/css')
 gulp.task('minScss', () => {
   return gulp
     .src(entry)
-    .pipe(rename('cooper-ui.min.scss'))
+    .pipe(rename('index.min.scss'))
     .pipe(
       sass({
         outputStyle: 'compressed',
@@ -22,7 +22,7 @@ gulp.task('minScss', () => {
 gulp.task('scss', () => {
   return gulp
     .src(entry)
-    .pipe(rename('cooper-ui.scss'))
+    .pipe(rename('index.scss'))
     .pipe(
       sass({
         outputStyle: 'expanded',
